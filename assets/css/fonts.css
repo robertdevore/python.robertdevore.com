@@ -3,10 +3,17 @@
 @font-face {
     font-family: 'Quicksand';
     font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../fonts/quicksand-300.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/quicksand-400.woff2') format('woff2'),
-         url('../fonts/quicksand-400.ttf') format('truetype');
+    src: url('../fonts/quicksand-400.woff2') format('woff2');
 }
 
 @font-face {
@@ -14,8 +21,15 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('../fonts/quicksand-700.woff2') format('woff2'),
-         url('../fonts/quicksand-700.ttf') format('truetype');
+    src: url('../fonts/quicksand-700.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../fonts/open-sans-300.woff2') format('woff2');
 }
 
 @font-face {
@@ -23,8 +37,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/open-sans-400.woff2') format('woff2'),
-         url('../fonts/open-sans-400.ttf') format('truetype');
+    src: url('../fonts/open-sans-400.woff2') format('woff2');
 }
 
 @font-face {
@@ -32,11 +45,62 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('../fonts/open-sans-700.woff2') format('woff2'),
-         url('../fonts/open-sans-700.ttf') format('truetype');
+    src: url('../fonts/open-sans-700.woff2') format('woff2');
 }
 
 
+/* Font assignments */
 body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .title-font {
     font-family: 'Quicksand', sans-serif;
+}
+
+/* Semantic font classes */
+.font-body-light {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+.font-body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.font-body-bold {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+.font-heading-light {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+}
+
+.font-heading {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+
+.font-heading-bold {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+/* Legacy classes for backward compatibility */
+.quicksand-300 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+}
+
+.quicksand-400 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+
+.quicksand-700 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
 }
