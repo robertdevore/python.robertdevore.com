@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>Python Course</title>
+<link>https://python.robertdevore.com</link>
+<description>Latest posts from Python Course</description>
+<lastBuildDate>Tue, 17 Jun 2025 15:37:45 -0000</lastBuildDate>
+
+<item>
+<title>Welcome to Your New Static Site</title>
+<link>https://python.robertdevore.com/blog/sample-post/</link>
+<description># Welcome to Your New Static Site! Congratulations! You've successfully set up your new static site with **Stattic**. This is your first blog post, and it's designed to help you...</description>
+<pubDate>Mon, 16 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/sample-post/</guid>
+</item>
+</channel>
+</rss>

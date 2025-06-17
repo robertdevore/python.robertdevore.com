@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Your New Static Site | Stattic</title>
+    <meta name="description" content="This is your first blog post created with Stattic, a powerful static site generator.">
+    <meta name="keywords" content="Stattic, static site generator, blog, getting started">
+    <meta name="author" content="Robert DeVore">
+    <link href="../../assets/css/tailwind.min.css" rel="stylesheet preload" as="style">
+    
+    <link href="../../assets/css/stattic.css" rel="stylesheet preload" as="style">
+    <link href="../../assets/css/fonts.css" rel="stylesheet preload" as="style">
+    
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Welcome to Your New Static Site">
+    <meta property="og:description" content="This is your first blog post created with Stattic, a powerful static site generator.">
+    <meta property="og:url" content="https://python.robertdevore.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Welcome to Your New Static Site">
+    <meta name="twitter:description" content="This is your first blog post created with Stattic, a powerful static site generator.">
+    
+    <!-- Alpine.js for interactive components -->
+    <script src="../../assets/js/alpine.min.js" defer></script>
+</head>
+<body class="bg-background bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 to-slate-950 text-primary quicksand-300">
+
+<!-- Skip Links for Accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#navigation" class="skip-link">Skip to navigation</a>
+<a href="#footer" class="skip-link">Skip to footer</a>
+
+<header id="navigation">
+    <div class="container max-w-screen-xl m-auto py-6 px-4 flex justify-between items-center">
+        <h2 class="text-3xl font-bold quicksand-700"><a href="../../" class="text-links">Stattic</a></h2>
+        
+        <nav>
+            <ul class="flex space-x-6">
+                
+                    
+                        <li>
+                            <a href="../../sample-page/" class="text-primary hover:underline quicksand-700">About This Site</a>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container max-w-2xl m-auto py-10 px-4" id="main-content">
+    <article class="prose dark:prose-dark max-w-none stattic-content">
+        
+        <h1 class="text-6xl font-bold mb-4 text-links quicksand-700 post-title">Welcome to Your New Static Site</h1>
+        <p class="text-2md post-meta mb-4 pb-2 text-accent italic border-b border-primary"><span class="date">June 16, 2025</span> &middot; <span class="author">Robert DeVore</span></p>
+        <h1>Welcome to Your New Static Site!</h1>
+<p>Congratulations! You've successfully set up your new static site with <strong>Stattic</strong>. This is your first blog post, and it's designed to help you get started with creating amazing content.</p>
+<h2>What is Stattic?</h2>
+<p>Stattic is a powerful, lightweight static site generator that converts your Markdown content into beautiful, fast-loading HTML websites. Here are some key features:</p>
+<ul>
+<li><strong>Fast and Secure</strong>: Static sites load quickly and are inherently more secure</li>
+<li><strong>Easy to Use</strong>: Write content in Markdown with simple YAML front matter</li>
+<li><strong>Flexible</strong>: Customize templates with Jinja2 templating</li>
+<li><strong>SEO-Friendly</strong>: Built-in support for meta tags, sitemaps, and RSS feeds</li>
+<li><strong>Image Optimization</strong>: Automatic WebP conversion for better performance</li>
+</ul>
+<h2>Getting Started</h2>
+<ol>
+<li><strong>Edit this post</strong>: You can find this file at <code>content/posts/sample-post.md</code></li>
+<li><strong>Create new posts</strong>: Add new <code>.md</code> files to the <code>content/posts/</code> directory</li>
+<li><strong>Customize templates</strong>: Modify the HTML templates in the <code>templates/</code> directory</li>
+<li><strong>Configure settings</strong>: Update your <code>stattic.yml</code> configuration file</li>
+<li><strong>Build your site</strong>: Run <code>stattic</code> to generate your static site</li>
+</ol>
+<h2>Front Matter Options</h2>
+<p>Each post and page can include front matter with various options:</p>
+<pre style="white-space: pre-wrap;"><code>---
+title: &quot;Your Post Title&quot;
+custom_url: your-custom-url
+author: 1
+date: 2025-06-16
+categories:
+  - 1
+tags:
+  - 1
+description: &quot;SEO description for this post&quot;
+keywords: &quot;comma, separated, keywords&quot;
+featured_image: &quot;path/to/image.jpg&quot;
+---
+</code></pre><h2>What's Next?</h2>
+<ul>
+<li>Explore the templates in the <code>templates/</code> directory</li>
+<li>Check out the sample page at <code>content/pages/sample-page.md</code></li>
+<li>Read the documentation for more advanced features</li>
+<li>Start creating your own content!</li>
+</ul>
+<p>Happy blogging with Stattic! 🚀</p>
+
+    </article>
+</main>
+
+
+<footer class="bg-background border-t border-primary mt-10 py-6" id="footer">
+    <div class="container max-w-screen-xl m-auto px-4 text-center">
+        <p>Get <a href="https://stattic.site/" target="_blank" class="text-links font-bold" aria-label="Stattic - opens in a new tab">Stattic</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Python Course - a Python-based static site generator's demo website
+
+This site contains structured content formatted for LLM-friendly consumption.
+
+## Posts
+- [Welcome to Your New Static Site](https://python.robertdevore.com/blog/sample-post/): ID 6356216163
+
+## Pages
+- [About This Site](https://python.robertdevore.com/sample-page/): ID 3985426707
+
+## Sitemap
+https://python.robertdevore.com/sitemap.xml

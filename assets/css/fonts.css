@@ -1,0 +1,42 @@
+/* Google Fonts - Downloaded for offline use */
+
+@font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/quicksand-400.woff2') format('woff2'),
+         url('../fonts/quicksand-400.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/quicksand-700.woff2') format('woff2'),
+         url('../fonts/quicksand-700.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/open-sans-400.woff2') format('woff2'),
+         url('../fonts/open-sans-400.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/open-sans-700.woff2') format('woff2'),
+         url('../fonts/open-sans-700.ttf') format('truetype');
+}
+
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
