@@ -84,7 +84,7 @@ header#navigation h2 a.text-links {
 }
 
 header#navigation a.text-primary {
-    color: var(--text-secondary);
+    color: var(--text-light);
     text-decoration: none;
 }
 
