@@ -7,7 +7,7 @@
     --text-color: #444444;
     --text-secondary: #888888;
     --text-accent: #ffd343;
-    --text-light: #f2f2f2;
+    --text-light: #FFFFFF;
 }
 
 .skip-link {
@@ -71,6 +71,21 @@ body {
 
 .border-primary {
     border-color: var(--border-color);
+}
+
+header#navigation {
+    background: var(--primary-color);
+    color: var(--text-color);
+}
+
+header#navigation h2 a.text-links {
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+header#navigation a.text-primary {
+    color: var(--text-secondary);
+    text-decoration: none;
 }
 
 .stattic-content p {
@@ -259,4 +274,20 @@ body {
 .stattic-content ul ul, 
 .stattic-content ol ol {
     margin-left: 1.5rem;
+}
+
+/* Quicksand Font Classes */
+.quicksand-300 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+}
+
+.quicksand-400 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+
+.quicksand-700 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
 }
