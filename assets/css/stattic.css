@@ -276,18 +276,6 @@ header#navigation a.text-primary {
     margin-left: 1.5rem;
 }
 
-/* Quicksand Font Classes */
-.quicksand-300 {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 300;
-}
-
-.quicksand-400 {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 400;
-}
-
-.quicksand-700 {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
+.stattic-content .post-date {
+    color: var(--text-secondary);
 }
