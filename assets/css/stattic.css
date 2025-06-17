@@ -195,14 +195,14 @@ body {
 
 .stattic-content code {
     background-color: #1E293B;
-    color: var(--primary-color);
+    color: var(--text-secondary);
     padding: 0.2rem 0.4rem;
     border-radius: 0.25rem;
 }
 
 .stattic-content pre {
     background-color: #1E293B;
-    color: var(--text-color);
+    color: var(--text-secondary);
     padding: 1rem;
     margin-bottom: 1.5rem;
     border-radius: 0.25rem;
