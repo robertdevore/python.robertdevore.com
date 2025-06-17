@@ -3,10 +3,10 @@
 This site contains structured content formatted for LLM-friendly consumption.
 
 ## Posts
-- [Welcome to Your New Static Site](https://python.robertdevore.com/blog/sample-post/): ID 335679580
+- [Welcome to Your New Static Site](https://python.robertdevore.com/blog/sample-post/): ID 259544249
 
 ## Pages
-- [About This Site](https://python.robertdevore.com/sample-page/): ID 8872895986
+- [About This Site](https://python.robertdevore.com/sample-page/): ID 3090682916
 
 ## Sitemap
 https://python.robertdevore.com/sitemap.xml
