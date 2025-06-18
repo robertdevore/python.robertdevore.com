@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.5. Basic Error Handling | Stattic</title>
+    <meta name="description" content="Stattic is a fast, lightweight static site generator that optimizes images, supports custom fonts, and easily integrates with GitHub Pages for quick, SEO-friendly site deployment without the bloat of traditional CMS platforms like WordPress.">
+    <meta name="keywords" content="python, beginner python, python course, python tutorial">
+    <meta name="author" content="Robert DeVore">
+    <link href="https://python.robertdevore.com/assets/css/tailwind.min.css" rel="stylesheet">
+    
+    <link href="https://python.robertdevore.com/assets/css/stattic.css" rel="stylesheet">
+    <link href="https://python.robertdevore.com/assets/css/fonts.css" rel="stylesheet">
+    
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="1.5. Basic Error Handling">
+    <meta property="og:description" content="Stattic is a fast, lightweight static site generator.">
+    <meta property="og:url" content="https://python.robertdevore.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="1.5. Basic Error Handling">
+    <meta name="twitter:description" content="Stattic is a fast, lightweight static site generator.">
+    
+    <!-- Alpine.js for interactive components -->
+    <script src="https://python.robertdevore.com/assets/js/alpine.min.js" defer></script>
+</head>
+<body class="bg-background bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white to-gray-50 text-primary font-body-light">
+
+<!-- Skip Links for Accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#navigation" class="skip-link">Skip to navigation</a>
+<a href="#footer" class="skip-link">Skip to footer</a>
+
+<header id="navigation">
+    <div class="container max-w-screen-xl m-auto py-6 px-4 flex justify-between items-center">
+        <h2 class="text-3xl font-bold quicksand-700"><a href="../../" class="text-links">Python Course</a></h2>
+        <nav>
+            <ul class="flex space-x-6">
+                
+                    
+                        <li>
+                            <a href="../../about/" class="text-primary hover:underline">About This Site</a>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container max-w-2xl m-auto py-10 px-4" id="main-content">
+    <article class="prose max-w-none stattic-content">
+        
+        <h1 class="text-6xl font-bold mb-4 text-links quicksand-700 post-title">1.5. Basic Error Handling</h1>
+        <p class="text-2md post-meta mb-4 pb-2 post-date italic border-b border-primary"><span class="date">June 17, 2025</span> &middot; <span class="author">Robert DeVore</span></p>
+        <h2>Overview</h2>
+<p>Prepare for inevitable mistakes - catch, handle, and recover from errors so your scripts don't just crash at the first sign of trouble.</p>
+<hr />
+<h2>Introduction: Why Error Handling Matters</h2>
+<p>Picture this: You've just written your first Python program to calculate grades for your class. You're excited to show it off, but the moment someone enters &quot;ABC&quot; instead of a number, your program crashes with a scary red error message. Your user stares at the screen, confused and frustrated.</p>
+<p>This is exactly why error handling is one of the most important skills you'll learn as a programmer. Errors aren't just inevitable—they're actually valuable information that can help you build better, more robust programs.</p>
+<p>In this chapter, we'll transform you from someone who fears error messages into someone who confidently handles them, creating programs that gracefully recover from problems instead of crashing.</p>
+<hr />
+<h2>What are Errors and Exceptions?</h2>
+<p>Before we dive into handling errors, let's understand what they actually are. In Python, there are two main types of problems you'll encounter:</p>
+<h3>Syntax Errors</h3>
+<p><strong>Syntax errors</strong> occur when Python can't understand your code because it doesn't follow Python's grammar rules. These happen before your program even starts running.</p>
+<pre style="white-space: pre-wrap;"><code># Syntax Error - Missing closing parenthesis
+print(&quot;Hello World&quot;
+
+# Syntax Error - Missing colon after if statement
+if x == 5
+    print(&quot;x is 5&quot;)
+
+# Syntax Error - Incorrect indentation
+def my_function():
+print(&quot;This won't work&quot;)
+</code></pre><p>When you have a syntax error, Python won't even try to run your program. It'll point out exactly where the problem is, and you'll need to fix it before proceeding.</p>
+<h3>Runtime Exceptions</h3>
+<p><strong>Exceptions</strong> (also called runtime errors) occur while your program is running. Your code is syntactically correct, but something goes wrong during execution.</p>
+<pre style="white-space: pre-wrap;"><code># This code looks fine, but will crash if user enters &quot;hello&quot;
+age = int(input(&quot;Enter your age: &quot;))
+print(f&quot;You are {age} years old&quot;)
+
+# This will crash if the file doesn't exist
+file = open(&quot;nonexistent.txt&quot;, &quot;r&quot;)
+
+# This will crash if we try to divide by zero
+result = 10 / 0
+</code></pre><p>The key difference: syntax errors prevent your program from starting, while exceptions crash your program while it's running. We can't prevent all exceptions, but we can handle them gracefully.</p>
+<hr />
+<h2>Understanding Common Beginner Errors</h2>
+<p>Let's look at the most common exceptions you'll encounter as a beginner, with examples of when they occur:</p>
+<h3>ValueError</h3>
+<p>Occurs when a function receives an argument of the right type but with an inappropriate value.</p>
+<pre style="white-space: pre-wrap;"><code># Trying to convert a non-numeric string to integer
+number = int(&quot;hello&quot;)  # ValueError: invalid literal for int()
+
+# Trying to convert an empty string
+number = int(&quot;&quot;)  # ValueError: invalid literal for int()
+
+# Math operations with inappropriate values
+import math
+result = math.sqrt(-1)  # ValueError: math domain error
+</code></pre><h3>TypeError</h3>
+<p>Happens when an operation is performed on an inappropriate type.</p>
+<pre style="white-space: pre-wrap;"><code># Trying to add a string and integer
+result = &quot;5&quot; + 3  # TypeError: can only concatenate str to str
+
+# Calling a non-callable object
+x = 5
+x()  # TypeError: 'int' object is not callable
+
+# Using wrong number of arguments
+def greet(name):
+    return f&quot;Hello, {name}&quot;
+
+greet()  # TypeError: greet() missing 1 required positional argument
+</code></pre><h3>NameError</h3>
+<p>Occurs when trying to use a variable that hasn't been defined.</p>
+<pre style="white-space: pre-wrap;"><code># Using a variable before defining it
+print(my_variable)  # NameError: name 'my_variable' is not defined
+
+# Typo in variable name
+my_name = &quot;Alice&quot;
+print(my_nme)  # NameError: name 'my_nme' is not defined
+</code></pre><h3>IndexError</h3>
+<p>Happens when trying to access a list item that doesn't exist.</p>
+<pre style="white-space: pre-wrap;"><code>numbers = [1, 2, 3]
+print(numbers[5])  # IndexError: list index out of range
+
+# Empty list
+empty_list = []
+print(empty_list[0])  # IndexError: list index out of range
+</code></pre><h3>KeyError</h3>
+<p>Occurs when trying to access a dictionary key that doesn't exist.</p>
+<pre style="white-space: pre-wrap;"><code>student = {&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 20}
+print(student[&quot;grade&quot;])  # KeyError: 'grade'
+</code></pre><h3>FileNotFoundError</h3>
+<p>Happens when trying to open a file that doesn't exist.</p>
+<pre style="white-space: pre-wrap;"><code># Trying to open a non-existent file
+with open(&quot;missing_file.txt&quot;, &quot;r&quot;) as file:
+    content = file.read()  # FileNotFoundError
+</code></pre><hr />
+<h2>Introduction to try and except Blocks</h2>
+<p>Now that we understand what exceptions are, let's learn how to handle them gracefully using <code>try</code> and <code>except</code> blocks.</p>
+<h3>Basic try/except Structure</h3>
+<p>The basic structure looks like this:</p>
+<pre style="white-space: pre-wrap;"><code>try:
+    # Code that might cause an error
+    risky_code_here()
+except:
+    # Code that runs if an error occurs
+    print(&quot;Something went wrong!&quot;)
+</code></pre><p>Let's see this in action:</p>
+<pre style="white-space: pre-wrap;"><code>try:
+    age = int(input(&quot;Enter your age: &quot;))
+    print(f&quot;You are {age} years old&quot;)
+except:
+    print(&quot;Please enter a valid number for your age.&quot;)
+</code></pre><p>Now, instead of crashing when someone enters &quot;twenty-five&quot;, your program politely asks for a valid number.</p>
+<h3>Catching Specific Exceptions</h3>
+<p>While catching all exceptions works, it's better practice to catch specific ones:</p>
+<pre style="white-space: pre-wrap;"><code>try:
+    age = int(input(&quot;Enter your age: &quot;))
+    print(f&quot;You are {age} years old&quot;)
+except ValueError:
+    print(&quot;Please enter a valid number for your age.&quot;)
+</code></pre><p>This approach is better because:</p>
+<ol>
+<li>It's more precise about what we're handling</li>
+<li>It won't accidentally hide other unexpected errors</li>
+<li>It makes our code more readable and maintainable</li>
+</ol>
+<h3>Handling Multiple Exception Types</h3>
+<p>You can handle different types of exceptions differently:</p>
+<pre style="white-space: pre-wrap;"><code>try:
+    filename = input(&quot;Enter filename: &quot;)
+    with open(filename, &quot;r&quot;) as file:
+        content = file.read()
+        lines = int(input(&quot;How many lines to show? &quot;))
+        print(&quot;\n&quot;.join(content.split(&quot;\n&quot;)[:lines]))
+
+except FileNotFoundError:
+    print(&quot;Sorry, that file doesn't exist.&quot;)
+except ValueError:
+    print(&quot;Please enter a valid number for lines.&quot;)
+except PermissionError:
+    print(&quot;You don't have permission to read that file.&quot;)
+</code></pre><h3>The else Clause</h3>
+<p>The <code>else</code> clause runs only if no exception occurred:</p>
+<pre style="white-space: pre-wrap;"><code>try:
+    number = int(input(&quot;Enter a number: &quot;))
+except ValueError:
+    print(&quot;That's not a valid number!&quot;)
+else:
+    print(f&quot;Great! You entered {number}&quot;)
+    print(f&quot;Its square is {number ** 2}&quot;)
+</code></pre><h3>The finally Clause</h3>
+<p>The <code>finally</code> clause always runs, whether an exception occurred or not:</p>
+<pre style="white-space: pre-wrap;"><code>try:
+    file = open(&quot;data.txt&quot;, &quot;r&quot;)
+    data = file.read()
+    process_data(data)
+except FileNotFoundError:
+    print(&quot;File not found!&quot;)
+finally:
+    # This always runs
+    if 'file' in locals():
+        file.close()
+    print(&quot;Cleanup completed&quot;)
+</code></pre><hr />
+<h2>Practical Examples and Patterns</h2>
+<h3>Safe User Input</h3>
+<p>Here's a robust way to get numeric input from users:</p>
+<pre style="white-space: pre-wrap;"><code>def get_positive_integer(prompt):
+    &quot;&quot;&quot;Get a positive integer from user with error handling.&quot;&quot;&quot;
+    while True:
+        try:
+            value = int(input(prompt))
+            if value &lt;= 0:
+                print(&quot;Please enter a positive number.&quot;)
+                continue
+            return value
+        except ValueError:
+            print(&quot;Please enter a valid integer.&quot;)
+
+# Usage
+age = get_positive_integer(&quot;Enter your age: &quot;)
+print(f&quot;You are {age} years old&quot;)
+</code></pre><h3>Safe File Operations</h3>
+<pre style="white-space: pre-wrap;"><code>def read_file_safely(filename):
+    &quot;&quot;&quot;Read a file with proper error handling.&quot;&quot;&quot;
+    try:
+        with open(filename, &quot;r&quot;) as file:
+            return file.read()
+    except FileNotFoundError:
+        print(f&quot;Error: The file '{filename}' was not found.&quot;)
+        return None
+    except PermissionError:
+        print(f&quot;Error: Permission denied to read '{filename}'.&quot;)
+        return None
+    except Exception as e:
+        print(f&quot;An unexpected error occurred: {e}&quot;)
+        return None
+
+# Usage
+content = read_file_safely(&quot;my_document.txt&quot;)
+if content:
+    print(&quot;File contents:&quot;)
+    print(content)
+else:
+    print(&quot;Could not read the file.&quot;)
+</code></pre><h3>Calculator with Error Handling</h3>
+<pre style="white-space: pre-wrap;"><code>def safe_calculator():
+    &quot;&quot;&quot;A simple calculator with comprehensive error handling.&quot;&quot;&quot;
+    print(&quot;Simple Calculator&quot;)
+    print(&quot;Enter 'quit' to exit&quot;)
+
+    while True:
+        try:
+            # Get the operation
+            operation = input(&quot;\nEnter operation (+, -, *, /) or 'quit': &quot;).strip()
+
+            if operation.lower() == 'quit':
+                print(&quot;Thanks for using the calculator!&quot;)
+                break
+
+            if operation not in ['+', '-', '*', '/']:
+                print(&quot;Invalid operation. Please use +, -, *, or /&quot;)
+                continue
+
+            # Get the numbers
+            num1 = float(input(&quot;Enter first number: &quot;))
+            num2 = float(input(&quot;Enter second number: &quot;))
+
+            # Perform calculation
+            if operation == '+':
+                result = num1 + num2
+            elif operation == '-':
+                result = num1 - num2
+            elif operation == '*':
+                result = num1 * num2
+            elif operation == '/':
+                if num2 == 0:
+                    print(&quot;Error: Cannot divide by zero!&quot;)
+                    continue
+                result = num1 / num2
+
+            print(f&quot;Result: {num1} {operation} {num2} = {result}&quot;)
+
+        except ValueError:
+            print(&quot;Error: Please enter valid numbers.&quot;)
+        except KeyboardInterrupt:
+            print(&quot;\nCalculator interrupted. Goodbye!&quot;)
+            break
+        except Exception as e:
+            print(f&quot;An unexpected error occurred: {e}&quot;)
+
+# Run the calculator
+safe_calculator()
+</code></pre><hr />
+<h2>Printing Helpful Error Messages</h2>
+<p>Good error messages help users understand what went wrong and how to fix it. Here are some guidelines:</p>
+<h3>Be Specific and Clear</h3>
+<p>❌ Bad:</p>
+<pre style="white-space: pre-wrap;"><code>except:
+    print(&quot;Error!&quot;)
+</code></pre><p>✅ Good:</p>
+<pre style="white-space: pre-wrap;"><code>except ValueError:
+    print(&quot;Please enter a number, not text or symbols.&quot;)
+</code></pre><h3>Provide Context</h3>
+<p>❌ Bad:</p>
+<pre style="white-space: pre-wrap;"><code>except FileNotFoundError:
+    print(&quot;File not found.&quot;)
+</code></pre><p>✅ Good:</p>
+<pre style="white-space: pre-wrap;"><code>except FileNotFoundError:
+    print(f&quot;Error: Could not find the file '{filename}'.&quot;)
+    print(&quot;Please check the filename and try again.&quot;)
+</code></pre><h3>Suggest Solutions</h3>
+<p>❌ Bad:</p>
+<pre style="white-space: pre-wrap;"><code>except ZeroDivisionError:
+    print(&quot;Cannot divide by zero.&quot;)
+</code></pre><p>✅ Good:</p>
+<pre style="white-space: pre-wrap;"><code>except ZeroDivisionError:
+    print(&quot;Error: Cannot divide by zero.&quot;)
+    print(&quot;Please enter a non-zero number for the divisor.&quot;)
+</code></pre><hr />
+<h2>Learning from Tracebacks</h2>
+<p>When an exception occurs and isn't caught, Python shows a <strong>traceback</strong>—a detailed error report. Learning to read these is crucial for debugging.</p>
+<p>Here's a typical traceback:</p>
+<pre style="white-space: pre-wrap;"><code>Traceback (most recent call last):
+  File &quot;calculator.py&quot;, line 15, in &lt;module&gt;
+    result = divide_numbers(10, 0)
+  File &quot;calculator.py&quot;, line 8, in divide_numbers
+    return a / b
+ZeroDivisionError: division by zero
+</code></pre><p>Reading from bottom to top:</p>
+<ol>
+<li><strong>Exception type and message</strong>: <code>ZeroDivisionError: division by zero</code></li>
+<li><strong>Where it occurred</strong>: Line 8 in the <code>divide_numbers</code> function</li>
+<li><strong>How we got there</strong>: Called from line 15 in the main program</li>
+</ol>
+<h3>Using Tracebacks to Debug</h3>
+<pre style="white-space: pre-wrap;"><code>def calculate_average(numbers):
+    total = sum(numbers)
+    count = len(numbers)
+    return total / count
+
+def main():
+    scores = []  # Empty list!
+    average = calculate_average(scores)
+    print(f&quot;Average score: {average}&quot;)
+
+main()
+</code></pre><p>This produces:</p>
+<pre style="white-space: pre-wrap;"><code>Traceback (most recent call last):
+  File &quot;grades.py&quot;, line 9, in main
+    average = calculate_average(scores)
+  File &quot;grades.py&quot;, line 4, in calculate_average
+    return total / count
+ZeroDivisionError: division by zero
+</code></pre><p>The traceback tells us:</p>
+<ul>
+<li>The error is a division by zero</li>
+<li>It happened in <code>calculate_average</code> when we tried to divide by <code>count</code></li>
+<li><code>count</code> must be zero, meaning our list is empty</li>
+<li>We called this function from <code>main()</code> with an empty list</li>
+</ul>
+<hr />
+<h2>Best Practices for Error Handling</h2>
+<h3>1. Be Specific with Exception Types</h3>
+<pre style="white-space: pre-wrap;"><code># Don't catch everything
+try:
+    value = int(user_input)
+except:  # Too broad!
+    print(&quot;Error occurred&quot;)
+
+# Catch specific exceptions
+try:
+    value = int(user_input)
+except ValueError:  # Specific and clear
+    print(&quot;Please enter a valid integer&quot;)
+</code></pre><h3>2. Don't Ignore Exceptions</h3>
+<pre style="white-space: pre-wrap;"><code># Don't do this
+try:
+    risky_operation()
+except:
+    pass  # Silent failure is dangerous!
+
+# Do this instead
+try:
+    risky_operation()
+except SpecificError as e:
+    print(f&quot;Warning: Operation failed - {e}&quot;)
+    # Handle appropriately
+</code></pre><h3>3. Use Exception Information</h3>
+<pre style="white-space: pre-wrap;"><code>try:
+    with open(filename, 'r') as file:
+        data = file.read()
+except FileNotFoundError as e:
+    print(f&quot;Could not open file: {e}&quot;)
+    print(f&quot;Please check if '{filename}' exists&quot;)
+</code></pre><h3>4. Keep try Blocks Small</h3>
+<pre style="white-space: pre-wrap;"><code># Don't wrap too much code
+try:
+    # 50 lines of code here - too much!
+except ValueError:
+    pass
+
+# Keep it focused
+try:
+    user_age = int(input(&quot;Enter age: &quot;))
+except ValueError:
+    print(&quot;Please enter a valid age&quot;)
+
+# Then continue with other operations
+</code></pre><hr />
+<h2>Putting It All Together: A Complete Example</h2>
+<p>Let's create a simple grade management system that demonstrates all these concepts:</p>
+<pre style="white-space: pre-wrap;"><code>def get_student_grades():
+    &quot;&quot;&quot;Collect and manage student grades with comprehensive error handling.&quot;&quot;&quot;
+    grades = []
+
+    print(&quot;Grade Management System&quot;)
+    print(&quot;Enter grades one by one. Type 'done' when finished.&quot;)
+    print(&quot;Valid grades are between 0 and 100.&quot;)
+
+    while True:
+        try:
+            user_input = input(&quot;\nEnter a grade (or 'done'): &quot;).strip()
+
+            # Check if user wants to finish
+            if user_input.lower() == 'done':
+                break
+
+            # Try to convert to float
+            grade = float(user_input)
+
+            # Validate grade range
+            if grade &lt; 0 or grade &gt; 100:
+                print(&quot;Error: Grade must be between 0 and 100.&quot;)
+                continue
+
+            grades.append(grade)
+            print(f&quot;Added grade: {grade}&quot;)
+
+        except ValueError:
+            print(&quot;Error: Please enter a valid number or 'done'.&quot;)
+        except KeyboardInterrupt:
+            print(&quot;\nProgram interrupted. Exiting...&quot;)
+            return None
+
+    # Calculate statistics if we have grades
+    if not grades:
+        print(&quot;No grades entered.&quot;)
+        return None
+
+    try:
+        average = sum(grades) / len(grades)
+        highest = max(grades)
+        lowest = min(grades)
+
+        print(f&quot;\nGrade Statistics:&quot;)
+        print(f&quot;Number of grades: {len(grades)}&quot;)
+        print(f&quot;Average: {average:.2f}&quot;)
+        print(f&quot;Highest: {highest}&quot;)
+        print(f&quot;Lowest: {lowest}&quot;)
+
+        return grades
+
+    except Exception as e:
+        print(f&quot;Error calculating statistics: {e}&quot;)
+        return grades
+
+# Run the program
+if __name__ == &quot;__main__&quot;:
+    student_grades = get_student_grades()
+</code></pre><hr />
+<h2>Conclusion</h2>
+<p>Error handling is your safety net as a programmer. It transforms your programs from fragile scripts that crash at the first sign of trouble into robust applications that can handle real-world conditions gracefully.</p>
+<p>Key takeaways from this chapter:</p>
+<ol>
+<li><p><strong>Understand the difference</strong> between syntax errors (which prevent your program from running) and exceptions (which occur during execution)</p>
+</li>
+<li><p><strong>Use try/except blocks</strong> to catch and handle specific exceptions rather than letting your program crash</p>
+</li>
+<li><p><strong>Be specific</strong> with exception types—catch <code>ValueError</code> instead of using a bare <code>except</code></p>
+</li>
+<li><p><strong>Provide helpful error messages</strong> that explain what went wrong and how to fix it</p>
+</li>
+<li><p><strong>Learn to read tracebacks</strong>—they're your best debugging tool</p>
+</li>
+<li><p><strong>Keep error handling focused</strong>—don't wrap too much code in try blocks</p>
+</li>
+</ol>
+<p>Remember, good error handling isn't just about preventing crashes—it's about creating a better experience for anyone using your programs. When errors are handled well, users feel confident and can easily recover from mistakes.</p>
+<p>As you continue your Python journey, you'll encounter more complex error scenarios, but the fundamentals you've learned here will serve you well. Every professional Python developer relies on these same concepts to build reliable, user-friendly applications.</p>
+<p>In <a href="https://python.robertdevore.com/blog/chapter-2-intermediate-python">Chapter 2</a>, we'll move on to Intermediate Python concepts, where you'll learn about Object-Oriented Programming and start building more sophisticated programs that benefit greatly from the solid error handling foundation you've just built.</p>
+
+    </article>
+</main>
+
+
+<footer class="bg-background border-t border-primary mt-10 py-6" id="footer">
+    <div class="container max-w-screen-xl m-auto px-4 text-center">
+        <p>Get <a href="https://stattic.site/" target="_blank" class="text-links font-bold" aria-label="Stattic - opens in a new tab">Stattic</a>. Built by <a href="https://robertdevore.com/" target="_blank" class="text-links font-bold" aria-label="Robert DeVore's personal website - opens in a new tab">Robert DeVore</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

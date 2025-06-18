@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4. Functions & Modules | Stattic</title>
+    <meta name="description" content="Stattic is a fast, lightweight static site generator that optimizes images, supports custom fonts, and easily integrates with GitHub Pages for quick, SEO-friendly site deployment without the bloat of traditional CMS platforms like WordPress.">
+    <meta name="keywords" content="python, beginner python, python course, python tutorial">
+    <meta name="author" content="Robert DeVore">
+    <link href="https://python.robertdevore.com/assets/css/tailwind.min.css" rel="stylesheet">
+    
+    <link href="https://python.robertdevore.com/assets/css/stattic.css" rel="stylesheet">
+    <link href="https://python.robertdevore.com/assets/css/fonts.css" rel="stylesheet">
+    
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="1.4. Functions & Modules">
+    <meta property="og:description" content="Stattic is a fast, lightweight static site generator.">
+    <meta property="og:url" content="https://python.robertdevore.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="1.4. Functions & Modules">
+    <meta name="twitter:description" content="Stattic is a fast, lightweight static site generator.">
+    
+    <!-- Alpine.js for interactive components -->
+    <script src="https://python.robertdevore.com/assets/js/alpine.min.js" defer></script>
+</head>
+<body class="bg-background bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white to-gray-50 text-primary font-body-light">
+
+<!-- Skip Links for Accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#navigation" class="skip-link">Skip to navigation</a>
+<a href="#footer" class="skip-link">Skip to footer</a>
+
+<header id="navigation">
+    <div class="container max-w-screen-xl m-auto py-6 px-4 flex justify-between items-center">
+        <h2 class="text-3xl font-bold quicksand-700"><a href="../../" class="text-links">Python Course</a></h2>
+        <nav>
+            <ul class="flex space-x-6">
+                
+                    
+                        <li>
+                            <a href="../../about/" class="text-primary hover:underline">About This Site</a>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container max-w-2xl m-auto py-10 px-4" id="main-content">
+    <article class="prose max-w-none stattic-content">
+        
+        <h1 class="text-6xl font-bold mb-4 text-links quicksand-700 post-title">1.4. Functions & Modules</h1>
+        <p class="text-2md post-meta mb-4 pb-2 post-date italic border-b border-primary"><span class="date">June 17, 2025</span> &middot; <span class="author">Robert DeVore</span></p>
+        <h2>Overview</h2>
+<p>Organize your code into reusable chunks, make it more readable, and start building real programs by leveraging Python's modular design.</p>
+<p>Functions are one of the most powerful tools in programming. They allow you to break down complex problems into smaller, manageable pieces that you can reuse throughout your code. Think of functions as mini-programs within your program—each with a specific job to do. Combined with modules (collections of functions and other code), they form the foundation of well-organized, maintainable Python programs.</p>
+<p>In this chapter, you'll learn how to write your own functions, understand how Python manages variables and memory, explore Python's vast standard library, and create your own modules. By the end, you'll be writing cleaner, more efficient code that follows professional programming practices.</p>
+<h2>Defining Functions</h2>
+<h3>What is a Function?</h3>
+<p>A function is a named block of code that performs a specific task. Instead of writing the same code multiple times, you can define it once as a function and then &quot;call&quot; (use) it whenever needed. This makes your code:</p>
+<ul>
+<li><strong>DRY (Don't Repeat Yourself)</strong>: Write once, use many times</li>
+<li><strong>Readable</strong>: Clear function names explain what the code does</li>
+<li><strong>Maintainable</strong>: Fix bugs or make improvements in one place</li>
+<li><strong>Testable</strong>: Test individual pieces of functionality</li>
+</ul>
+<h3>Basic Function Syntax</h3>
+<p>Here's the basic syntax for defining a function in Python:</p>
+<pre style="white-space: pre-wrap;"><code>def function_name(parameters):
+    &quot;&quot;&quot;Optional docstring describing what the function does&quot;&quot;&quot;
+    # Function body - the code that does the work
+    return result  # Optional return statement
+</code></pre><p>Let's start with a simple example:</p>
+<pre style="white-space: pre-wrap;"><code>def greet():
+    &quot;&quot;&quot;Prints a friendly greeting&quot;&quot;&quot;
+    print(&quot;Hello, welcome to Python functions!&quot;)
+
+# Call the function
+greet()  # Output: Hello, welcome to Python functions!
+</code></pre><h3>Functions with Parameters</h3>
+<p>Most functions need input to work with. Parameters (also called arguments) allow you to pass data into your function:</p>
+<pre style="white-space: pre-wrap;"><code>def greet_person(name):
+    &quot;&quot;&quot;Greets a specific person by name&quot;&quot;&quot;
+    print(f&quot;Hello, {name}! Welcome to Python functions!&quot;)
+
+# Call the function with an argument
+greet_person(&quot;Alice&quot;)  # Output: Hello, Alice! Welcome to Python functions!
+greet_person(&quot;Bob&quot;)    # Output: Hello, Bob! Welcome to Python functions!
+</code></pre><p>You can have multiple parameters:</p>
+<pre style="white-space: pre-wrap;"><code>def calculate_area(length, width):
+    &quot;&quot;&quot;Calculates the area of a rectangle&quot;&quot;&quot;
+    area = length * width
+    print(f&quot;The area of a {length}x{width} rectangle is {area}&quot;)
+
+calculate_area(5, 3)   # Output: The area of a 5x3 rectangle is 15
+calculate_area(10, 7)  # Output: The area of a 10x7 rectangle is 70
+</code></pre><h3>Return Values</h3>
+<p>Functions can send data back to the code that called them using the <code>return</code> statement:</p>
+<pre style="white-space: pre-wrap;"><code>def add_numbers(a, b):
+    &quot;&quot;&quot;Adds two numbers and returns the result&quot;&quot;&quot;
+    result = a + b
+    return result
+
+# Store the returned value in a variable
+sum_result = add_numbers(5, 3)
+print(sum_result)  # Output: 8
+
+# Or use the returned value directly
+print(add_numbers(10, 20))  # Output: 30
+</code></pre><p>You can return multiple values as a tuple:</p>
+<pre style="white-space: pre-wrap;"><code>def calculate_rectangle(length, width):
+    &quot;&quot;&quot;Calculates both area and perimeter of a rectangle&quot;&quot;&quot;
+    area = length * width
+    perimeter = 2 * (length + width)
+    return area, perimeter
+
+# Unpack the returned values
+rect_area, rect_perimeter = calculate_rectangle(5, 3)
+print(f&quot;Area: {rect_area}, Perimeter: {rect_perimeter}&quot;)
+# Output: Area: 15, Perimeter: 16
+</code></pre><h3>Default Parameters</h3>
+<p>You can provide default values for parameters, making them optional:</p>
+<pre style="white-space: pre-wrap;"><code>def greet_with_title(name, title=&quot;Friend&quot;):
+    &quot;&quot;&quot;Greets someone with an optional title&quot;&quot;&quot;
+    print(f&quot;Hello, {title} {name}!&quot;)
+
+greet_with_title(&quot;Alice&quot;)           # Output: Hello, Friend Alice!
+greet_with_title(&quot;Bob&quot;, &quot;Dr.&quot;)      # Output: Hello, Dr. Bob!
+greet_with_title(&quot;Carol&quot;, &quot;Prof.&quot;)  # Output: Hello, Prof. Carol!
+</code></pre><h3>Practical Example: Temperature Converter</h3>
+<p>Let's create a more practical function that converts temperatures:</p>
+<pre style="white-space: pre-wrap;"><code>def celsius_to_fahrenheit(celsius):
+    &quot;&quot;&quot;Converts Celsius to Fahrenheit&quot;&quot;&quot;
+    fahrenheit = (celsius * 9/5) + 32
+    return fahrenheit
+
+def fahrenheit_to_celsius(fahrenheit):
+    &quot;&quot;&quot;Converts Fahrenheit to Celsius&quot;&quot;&quot;
+    celsius = (fahrenheit - 32) * 5/9
+    return celsius
+
+def temperature_converter(temp, from_scale, to_scale):
+    &quot;&quot;&quot;Universal temperature converter&quot;&quot;&quot;
+    if from_scale.lower() == &quot;celsius&quot; and to_scale.lower() == &quot;fahrenheit&quot;:
+        return celsius_to_fahrenheit(temp)
+    elif from_scale.lower() == &quot;fahrenheit&quot; and to_scale.lower() == &quot;celsius&quot;:
+        return fahrenheit_to_celsius(temp)
+    else:
+        return f&quot;Conversion from {from_scale} to {to_scale} not supported&quot;
+
+# Test the functions
+print(f&quot;25°C = {celsius_to_fahrenheit(25):.1f}°F&quot;)  # Output: 25°C = 77.0°F
+print(f&quot;77°F = {fahrenheit_to_celsius(77):.1f}°C&quot;)  # Output: 77°F = 25.0°C
+print(temperature_converter(100, &quot;Celsius&quot;, &quot;Fahrenheit&quot;))  # Output: 212.0
+</code></pre><h2>Scope &amp; Lifetime</h2>
+<h3>Understanding Variable Scope</h3>
+<p>Scope determines where in your code a variable can be accessed. Python has several levels of scope:</p>
+<ol>
+<li><strong>Local Scope</strong>: Variables defined inside a function</li>
+<li><strong>Global Scope</strong>: Variables defined at the module level</li>
+<li><strong>Built-in Scope</strong>: Pre-defined names in Python</li>
+</ol>
+<pre style="white-space: pre-wrap;"><code># Global variable
+global_var = &quot;I'm global!&quot;
+
+def my_function():
+    # Local variable
+    local_var = &quot;I'm local!&quot;
+    print(global_var)  # Can access global variable
+    print(local_var)   # Can access local variable
+
+my_function()
+print(global_var)  # Can access global variable
+# print(local_var)  # This would cause an error - local_var doesn't exist here
+</code></pre><h3>The LEGB Rule</h3>
+<p>Python follows the LEGB rule when looking for variables:</p>
+<ul>
+<li><strong>L</strong>ocal: Inside the current function</li>
+<li><strong>E</strong>nclosing: In any outer function</li>
+<li><strong>G</strong>lobal: At the module level</li>
+<li><strong>B</strong>uilt-in: In the built-in namespace</li>
+</ul>
+<pre style="white-space: pre-wrap;"><code>x = &quot;global x&quot;
+
+def outer_function():
+    x = &quot;enclosing x&quot;
+
+    def inner_function():
+        x = &quot;local x&quot;
+        print(f&quot;Inner function sees: {x}&quot;)
+
+    inner_function()
+    print(f&quot;Outer function sees: {x}&quot;)
+
+outer_function()
+print(f&quot;Global scope sees: {x}&quot;)
+
+# Output:
+# Inner function sees: local x
+# Outer function sees: enclosing x
+# Global scope sees: global x
+</code></pre><h3>Modifying Global Variables</h3>
+<p>To modify a global variable inside a function, use the <code>global</code> keyword:</p>
+<pre style="white-space: pre-wrap;"><code>counter = 0  # Global variable
+
+def increment_counter():
+    global counter
+    counter += 1
+    print(f&quot;Counter is now: {counter}&quot;)
+
+increment_counter()  # Output: Counter is now: 1
+increment_counter()  # Output: Counter is now: 2
+print(f&quot;Final counter value: {counter}&quot;)  # Output: Final counter value: 2
+</code></pre><h3>Variable Lifetime</h3>
+<p>Variables exist only as long as their scope is active:</p>
+<pre style="white-space: pre-wrap;"><code>def demonstrate_lifetime():
+    temp_var = &quot;I exist only during function execution&quot;
+    print(temp_var)
+    return temp_var
+
+result = demonstrate_lifetime()  # temp_var is created and destroyed
+print(result)  # But its value is preserved in 'result'
+</code></pre><h2>Importing Modules</h2>
+<h3>What are Modules?</h3>
+<p>A module is a file containing Python code. It can define functions, classes, and variables, and can also include runnable code. Python comes with a huge standard library of modules that provide pre-written functionality for common tasks.</p>
+<h3>Basic Import Syntax</h3>
+<p>There are several ways to import modules:</p>
+<pre style="white-space: pre-wrap;"><code># Import the entire module
+import math
+print(math.pi)        # Output: 3.141592653589793
+print(math.sqrt(16))  # Output: 4.0
+
+# Import specific functions
+from math import pi, sqrt
+print(pi)        # Output: 3.141592653589793
+print(sqrt(25))  # Output: 5.0
+
+# Import with an alias
+import math as m
+print(m.factorial(5))  # Output: 120
+
+# Import all (generally not recommended)
+from math import *
+print(cos(0))  # Output: 1.0
+</code></pre><h3>Useful Standard Library Modules</h3>
+<p>Let's explore some commonly used modules:</p>
+<h4>The <code>random</code> Module</h4>
+<pre style="white-space: pre-wrap;"><code>import random
+
+# Generate random numbers
+print(random.randint(1, 10))        # Random integer between 1 and 10
+print(random.random())              # Random float between 0 and 1
+print(random.uniform(1.5, 10.5))   # Random float between 1.5 and 10.5
+
+# Work with sequences
+colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;, &quot;yellow&quot;]
+print(random.choice(colors))        # Pick a random color
+random.shuffle(colors)              # Shuffle the list in place
+print(colors)                       # List is now in random order
+</code></pre><h4>The <code>datetime</code> Module</h4>
+<pre style="white-space: pre-wrap;"><code>from datetime import datetime, date, timedelta
+
+# Current date and time
+now = datetime.now()
+print(f&quot;Current date and time: {now}&quot;)
+
+# Just the date
+today = date.today()
+print(f&quot;Today's date: {today}&quot;)
+
+# Date arithmetic
+tomorrow = today + timedelta(days=1)
+next_week = today + timedelta(weeks=1)
+print(f&quot;Tomorrow: {tomorrow}&quot;)
+print(f&quot;Next week: {next_week}&quot;)
+</code></pre><h4>The <code>os</code> Module</h4>
+<pre style="white-space: pre-wrap;"><code>import os
+
+# Get current working directory
+current_dir = os.getcwd()
+print(f&quot;Current directory: {current_dir}&quot;)
+
+# List files in a directory
+files = os.listdir('.')
+print(f&quot;Files in current directory: {files}&quot;)
+
+# Check if a file exists
+if os.path.exists('my_file.txt'):
+    print(&quot;File exists!&quot;)
+else:
+    print(&quot;File not found.&quot;)
+</code></pre><h2>Built-in Functions</h2>
+<p>Python provides many built-in functions that are always available without importing. Let's explore some of the most useful ones:</p>
+<h3>Mathematical Functions</h3>
+<pre style="white-space: pre-wrap;"><code>numbers = [1, 2, 3, 4, 5]
+
+print(len(numbers))    # Output: 5 (length of the list)
+print(sum(numbers))    # Output: 15 (sum of all numbers)
+print(min(numbers))    # Output: 1 (smallest number)
+print(max(numbers))    # Output: 5 (largest number)
+
+# Absolute value
+print(abs(-10))        # Output: 10
+
+# Round numbers
+print(round(3.14159, 2))  # Output: 3.14 (round to 2 decimal places)
+</code></pre><h3>Type Conversion Functions</h3>
+<pre style="white-space: pre-wrap;"><code># Convert between types
+print(int(&quot;42&quot;))       # Output: 42 (string to integer)
+print(float(&quot;3.14&quot;))   # Output: 3.14 (string to float)
+print(str(123))        # Output: &quot;123&quot; (integer to string)
+print(bool(1))         # Output: True (integer to boolean)
+print(bool(0))         # Output: False
+
+# Create collections
+print(list(&quot;hello&quot;))   # Output: ['h', 'e', 'l', 'l', 'o']
+print(tuple([1, 2, 3])) # Output: (1, 2, 3)
+print(set([1, 2, 2, 3])) # Output: {1, 2, 3} (duplicates removed)
+</code></pre><h3>The <code>range()</code> Function</h3>
+<pre style="white-space: pre-wrap;"><code># Create sequences of numbers
+print(list(range(5)))        # Output: [0, 1, 2, 3, 4]
+print(list(range(2, 8)))     # Output: [2, 3, 4, 5, 6, 7]
+print(list(range(0, 10, 2))) # Output: [0, 2, 4, 6, 8] (step of 2)
+
+# Use with loops
+for i in range(3):
+    print(f&quot;Iteration {i}&quot;)
+</code></pre><h3>The <code>enumerate()</code> Function</h3>
+<pre style="white-space: pre-wrap;"><code>fruits = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;]
+
+# Get both index and value
+for index, fruit in enumerate(fruits):
+    print(f&quot;{index}: {fruit}&quot;)
+
+# Output:
+# 0: apple
+# 1: banana
+# 2: cherry
+</code></pre><h3>The <code>zip()</code> Function</h3>
+<pre style="white-space: pre-wrap;"><code>names = [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;]
+ages = [25, 30, 35]
+cities = [&quot;New York&quot;, &quot;London&quot;, &quot;Tokyo&quot;]
+
+# Combine multiple lists
+for name, age, city in zip(names, ages, cities):
+    print(f&quot;{name} is {age} years old and lives in {city}&quot;)
+
+# Output:
+# Alice is 25 years old and lives in New York
+# Bob is 30 years old and lives in London
+# Charlie is 35 years old and lives in Tokyo
+</code></pre><h2>Your First Module</h2>
+<h3>Creating a Module</h3>
+<p>A module is simply a Python file. Let's create a module called <code>calculator.py</code>:</p>
+<pre style="white-space: pre-wrap;"><code># calculator.py
+&quot;&quot;&quot;
+A simple calculator module with basic mathematical operations.
+&quot;&quot;&quot;
+
+def add(a, b):
+    &quot;&quot;&quot;Returns the sum of two numbers&quot;&quot;&quot;
+    return a + b
+
+def subtract(a, b):
+    &quot;&quot;&quot;Returns the difference of two numbers&quot;&quot;&quot;
+    return a - b
+
+def multiply(a, b):
+    &quot;&quot;&quot;Returns the product of two numbers&quot;&quot;&quot;
+    return a * b
+
+def divide(a, b):
+    &quot;&quot;&quot;Returns the quotient of two numbers&quot;&quot;&quot;
+    if b == 0:
+        return &quot;Error: Cannot divide by zero&quot;
+    return a / b
+
+def power(base, exponent):
+    &quot;&quot;&quot;Returns base raised to the power of exponent&quot;&quot;&quot;
+    return base ** exponent
+
+# Module-level variables
+PI = 3.14159
+EULER_NUMBER = 2.71828
+
+# This code runs when the module is imported
+print(&quot;Calculator module loaded successfully!&quot;)
+</code></pre><h3>Using Your Module</h3>
+<p>Now create another file in the same directory to use your module:</p>
+<pre style="white-space: pre-wrap;"><code># main.py
+import calculator
+
+# Use functions from the module
+result1 = calculator.add(10, 5)
+result2 = calculator.multiply(3, 4)
+result3 = calculator.power(2, 8)
+
+print(f&quot;10 + 5 = {result1}&quot;)      # Output: 10 + 5 = 15
+print(f&quot;3 * 4 = {result2}&quot;)       # Output: 3 * 4 = 12
+print(f&quot;2^8 = {result3}&quot;)         # Output: 2^8 = 256
+
+# Access module variables
+print(f&quot;Pi is approximately {calculator.PI}&quot;)
+
+# Import specific functions
+from calculator import divide, subtract
+
+print(f&quot;20 / 4 = {divide(20, 4)}&quot;)      # Output: 20 / 4 = 5.0
+print(f&quot;15 - 7 = {subtract(15, 7)}&quot;)    # Output: 15 - 7 = 8
+</code></pre><h3>Module Documentation and the <code>__name__</code> Variable</h3>
+<p>You can make your module both importable and executable:</p>
+<pre style="white-space: pre-wrap;"><code># calculator.py (enhanced version)
+&quot;&quot;&quot;
+A simple calculator module with basic mathematical operations.
+&quot;&quot;&quot;
+
+def add(a, b):
+    &quot;&quot;&quot;Returns the sum of two numbers&quot;&quot;&quot;
+    return a + b
+
+def subtract(a, b):
+    &quot;&quot;&quot;Returns the difference of two numbers&quot;&quot;&quot;
+    return a - b
+
+def multiply(a, b):
+    &quot;&quot;&quot;Returns the product of two numbers&quot;&quot;&quot;
+    return a * b
+
+def divide(a, b):
+    &quot;&quot;&quot;Returns the quotient of two numbers&quot;&quot;&quot;
+    if b == 0:
+        return &quot;Error: Cannot divide by zero&quot;
+    return a / b
+
+def main():
+    &quot;&quot;&quot;Demo function to show calculator capabilities&quot;&quot;&quot;
+    print(&quot;Calculator Demo:&quot;)
+    print(f&quot;5 + 3 = {add(5, 3)}&quot;)
+    print(f&quot;10 - 4 = {subtract(10, 4)}&quot;)
+    print(f&quot;6 * 7 = {multiply(6, 7)}&quot;)
+    print(f&quot;15 / 3 = {divide(15, 3)}&quot;)
+
+# This runs only when the file is executed directly, not when imported
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre><p>Now you can both import the module and run it directly:</p>
+<pre style="white-space: pre-wrap;"><code># Run the module directly
+python calculator.py
+# Output: Calculator Demo: [followed by the demo results]
+
+# Or import it in another file without running the demo
+</code></pre><h3>Organizing Code with Packages</h3>
+<p>As your projects grow, you can organize related modules into packages (directories with an <code>__init__.py</code> file):</p>
+<pre style="white-space: pre-wrap;"><code>my_project/
+    math_tools/
+        __init__.py
+        calculator.py
+        geometry.py
+    utils/
+        __init__.py
+        file_helpers.py
+        string_helpers.py
+    main.py
+</code></pre><h2>Best Practices and Tips</h2>
+<h3>Function Design Principles</h3>
+<ol>
+<li><strong>Single Responsibility</strong>: Each function should do one thing well</li>
+<li><strong>Descriptive Names</strong>: Use clear, descriptive function names</li>
+<li><strong>Keep It Short</strong>: Functions should generally be no more than 20-30 lines</li>
+<li><strong>Document Your Functions</strong>: Use docstrings to explain what functions do</li>
+</ol>
+<pre style="white-space: pre-wrap;"><code>def calculate_bmi(weight_kg, height_m):
+    &quot;&quot;&quot;
+    Calculate Body Mass Index (BMI).
+
+    Args:
+        weight_kg (float): Weight in kilograms
+        height_m (float): Height in meters
+
+    Returns:
+        float: BMI value
+    &quot;&quot;&quot;
+    return weight_kg / (height_m ** 2)
+</code></pre><h3>Common Pitfalls to Avoid</h3>
+<ol>
+<li><strong>Mutable Default Arguments</strong>: Don't use mutable objects as default parameters</li>
+</ol>
+<pre style="white-space: pre-wrap;"><code># Bad
+def add_item(item, my_list=[]):
+    my_list.append(item)
+    return my_list
+
+# Good
+def add_item(item, my_list=None):
+    if my_list is None:
+        my_list = []
+    my_list.append(item)
+    return my_list
+</code></pre><ol start="2">
+<li><strong>Global Variable Overuse</strong>: Limit global variables and use parameters instead</li>
+</ol>
+<h2>Conclusion</h2>
+<p>Functions and modules are fundamental building blocks of Python programming. They help you:</p>
+<ul>
+<li>Write reusable, maintainable code</li>
+<li>Organize complex programs into manageable pieces</li>
+<li>Leverage Python's extensive standard library</li>
+<li>Create your own libraries of useful code</li>
+</ul>
+<p>Practice creating functions for common tasks in your programs, explore Python's standard library modules, and start organizing your code into modules as your projects grow. In <a href="https://python.robertdevore.com/blog/basic-error-handling">the next section</a>, we'll learn about error handling, which will help you make your functions and modules more robust and user-friendly.</p>
+<p>The key to mastering functions and modules is practice. Start small, experiment with different approaches, and gradually build more complex functionality as you become comfortable with these concepts.</p>
+
+    </article>
+</main>
+
+
+<footer class="bg-background border-t border-primary mt-10 py-6" id="footer">
+    <div class="container max-w-screen-xl m-auto px-4 text-center">
+        <p>Get <a href="https://stattic.site/" target="_blank" class="text-links font-bold" aria-label="Stattic - opens in a new tab">Stattic</a>. Built by <a href="https://robertdevore.com/" target="_blank" class="text-links font-bold" aria-label="Robert DeVore's personal website - opens in a new tab">Robert DeVore</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
