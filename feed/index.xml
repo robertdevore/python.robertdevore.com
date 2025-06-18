@@ -4,7 +4,7 @@
 <title>Python Course</title>
 <link>https://python.robertdevore.com</link>
 <description>Latest posts from Python Course</description>
-<lastBuildDate>Wed, 18 Jun 2025 05:15:57 -0000</lastBuildDate>
+<lastBuildDate>Wed, 18 Jun 2025 05:17:01 -0000</lastBuildDate>
 
 <item>
 <title>3.5. Packaging, Distribution, and Best Practices</title>
@@ -12,13 +12,6 @@
 <description>Overview: Transform your Python scripts into professional, reusable packages that others can install with pip. Learn industry-standard practices for code organization, documentation, testing, and distribution that will make your projects...</description>
 <pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
 <guid>https://python.robertdevore.com/blog/packaging-distribution-and-best-practices/</guid>
-</item>
-<item>
-<title>2.4. Exceptions &amp; Robust Error Handling</title>
-<link>https://python.robertdevore.com/blog/exceptions-and-robust-error-handling/</link>
-<description>Overview Learn to catch and handle errors cleanly so your code doesn't crash--and users see helpful messages instead of tracebacks. Introduction: Why Robust Error Handling Matters In the real world,...</description>
-<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/exceptions-and-robust-error-handling/</guid>
 </item>
 <item>
 <title>3.4. Building and Consuming APIs</title>
@@ -35,11 +28,32 @@
 <guid>https://python.robertdevore.com/blog/object-oriented-programming/</guid>
 </item>
 <item>
+<title>2.4. Exceptions &amp; Robust Error Handling</title>
+<link>https://python.robertdevore.com/blog/exceptions-and-robust-error-handling/</link>
+<description>Overview Learn to catch and handle errors cleanly so your code doesn't crash--and users see helpful messages instead of tracebacks. Introduction: Why Robust Error Handling Matters In the real world,...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/exceptions-and-robust-error-handling/</guid>
+</item>
+<item>
 <title>1.2. Syntax &amp; Data Types</title>
 <link>https://python.robertdevore.com/blog/syntax-and-data-types/</link>
 <description>Overview Master Python's basic building blocks--variables, data types, and simple operations--so you can start manipulating data with confidence. Python's beauty lies in its simplicity and readability. In this section, you'll...</description>
 <pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
 <guid>https://python.robertdevore.com/blog/syntax-and-data-types/</guid>
+</item>
+<item>
+<title>1.5. Basic Error Handling</title>
+<link>https://python.robertdevore.com/blog/basic-error-handling/</link>
+<description>Overview Prepare for inevitable mistakes - catch, handle, and recover from errors so your scripts don't just crash at the first sign of trouble. Introduction: Why Error Handling Matters Picture...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/basic-error-handling/</guid>
+</item>
+<item>
+<title>3.3. Concurrency &amp; Parallelism</title>
+<link>https://python.robertdevore.com/blog/concurrency-and-parallelism/</link>
+<description>Overview Modern applications demand speed and responsiveness. Users expect web pages to load quickly, data processing to happen in real-time, and interfaces to remain interactive even during heavy computations. The...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/concurrency-and-parallelism/</guid>
 </item>
 <item>
 <title>Chapter 2: Intermediate Python</title>
@@ -56,20 +70,6 @@
 <guid>https://python.robertdevore.com/blog/file-io-and-data-persistence/</guid>
 </item>
 <item>
-<title>3.3. Concurrency &amp; Parallelism</title>
-<link>https://python.robertdevore.com/blog/concurrency-and-parallelism/</link>
-<description>Overview Modern applications demand speed and responsiveness. Users expect web pages to load quickly, data processing to happen in real-time, and interfaces to remain interactive even during heavy computations. The...</description>
-<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/concurrency-and-parallelism/</guid>
-</item>
-<item>
-<title>1.5. Basic Error Handling</title>
-<link>https://python.robertdevore.com/blog/basic-error-handling/</link>
-<description>Overview Prepare for inevitable mistakes - catch, handle, and recover from errors so your scripts don't just crash at the first sign of trouble. Introduction: Why Error Handling Matters Picture...</description>
-<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/basic-error-handling/</guid>
-</item>
-<item>
 <title>Chapter 3. Advanced Python</title>
 <link>https://python.robertdevore.com/blog/chapter-3-advanced-python/</link>
 <description>For serious developers and those building production-grade applications. Focus: efficiency, scalability, and best practices. Welcome to Advanced Python—where you transition from writing code that works to writing code that works...</description>
@@ -77,11 +77,11 @@
 <guid>https://python.robertdevore.com/blog/chapter-3-advanced-python/</guid>
 </item>
 <item>
-<title>3.1. Advanced Data Structures &amp; Algorithms</title>
-<link>https://python.robertdevore.com/blog/advanced-data-structures-and-algorithms/</link>
-<description>Overview Go beyond the basics with built-in and specialized data structures that make your code faster and more efficient for real-world tasks. Introduction: Why Advanced Data Structures Matter As your...</description>
+<title>1.4. Functions &amp; Modules</title>
+<link>https://python.robertdevore.com/blog/functions-and-modules/</link>
+<description>Overview Organize your code into reusable chunks, make it more readable, and start building real programs by leveraging Python's modular design. Functions are one of the most powerful tools in...</description>
 <pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/advanced-data-structures-and-algorithms/</guid>
+<guid>https://python.robertdevore.com/blog/functions-and-modules/</guid>
 </item>
 <item>
 <title>2.3. Virtual Environments &amp; Package Management</title>
@@ -91,6 +91,13 @@
 <guid>https://python.robertdevore.com/blog/virtual-environments-and-package-management/</guid>
 </item>
 <item>
+<title>1.1. Python Setup &amp; IDEs</title>
+<link>https://python.robertdevore.com/blog/python-setup-and-ides/</link>
+<description>Overview Welcome to your Python journey! Before we dive into writing code, we need to set up your development environment properly. Think of this as preparing your workspace—just like a...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/python-setup-and-ides/</guid>
+</item>
+<item>
 <title>Welcome to the Complete Python Development Course</title>
 <link>https://python.robertdevore.com/blog/welcome-to-the-complete-python-development-course/</link>
 <description>Transform From Beginner to Professional Python Developer Welcome to your comprehensive journey into Python programming! Whether you're taking your first steps into the world of coding or looking to elevate...</description>
@@ -98,18 +105,18 @@
 <guid>https://python.robertdevore.com/blog/welcome-to-the-complete-python-development-course/</guid>
 </item>
 <item>
+<title>3.1. Advanced Data Structures &amp; Algorithms</title>
+<link>https://python.robertdevore.com/blog/advanced-data-structures-and-algorithms/</link>
+<description>Overview Go beyond the basics with built-in and specialized data structures that make your code faster and more efficient for real-world tasks. Introduction: Why Advanced Data Structures Matter As your...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/advanced-data-structures-and-algorithms/</guid>
+</item>
+<item>
 <title>3.2. Generators, Decorators and Context Managers</title>
 <link>https://python.robertdevore.com/blog/generators-decorators-and-context-managers/</link>
 <description>Overview These three features represent some of Python's most powerful and "Pythonic" constructs. They allow you to write cleaner, more efficient, and more maintainable code by managing state, resources, and...</description>
 <pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
 <guid>https://python.robertdevore.com/blog/generators-decorators-and-context-managers/</guid>
-</item>
-<item>
-<title>1.4. Functions &amp; Modules</title>
-<link>https://python.robertdevore.com/blog/functions-and-modules/</link>
-<description>Overview Organize your code into reusable chunks, make it more readable, and start building real programs by leveraging Python's modular design. Functions are one of the most powerful tools in...</description>
-<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/functions-and-modules/</guid>
 </item>
 <item>
 <title>1.3. Control Flow (If, For, While)</title>
@@ -131,13 +138,6 @@
 <description>Congratulations! You've just completed a comprehensive journey through Python development that has taken you from writing your first "Hello, World!" script to building production-ready applications, APIs, and distributable packages. This...</description>
 <pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
 <guid>https://python.robertdevore.com/blog/course-conclusion-from-python-novice-to-professional-developer/</guid>
-</item>
-<item>
-<title>1.1. Python Setup &amp; IDEs</title>
-<link>https://python.robertdevore.com/blog/python-setup-and-ides/</link>
-<description>Overview Welcome to your Python journey! Before we dive into writing code, we need to set up your development environment properly. Think of this as preparing your workspace—just like a...</description>
-<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/python-setup-and-ides/</guid>
 </item>
 <item>
 <title>Chapter 1: Beginner Python</title>
