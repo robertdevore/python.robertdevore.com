@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.1. Object-Oriented Programming (OOP) | Stattic</title>
+    <meta name="description" content="Stattic is a fast, lightweight static site generator that optimizes images, supports custom fonts, and easily integrates with GitHub Pages for quick, SEO-friendly site deployment without the bloat of traditional CMS platforms like WordPress.">
+    <meta name="keywords" content="python, intermediate python, python course, python tutorial">
+    <meta name="author" content="Robert DeVore">
+    <link href="../../assets/css/tailwind.min.css" rel="stylesheet">
+    
+    <link href="../../assets/css/stattic.css" rel="stylesheet">
+    <link href="../../assets/css/fonts.css" rel="stylesheet">
+    
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="2.1. Object-Oriented Programming (OOP)">
+    <meta property="og:description" content="Stattic is a fast, lightweight static site generator.">
+    <meta property="og:url" content="https://python.robertdevore.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="2.1. Object-Oriented Programming (OOP)">
+    <meta name="twitter:description" content="Stattic is a fast, lightweight static site generator.">
+    
+    <!-- Alpine.js for interactive components -->
+    <script src="../../assets/js/alpine.min.js" defer></script>
+</head>
+<body class="bg-background bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white to-gray-50 text-primary font-body-light">
+
+<!-- Skip Links for Accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#navigation" class="skip-link">Skip to navigation</a>
+<a href="#footer" class="skip-link">Skip to footer</a>
+
+<header id="navigation">
+    <div class="container max-w-screen-xl m-auto py-6 px-4 flex justify-between items-center">
+        <h2 class="text-3xl font-bold quicksand-700"><a href="../../" class="text-links">Python Course</a></h2>
+        <nav>
+            <ul class="flex space-x-6">
+                
+                    
+                        <li>
+                            <a href="../../sample-page/" class="text-primary hover:underline">About This Site</a>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container max-w-2xl m-auto py-10 px-4" id="main-content">
+    <article class="prose max-w-none stattic-content">
+        
+        <h1 class="text-6xl font-bold mb-4 text-links quicksand-700 post-title">2.1. Object-Oriented Programming (OOP)</h1>
+        <p class="text-2md post-meta mb-4 pb-2 post-date italic border-b border-primary"><span class="date">June 17, 2025</span> &middot; <span class="author">Robert DeVore</span></p>
+        <h2>What is Object-Oriented Programming?</h2>
+<p>Object-Oriented Programming (OOP) is a programming paradigm that organizes code around <strong>objects</strong> rather than functions and logic. Think of it as a way to model real-world concepts in your code—instead of writing a collection of separate functions that operate on data, you create self-contained units (objects) that bundle both data and the methods that work on that data.</p>
+<h3>Why Use OOP?</h3>
+<p>Before diving into the mechanics, let's understand why OOP matters:</p>
+<ol>
+<li><strong>Organization</strong>: Large programs become easier to manage when code is grouped into logical units</li>
+<li><strong>Reusability</strong>: Once you create a class, you can use it multiple times without rewriting code</li>
+<li><strong>Maintainability</strong>: Changes to one part of your code are less likely to break other parts</li>
+<li><strong>Modeling</strong>: OOP naturally maps to how we think about real-world problems</li>
+</ol>
+<p>Consider this procedural approach to managing a bank account:</p>
+<pre style="white-space: pre-wrap;"><code># Procedural approach
+account_balance = 1000
+account_owner = &quot;Alice&quot;
+
+def deposit(balance, amount):
+    return balance + amount
+
+def withdraw(balance, amount):
+    if balance &gt;= amount:
+        return balance - amount
+    else:
+        print(&quot;Insufficient funds&quot;)
+        return balance
+
+# Using the functions
+account_balance = deposit(account_balance, 500)
+account_balance = withdraw(account_balance, 200)
+</code></pre><p>Now compare it to an object-oriented approach:</p>
+<pre style="white-space: pre-wrap;"><code># Object-oriented approach
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        return self.balance
+
+    def withdraw(self, amount):
+        if self.balance &gt;= amount:
+            self.balance -= amount
+            return self.balance
+        else:
+            print(&quot;Insufficient funds&quot;)
+            return self.balance
+
+# Using the class
+alice_account = BankAccount(&quot;Alice&quot;, 1000)
+alice_account.deposit(500)
+alice_account.withdraw(200)
+</code></pre><p>The OOP version bundles the data (owner, balance) with the methods that operate on it, creating a more intuitive and maintainable structure.</p>
+<h2>Classes and Objects</h2>
+<h3>Understanding Classes</h3>
+<p>A <strong>class</strong> is like a blueprint or template for creating objects. It defines what attributes (data) and methods (functions) the objects will have, but doesn't create the actual object itself.</p>
+<pre style="white-space: pre-wrap;"><code>class Dog:
+    # Class attribute (shared by all instances)
+    species = &quot;Canis familiaris&quot;
+
+    # Constructor method
+    def __init__(self, name, age, breed):
+        # Instance attributes (unique to each object)
+        self.name = name
+        self.age = age
+        self.breed = breed
+
+    # Instance method
+    def bark(self):
+        return f&quot;{self.name} says Woof!&quot;
+
+    def get_info(self):
+        return f&quot;{self.name} is a {self.age}-year-old {self.breed}&quot;
+</code></pre><h3>Creating Objects (Instances)</h3>
+<p>An <strong>object</strong> is a specific instance of a class. You can create multiple objects from the same class:</p>
+<pre style="white-space: pre-wrap;"><code># Creating objects
+buddy = Dog(&quot;Buddy&quot;, 3, &quot;Golden Retriever&quot;)
+max_dog = Dog(&quot;Max&quot;, 5, &quot;German Shepherd&quot;)
+
+# Using object methods
+print(buddy.bark())          # Output: Buddy says Woof!
+print(max_dog.get_info())    # Output: Max is a 5-year-old German Shepherd
+
+# Accessing attributes
+print(buddy.name)            # Output: Buddy
+print(Dog.species)           # Output: Canis familiaris
+</code></pre><h3>The <code>__init__</code> Method</h3>
+<p>The <code>__init__</code> method is a special method called a <strong>constructor</strong>. It's automatically called when you create a new object and is used to initialize the object's attributes:</p>
+<pre style="white-space: pre-wrap;"><code>class Student:
+    def __init__(self, name, student_id, major):
+        self.name = name
+        self.student_id = student_id
+        self.major = major
+        self.grades = []  # Initialize empty list
+        self.gpa = 0.0
+
+    def add_grade(self, grade):
+        self.grades.append(grade)
+        self.calculate_gpa()
+
+    def calculate_gpa(self):
+        if self.grades:
+            self.gpa = sum(self.grades) / len(self.grades)
+
+# Usage
+student = Student(&quot;John Doe&quot;, &quot;12345&quot;, &quot;Computer Science&quot;)
+student.add_grade(85)
+student.add_grade(92)
+print(f&quot;GPA: {student.gpa}&quot;)  # Output: GPA: 88.5
+</code></pre><h2>Encapsulation</h2>
+<p><strong>Encapsulation</strong> is the practice of bundling data and methods together while controlling access to the internal state of an object. In Python, we use naming conventions to indicate privacy levels.</p>
+<h3>Public, Protected, and Private Members</h3>
+<pre style="white-space: pre-wrap;"><code>class BankAccount:
+    def __init__(self, owner, initial_balance=0):
+        self.owner = owner              # Public attribute
+        self._account_number = self._generate_account_number()  # Protected
+        self.__balance = initial_balance  # Private attribute
+
+    def _generate_account_number(self):  # Protected method
+        import random
+        return f&quot;ACC{random.randint(100000, 999999)}&quot;
+
+    def __validate_amount(self, amount):  # Private method
+        return amount &gt; 0
+
+    def deposit(self, amount):  # Public method
+        if self.__validate_amount(amount):
+            self.__balance += amount
+            print(f&quot;Deposited ${amount}. New balance: ${self.__balance}&quot;)
+        else:
+            print(&quot;Invalid deposit amount&quot;)
+
+    def get_balance(self):  # Public method to access private data
+        return self.__balance
+
+    def withdraw(self, amount):
+        if self.__validate_amount(amount) and amount &lt;= self.__balance:
+            self.__balance -= amount
+            print(f&quot;Withdrew ${amount}. New balance: ${self.__balance}&quot;)
+        else:
+            print(&quot;Invalid withdrawal&quot;)
+
+# Usage
+account = BankAccount(&quot;Alice&quot;, 1000)
+account.deposit(500)
+
+# This works - accessing public attribute
+print(account.owner)
+
+# This works - accessing via public method
+print(account.get_balance())
+
+# This would raise an AttributeError - accessing private attribute directly
+# print(account.__balance)  # AttributeError!
+</code></pre><h3>Property Decorators</h3>
+<p>Python provides a more elegant way to control access using properties:</p>
+<pre style="white-space: pre-wrap;"><code>class Temperature:
+    def __init__(self, celsius=0):
+        self._celsius = celsius
+
+    @property
+    def celsius(self):
+        return self._celsius
+
+    @celsius.setter
+    def celsius(self, value):
+        if value &lt; -273.15:
+            raise ValueError(&quot;Temperature cannot be below absolute zero&quot;)
+        self._celsius = value
+
+    @property
+    def fahrenheit(self):
+        return (self._celsius * 9/5) + 32
+
+    @fahrenheit.setter
+    def fahrenheit(self, value):
+        self.celsius = (value - 32) * 5/9
+
+# Usage
+temp = Temperature(25)
+print(f&quot;Celsius: {temp.celsius}&quot;)      # Output: Celsius: 25
+print(f&quot;Fahrenheit: {temp.fahrenheit}&quot;) # Output: Fahrenheit: 77.0
+
+temp.fahrenheit = 100
+print(f&quot;Celsius: {temp.celsius}&quot;)      # Output: Celsius: 37.77777777777778
+</code></pre><h2>Inheritance</h2>
+<p><strong>Inheritance</strong> allows you to create new classes based on existing ones, inheriting their attributes and methods while adding or modifying functionality.</p>
+<h3>Basic Inheritance</h3>
+<pre style="white-space: pre-wrap;"><code># Parent class (Base class)
+class Animal:
+    def __init__(self, name, species):
+        self.name = name
+        self.species = species
+        self.is_alive = True
+
+    def eat(self):
+        print(f&quot;{self.name} is eating&quot;)
+
+    def sleep(self):
+        print(f&quot;{self.name} is sleeping&quot;)
+
+    def make_sound(self):
+        print(&quot;Some generic animal sound&quot;)
+
+# Child class (Derived class)
+class Dog(Animal):
+    def __init__(self, name, breed):
+        super().__init__(name, &quot;Canis familiaris&quot;)  # Call parent constructor
+        self.breed = breed
+
+    def make_sound(self):  # Override parent method
+        print(f&quot;{self.name} barks: Woof!&quot;)
+
+    def fetch(self):  # New method specific to Dog
+        print(f&quot;{self.name} is fetching the ball&quot;)
+
+class Cat(Animal):
+    def __init__(self, name, indoor=True):
+        super().__init__(name, &quot;Felis catus&quot;)
+        self.indoor = indoor
+
+    def make_sound(self):  # Override parent method
+        print(f&quot;{self.name} meows: Meow!&quot;)
+
+    def climb(self):  # New method specific to Cat
+        print(f&quot;{self.name} is climbing&quot;)
+
+# Usage
+dog = Dog(&quot;Buddy&quot;, &quot;Labrador&quot;)
+cat = Cat(&quot;Whiskers&quot;, indoor=True)
+
+# Inherited methods
+dog.eat()        # Output: Buddy is eating
+cat.sleep()      # Output: Whiskers is sleeping
+
+# Overridden methods
+dog.make_sound() # Output: Buddy barks: Woof!
+cat.make_sound() # Output: Whiskers meows: Meow!
+
+# New methods
+dog.fetch()      # Output: Buddy is fetching the ball
+cat.climb()      # Output: Whiskers is climbing
+</code></pre><h3>Multiple Inheritance</h3>
+<p>Python supports multiple inheritance, where a class can inherit from multiple parent classes:</p>
+<pre style="white-space: pre-wrap;"><code>class Flyable:
+    def fly(self):
+        print(&quot;Flying through the sky&quot;)
+
+class Swimmable:
+    def swim(self):
+        print(&quot;Swimming in water&quot;)
+
+class Duck(Animal, Flyable, Swimmable):
+    def __init__(self, name):
+        super().__init__(name, &quot;Duck&quot;)
+
+    def make_sound(self):
+        print(f&quot;{self.name} quacks: Quack!&quot;)
+
+# Usage
+duck = Duck(&quot;Donald&quot;)
+duck.eat()       # From Animal
+duck.fly()       # From Flyable
+duck.swim()      # From Swimmable
+duck.make_sound()  # Overridden method
+</code></pre><h2>Polymorphism</h2>
+<p><strong>Polymorphism</strong> allows objects of different classes to be treated as objects of a common base class, while still calling their specific implementations of methods.</p>
+<pre style="white-space: pre-wrap;"><code>def animal_concert(animals):
+    &quot;&quot;&quot;Function that works with any animal object&quot;&quot;&quot;
+    for animal in animals:
+        animal.make_sound()  # Each animal makes its own sound
+
+# Create different animals
+animals = [
+    Dog(&quot;Rex&quot;, &quot;German Shepherd&quot;),
+    Cat(&quot;Luna&quot;, indoor=False),
+    Duck(&quot;Daffy&quot;)
+]
+
+# Polymorphism in action
+animal_concert(animals)
+# Output:
+# Rex barks: Woof!
+# Luna meows: Meow!
+# Daffy quacks: Quack!
+</code></pre><h3>Duck Typing</h3>
+<p>Python embraces &quot;duck typing&quot; - if it walks like a duck and quacks like a duck, it's a duck:</p>
+<pre style="white-space: pre-wrap;"><code>class Robot:
+    def __init__(self, name):
+        self.name = name
+
+    def make_sound(self):
+        print(f&quot;{self.name} beeps: Beep beep!&quot;)
+
+# Even though Robot doesn't inherit from Animal,
+# it can still be used in our concert
+robot = Robot(&quot;R2D2&quot;)
+animals.append(robot)
+animal_concert(animals)  # Works perfectly!
+</code></pre><h2>Magic Methods &amp; Dunder Methods</h2>
+<p>Magic methods (also called dunder methods) are special methods with double underscores that allow your objects to integrate with Python's built-in functions and operators.</p>
+<h3>Common Magic Methods</h3>
+<pre style="white-space: pre-wrap;"><code>class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+
+    def __str__(self):
+        &quot;&quot;&quot;String representation for end users&quot;&quot;&quot;
+        return f&quot;{self.title} by {self.author}&quot;
+
+    def __repr__(self):
+        &quot;&quot;&quot;String representation for developers&quot;&quot;&quot;
+        return f&quot;Book('{self.title}', '{self.author}', {self.pages})&quot;
+
+    def __len__(self):
+        &quot;&quot;&quot;Return length when len() is called&quot;&quot;&quot;
+        return self.pages
+
+    def __eq__(self, other):
+        &quot;&quot;&quot;Define equality comparison&quot;&quot;&quot;
+        if isinstance(other, Book):
+            return (self.title == other.title and 
+                   self.author == other.author)
+        return False
+
+    def __lt__(self, other):
+        &quot;&quot;&quot;Define less-than comparison (for sorting)&quot;&quot;&quot;
+        if isinstance(other, Book):
+            return self.pages &lt; other.pages
+        return NotImplemented
+
+    def __add__(self, other):
+        &quot;&quot;&quot;Define addition operation&quot;&quot;&quot;
+        if isinstance(other, Book):
+            combined_title = f&quot;{self.title} &amp; {other.title}&quot;
+            combined_author = f&quot;{self.author} &amp; {other.author}&quot;
+            combined_pages = self.pages + other.pages
+            return Book(combined_title, combined_author, combined_pages)
+        return NotImplemented
+
+# Usage examples
+book1 = Book(&quot;1984&quot;, &quot;George Orwell&quot;, 328)
+book2 = Book(&quot;Animal Farm&quot;, &quot;George Orwell&quot;, 112)
+
+print(book1)           # Output: 1984 by George Orwell
+print(repr(book1))     # Output: Book('1984', 'George Orwell', 328)
+print(len(book1))      # Output: 328
+
+# Comparison
+print(book1 == book2)  # Output: False
+print(book1 &gt; book2)   # Output: True (328 &gt; 112 pages)
+
+# Addition
+combined = book1 + book2
+print(combined)        # Output: 1984 &amp; Animal Farm by George Orwell &amp; George Orwell
+</code></pre><h2>Practical Example: A Simple Library Management System</h2>
+<p>Let's tie everything together with a comprehensive example that demonstrates all OOP concepts:</p>
+<pre style="white-space: pre-wrap;"><code>from datetime import datetime, timedelta
+from typing import List, Optional
+
+class LibraryItem:
+    &quot;&quot;&quot;Base class for all library items&quot;&quot;&quot;
+    _next_id = 1
+
+    def __init__(self, title: str, author: str):
+        self.id = LibraryItem._next_id
+        LibraryItem._next_id += 1
+        self.title = title
+        self.author = author
+        self.is_checked_out = False
+        self.due_date: Optional[datetime] = None
+        self.borrower: Optional[str] = None
+
+    def __str__(self):
+        status = &quot;Available&quot; if not self.is_checked_out else f&quot;Due: {self.due_date.strftime('%Y-%m-%d')}&quot;
+        return f&quot;{self.title} by {self.author} - {status}&quot;
+
+    def __repr__(self):
+        return f&quot;{self.__class__.__name__}('{self.title}', '{self.author}')&quot;
+
+    def check_out(self, borrower: str, days: int = 14) -&gt; bool:
+        &quot;&quot;&quot;Check out the item&quot;&quot;&quot;
+        if self.is_checked_out:
+            return False
+
+        self.is_checked_out = True
+        self.borrower = borrower
+        self.due_date = datetime.now() + timedelta(days=days)
+        return True
+
+    def return_item(self) -&gt; bool:
+        &quot;&quot;&quot;Return the item&quot;&quot;&quot;
+        if not self.is_checked_out:
+            return False
+
+        self.is_checked_out = False
+        self.borrower = None
+        self.due_date = None
+        return True
+
+    def is_overdue(self) -&gt; bool:
+        &quot;&quot;&quot;Check if item is overdue&quot;&quot;&quot;
+        if not self.is_checked_out or not self.due_date:
+            return False
+        return datetime.now() &gt; self.due_date
+
+class Book(LibraryItem):
+    &quot;&quot;&quot;Book class with additional properties&quot;&quot;&quot;
+    def __init__(self, title: str, author: str, isbn: str, pages: int):
+        super().__init__(title, author)
+        self.isbn = isbn
+        self.pages = pages
+
+    def check_out(self, borrower: str, days: int = 21) -&gt; bool:
+        &quot;&quot;&quot;Books can be checked out for 21 days by default&quot;&quot;&quot;
+        return super().check_out(borrower, days)
+
+class DVD(LibraryItem):
+    &quot;&quot;&quot;DVD class with shorter checkout period&quot;&quot;&quot;
+    def __init__(self, title: str, director: str, runtime: int):
+        super().__init__(title, director)  # director becomes &quot;author&quot;
+        self.director = director
+        self.runtime = runtime
+
+    def check_out(self, borrower: str, days: int = 7) -&gt; bool:
+        &quot;&quot;&quot;DVDs can only be checked out for 7 days&quot;&quot;&quot;
+        return super().check_out(borrower, days)
+
+class Library:
+    &quot;&quot;&quot;Library management system&quot;&quot;&quot;
+    def __init__(self, name: str):
+        self.name = name
+        self._items: List[LibraryItem] = []
+        self._members: List[str] = []
+
+    def add_item(self, item: LibraryItem) -&gt; None:
+        &quot;&quot;&quot;Add an item to the library&quot;&quot;&quot;
+        self._items.append(item)
+        print(f&quot;Added: {item}&quot;)
+
+    def add_member(self, name: str) -&gt; None:
+        &quot;&quot;&quot;Add a library member&quot;&quot;&quot;
+        if name not in self._members:
+            self._members.append(name)
+            print(f&quot;Added member: {name}&quot;)
+
+    def search_by_title(self, title: str) -&gt; List[LibraryItem]:
+        &quot;&quot;&quot;Search for items by title&quot;&quot;&quot;
+        return [item for item in self._items 
+                if title.lower() in item.title.lower()]
+
+    def search_by_author(self, author: str) -&gt; List[LibraryItem]:
+        &quot;&quot;&quot;Search for items by author&quot;&quot;&quot;
+        return [item for item in self._items 
+                if author.lower() in item.author.lower()]
+
+    def check_out_item(self, item_id: int, borrower: str) -&gt; bool:
+        &quot;&quot;&quot;Check out an item by ID&quot;&quot;&quot;
+        if borrower not in self._members:
+            print(f&quot;Error: {borrower} is not a library member&quot;)
+            return False
+
+        item = self._find_item_by_id(item_id)
+        if not item:
+            print(f&quot;Error: Item with ID {item_id} not found&quot;)
+            return False
+
+        if item.check_out(borrower):
+            print(f&quot;Checked out: {item} to {borrower}&quot;)
+            return True
+        else:
+            print(f&quot;Error: {item.title} is already checked out&quot;)
+            return False
+
+    def return_item(self, item_id: int) -&gt; bool:
+        &quot;&quot;&quot;Return an item by ID&quot;&quot;&quot;
+        item = self._find_item_by_id(item_id)
+        if not item:
+            print(f&quot;Error: Item with ID {item_id} not found&quot;)
+            return False
+
+        if item.return_item():
+            print(f&quot;Returned: {item}&quot;)
+            return True
+        else:
+            print(f&quot;Error: {item.title} was not checked out&quot;)
+            return False
+
+    def list_overdue_items(self) -&gt; List[LibraryItem]:
+        &quot;&quot;&quot;Get list of overdue items&quot;&quot;&quot;
+        return [item for item in self._items if item.is_overdue()]
+
+    def _find_item_by_id(self, item_id: int) -&gt; Optional[LibraryItem]:
+        &quot;&quot;&quot;Private method to find item by ID&quot;&quot;&quot;
+        for item in self._items:
+            if item.id == item_id:
+                return item
+        return None
+
+    def display_catalog(self) -&gt; None:
+        &quot;&quot;&quot;Display all items in the library&quot;&quot;&quot;
+        print(f&quot;\n=== {self.name} Catalog ===&quot;)
+        for item in self._items:
+            print(f&quot;ID {item.id}: {item}&quot;)
+
+# Demo usage
+def main():
+    # Create library
+    library = Library(&quot;City Public Library&quot;)
+
+    # Add items
+    library.add_item(Book(&quot;1984&quot;, &quot;George Orwell&quot;, &quot;978-0-452-28423-4&quot;, 328))
+    library.add_item(Book(&quot;To Kill a Mockingbird&quot;, &quot;Harper Lee&quot;, &quot;978-0-06-112008-4&quot;, 281))
+    library.add_item(DVD(&quot;The Matrix&quot;, &quot;The Wachowskis&quot;, 136))
+    library.add_item(DVD(&quot;Inception&quot;, &quot;Christopher Nolan&quot;, 148))
+
+    # Add members
+    library.add_member(&quot;Alice Johnson&quot;)
+    library.add_member(&quot;Bob Smith&quot;)
+
+    # Display catalog
+    library.display_catalog()
+
+    # Check out items
+    library.check_out_item(1, &quot;Alice Johnson&quot;)
+    library.check_out_item(3, &quot;Bob Smith&quot;)
+
+    # Display updated catalog
+    library.display_catalog()
+
+    # Search functionality
+    print(&quot;\n=== Search Results for 'Matrix' ===&quot;)
+    results = library.search_by_title(&quot;Matrix&quot;)
+    for item in results:
+        print(f&quot;ID {item.id}: {item}&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre><p>This comprehensive example demonstrates:</p>
+<ul>
+<li><strong>Classes and Objects</strong>: Multiple classes with different purposes</li>
+<li><strong>Encapsulation</strong>: Private methods and controlled access to data</li>
+<li><strong>Inheritance</strong>: <code>Book</code> and <code>DVD</code> inherit from <code>LibraryItem</code></li>
+<li><strong>Polymorphism</strong>: All library items can be treated uniformly in lists and methods</li>
+<li><strong>Magic Methods</strong>: <code>__str__</code>, <code>__repr__</code> for better object representation</li>
+<li><strong>Real-world modeling</strong>: The system models actual library operations</li>
+</ul>
+<h2>Key Takeaways</h2>
+<ol>
+<li><strong>Start Simple</strong>: Begin with basic classes and gradually add complexity</li>
+<li><strong>Think in Objects</strong>: Model real-world entities as classes with attributes and behaviors</li>
+<li><strong>Use Inheritance Wisely</strong>: Inherit when there's a genuine &quot;is-a&quot; relationship</li>
+<li><strong>Embrace Encapsulation</strong>: Hide internal details and provide clean interfaces</li>
+<li><strong>Leverage Polymorphism</strong>: Write code that works with multiple types of objects</li>
+<li><strong>Don't Overuse</strong>: Not everything needs to be a class—simple functions are often better for simple tasks</li>
+</ol>
+<p>Object-Oriented Programming is a powerful paradigm that becomes more valuable as your programs grow in complexity. Practice these concepts with small projects, and gradually work up to larger applications where OOP's organizational benefits really shine.</p>
+
+    </article>
+</main>
+
+
+<footer class="bg-background border-t border-primary mt-10 py-6" id="footer">
+    <div class="container max-w-screen-xl m-auto px-4 text-center">
+        <p>Get <a href="https://stattic.site/" target="_blank" class="text-links font-bold" aria-label="Stattic - opens in a new tab">Stattic</a>. Built by <a href="https://robertdevore.com/" target="_blank" class="text-links font-bold" aria-label="Robert DeVore's personal website - opens in a new tab">Robert DeVore</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

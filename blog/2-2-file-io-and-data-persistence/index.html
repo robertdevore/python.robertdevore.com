@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.2. File I/O & Data Persistence | Stattic</title>
+    <meta name="description" content="Stattic is a fast, lightweight static site generator that optimizes images, supports custom fonts, and easily integrates with GitHub Pages for quick, SEO-friendly site deployment without the bloat of traditional CMS platforms like WordPress.">
+    <meta name="keywords" content="python, intermediate python, python course, python tutorial">
+    <meta name="author" content="Robert DeVore">
+    <link href="../../assets/css/tailwind.min.css" rel="stylesheet">
+    
+    <link href="../../assets/css/stattic.css" rel="stylesheet">
+    <link href="../../assets/css/fonts.css" rel="stylesheet">
+    
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="2.2. File I/O & Data Persistence">
+    <meta property="og:description" content="Stattic is a fast, lightweight static site generator.">
+    <meta property="og:url" content="https://python.robertdevore.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="2.2. File I/O & Data Persistence">
+    <meta name="twitter:description" content="Stattic is a fast, lightweight static site generator.">
+    
+    <!-- Alpine.js for interactive components -->
+    <script src="../../assets/js/alpine.min.js" defer></script>
+</head>
+<body class="bg-background bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white to-gray-50 text-primary font-body-light">
+
+<!-- Skip Links for Accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#navigation" class="skip-link">Skip to navigation</a>
+<a href="#footer" class="skip-link">Skip to footer</a>
+
+<header id="navigation">
+    <div class="container max-w-screen-xl m-auto py-6 px-4 flex justify-between items-center">
+        <h2 class="text-3xl font-bold quicksand-700"><a href="../../" class="text-links">Python Course</a></h2>
+        <nav>
+            <ul class="flex space-x-6">
+                
+                    
+                        <li>
+                            <a href="../../sample-page/" class="text-primary hover:underline">About This Site</a>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container max-w-2xl m-auto py-10 px-4" id="main-content">
+    <article class="prose max-w-none stattic-content">
+        
+        <h1 class="text-6xl font-bold mb-4 text-links quicksand-700 post-title">2.2. File I/O & Data Persistence</h1>
+        <p class="text-2md post-meta mb-4 pb-2 post-date italic border-b border-primary"><span class="date">June 17, 2025</span> &middot; <span class="author">Robert DeVore</span></p>
+        <h2>Overview:</h2>
+<p>Learn to read from and write to files, handle different formats, and make your programs interact with real data that survives after your script ends.</p>
+<hr />
+<h2>Introduction</h2>
+<p>Data persistence is crucial for any real-world application. Whether you're building a web scraper that saves results, a game that stores high scores, or a data analysis tool that processes CSV files, you need to know how to work with files effectively.</p>
+<p>In this chapter, you'll master Python's file handling capabilities, from basic text operations to working with structured data formats like CSV and JSON. You'll also learn how to handle file paths safely across different operating systems and implement robust error handling to prevent crashes when files are missing or inaccessible.</p>
+<hr />
+<h2>Working with Text Files</h2>
+<h3>Basic File Operations</h3>
+<p>Python's built-in <code>open()</code> function is your gateway to file operations. It returns a file object that you can use to read from or write to files.</p>
+<pre style="white-space: pre-wrap;"><code># Basic file reading
+file = open('example.txt', 'r')
+content = file.read()
+print(content)
+file.close()
+</code></pre><p>However, manually managing file closing is error-prone. If an exception occurs before <code>close()</code>, the file remains open. The recommended approach uses the <code>with</code> statement:</p>
+<pre style="white-space: pre-wrap;"><code># Proper file handling with context manager
+with open('example.txt', 'r') as file:
+    content = file.read()
+    print(content)
+# File is automatically closed when exiting the 'with' block
+</code></pre><h3>File Modes</h3>
+<p>Understanding file modes is essential for proper file operations:</p>
+<ul>
+<li><code>'r'</code> - Read mode (default)</li>
+<li><code>'w'</code> - Write mode (overwrites existing content)</li>
+<li><code>'a'</code> - Append mode (adds to end of file)</li>
+<li><code>'x'</code> - Exclusive creation (fails if file exists)</li>
+<li><code>'b'</code> - Binary mode (e.g., <code>'rb'</code>, <code>'wb'</code>)</li>
+<li><code>'t'</code> - Text mode (default)</li>
+</ul>
+<pre style="white-space: pre-wrap;"><code># Writing to a file
+with open('output.txt', 'w') as file:
+    file.write('Hello, World!\n')
+    file.write('This is line 2.\n')
+
+# Appending to a file
+with open('output.txt', 'a') as file:
+    file.write('This line is appended.\n')
+</code></pre><h3>Reading Methods</h3>
+<p>Python offers several methods for reading file content:</p>
+<pre style="white-space: pre-wrap;"><code># Read entire file as a string
+with open('data.txt', 'r') as file:
+    content = file.read()
+
+# Read file line by line
+with open('data.txt', 'r') as file:
+    for line in file:
+        print(line.strip())  # strip() removes newline characters
+
+# Read all lines into a list
+with open('data.txt', 'r') as file:
+    lines = file.readlines()
+
+# Read one line at a time
+with open('data.txt', 'r') as file:
+    first_line = file.readline()
+    second_line = file.readline()
+</code></pre><h3>Practical Example: Log File Processor</h3>
+<pre style="white-space: pre-wrap;"><code>def process_log_file(filename):
+    &quot;&quot;&quot;Process a log file and extract error messages.&quot;&quot;&quot;
+    errors = []
+
+    with open(filename, 'r') as file:
+        for line_num, line in enumerate(file, 1):
+            if 'ERROR' in line:
+                errors.append({
+                    'line_number': line_num,
+                    'message': line.strip(),
+                    'timestamp': line.split()[0] if line.split() else 'Unknown'
+                })
+
+    return errors
+
+# Usage
+error_list = process_log_file('application.log')
+for error in error_list:
+    print(f&quot;Line {error['line_number']}: {error['message']}&quot;)
+</code></pre><hr />
+<h2>Handling CSV Files</h2>
+<p>CSV (Comma-Separated Values) files are ubiquitous in data processing. Python's <code>csv</code> module provides powerful tools for reading and writing CSV data.</p>
+<h3>Reading CSV Files</h3>
+<pre style="white-space: pre-wrap;"><code>import csv
+
+# Basic CSV reading
+with open('data.csv', 'r') as file:
+    csv_reader = csv.reader(file)
+    for row in csv_reader:
+        print(row)  # Each row is a list of strings
+
+# Reading with headers
+def read_csv_with_headers(filename):
+    with open(filename, 'r') as file:
+        csv_reader = csv.DictReader(file)
+        data = []
+        for row in csv_reader:
+            data.append(dict(row))  # Each row is a dictionary
+        return data
+
+# Example usage
+employee_data = read_csv_with_headers('employees.csv')
+for employee in employee_data:
+    print(f&quot;{employee['Name']}: {employee['Department']}&quot;)
+</code></pre><h3>Writing CSV Files</h3>
+<pre style="white-space: pre-wrap;"><code>import csv
+
+# Writing basic CSV
+data = [
+    ['Name', 'Age', 'City'],
+    ['Alice', '25', 'New York'],
+    ['Bob', '30', 'San Francisco'],
+    ['Charlie', '35', 'Chicago']
+]
+
+with open('output.csv', 'w', newline='') as file:
+    csv_writer = csv.writer(file)
+    csv_writer.writerows(data)
+
+# Writing with DictWriter
+employees = [
+    {'Name': 'Alice', 'Age': 25, 'Department': 'Engineering'},
+    {'Name': 'Bob', 'Age': 30, 'Department': 'Marketing'},
+    {'Name': 'Charlie', 'Age': 35, 'Department': 'Sales'}
+]
+
+with open('employees_output.csv', 'w', newline='') as file:
+    fieldnames = ['Name', 'Age', 'Department']
+    csv_writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+    csv_writer.writeheader()  # Write column headers
+    csv_writer.writerows(employees)
+</code></pre><h3>Advanced CSV Operations</h3>
+<pre style="white-space: pre-wrap;"><code>import csv
+
+def analyze_sales_data(filename):
+    &quot;&quot;&quot;Analyze sales data from CSV file.&quot;&quot;&quot;
+    total_sales = 0
+    product_sales = {}
+
+    with open(filename, 'r') as file:
+        csv_reader = csv.DictReader(file)
+
+        for row in csv_reader:
+            # Convert string to float for calculations
+            amount = float(row['Amount'])
+            product = row['Product']
+
+            total_sales += amount
+
+            if product in product_sales:
+                product_sales[product] += amount
+            else:
+                product_sales[product] = amount
+
+    return {
+        'total_sales': total_sales,
+        'product_breakdown': product_sales,
+        'top_product': max(product_sales.items(), key=lambda x: x[1])
+    }
+
+# Custom CSV dialect for unusual formats
+csv.register_dialect('custom', delimiter=';', quotechar='&quot;', 
+                     doublequote=True, skipinitialspace=True)
+
+with open('european_data.csv', 'r') as file:
+    csv_reader = csv.reader(file, dialect='custom')
+    for row in csv_reader:
+        print(row)
+</code></pre><hr />
+<h2>Reading and Writing JSON</h2>
+<p>JSON (JavaScript Object Notation) is the standard format for APIs and configuration files. Python's <code>json</code> module makes working with JSON data straightforward.</p>
+<h3>Basic JSON Operations</h3>
+<pre style="white-space: pre-wrap;"><code>import json
+
+# Reading JSON from file
+with open('config.json', 'r') as file:
+    config = json.load(file)
+    print(config['database']['host'])
+
+# Writing JSON to file
+data = {
+    'users': [
+        {'name': 'Alice', 'email': 'alice@example.com', 'active': True},
+        {'name': 'Bob', 'email': 'bob@example.com', 'active': False}
+    ],
+    'settings': {
+        'theme': 'dark',
+        'notifications': True,
+        'max_connections': 100
+    }
+}
+
+with open('users.json', 'w') as file:
+    json.dump(data, file, indent=2)  # indent for pretty formatting
+</code></pre><h3>JSON String Operations</h3>
+<pre style="white-space: pre-wrap;"><code>import json
+
+# Convert Python object to JSON string
+python_dict = {'name': 'Alice', 'age': 30, 'skills': ['Python', 'SQL']}
+json_string = json.dumps(python_dict, indent=2)
+print(json_string)
+
+# Convert JSON string to Python object
+json_data = '{&quot;name&quot;: &quot;Bob&quot;, &quot;age&quot;: 25, &quot;active&quot;: true}'
+python_obj = json.loads(json_data)
+print(python_obj['name'])  # Output: Bob
+</code></pre><h3>Handling Complex JSON Data</h3>
+<pre style="white-space: pre-wrap;"><code>import json
+from datetime import datetime
+
+class DateTimeEncoder(json.JSONEncoder):
+    &quot;&quot;&quot;Custom JSON encoder for datetime objects.&quot;&quot;&quot;
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return obj.isoformat()
+        return super().default(obj)
+
+# Data with datetime objects
+log_entry = {
+    'timestamp': datetime.now(),
+    'level': 'INFO',
+    'message': 'Application started',
+    'user_data': {
+        'user_id': 12345,
+        'session_start': datetime.now()
+    }
+}
+
+# Save with custom encoder
+with open('log.json', 'w') as file:
+    json.dump(log_entry, file, cls=DateTimeEncoder, indent=2)
+
+def load_json_with_error_handling(filename):
+    &quot;&quot;&quot;Load JSON file with comprehensive error handling.&quot;&quot;&quot;
+    try:
+        with open(filename, 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print(f&quot;File {filename} not found.&quot;)
+        return {}
+    except json.JSONDecodeError as e:
+        print(f&quot;Invalid JSON in {filename}: {e}&quot;)
+        return {}
+    except Exception as e:
+        print(f&quot;Unexpected error reading {filename}: {e}&quot;)
+        return {}
+</code></pre><h3>Practical Example: Configuration Manager</h3>
+<pre style="white-space: pre-wrap;"><code>import json
+import os
+
+class ConfigManager:
+    &quot;&quot;&quot;Manage application configuration with JSON files.&quot;&quot;&quot;
+
+    def __init__(self, config_file='config.json'):
+        self.config_file = config_file
+        self.config = self.load_config()
+
+    def load_config(self):
+        &quot;&quot;&quot;Load configuration from file or create default.&quot;&quot;&quot;
+        if os.path.exists(self.config_file):
+            try:
+                with open(self.config_file, 'r') as file:
+                    return json.load(file)
+            except json.JSONDecodeError:
+                print(&quot;Invalid configuration file. Using defaults.&quot;)
+                return self.get_default_config()
+        else:
+            config = self.get_default_config()
+            self.save_config(config)
+            return config
+
+    def get_default_config(self):
+        &quot;&quot;&quot;Return default configuration.&quot;&quot;&quot;
+        return {
+            'database': {
+                'host': 'localhost',
+                'port': 5432,
+                'name': 'myapp'
+            },
+            'logging': {
+                'level': 'INFO',
+                'file': 'app.log'
+            },
+            'features': {
+                'email_notifications': True,
+                'auto_backup': False
+            }
+        }
+
+    def save_config(self, config=None):
+        &quot;&quot;&quot;Save configuration to file.&quot;&quot;&quot;
+        config = config or self.config
+        with open(self.config_file, 'w') as file:
+            json.dump(config, file, indent=2)
+
+    def get(self, key_path, default=None):
+        &quot;&quot;&quot;Get configuration value using dot notation.&quot;&quot;&quot;
+        keys = key_path.split('.')
+        value = self.config
+
+        for key in keys:
+            if isinstance(value, dict) and key in value:
+                value = value[key]
+            else:
+                return default
+
+        return value
+
+    def set(self, key_path, value):
+        &quot;&quot;&quot;Set configuration value using dot notation.&quot;&quot;&quot;
+        keys = key_path.split('.')
+        config = self.config
+
+        for key in keys[:-1]:
+            if key not in config:
+                config[key] = {}
+            config = config[key]
+
+        config[keys[-1]] = value
+        self.save_config()
+
+# Usage
+config = ConfigManager()
+print(config.get('database.host'))  # localhost
+config.set('database.host', '192.168.1.100')
+print(config.get('database.host'))  # 192.168.1.100
+</code></pre><hr />
+<h2>File Paths &amp; OS Operations</h2>
+<p>Working with file paths correctly is crucial for cross-platform compatibility. Python provides several modules for path manipulation.</p>
+<h3>Using os.path</h3>
+<pre style="white-space: pre-wrap;"><code>import os
+
+# Path operations
+current_dir = os.getcwd()
+file_path = os.path.join(current_dir, 'data', 'input.txt')
+print(f&quot;File path: {file_path}&quot;)
+
+# Path information
+print(f&quot;Directory: {os.path.dirname(file_path)}&quot;)
+print(f&quot;Filename: {os.path.basename(file_path)}&quot;)
+print(f&quot;Extension: {os.path.splitext(file_path)[1]}&quot;)
+
+# Check file/directory existence
+if os.path.exists(file_path):
+    print(&quot;File exists&quot;)
+    print(f&quot;Size: {os.path.getsize(file_path)} bytes&quot;)
+    print(f&quot;Is file: {os.path.isfile(file_path)}&quot;)
+    print(f&quot;Is directory: {os.path.isdir(file_path)}&quot;)
+</code></pre><h3>Modern Path Handling with pathlib</h3>
+<pre style="white-space: pre-wrap;"><code>from pathlib import Path
+
+# Modern path operations
+current_dir = Path.cwd()
+data_dir = current_dir / 'data'
+file_path = data_dir / 'input.txt'
+
+print(f&quot;File path: {file_path}&quot;)
+print(f&quot;Parent directory: {file_path.parent}&quot;)
+print(f&quot;Filename: {file_path.name}&quot;)
+print(f&quot;Extension: {file_path.suffix}&quot;)
+
+# Check existence and properties
+if file_path.exists():
+    print(f&quot;Size: {file_path.stat().st_size} bytes&quot;)
+    print(f&quot;Is file: {file_path.is_file()}&quot;)
+    print(f&quot;Is directory: {file_path.is_dir()}&quot;)
+
+# Create directories
+output_dir = Path('output')
+output_dir.mkdir(exist_ok=True)  # Create if doesn't exist
+
+# List directory contents
+for item in data_dir.iterdir():
+    if item.is_file():
+        print(f&quot;File: {item.name}&quot;)
+    elif item.is_dir():
+        print(f&quot;Directory: {item.name}&quot;)
+</code></pre><h3>Cross-Platform File Operations</h3>
+<pre style="white-space: pre-wrap;"><code>import os
+import shutil
+from pathlib import Path
+
+def safe_file_operations():
+    &quot;&quot;&quot;Demonstrate safe, cross-platform file operations.&quot;&quot;&quot;
+
+    # Create directory structure
+    base_dir = Path('project_data')
+    subdirs = ['input', 'output', 'temp']
+
+    for subdir in subdirs:
+        (base_dir / subdir).mkdir(parents=True, exist_ok=True)
+
+    # Copy files safely
+    source_file = Path('important_data.txt')
+    if source_file.exists():
+        destination = base_dir / 'input' / source_file.name
+        shutil.copy2(source_file, destination)  # Preserves metadata
+        print(f&quot;Copied {source_file} to {destination}&quot;)
+
+    # Move files
+    temp_file = base_dir / 'temp' / 'temporary.txt'
+    if temp_file.exists():
+        final_location = base_dir / 'output' / 'final.txt'
+        shutil.move(str(temp_file), str(final_location))
+
+    # Remove files and directories
+    temp_dir = base_dir / 'temp'
+    if temp_dir.exists():
+        shutil.rmtree(temp_dir)  # Remove directory and contents
+
+def find_files_by_extension(directory, extension):
+    &quot;&quot;&quot;Find all files with specific extension in directory.&quot;&quot;&quot;
+    directory = Path(directory)
+    pattern = f&quot;*.{extension}&quot;
+    return list(directory.rglob(pattern))  # Recursive search
+
+# Usage
+python_files = find_files_by_extension('.', 'py')
+for file in python_files:
+    print(file)
+</code></pre><hr />
+<h2>Error Handling with Files</h2>
+<p>Robust file handling requires anticipating and handling various error conditions.</p>
+<h3>Common File Errors</h3>
+<pre style="white-space: pre-wrap;"><code>import os
+import json
+
+def safe_file_reader(filename):
+    &quot;&quot;&quot;Read file with comprehensive error handling.&quot;&quot;&quot;
+    try:
+        with open(filename, 'r') as file:
+            return file.read()
+
+    except FileNotFoundError:
+        print(f&quot;Error: File '{filename}' not found.&quot;)
+        return None
+
+    except PermissionError:
+        print(f&quot;Error: Permission denied accessing '{filename}'.&quot;)
+        return None
+
+    except IOError as e:
+        print(f&quot;Error reading file '{filename}': {e}&quot;)
+        return None
+
+    except Exception as e:
+        print(f&quot;Unexpected error reading '{filename}': {e}&quot;)
+        return None
+
+def safe_json_processor(filename):
+    &quot;&quot;&quot;Process JSON file with error handling.&quot;&quot;&quot;
+    try:
+        with open(filename, 'r') as file:
+            data = json.load(file)
+
+        # Process the data
+        if 'users' in data:
+            for user in data['users']:
+                if 'email' not in user:
+                    print(f&quot;Warning: User {user.get('name', 'Unknown')} missing email&quot;)
+
+        return data
+
+    except FileNotFoundError:
+        print(f&quot;Configuration file '{filename}' not found. Creating default.&quot;)
+        default_config = {'users': [], 'settings': {}}
+
+        try:
+            with open(filename, 'w') as file:
+                json.dump(default_config, file, indent=2)
+            return default_config
+        except IOError as e:
+            print(f&quot;Could not create default config: {e}&quot;)
+            return {}
+
+    except json.JSONDecodeError as e:
+        print(f&quot;Invalid JSON in '{filename}': {e}&quot;)
+        print(f&quot;Error at line {e.lineno}, column {e.colno}&quot;)
+        return {}
+
+    except Exception as e:
+        print(f&quot;Unexpected error processing '{filename}': {e}&quot;)
+        return {}
+</code></pre><h3>Validation and Backup Strategies</h3>
+<pre style="white-space: pre-wrap;"><code>import shutil
+import hashlib
+from pathlib import Path
+from datetime import datetime
+
+class SafeFileManager:
+    &quot;&quot;&quot;Manage files with backup and validation.&quot;&quot;&quot;
+
+    def __init__(self, backup_dir='backups'):
+        self.backup_dir = Path(backup_dir)
+        self.backup_dir.mkdir(exist_ok=True)
+
+    def calculate_checksum(self, filepath):
+        &quot;&quot;&quot;Calculate MD5 checksum of file.&quot;&quot;&quot;
+        hash_md5 = hashlib.md5()
+        try:
+            with open(filepath, 'rb') as file:
+                for chunk in iter(lambda: file.read(4096), b&quot;&quot;):
+                    hash_md5.update(chunk)
+            return hash_md5.hexdigest()
+        except IOError:
+            return None
+
+    def backup_file(self, filepath):
+        &quot;&quot;&quot;Create timestamped backup of file.&quot;&quot;&quot;
+        filepath = Path(filepath)
+        if not filepath.exists():
+            return False
+
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        backup_name = f&quot;{filepath.stem}_{timestamp}{filepath.suffix}&quot;
+        backup_path = self.backup_dir / backup_name
+
+        try:
+            shutil.copy2(filepath, backup_path)
+            return backup_path
+        except IOError as e:
+            print(f&quot;Backup failed: {e}&quot;)
+            return False
+
+    def safe_write(self, filepath, content, backup=True):
+        &quot;&quot;&quot;Write content to file with backup and validation.&quot;&quot;&quot;
+        filepath = Path(filepath)
+
+        # Create backup if file exists
+        if backup and filepath.exists():
+            backup_path = self.backup_file(filepath)
+            if not backup_path:
+                return False
+
+        # Write to temporary file first
+        temp_path = filepath.with_suffix(filepath.suffix + '.tmp')
+
+        try:
+            with open(temp_path, 'w') as file:
+                file.write(content)
+
+            # Verify write was successful
+            if temp_path.exists() and temp_path.stat().st_size &gt; 0:
+                # Replace original file
+                shutil.move(str(temp_path), str(filepath))
+                return True
+            else:
+                temp_path.unlink(missing_ok=True)  # Clean up
+                return False
+
+        except IOError as e:
+            print(f&quot;Write failed: {e}&quot;)
+            temp_path.unlink(missing_ok=True)  # Clean up
+            return False
+
+# Usage
+file_manager = SafeFileManager()
+success = file_manager.safe_write('important.txt', 'Critical data here')
+if success:
+    print(&quot;File written successfully with backup&quot;)
+</code></pre><hr />
+<h2>Best Practices and Summary</h2>
+<h3>Key Takeaways</h3>
+<ol>
+<li><strong>Always use context managers (<code>with</code> statements)</strong> for file operations to ensure proper cleanup</li>
+<li><strong>Handle errors explicitly</strong> - don't let file operations crash your program</li>
+<li><strong>Use <code>pathlib</code> for modern path handling</strong> - it's cleaner and more readable than <code>os.path</code></li>
+<li><strong>Choose the right format</strong>: text files for simple data, CSV for tabular data, JSON for structured data</li>
+<li><strong>Validate and backup important data</strong> before modifying files</li>
+<li><strong>Use appropriate file modes</strong> and understand the difference between text and binary modes</li>
+</ol>
+<h3>Common Patterns</h3>
+<pre style="white-space: pre-wrap;"><code># Pattern 1: Safe file processing
+def process_data_file(input_file, output_file):
+    &quot;&quot;&quot;Safe pattern for file processing.&quot;&quot;&quot;
+    try:
+        with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
+            for line in infile:
+                processed_line = line.strip().upper()
+                outfile.write(processed_line + '\n')
+        return True
+    except Exception as e:
+        print(f&quot;Processing failed: {e}&quot;)
+        return False
+
+# Pattern 2: Configuration management
+def load_config(config_file='config.json', defaults=None):
+    &quot;&quot;&quot;Load configuration with defaults.&quot;&quot;&quot;
+    defaults = defaults or {}
+
+    try:
+        with open(config_file, 'r') as file:
+            config = json.load(file)
+        return {**defaults, **config}  # Merge with defaults
+    except (FileNotFoundError, json.JSONDecodeError):
+        return defaults
+
+# Pattern 3: Data export
+def export_data(data, filename, format='json'):
+    &quot;&quot;&quot;Export data in multiple formats.&quot;&quot;&quot;
+    try:
+        if format == 'json':
+            with open(filename, 'w') as file:
+                json.dump(data, file, indent=2)
+        elif format == 'csv' and isinstance(data, list):
+            with open(filename, 'w', newline='') as file:
+                if data and isinstance(data[0], dict):
+                    writer = csv.DictWriter(file, fieldnames=data[0].keys())
+                    writer.writeheader()
+                    writer.writerows(data)
+        return True
+    except Exception as e:
+        print(f&quot;Export failed: {e}&quot;)
+        return False
+</code></pre><p>By mastering these file I/O concepts, you'll be able to build applications that persist data reliably, handle various file formats, and gracefully recover from file-related errors. This foundation is essential for any serious Python development work.</p>
+
+    </article>
+</main>
+
+
+<footer class="bg-background border-t border-primary mt-10 py-6" id="footer">
+    <div class="container max-w-screen-xl m-auto px-4 text-center">
+        <p>Get <a href="https://stattic.site/" target="_blank" class="text-links font-bold" aria-label="Stattic - opens in a new tab">Stattic</a>. Built by <a href="https://robertdevore.com/" target="_blank" class="text-links font-bold" aria-label="Robert DeVore's personal website - opens in a new tab">Robert DeVore</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

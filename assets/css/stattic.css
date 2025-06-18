@@ -57,6 +57,10 @@ body {
     color: var(--primary-color);
 }
 
+.text-blue {
+    color: var(--primary-color);
+}
+
 .text-primary {
     color: var(--text-color);
 }
