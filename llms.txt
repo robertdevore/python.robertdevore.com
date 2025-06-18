@@ -3,16 +3,16 @@
 This site contains structured content formatted for LLM-friendly consumption.
 
 ## Posts
-- [1.2. Syntax & Data Types](https://python.robertdevore.com/blog/1-2-syntax-and-data-types/): ID 6988931233
-- [1.5. Basic Error Handling](https://python.robertdevore.com/blog/1-5-basic-error-handling/): ID 9038869709
-- [1.1. Python Setup & IDEs](https://python.robertdevore.com/blog/1-1-python-setup-and-ides/): ID 7252952187
-- [1.4. Functions & Modules](https://python.robertdevore.com/blog/1-4-functions-and-modules/): ID 6048109617
-- [1.3. Control Flow (If, For, While)](https://python.robertdevore.com/blog/1-3-control-flow-if-for-while/): ID 4665373061
-- [Welcome to the Complete Python Development Course](https://python.robertdevore.com/blog/welcome-to-the-python-course/): ID 5783150791
-- [Chapter 1: Beginner Python](https://python.robertdevore.com/blog/1-0-chapter-1-beginner-python/): ID 8472481750
+- [1.2. Syntax & Data Types](https://python.robertdevore.com/blog/1-2-syntax-and-data-types/): ID 8351198733
+- [1.5. Basic Error Handling](https://python.robertdevore.com/blog/1-5-basic-error-handling/): ID 1852469531
+- [1.1. Python Setup & IDEs](https://python.robertdevore.com/blog/1-1-python-setup-and-ides/): ID 529200331
+- [1.4. Functions & Modules](https://python.robertdevore.com/blog/1-4-functions-and-modules/): ID 1532896660
+- [1.3. Control Flow (If, For, While)](https://python.robertdevore.com/blog/1-3-control-flow-if-for-while/): ID 6713008128
+- [Welcome to the Complete Python Development Course](https://python.robertdevore.com/blog/welcome-to-the-python-course/): ID 7663477579
+- [Chapter 1: Beginner Python](https://python.robertdevore.com/blog/1-0-chapter-1-beginner-python/): ID 1413885691
 
 ## Pages
-- [About This Site](https://python.robertdevore.com/sample-page/): ID 7034267767
+- [About This Site](https://python.robertdevore.com/sample-page/): ID 7308041585
 
 ## Sitemap
 https://python.robertdevore.com/sitemap.xml
