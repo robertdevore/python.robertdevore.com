@@ -102,7 +102,7 @@ header#navigation a.text-primary {
 .stattic-content p {
     margin-bottom: 1.5rem;
     line-height: 1.75;
-    font-size: 400;
+    font-weight: 400;
 }
 
 .stattic-content img {
