@@ -4,15 +4,8 @@
 <title>Python Course</title>
 <link>https://python.robertdevore.com</link>
 <description>Latest posts from Python Course</description>
-<lastBuildDate>Wed, 18 Jun 2025 01:57:23 -0000</lastBuildDate>
+<lastBuildDate>Wed, 18 Jun 2025 01:57:35 -0000</lastBuildDate>
 
-<item>
-<title>2.4. Exceptions &amp; Robust Error Handling</title>
-<link>https://python.robertdevore.com/blog/2-4-exceptions-and-robust-error-handling/</link>
-<description>Overview Learn to catch and handle errors cleanly so your code doesn't crash--and users see helpful messages instead of tracebacks. Introduction: Why Robust Error Handling Matters In the real world,...</description>
-<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/2-4-exceptions-and-robust-error-handling/</guid>
-</item>
 <item>
 <title>3.4. Building and Consuming APIs</title>
 <link>https://python.robertdevore.com/blog/3-4-building-and-consuming-apis/</link>
@@ -26,6 +19,13 @@
 <description>Overview: Transform your Python scripts into professional, reusable packages that others can install with pip. Learn industry-standard practices for code organization, documentation, testing, and distribution that will make your projects...</description>
 <pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
 <guid>https://python.robertdevore.com/blog/3-5-packaging-distribution-and-best-practices/</guid>
+</item>
+<item>
+<title>2.4. Exceptions &amp; Robust Error Handling</title>
+<link>https://python.robertdevore.com/blog/2-4-exceptions-and-robust-error-handling/</link>
+<description>Overview Learn to catch and handle errors cleanly so your code doesn't crash--and users see helpful messages instead of tracebacks. Introduction: Why Robust Error Handling Matters In the real world,...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/2-4-exceptions-and-robust-error-handling/</guid>
 </item>
 <item>
 <title>2.1. Object-Oriented Programming (OOP)</title>
@@ -42,13 +42,6 @@
 <guid>https://python.robertdevore.com/blog/1-2-syntax-and-data-types/</guid>
 </item>
 <item>
-<title>1.5. Basic Error Handling</title>
-<link>https://python.robertdevore.com/blog/1-5-basic-error-handling/</link>
-<description>Overview Prepare for inevitable mistakes--catch, handle, and recover from errors so your scripts don't just crash at the first sign of trouble. Introduction: Why Error Handling Matters Picture this: You've...</description>
-<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/1-5-basic-error-handling/</guid>
-</item>
-<item>
 <title>2.5. Introduction to Testing</title>
 <link>https://python.robertdevore.com/blog/2-5-introduction-to-testing/</link>
 <description>Overview Get started with writing and running tests so your code stays reliable, refactor-safe, and bug-free as it grows. Why Testing Matters Imagine you've built a calculator app that works...</description>
@@ -56,18 +49,18 @@
 <guid>https://python.robertdevore.com/blog/2-5-introduction-to-testing/</guid>
 </item>
 <item>
+<title>1.5. Basic Error Handling</title>
+<link>https://python.robertdevore.com/blog/1-5-basic-error-handling/</link>
+<description>Overview Prepare for inevitable mistakes--catch, handle, and recover from errors so your scripts don't just crash at the first sign of trouble. Introduction: Why Error Handling Matters Picture this: You've...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/1-5-basic-error-handling/</guid>
+</item>
+<item>
 <title>3.3. Concurrency &amp; Parallelism</title>
 <link>https://python.robertdevore.com/blog/3-3-concurrency-and-parallelism/</link>
 <description>Overview Modern applications demand speed and responsiveness. Users expect web pages to load quickly, data processing to happen in real-time, and interfaces to remain interactive even during heavy computations. The...</description>
 <pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
 <guid>https://python.robertdevore.com/blog/3-3-concurrency-and-parallelism/</guid>
-</item>
-<item>
-<title>Chapter 3. Advanced Python</title>
-<link>https://python.robertdevore.com/blog/3-0-chapter-3-advanced-python/</link>
-<description>For serious developers and those building production-grade applications. Focus: efficiency, scalability, and best practices. Welcome to Advanced Python—where you transition from writing code that works to writing code that works...</description>
-<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/3-0-chapter-3-advanced-python/</guid>
 </item>
 <item>
 <title>Chapter 2: Intermediate Python</title>
@@ -84,18 +77,32 @@
 <guid>https://python.robertdevore.com/blog/2-3-virtual-environments-and-package-management/</guid>
 </item>
 <item>
+<title>Chapter 3. Advanced Python</title>
+<link>https://python.robertdevore.com/blog/3-0-chapter-3-advanced-python/</link>
+<description>For serious developers and those building production-grade applications. Focus: efficiency, scalability, and best practices. Welcome to Advanced Python—where you transition from writing code that works to writing code that works...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/3-0-chapter-3-advanced-python/</guid>
+</item>
+<item>
+<title>Course Conclusion: From Python Novice to Professional Developer</title>
+<link>https://python.robertdevore.com/blog/4-0-course-conclusion-from-python-novice-to-professional-developer/</link>
+<description>Congratulations! You've just completed a comprehensive journey through Python development that has taken you from writing your first "Hello, World!" script to building production-ready applications, APIs, and distributable packages. This...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/4-0-course-conclusion-from-python-novice-to-professional-developer/</guid>
+</item>
+<item>
+<title>2.2. File I/O &amp; Data Persistence</title>
+<link>https://python.robertdevore.com/blog/2-2-file-io-and-data-persistence/</link>
+<description>Overview Learn to read from and write to files, handle different formats, and make your programs interact with real data that survives after your script ends. Introduction Data persistence is...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/2-2-file-io-and-data-persistence/</guid>
+</item>
+<item>
 <title>3.2. Generators, Decorators and Context Managers</title>
 <link>https://python.robertdevore.com/blog/3-2-generators-decorators-and-context-managers/</link>
 <description>Overview These three features represent some of Python's most powerful and "Pythonic" constructs. They allow you to write cleaner, more efficient, and more maintainable code by managing state, resources, and...</description>
 <pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
 <guid>https://python.robertdevore.com/blog/3-2-generators-decorators-and-context-managers/</guid>
-</item>
-<item>
-<title>1.1. Python Setup &amp; IDEs</title>
-<link>https://python.robertdevore.com/blog/1-1-python-setup-and-ides/</link>
-<description>Overview Welcome to your Python journey! Before we dive into writing code, we need to set up your development environment properly. Think of this as preparing your workspace—just like a...</description>
-<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/1-1-python-setup-and-ides/</guid>
 </item>
 <item>
 <title>3.1. Advanced Data Structures &amp; Algorithms</title>
@@ -112,18 +119,18 @@
 <guid>https://python.robertdevore.com/blog/1-4-functions-and-modules/</guid>
 </item>
 <item>
-<title>Course Conclusion: From Python Novice to Professional Developer</title>
-<link>https://python.robertdevore.com/blog/4-0-course-conclusion-from-python-novice-to-professional-developer/</link>
-<description>Congratulations! You've just completed a comprehensive journey through Python development that has taken you from writing your first "Hello, World!" script to building production-ready applications, APIs, and distributable packages. This...</description>
-<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/4-0-course-conclusion-from-python-novice-to-professional-developer/</guid>
-</item>
-<item>
 <title>1.3. Control Flow (If, For, While)</title>
 <link>https://python.robertdevore.com/blog/1-3-control-flow-if-for-while/</link>
 <description>Overview Control flow is what makes your programs truly intelligent. Instead of just executing line by line from top to bottom, you'll learn to make your code make decisions, repeat...</description>
 <pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
 <guid>https://python.robertdevore.com/blog/1-3-control-flow-if-for-while/</guid>
+</item>
+<item>
+<title>Welcome to the Complete Python Development Course</title>
+<link>https://python.robertdevore.com/blog/welcome-to-the-python-course/</link>
+<description>Transform From Beginner to Professional Python Developer Welcome to your comprehensive journey into Python programming! Whether you're taking your first steps into the world of coding or looking to elevate...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/welcome-to-the-python-course/</guid>
 </item>
 <item>
 <title>Chapter 1: Beginner Python</title>
@@ -133,18 +140,11 @@
 <guid>https://python.robertdevore.com/blog/1-0-chapter-1-beginner-python/</guid>
 </item>
 <item>
-<title>2.2. File I/O &amp; Data Persistence</title>
-<link>https://python.robertdevore.com/blog/2-2-file-io-and-data-persistence/</link>
-<description>Overview Learn to read from and write to files, handle different formats, and make your programs interact with real data that survives after your script ends. Introduction Data persistence is...</description>
+<title>1.1. Python Setup &amp; IDEs</title>
+<link>https://python.robertdevore.com/blog/1-1-python-setup-and-ides/</link>
+<description>Overview Welcome to your Python journey! Before we dive into writing code, we need to set up your development environment properly. Think of this as preparing your workspace—just like a...</description>
 <pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/2-2-file-io-and-data-persistence/</guid>
-</item>
-<item>
-<title>Welcome to the Complete Python Development Course</title>
-<link>https://python.robertdevore.com/blog/welcome-to-the-python-course/</link>
-<description>Transform From Beginner to Professional Python Developer Welcome to your comprehensive journey into Python programming! Whether you're taking your first steps into the world of coding or looking to elevate...</description>
-<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
-<guid>https://python.robertdevore.com/blog/welcome-to-the-python-course/</guid>
+<guid>https://python.robertdevore.com/blog/1-1-python-setup-and-ides/</guid>
 </item>
 </channel>
 </rss>
