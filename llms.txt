@@ -3,10 +3,13 @@
 This site contains structured content formatted for LLM-friendly consumption.
 
 ## Posts
-- [Welcome to Your New Static Site](https://python.robertdevore.com/blog/sample-post/): ID 1024294966
+- [Welcome to the Complete Python Development Course](https://python.robertdevore.com/blog/welcome-to-the-python-course/): ID 312620862
+- [Chapter 1: Beginner Python](https://python.robertdevore.com/blog/chapter-1-python/): ID 2005047359
+- [Python Setup & IDEs](https://python.robertdevore.com/blog/python-setup-and-ides/): ID 8885576781
+- [Welcome to Your New Static Site](https://python.robertdevore.com/blog/sample-post/): ID 6456250810
 
 ## Pages
-- [About This Site](https://python.robertdevore.com/sample-page/): ID 5690574121
+- [About This Site](https://python.robertdevore.com/sample-page/): ID 4403789443
 
 ## Sitemap
 https://python.robertdevore.com/sitemap.xml

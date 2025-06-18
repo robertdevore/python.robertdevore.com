@@ -5,7 +5,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url('../fonts/quicksand-300.woff2') format('woff2');
+    src: url('../fonts/quicksand-300.woff') format('woff');
 }
 
 @font-face {
@@ -13,7 +13,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/quicksand-400.woff2') format('woff2');
+    src: url('../fonts/quicksand-400.woff') format('woff');
 }
 
 @font-face {
@@ -21,7 +21,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('../fonts/quicksand-700.woff2') format('woff2');
+    src: url('../fonts/quicksand-700.woff') format('woff');
 }
 
 @font-face {
@@ -29,7 +29,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url('../fonts/open-sans-300.woff2') format('woff2');
+    src: url('../fonts/open-sans-300.woff') format('woff');
 }
 
 @font-face {
@@ -37,7 +37,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/open-sans-400.woff2') format('woff2');
+    src: url('../fonts/open-sans-400.woff') format('woff');
 }
 
 @font-face {
@@ -45,7 +45,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('../fonts/open-sans-700.woff2') format('woff2');
+    src: url('../fonts/open-sans-700.woff') format('woff');
 }
 
 

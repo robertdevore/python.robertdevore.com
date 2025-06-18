@@ -4,12 +4,33 @@
 <title>Python Course</title>
 <link>https://python.robertdevore.com</link>
 <description>Latest posts from Python Course</description>
-<lastBuildDate>Tue, 17 Jun 2025 23:55:01 -0000</lastBuildDate>
+<lastBuildDate>Wed, 18 Jun 2025 00:47:33 -0000</lastBuildDate>
 
+<item>
+<title>Welcome to the Complete Python Development Course</title>
+<link>https://python.robertdevore.com/blog/welcome-to-the-python-course/</link>
+<description>Transform From Beginner to Professional Python Developer Welcome to your comprehensive journey into Python programming! Whether you're taking your first steps into the world of coding or looking to elevate...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/welcome-to-the-python-course/</guid>
+</item>
+<item>
+<title>Chapter 1: Beginner Python</title>
+<link>https://python.robertdevore.com/blog/chapter-1-python/</link>
+<description>Welcome to Your Python Journey Congratulations on taking the first step toward learning one of the world's most popular and versatile programming languages! Whether you're completely new to programming or...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/chapter-1-python/</guid>
+</item>
+<item>
+<title>Python Setup &amp; IDEs</title>
+<link>https://python.robertdevore.com/blog/python-setup-and-ides/</link>
+<description>Overview Welcome to your Python journey! Before we dive into writing code, we need to set up your development environment properly. Think of this as preparing your workspace—just like a...</description>
+<pubDate>Tue, 17 Jun 2025 04:00:00 -0000</pubDate>
+<guid>https://python.robertdevore.com/blog/python-setup-and-ides/</guid>
+</item>
 <item>
 <title>Welcome to Your New Static Site</title>
 <link>https://python.robertdevore.com/blog/sample-post/</link>
-<description>Welcome to Your New Static Site! Congratulations! You've successfully set up your new static site with Stattic. This is your first blog post, and it's designed to help you get...</description>
+<description>Congratulations! You've successfully set up your new static site with Stattic. This is your first blog post, and it's designed to help you get started with creating amazing content. What...</description>
 <pubDate>Mon, 16 Jun 2025 04:00:00 -0000</pubDate>
 <guid>https://python.robertdevore.com/blog/sample-post/</guid>
 </item>
