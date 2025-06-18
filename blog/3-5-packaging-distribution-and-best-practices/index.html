@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.5. Packaging, Distribution, and Best Practices | Stattic</title>
+    <meta name="description" content="Stattic is a fast, lightweight static site generator that optimizes images, supports custom fonts, and easily integrates with GitHub Pages for quick, SEO-friendly site deployment without the bloat of traditional CMS platforms like WordPress.">
+    <meta name="keywords" content="python, advanced python, python course, python tutorial">
+    <meta name="author" content="Robert DeVore">
+    <link href="../../assets/css/tailwind.min.css" rel="stylesheet">
+    
+    <link href="../../assets/css/stattic.css" rel="stylesheet">
+    <link href="../../assets/css/fonts.css" rel="stylesheet">
+    
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="3.5. Packaging, Distribution, and Best Practices">
+    <meta property="og:description" content="Stattic is a fast, lightweight static site generator.">
+    <meta property="og:url" content="https://python.robertdevore.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="3.5. Packaging, Distribution, and Best Practices">
+    <meta name="twitter:description" content="Stattic is a fast, lightweight static site generator.">
+    
+    <!-- Alpine.js for interactive components -->
+    <script src="../../assets/js/alpine.min.js" defer></script>
+</head>
+<body class="bg-background bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white to-gray-50 text-primary font-body-light">
+
+<!-- Skip Links for Accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#navigation" class="skip-link">Skip to navigation</a>
+<a href="#footer" class="skip-link">Skip to footer</a>
+
+<header id="navigation">
+    <div class="container max-w-screen-xl m-auto py-6 px-4 flex justify-between items-center">
+        <h2 class="text-3xl font-bold quicksand-700"><a href="../../" class="text-links">Python Course</a></h2>
+        <nav>
+            <ul class="flex space-x-6">
+                
+                    
+                        <li>
+                            <a href="../../sample-page/" class="text-primary hover:underline">About This Site</a>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container max-w-2xl m-auto py-10 px-4" id="main-content">
+    <article class="prose max-w-none stattic-content">
+        
+        <h1 class="text-6xl font-bold mb-4 text-links quicksand-700 post-title">3.5. Packaging, Distribution, and Best Practices</h1>
+        <p class="text-2md post-meta mb-4 pb-2 post-date italic border-b border-primary"><span class="date">June 17, 2025</span> &middot; <span class="author">Robert DeVore</span></p>
+        <h2>Overview:</h2>
+<p>Transform your Python scripts into professional, reusable packages that others can install with <code>pip</code>. Learn industry-standard practices for code organization, documentation, testing, and distribution that will make your projects maintainable, scalable, and production-ready.</p>
+<hr />
+<h2><strong>Project Structure: Building for Scale</strong></h2>
+<p>A well-organized project structure is the foundation of maintainable Python code. Here's the recommended structure for a Python package:</p>
+<pre style="white-space: pre-wrap;"><code>my_awesome_package/
+├── README.md
+├── LICENSE
+├── pyproject.toml
+├── setup.py (optional, for backwards compatibility)
+├── requirements.txt
+├── requirements-dev.txt
+├── .gitignore
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── docs/
+│   ├── conf.py
+│   └── index.rst
+├── tests/
+│   ├── __init__.py
+│   ├── test_core.py
+│   └── test_utils.py
+├── src/
+│   └── my_awesome_package/
+│       ├── __init__.py
+│       ├── core.py
+│       ├── utils.py
+│       └── cli.py
+└── examples/
+    └── basic_usage.py
+</code></pre><p><strong>Key principles:</strong></p>
+<ul>
+<li><strong>Use <code>src/</code> layout</strong>: Prevents accidental imports during development and testing</li>
+<li><strong>Separate concerns</strong>: Keep source code, tests, docs, and examples in distinct directories</li>
+<li><strong>Include metadata files</strong>: README, LICENSE, and configuration files at the root</li>
+<li><strong>Version control integration</strong>: Include <code>.gitignore</code> and CI/CD configurations</li>
+</ul>
+<h2><strong>Modern Package Configuration with pyproject.toml</strong></h2>
+<p>The <code>pyproject.toml</code> file is the modern standard for Python project configuration, replacing the older <code>setup.py</code> approach:</p>
+<pre style="white-space: pre-wrap;"><code>[build-system]
+requires = [&quot;setuptools&gt;=64&quot;, &quot;wheel&quot;]
+build-backend = &quot;setuptools.build_meta&quot;
+
+[project]
+name = &quot;my-awesome-package&quot;
+version = &quot;1.0.0&quot;
+description = &quot;A comprehensive utility package for data processing&quot;
+readme = &quot;README.md&quot;
+license = {file = &quot;LICENSE&quot;}
+authors = [
+    {name = &quot;Your Name&quot;, email = &quot;your.email@example.com&quot;},
+]
+maintainers = [
+    {name = &quot;Your Name&quot;, email = &quot;your.email@example.com&quot;},
+]
+classifiers = [
+    &quot;Development Status :: 4 - Beta&quot;,
+    &quot;Intended Audience :: Developers&quot;,
+    &quot;License :: OSI Approved :: MIT License&quot;,
+    &quot;Programming Language :: Python :: 3&quot;,
+    &quot;Programming Language :: Python :: 3.8&quot;,
+    &quot;Programming Language :: Python :: 3.9&quot;,
+    &quot;Programming Language :: Python :: 3.10&quot;,
+    &quot;Programming Language :: Python :: 3.11&quot;,
+]
+keywords = [&quot;data&quot;, &quot;processing&quot;, &quot;utilities&quot;]
+requires-python = &quot;&gt;=3.8&quot;
+dependencies = [
+    &quot;requests&gt;=2.28.0&quot;,
+    &quot;pandas&gt;=1.5.0&quot;,
+    &quot;click&gt;=8.0.0&quot;,
+]
+
+[project.optional-dependencies]
+dev = [
+    &quot;pytest&gt;=7.0.0&quot;,
+    &quot;black&gt;=22.0.0&quot;,
+    &quot;flake8&gt;=5.0.0&quot;,
+    &quot;mypy&gt;=0.991&quot;,
+    &quot;pre-commit&gt;=2.20.0&quot;,
+]
+docs = [
+    &quot;sphinx&gt;=5.0.0&quot;,
+    &quot;sphinx-rtd-theme&gt;=1.0.0&quot;,
+]
+
+[project.urls]
+Homepage = &quot;https://github.com/yourusername/my-awesome-package&quot;
+Documentation = &quot;https://my-awesome-package.readthedocs.io/&quot;
+Repository = &quot;https://github.com/yourusername/my-awesome-package.git&quot;
+&quot;Bug Tracker&quot; = &quot;https://github.com/yourusername/my-awesome-package/issues&quot;
+
+[project.scripts]
+my-tool = &quot;my_awesome_package.cli:main&quot;
+
+[tool.setuptools.packages.find]
+where = [&quot;src&quot;]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.mypy]
+python_version = &quot;3.8&quot;
+warn_return_any = true
+warn_unused_configs = true
+</code></pre><h2><strong>Writing Effective Documentation</strong></h2>
+<h3><strong>README.md: Your Package's Front Door</strong></h3>
+<p>A compelling README should include:</p>
+<pre style="white-space: pre-wrap;"><code># My Awesome Package
+
+[![PyPI version](https://badge.fury.io/py/my-awesome-package.svg)](https://badge.fury.io/py/my-awesome-package)
+[![Python Support](https://img.shields.io/pypi/pyversions/my-awesome-package.svg)](https://pypi.org/project/my-awesome-package/)
+[![Tests](https://github.com/yourusername/my-awesome-package/workflows/Tests/badge.svg)](https://github.com/yourusername/my-awesome-package/actions)
+
+A comprehensive utility package for data processing with a clean, intuitive API.
+
+## Features
+
+- ✨ Fast data processing with pandas backend
+- 🔧 Command-line interface for batch operations
+- 📊 Built-in visualization tools
+- 🚀 Async support for large datasets
+
+## Quick Start
+
+```python
+from my_awesome_package import DataProcessor
+
+processor = DataProcessor()
+result = processor.clean_data(&quot;data.csv&quot;)
+print(f&quot;Processed {len(result)} records&quot;)
+</code></pre><h2>Installation</h2>
+<pre style="white-space: pre-wrap;"><code>pip install my-awesome-package
+</code></pre><p>For development features:</p>
+<pre style="white-space: pre-wrap;"><code>pip install my-awesome-package[dev]
+</code></pre><h2>Documentation</h2>
+<p>Full documentation is available at <a href="https://my-awesome-package.readthedocs.io/">my-awesome-package.readthedocs.io</a>.</p>
+<h2>Contributing</h2>
+<p>We welcome contributions! Please see our <a href="CONTRIBUTING.md">Contributing Guide</a> for details.</p>
+<h2>License</h2>
+<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+<pre style="white-space: pre-wrap;"><code>
+### **API Documentation with Docstrings**
+
+Use comprehensive docstrings following the Google or NumPy style:
+
+```python
+def process_data(data: pd.DataFrame, 
+                 method: str = &quot;standard&quot;, 
+                 **kwargs) -&gt; pd.DataFrame:
+    &quot;&quot;&quot;Process DataFrame using specified method.
+
+    Args:
+        data: Input DataFrame to process
+        method: Processing method ('standard', 'advanced', 'custom')
+        **kwargs: Additional arguments passed to processing method
+
+    Returns:
+        Processed DataFrame with cleaned data
+
+    Raises:
+        ValueError: If method is not supported
+        ProcessingError: If data processing fails
+
+    Example:
+        &gt;&gt;&gt; import pandas as pd
+        &gt;&gt;&gt; from my_awesome_package import process_data
+        &gt;&gt;&gt; df = pd.DataFrame({'a': [1, 2, 3], 'b': [4, 5, 6]})
+        &gt;&gt;&gt; result = process_data(df, method='standard')
+        &gt;&gt;&gt; print(result.shape)
+        (3, 2)
+    &quot;&quot;&quot;
+</code></pre><h2><strong>Semantic Versioning: Communicating Changes</strong></h2>
+<p>Follow <a href="https://semver.org/">Semantic Versioning</a> (SemVer) with the format <code>MAJOR.MINOR.PATCH</code>:</p>
+<ul>
+<li><strong>MAJOR</strong>: Breaking changes that require user code modifications</li>
+<li><strong>MINOR</strong>: New features that are backwards compatible</li>
+<li><strong>PATCH</strong>: Bug fixes and minor improvements</li>
+</ul>
+<pre style="white-space: pre-wrap;"><code># src/my_awesome_package/__init__.py
+__version__ = &quot;1.2.3&quot;
+
+# Automated version management with setuptools_scm
+from importlib.metadata import version
+__version__ = version(&quot;my_awesome_package&quot;)
+</code></pre><p>For automated versioning based on git tags:</p>
+<pre style="white-space: pre-wrap;"><code>[tool.setuptools_scm]
+write_to = &quot;src/my_awesome_package/_version.py&quot;
+</code></pre><h2><strong>Building and Publishing to PyPI</strong></h2>
+<h3><strong>Building Your Package</strong></h3>
+<pre style="white-space: pre-wrap;"><code># Install build tools
+pip install build twine
+
+# Build the package
+python -m build
+
+# This creates:
+# dist/my_awesome_package-1.0.0-py3-none-any.whl
+# dist/my_awesome_package-1.0.0.tar.gz
+</code></pre><h3><strong>Publishing Process</strong></h3>
+<ol>
+<li><strong>Test on TestPyPI first:</strong></li>
+</ol>
+<pre style="white-space: pre-wrap;"><code># Upload to TestPyPI
+python -m twine upload --repository testpypi dist/*
+
+# Test installation
+pip install --index-url https://test.pypi.org/simple/ my-awesome-package
+</code></pre><ol start="2">
+<li><strong>Publish to PyPI:</strong></li>
+</ol>
+<pre style="white-space: pre-wrap;"><code># Upload to PyPI
+python -m twine upload dist/*
+</code></pre><ol start="3">
+<li><strong>Automate with GitHub Actions:</strong></li>
+</ol>
+<pre style="white-space: pre-wrap;"><code># .github/workflows/publish.yml
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine
+    - name: Build package
+      run: python -m build
+    - name: Publish to PyPI
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: twine upload dist/*
+</code></pre><h2><strong>Code Quality and Style</strong></h2>
+<h3><strong>Formatting with Black</strong></h3>
+<p>Black provides opinionated, consistent code formatting:</p>
+<pre style="white-space: pre-wrap;"><code># Install black
+pip install black
+
+# Format all Python files
+black src/ tests/
+
+# Check without modifying
+black --check src/ tests/
+</code></pre><h3><strong>Linting with Flake8</strong></h3>
+<pre style="white-space: pre-wrap;"><code># Install flake8 with plugins
+pip install flake8 flake8-docstrings flake8-import-order
+
+# Create .flake8 configuration
+echo &quot;[flake8]
+max-line-length = 88
+extend-ignore = E203, W503
+exclude = .git,__pycache__,docs/,build/,dist/&quot; &gt; .flake8
+
+# Run linting
+flake8 src/ tests/
+</code></pre><h3><strong>Pre-commit Hooks</strong></h3>
+<p>Automate code quality checks:</p>
+<pre style="white-space: pre-wrap;"><code># .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+
+  - repo: https://github.com/psf/black
+    rev: 22.12.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.991
+    hooks:
+      - id: mypy
+</code></pre><p>Install and activate:</p>
+<pre style="white-space: pre-wrap;"><code>pip install pre-commit
+pre-commit install
+</code></pre><h2><strong>Type Checking with MyPy</strong></h2>
+<p>Add type hints and static analysis:</p>
+<pre style="white-space: pre-wrap;"><code>from typing import List, Optional, Union, Dict, Any
+import pandas as pd
+
+def analyze_data(
+    data: pd.DataFrame,
+    columns: List[str],
+    method: str = &quot;mean&quot;,
+    options: Optional[Dict[str, Any]] = None
+) -&gt; Union[pd.Series, pd.DataFrame]:
+    &quot;&quot;&quot;Analyze specified columns using given method.&quot;&quot;&quot;
+    if options is None:
+        options = {}
+
+    if method == &quot;mean&quot;:
+        return data[columns].mean()
+    elif method == &quot;describe&quot;:
+        return data[columns].describe()
+    else:
+        raise ValueError(f&quot;Unknown method: {method}&quot;)
+</code></pre><p>MyPy configuration in <code>pyproject.toml</code>:</p>
+<pre style="white-space: pre-wrap;"><code>[tool.mypy]
+python_version = &quot;3.8&quot;
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+</code></pre><h2><strong>Comprehensive Testing Strategy</strong></h2>
+<h3><strong>Test Structure and Organization</strong></h3>
+<pre style="white-space: pre-wrap;"><code># tests/test_core.py
+import pytest
+import pandas as pd
+from my_awesome_package.core import DataProcessor, ProcessingError
+
+class TestDataProcessor:
+
+    @pytest.fixture
+    def sample_data(self):
+        return pd.DataFrame({
+            'A': [1, 2, 3, None, 5],
+            'B': ['a', 'b', 'c', 'd', 'e']
+        })
+
+    @pytest.fixture
+    def processor(self):
+        return DataProcessor()
+
+    def test_basic_processing(self, processor, sample_data):
+        result = processor.process(sample_data)
+        assert isinstance(result, pd.DataFrame)
+        assert len(result) == 4  # Null row removed
+
+    def test_invalid_method_raises_error(self, processor, sample_data):
+        with pytest.raises(ProcessingError, match=&quot;Unknown method&quot;):
+            processor.process(sample_data, method=&quot;invalid&quot;)
+
+    @pytest.mark.parametrize(&quot;method,expected_cols&quot;, [
+        (&quot;standard&quot;, 2),
+        (&quot;advanced&quot;, 3),
+    ])
+    def test_different_methods(self, processor, sample_data, method, expected_cols):
+        result = processor.process(sample_data, method=method)
+        assert len(result.columns) == expected_cols
+</code></pre><h3><strong>Test Configuration</strong></h3>
+<pre style="white-space: pre-wrap;"><code># pyproject.toml
+[tool.pytest.ini_options]
+testpaths = [&quot;tests&quot;]
+python_files = &quot;test_*.py&quot;
+python_functions = &quot;test_*&quot;
+addopts = &quot;-v --tb=short --strict-markers&quot;
+markers = [
+    &quot;slow: marks tests as slow&quot;,
+    &quot;integration: marks tests as integration tests&quot;,
+]
+</code></pre><h2><strong>Continuous Integration with GitHub Actions</strong></h2>
+<pre style="white-space: pre-wrap;"><code># .github/workflows/ci.yml
+name: Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, '3.10', '3.11']
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .[dev]
+
+    - name: Lint with flake8
+      run: flake8 src/ tests/
+
+    - name: Check formatting with black
+      run: black --check src/ tests/
+
+    - name: Type check with mypy
+      run: mypy src/
+
+    - name: Test with pytest
+      run: pytest --cov=src --cov-report=xml
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+</code></pre><h2><strong>Managing Updates and Deprecations</strong></h2>
+<h3><strong>Deprecation Warnings</strong></h3>
+<pre style="white-space: pre-wrap;"><code>import warnings
+from typing import Any
+
+def old_function(data: Any) -&gt; Any:
+    &quot;&quot;&quot;Legacy function - use new_function instead.&quot;&quot;&quot;
+    warnings.warn(
+        &quot;old_function is deprecated and will be removed in v2.0.0. &quot;
+        &quot;Use new_function instead.&quot;,
+        DeprecationWarning,
+        stacklevel=2
+    )
+    return new_function(data)
+</code></pre><h3><strong>Changelog Management</strong></h3>
+<p>Maintain a <code>CHANGELOG.md</code> following <a href="https://keepachangelog.com/">Keep a Changelog</a>:</p>
+<pre style="white-space: pre-wrap;"><code># Changelog
+
+## [Unreleased]
+### Added
+- New data validation features
+
+## [1.2.0] - 2023-12-01
+### Added
+- Async processing support
+- New CLI commands
+
+### Changed
+- Improved error messages
+- Updated dependencies
+
+### Deprecated
+- `old_function()` will be removed in v2.0.0
+
+### Fixed
+- Memory leak in large dataset processing
+
+## [1.1.0] - 2023-11-15
+### Added
+- Type hints for all public APIs
+</code></pre><h2><strong>Best Practices Summary</strong></h2>
+<ol>
+<li><strong>Follow PEP 8 and use automated formatters</strong> for consistent code style</li>
+<li><strong>Write comprehensive tests</strong> with good coverage (aim for &gt;90%)</li>
+<li><strong>Use type hints</strong> for better IDE support and error detection</li>
+<li><strong>Document your API</strong> with clear docstrings and examples</li>
+<li><strong>Version semantically</strong> and maintain a changelog</li>
+<li><strong>Automate quality checks</strong> with pre-commit hooks and CI/CD</li>
+<li><strong>Structure projects consistently</strong> using established patterns</li>
+<li><strong>Handle deprecations gracefully</strong> with proper warnings and migration paths</li>
+</ol>
+<p>By following these practices, your Python packages will be professional, maintainable, and ready for production use. Remember that great software is not just about functionality—it's about creating a positive experience for developers who use and contribute to your code.</p>
+<p>YOU DID IT! Now let's go over the <a href="https://python.robertdevore.com/blog/course-conclusion-from-python-novice-to-professional-developer">course conclusion</a> to see what's next!</p>
+
+    </article>
+</main>
+
+
+<footer class="bg-background border-t border-primary mt-10 py-6" id="footer">
+    <div class="container max-w-screen-xl m-auto px-4 text-center">
+        <p>Get <a href="https://stattic.site/" target="_blank" class="text-links font-bold" aria-label="Stattic - opens in a new tab">Stattic</a>. Built by <a href="https://robertdevore.com/" target="_blank" class="text-links font-bold" aria-label="Robert DeVore's personal website - opens in a new tab">Robert DeVore</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

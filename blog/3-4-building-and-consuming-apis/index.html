@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.4. Building and Consuming APIs | Stattic</title>
+    <meta name="description" content="Stattic is a fast, lightweight static site generator that optimizes images, supports custom fonts, and easily integrates with GitHub Pages for quick, SEO-friendly site deployment without the bloat of traditional CMS platforms like WordPress.">
+    <meta name="keywords" content="python, advanced python, python course, python tutorial">
+    <meta name="author" content="Robert DeVore">
+    <link href="../../assets/css/tailwind.min.css" rel="stylesheet">
+    
+    <link href="../../assets/css/stattic.css" rel="stylesheet">
+    <link href="../../assets/css/fonts.css" rel="stylesheet">
+    
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="3.4. Building and Consuming APIs">
+    <meta property="og:description" content="Stattic is a fast, lightweight static site generator.">
+    <meta property="og:url" content="https://python.robertdevore.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="3.4. Building and Consuming APIs">
+    <meta name="twitter:description" content="Stattic is a fast, lightweight static site generator.">
+    
+    <!-- Alpine.js for interactive components -->
+    <script src="../../assets/js/alpine.min.js" defer></script>
+</head>
+<body class="bg-background bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white to-gray-50 text-primary font-body-light">
+
+<!-- Skip Links for Accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#navigation" class="skip-link">Skip to navigation</a>
+<a href="#footer" class="skip-link">Skip to footer</a>
+
+<header id="navigation">
+    <div class="container max-w-screen-xl m-auto py-6 px-4 flex justify-between items-center">
+        <h2 class="text-3xl font-bold quicksand-700"><a href="../../" class="text-links">Python Course</a></h2>
+        <nav>
+            <ul class="flex space-x-6">
+                
+                    
+                        <li>
+                            <a href="../../sample-page/" class="text-primary hover:underline">About This Site</a>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container max-w-2xl m-auto py-10 px-4" id="main-content">
+    <article class="prose max-w-none stattic-content">
+        
+        <h1 class="text-6xl font-bold mb-4 text-links quicksand-700 post-title">3.4. Building and Consuming APIs</h1>
+        <p class="text-2md post-meta mb-4 pb-2 post-date italic border-b border-primary"><span class="date">June 17, 2025</span> &middot; <span class="author">Robert DeVore</span></p>
+        <h2>Overview</h2>
+<p>APIs (Application Programming Interfaces) are the backbone of modern software development, enabling applications to communicate with each other over the internet. In this chapter, you'll master both sides of API development: building robust REST APIs using Flask and FastAPI, and consuming external APIs to integrate powerful third-party services into your applications.</p>
+<hr />
+<h2>What is an API?</h2>
+<p>An <strong>API (Application Programming Interface)</strong> is a set of rules and protocols that allows different software applications to communicate with each other. Think of it as a waiter in a restaurant—you (the client) don't need to know how the kitchen works, but you can order food through the waiter (API), who communicates your request to the kitchen (server) and brings back your meal (response).</p>
+<p><strong>REST (Representational State Transfer)</strong> is an architectural style for designing networked applications. RESTful APIs use standard HTTP methods and are stateless, meaning each request contains all the information needed to process it.</p>
+<h3>Key REST Principles:</h3>
+<ul>
+<li><strong>Stateless</strong>: Each request is independent</li>
+<li><strong>Resource-based</strong>: URLs represent resources (e.g., <code>/users/123</code>)</li>
+<li><strong>HTTP Methods</strong>: Use standard verbs (GET, POST, PUT, DELETE)</li>
+<li><strong>JSON</strong>: Commonly used data format for requests and responses</li>
+</ul>
+<hr />
+<h2>HTTP Methods &amp; Status Codes</h2>
+<p>Understanding HTTP methods and status codes is crucial for API development:</p>
+<h3>HTTP Methods:</h3>
+<ul>
+<li><strong>GET</strong>: Retrieve data (e.g., get user information)</li>
+<li><strong>POST</strong>: Create new resources (e.g., create a new user)</li>
+<li><strong>PUT</strong>: Update entire resources (e.g., update all user fields)</li>
+<li><strong>PATCH</strong>: Partially update resources (e.g., update user's email only)</li>
+<li><strong>DELETE</strong>: Remove resources (e.g., delete a user)</li>
+</ul>
+<h3>Common Status Codes:</h3>
+<ul>
+<li><strong>200 OK</strong>: Request successful</li>
+<li><strong>201 Created</strong>: Resource created successfully</li>
+<li><strong>400 Bad Request</strong>: Invalid request data</li>
+<li><strong>401 Unauthorized</strong>: Authentication required</li>
+<li><strong>403 Forbidden</strong>: Access denied</li>
+<li><strong>404 Not Found</strong>: Resource doesn't exist</li>
+<li><strong>500 Internal Server Error</strong>: Server error</li>
+</ul>
+<hr />
+<h2>Creating a Simple REST API with Flask</h2>
+<p>Flask is a lightweight, flexible web framework perfect for building APIs. Let's create a Todo API to demonstrate core concepts.</p>
+<h3>Setting Up Flask</h3>
+<p>First, install Flask in your virtual environment:</p>
+<pre style="white-space: pre-wrap;"><code>pip install flask flask-cors
+</code></pre><h3>Basic Flask API Structure</h3>
+<pre style="white-space: pre-wrap;"><code># app.py
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+from datetime import datetime
+import uuid
+
+app = Flask(__name__)
+CORS(app)  # Enable Cross-Origin Resource Sharing
+
+# In-memory data store (use a database in production)
+todos = []
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    &quot;&quot;&quot;Simple health check endpoint&quot;&quot;&quot;
+    return jsonify({
+        'status': 'healthy',
+        'timestamp': datetime.utcnow().isoformat()
+    })
+
+@app.route('/todos', methods=['GET'])
+def get_todos():
+    &quot;&quot;&quot;Get all todos&quot;&quot;&quot;
+    return jsonify({
+        'todos': todos,
+        'count': len(todos)
+    })
+
+@app.route('/todos', methods=['POST'])
+def create_todo():
+    &quot;&quot;&quot;Create a new todo&quot;&quot;&quot;
+    data = request.get_json()
+
+    # Basic validation
+    if not data or 'title' not in data:
+        return jsonify({'error': 'Title is required'}), 400
+
+    todo = {
+        'id': str(uuid.uuid4()),
+        'title': data['title'],
+        'description': data.get('description', ''),
+        'completed': False,
+        'created_at': datetime.utcnow().isoformat()
+    }
+
+    todos.append(todo)
+    return jsonify(todo), 201
+
+@app.route('/todos/&lt;todo_id&gt;', methods=['GET'])
+def get_todo(todo_id):
+    &quot;&quot;&quot;Get a specific todo by ID&quot;&quot;&quot;
+    todo = next((t for t in todos if t['id'] == todo_id), None)
+    if not todo:
+        return jsonify({'error': 'Todo not found'}), 404
+    return jsonify(todo)
+
+@app.route('/todos/&lt;todo_id&gt;', methods=['PUT'])
+def update_todo(todo_id):
+    &quot;&quot;&quot;Update a todo&quot;&quot;&quot;
+    todo = next((t for t in todos if t['id'] == todo_id), None)
+    if not todo:
+        return jsonify({'error': 'Todo not found'}), 404
+
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'No data provided'}), 400
+
+    # Update fields
+    todo['title'] = data.get('title', todo['title'])
+    todo['description'] = data.get('description', todo['description'])
+    todo['completed'] = data.get('completed', todo['completed'])
+
+    return jsonify(todo)
+
+@app.route('/todos/&lt;todo_id&gt;', methods=['DELETE'])
+def delete_todo(todo_id):
+    &quot;&quot;&quot;Delete a todo&quot;&quot;&quot;
+    global todos
+    todos = [t for t in todos if t['id'] != todo_id]
+    return jsonify({'message': 'Todo deleted successfully'})
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
+</code></pre><p>Run your API:</p>
+<pre style="white-space: pre-wrap;"><code>python app.py
+</code></pre><p>Test it with curl or a tool like Postman:</p>
+<pre style="white-space: pre-wrap;"><code># Create a todo
+curl -X POST http://localhost:5000/todos \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;title&quot;: &quot;Learn Flask APIs&quot;, &quot;description&quot;: &quot;Build awesome APIs&quot;}'
+
+# Get all todos
+curl http://localhost:5000/todos
+</code></pre><hr />
+<h2>Introduction to FastAPI</h2>
+<p>FastAPI is a modern, high-performance web framework that automatically generates API documentation and provides excellent type safety. It's built on Python 3.6+ type hints.</p>
+<h3>Setting Up FastAPI</h3>
+<pre style="white-space: pre-wrap;"><code>pip install fastapi uvicorn python-multipart
+</code></pre><h3>FastAPI Todo API</h3>
+<pre style="white-space: pre-wrap;"><code># main.py
+from fastapi import FastAPI, HTTPException, Depends
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, Field
+from typing import List, Optional
+from datetime import datetime
+import uuid
+
+app = FastAPI(
+    title=&quot;Todo API&quot;,
+    description=&quot;A simple Todo API built with FastAPI&quot;,
+    version=&quot;1.0.0&quot;
+)
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[&quot;*&quot;],
+    allow_credentials=True,
+    allow_methods=[&quot;*&quot;],
+    allow_headers=[&quot;*&quot;],
+)
+
+# Pydantic models for request/response validation
+class TodoCreate(BaseModel):
+    title: str = Field(..., min_length=1, max_length=100)
+    description: Optional[str] = Field(None, max_length=500)
+
+class TodoUpdate(BaseModel):
+    title: Optional[str] = Field(None, min_length=1, max_length=100)
+    description: Optional[str] = Field(None, max_length=500)
+    completed: Optional[bool] = None
+
+class Todo(BaseModel):
+    id: str
+    title: str
+    description: str
+    completed: bool
+    created_at: datetime
+
+class TodoResponse(BaseModel):
+    todos: List[Todo]
+    count: int
+
+# In-memory storage
+todos_db = []
+
+@app.get(&quot;/health&quot;)
+async def health_check():
+    &quot;&quot;&quot;Health check endpoint&quot;&quot;&quot;
+    return {
+        &quot;status&quot;: &quot;healthy&quot;,
+        &quot;timestamp&quot;: datetime.utcnow()
+    }
+
+@app.get(&quot;/todos&quot;, response_model=TodoResponse)
+async def get_todos():
+    &quot;&quot;&quot;Get all todos&quot;&quot;&quot;
+    return TodoResponse(todos=todos_db, count=len(todos_db))
+
+@app.post(&quot;/todos&quot;, response_model=Todo, status_code=201)
+async def create_todo(todo_data: TodoCreate):
+    &quot;&quot;&quot;Create a new todo&quot;&quot;&quot;
+    todo = Todo(
+        id=str(uuid.uuid4()),
+        title=todo_data.title,
+        description=todo_data.description or &quot;&quot;,
+        completed=False,
+        created_at=datetime.utcnow()
+    )
+    todos_db.append(todo)
+    return todo
+
+@app.get(&quot;/todos/{todo_id}&quot;, response_model=Todo)
+async def get_todo(todo_id: str):
+    &quot;&quot;&quot;Get a specific todo by ID&quot;&quot;&quot;
+    todo = next((t for t in todos_db if t.id == todo_id), None)
+    if not todo:
+        raise HTTPException(status_code=404, detail=&quot;Todo not found&quot;)
+    return todo
+
+@app.put(&quot;/todos/{todo_id}&quot;, response_model=Todo)
+async def update_todo(todo_id: str, todo_update: TodoUpdate):
+    &quot;&quot;&quot;Update a todo&quot;&quot;&quot;
+    todo = next((t for t in todos_db if t.id == todo_id), None)
+    if not todo:
+        raise HTTPException(status_code=404, detail=&quot;Todo not found&quot;)
+
+    # Update only provided fields
+    if todo_update.title is not None:
+        todo.title = todo_update.title
+    if todo_update.description is not None:
+        todo.description = todo_update.description
+    if todo_update.completed is not None:
+        todo.completed = todo_update.completed
+
+    return todo
+
+@app.delete(&quot;/todos/{todo_id}&quot;)
+async def delete_todo(todo_id: str):
+    &quot;&quot;&quot;Delete a todo&quot;&quot;&quot;
+    global todos_db
+    original_count = len(todos_db)
+    todos_db = [t for t in todos_db if t.id != todo_id]
+
+    if len(todos_db) == original_count:
+        raise HTTPException(status_code=404, detail=&quot;Todo not found&quot;)
+
+    return {&quot;message&quot;: &quot;Todo deleted successfully&quot;}
+
+if __name__ == &quot;__main__&quot;:
+    import uvicorn
+    uvicorn.run(app, host=&quot;0.0.0.0&quot;, port=8000)
+</code></pre><p>Run FastAPI:</p>
+<pre style="white-space: pre-wrap;"><code>uvicorn main:app --reload
+</code></pre><p>FastAPI automatically generates interactive documentation at <code>http://localhost:8000/docs</code>.</p>
+<hr />
+<h2>Data Validation &amp; Serialization</h2>
+<h3>Flask with Marshmallow</h3>
+<p>For Flask, use Marshmallow for data validation:</p>
+<pre style="white-space: pre-wrap;"><code>pip install marshmallow
+</code></pre><pre style="white-space: pre-wrap;"><code>from marshmallow import Schema, fields, validate, ValidationError
+
+class TodoSchema(Schema):
+    id = fields.Str(dump_only=True)
+    title = fields.Str(required=True, validate=validate.Length(min=1, max=100))
+    description = fields.Str(validate=validate.Length(max=500))
+    completed = fields.Bool()
+    created_at = fields.DateTime(dump_only=True)
+
+todo_schema = TodoSchema()
+todos_schema = TodoSchema(many=True)
+
+@app.route('/todos', methods=['POST'])
+def create_todo():
+    try:
+        data = todo_schema.load(request.get_json())
+    except ValidationError as err:
+        return jsonify({'errors': err.messages}), 400
+
+    # Create todo with validated data
+    # ... rest of the logic
+</code></pre><h3>FastAPI with Pydantic</h3>
+<p>FastAPI uses Pydantic models (shown earlier) for automatic validation:</p>
+<pre style="white-space: pre-wrap;"><code>from pydantic import BaseModel, Field, validator
+
+class TodoCreate(BaseModel):
+    title: str = Field(..., min_length=1, max_length=100)
+    description: Optional[str] = Field(None, max_length=500)
+
+    @validator('title')
+    def title_must_not_be_empty(cls, v):
+        if not v.strip():
+            raise ValueError('Title cannot be empty')
+        return v.strip()
+</code></pre><hr />
+<h2>Authentication &amp; Security</h2>
+<h3>API Key Authentication</h3>
+<pre style="white-space: pre-wrap;"><code># Flask example
+from functools import wraps
+
+API_KEYS = {'your-secret-key': 'user1'}
+
+def require_api_key(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        api_key = request.headers.get('X-API-Key')
+        if not api_key or api_key not in API_KEYS:
+            return jsonify({'error': 'Invalid API key'}), 401
+        return f(*args, **kwargs)
+    return decorated_function
+
+@app.route('/todos', methods=['POST'])
+@require_api_key
+def create_todo():
+    # Protected endpoint
+    pass
+</code></pre><h3>JWT Authentication (FastAPI)</h3>
+<pre style="white-space: pre-wrap;"><code>from fastapi import Depends, HTTPException, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+import jwt
+
+security = HTTPBearer()
+
+def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    try:
+        payload = jwt.decode(credentials.credentials, SECRET_KEY, algorithms=[&quot;HS256&quot;])
+        return payload
+    except jwt.PyJWTError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=&quot;Invalid token&quot;
+        )
+
+@app.post(&quot;/todos&quot;, response_model=Todo)
+async def create_todo(todo_data: TodoCreate, user=Depends(verify_token)):
+    # Protected endpoint
+    pass
+</code></pre><hr />
+<h2>Consuming APIs with Python</h2>
+<p>Use the <code>requests</code> library to consume external APIs:</p>
+<pre style="white-space: pre-wrap;"><code>pip install requests
+</code></pre><h3>Basic API Client</h3>
+<pre style="white-space: pre-wrap;"><code>import requests
+from typing import Dict, List, Optional
+
+class TodoAPIClient:
+    def __init__(self, base_url: str, api_key: Optional[str] = None):
+        self.base_url = base_url.rstrip('/')
+        self.session = requests.Session()
+        if api_key:
+            self.session.headers.update({'X-API-Key': api_key})
+
+    def get_todos(self) -&gt; List[Dict]:
+        &quot;&quot;&quot;Get all todos&quot;&quot;&quot;
+        response = self.session.get(f&quot;{self.base_url}/todos&quot;)
+        response.raise_for_status()
+        return response.json()['todos']
+
+    def create_todo(self, title: str, description: str = &quot;&quot;) -&gt; Dict:
+        &quot;&quot;&quot;Create a new todo&quot;&quot;&quot;
+        data = {'title': title, 'description': description}
+        response = self.session.post(f&quot;{self.base_url}/todos&quot;, json=data)
+        response.raise_for_status()
+        return response.json()
+
+    def update_todo(self, todo_id: str, **kwargs) -&gt; Dict:
+        &quot;&quot;&quot;Update a todo&quot;&quot;&quot;
+        response = self.session.put(f&quot;{self.base_url}/todos/{todo_id}&quot;, json=kwargs)
+        response.raise_for_status()
+        return response.json()
+
+    def delete_todo(self, todo_id: str) -&gt; bool:
+        &quot;&quot;&quot;Delete a todo&quot;&quot;&quot;
+        response = self.session.delete(f&quot;{self.base_url}/todos/{todo_id}&quot;)
+        response.raise_for_status()
+        return True
+
+# Usage example
+client = TodoAPIClient(&quot;http://localhost:8000&quot;)
+
+# Create a todo
+new_todo = client.create_todo(&quot;Learn API consumption&quot;, &quot;Master REST APIs&quot;)
+print(f&quot;Created todo: {new_todo['id']}&quot;)
+
+# Get all todos
+todos = client.get_todos()
+print(f&quot;Total todos: {len(todos)}&quot;)
+
+# Update todo
+updated = client.update_todo(new_todo['id'], completed=True)
+print(f&quot;Todo completed: {updated['completed']}&quot;)
+</code></pre><h3>Async API Client</h3>
+<p>For high-performance applications, use <code>httpx</code> for async requests:</p>
+<pre style="white-space: pre-wrap;"><code>pip install httpx
+</code></pre><pre style="white-space: pre-wrap;"><code>import httpx
+import asyncio
+from typing import List, Dict
+
+class AsyncTodoClient:
+    def __init__(self, base_url: str):
+        self.base_url = base_url.rstrip('/')
+
+    async def get_todos(self) -&gt; List[Dict]:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(f&quot;{self.base_url}/todos&quot;)
+            response.raise_for_status()
+            return response.json()['todos']
+
+    async def create_multiple_todos(self, todos: List[Dict]) -&gt; List[Dict]:
+        &quot;&quot;&quot;Create multiple todos concurrently&quot;&quot;&quot;
+        async with httpx.AsyncClient() as client:
+            tasks = [
+                client.post(f&quot;{self.base_url}/todos&quot;, json=todo)
+                for todo in todos
+            ]
+            responses = await asyncio.gather(*tasks)
+            return [r.json() for r in responses]
+
+# Usage
+async def main():
+    client = AsyncTodoClient(&quot;http://localhost:8000&quot;)
+
+    # Create multiple todos concurrently
+    todos_to_create = [
+        {&quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;First task&quot;},
+        {&quot;title&quot;: &quot;Task 2&quot;, &quot;description&quot;: &quot;Second task&quot;},
+        {&quot;title&quot;: &quot;Task 3&quot;, &quot;description&quot;: &quot;Third task&quot;},
+    ]
+
+    created_todos = await client.create_multiple_todos(todos_to_create)
+    print(f&quot;Created {len(created_todos)} todos&quot;)
+
+# Run async function
+asyncio.run(main())
+</code></pre><hr />
+<h2>Practical Example: Weather API Integration</h2>
+<p>Let's build a weather service that consumes the OpenWeatherMap API:</p>
+<pre style="white-space: pre-wrap;"><code>import requests
+from dataclasses import dataclass
+from typing import Optional
+import os
+
+@dataclass
+class WeatherData:
+    city: str
+    temperature: float
+    description: str
+    humidity: int
+    feels_like: float
+
+class WeatherService:
+    def __init__(self, api_key: str):
+        self.api_key = api_key
+        self.base_url = &quot;http://api.openweathermap.org/data/2.5&quot;
+
+    def get_weather(self, city: str, units: str = &quot;metric&quot;) -&gt; Optional[WeatherData]:
+        &quot;&quot;&quot;Get current weather for a city&quot;&quot;&quot;
+        url = f&quot;{self.base_url}/weather&quot;
+        params = {
+            'q': city,
+            'appid': self.api_key,
+            'units': units
+        }
+
+        try:
+            response = requests.get(url, params=params, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+
+            return WeatherData(
+                city=data['name'],
+                temperature=data['main']['temp'],
+                description=data['weather'][0]['description'],
+                humidity=data['main']['humidity'],
+                feels_like=data['main']['feels_like']
+            )
+        except requests.RequestException as e:
+            print(f&quot;Error fetching weather data: {e}&quot;)
+            return None
+
+# Flask integration
+@app.route('/weather/&lt;city&gt;')
+def get_weather(city):
+    weather_service = WeatherService(os.getenv('OPENWEATHER_API_KEY'))
+    weather = weather_service.get_weather(city)
+
+    if not weather:
+        return jsonify({'error': 'Weather data not available'}), 404
+
+    return jsonify({
+        'city': weather.city,
+        'temperature': weather.temperature,
+        'description': weather.description,
+        'humidity': weather.humidity,
+        'feels_like': weather.feels_like
+    })
+</code></pre><hr />
+<h2>API Documentation</h2>
+<h3>FastAPI Auto-Documentation</h3>
+<p>FastAPI automatically generates OpenAPI (Swagger) documentation. Enhance it with detailed descriptions:</p>
+<pre style="white-space: pre-wrap;"><code>@app.post(
+    &quot;/todos&quot;,
+    response_model=Todo,
+    status_code=201,
+    summary=&quot;Create a new todo&quot;,
+    description=&quot;Create a new todo item with title and optional description&quot;,
+    response_description=&quot;The created todo item&quot;
+)
+async def create_todo(todo_data: TodoCreate):
+    &quot;&quot;&quot;
+    Create a new todo with the following information:
+
+    - **title**: The todo title (required, 1-100 characters)
+    - **description**: Optional description (max 500 characters)
+    &quot;&quot;&quot;
+    # Implementation here
+</code></pre><h3>Flask Documentation with Flask-RESTX</h3>
+<pre style="white-space: pre-wrap;"><code>pip install flask-restx
+</code></pre><pre style="white-space: pre-wrap;"><code>from flask_restx import Api, Resource, fields
+
+api = Api(app, doc='/docs/')
+
+todo_model = api.model('Todo', {
+    'id': fields.String(description='Todo ID'),
+    'title': fields.String(required=True, description='Todo title'),
+    'description': fields.String(description='Todo description'),
+    'completed': fields.Boolean(description='Completion status')
+})
+
+@api.route('/todos')
+class TodoList(Resource):
+    @api.doc('list_todos')
+    @api.marshal_list_with(todo_model)
+    def get(self):
+        &quot;&quot;&quot;Get all todos&quot;&quot;&quot;
+        return todos
+
+    @api.doc('create_todo')
+    @api.expect(todo_model)
+    @api.marshal_with(todo_model, code=201)
+    def post(self):
+        &quot;&quot;&quot;Create a new todo&quot;&quot;&quot;
+        # Implementation here
+</code></pre><hr />
+<h2>Best Practices &amp; Error Handling</h2>
+<h3>Robust Error Handling</h3>
+<pre style="white-space: pre-wrap;"><code>from flask import Flask
+import logging
+
+app = Flask(__name__)
+logging.basicConfig(level=logging.INFO)
+
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({'error': 'Resource not found'}), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    app.logger.error(f'Server Error: {error}')
+    return jsonify({'error': 'Internal server error'}), 500
+
+@app.errorhandler(ValidationError)
+def validation_error(error):
+    return jsonify({'error': 'Validation failed', 'details': error.messages}), 400
+</code></pre><h3>Rate Limiting</h3>
+<pre style="white-space: pre-wrap;"><code>pip install flask-limiter
+</code></pre><pre style="white-space: pre-wrap;"><code>from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=[&quot;100 per hour&quot;]
+)
+
+@app.route('/todos', methods=['POST'])
+@limiter.limit(&quot;10 per minute&quot;)
+def create_todo():
+    # Implementation here
+</code></pre><h3>API Versioning</h3>
+<pre style="white-space: pre-wrap;"><code># URL versioning
+@app.route('/api/v1/todos')
+def get_todos_v1():
+    pass
+
+@app.route('/api/v2/todos')
+def get_todos_v2():
+    pass
+
+# Header versioning
+@app.before_request
+def check_api_version():
+    version = request.headers.get('API-Version', 'v1')
+    if version not in ['v1', 'v2']:
+        return jsonify({'error': 'Unsupported API version'}), 400
+</code></pre><p>This comprehensive guide covers both building and consuming APIs with Python, providing you with the knowledge to create robust, scalable web services and integrate with external APIs effectively. Remember to always validate input data, handle errors gracefully, and document your APIs thoroughly for better developer experience.</p>
+<p>Now, let's review <a href="https://python.robertdevore.com/blog/packaging-distribution-and-best-practices">packaging distribution and best practices</a>.</p>
+
+    </article>
+</main>
+
+
+<footer class="bg-background border-t border-primary mt-10 py-6" id="footer">
+    <div class="container max-w-screen-xl m-auto px-4 text-center">
+        <p>Get <a href="https://stattic.site/" target="_blank" class="text-links font-bold" aria-label="Stattic - opens in a new tab">Stattic</a>. Built by <a href="https://robertdevore.com/" target="_blank" class="text-links font-bold" aria-label="Robert DeVore's personal website - opens in a new tab">Robert DeVore</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
