@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.3. Control Flow (If, For, While) | Stattic</title>
+    <meta name="description" content="Stattic is a fast, lightweight static site generator that optimizes images, supports custom fonts, and easily integrates with GitHub Pages for quick, SEO-friendly site deployment without the bloat of traditional CMS platforms like WordPress.">
+    <meta name="keywords" content="python, beginner python, python course, python tutorial">
+    <meta name="author" content="Robert DeVore">
+    <link href="../../assets/css/tailwind.min.css" rel="stylesheet">
+    
+    <link href="../../assets/css/stattic.css" rel="stylesheet">
+    <link href="../../assets/css/fonts.css" rel="stylesheet">
+    
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="1.3. Control Flow (If, For, While)">
+    <meta property="og:description" content="Stattic is a fast, lightweight static site generator.">
+    <meta property="og:url" content="https://python.robertdevore.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="1.3. Control Flow (If, For, While)">
+    <meta name="twitter:description" content="Stattic is a fast, lightweight static site generator.">
+    
+    <!-- Alpine.js for interactive components -->
+    <script src="../../assets/js/alpine.min.js" defer></script>
+</head>
+<body class="bg-background bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white to-gray-50 text-primary font-body-light">
+
+<!-- Skip Links for Accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#navigation" class="skip-link">Skip to navigation</a>
+<a href="#footer" class="skip-link">Skip to footer</a>
+
+<header id="navigation">
+    <div class="container max-w-screen-xl m-auto py-6 px-4 flex justify-between items-center">
+        <h2 class="text-3xl font-bold quicksand-700"><a href="../../" class="text-links">Python Course</a></h2>
+        <nav>
+            <ul class="flex space-x-6">
+                
+                    
+                        <li>
+                            <a href="../../sample-page/" class="text-primary hover:underline">About This Site</a>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container max-w-2xl m-auto py-10 px-4" id="main-content">
+    <article class="prose max-w-none stattic-content">
+        
+        <h1 class="text-6xl font-bold mb-4 text-links quicksand-700 post-title">1.3. Control Flow (If, For, While)</h1>
+        <p class="text-2md post-meta mb-4 pb-2 post-date italic border-b border-primary"><span class="date">June 17, 2025</span> &middot; <span class="author">Robert DeVore</span></p>
+        <h2>Overview:</h2>
+<p>Control flow is what makes your programs truly intelligent. Instead of just executing line by line from top to bottom, you'll learn to make your code make decisions, repeat actions, and respond dynamically to different situations. This is where your programs start to feel alive—they can think, choose, and adapt based on the data they encounter.</p>
+<p>In this chapter, you'll master the fundamental building blocks that let you control the flow of execution in your Python programs: conditional statements (<code>if</code>, <code>elif</code>, <code>else</code>) and loops (<code>for</code> and <code>while</code>). By the end, you'll be able to build programs that can handle user input intelligently, process collections of data, and solve real-world problems through logical decision-making.</p>
+<hr />
+<h2><strong>if, elif, else Statements: Making Decisions</strong></h2>
+<p>Every program needs to make decisions. Should we display a welcome message or an error? Is the user old enough to access this content? Has the player won the game? Python's conditional statements let your code choose different paths based on the conditions you specify.</p>
+<h3><strong>Basic if Statements</strong></h3>
+<p>The simplest form of decision-making is the <code>if</code> statement. It evaluates a condition and only executes the code inside if that condition is <code>True</code>.</p>
+<pre style="white-space: pre-wrap;"><code>age = 18
+
+if age &gt;= 18:
+    print(&quot;You are eligible to vote!&quot;)
+    print(&quot;Welcome to the voting system.&quot;)
+</code></pre><p>The basic structure is:</p>
+<ul>
+<li><code>if</code> keyword followed by a condition</li>
+<li>A colon (<code>:</code>) to end the condition line</li>
+<li>Indented code block that executes when the condition is <code>True</code></li>
+</ul>
+<p><strong>Important:</strong> Python uses indentation (spaces or tabs) to define code blocks. Everything indented at the same level after the <code>if</code> statement belongs to that conditional block.</p>
+<h3><strong>Adding else for Alternative Actions</strong></h3>
+<p>What if you want to do something different when the condition is <code>False</code>? That's where <code>else</code> comes in:</p>
+<pre style="white-space: pre-wrap;"><code>age = 16
+
+if age &gt;= 18:
+    print(&quot;You are eligible to vote!&quot;)
+else:
+    print(&quot;You are not old enough to vote yet.&quot;)
+    print(f&quot;You can vote in {18 - age} years.&quot;)
+</code></pre><p>This creates a clear fork in your program's logic—one path for when the condition is true, another for when it's false.</p>
+<h3><strong>Multiple Conditions with elif</strong></h3>
+<p>Real life rarely involves just two choices. The <code>elif</code> (else if) statement lets you check multiple conditions in sequence:</p>
+<pre style="white-space: pre-wrap;"><code>score = 85
+
+if score &gt;= 90:
+    grade = &quot;A&quot;
+    print(&quot;Excellent work!&quot;)
+elif score &gt;= 80:
+    grade = &quot;B&quot;
+    print(&quot;Good job!&quot;)
+elif score &gt;= 70:
+    grade = &quot;C&quot;
+    print(&quot;Satisfactory.&quot;)
+elif score &gt;= 60:
+    grade = &quot;D&quot;
+    print(&quot;You passed, but consider studying more.&quot;)
+else:
+    grade = &quot;F&quot;
+    print(&quot;Unfortunately, you failed. Don't give up!&quot;)
+
+print(f&quot;Your grade is: {grade}&quot;)
+</code></pre><p>Python evaluates these conditions from top to bottom and stops at the first <code>True</code> condition. This means order matters! If you put the <code>score &gt;= 60</code> condition first, a score of 85 would trigger that condition instead of the more specific <code>score &gt;= 80</code>.</p>
+<h3><strong>Practical Example: A Simple Calculator Menu</strong></h3>
+<p>Let's build something useful—a calculator that asks the user what operation they want to perform:</p>
+<pre style="white-space: pre-wrap;"><code>print(&quot;Simple Calculator&quot;)
+print(&quot;Choose an operation:&quot;)
+print(&quot;1. Addition&quot;)
+print(&quot;2. Subtraction&quot;)
+print(&quot;3. Multiplication&quot;)
+print(&quot;4. Division&quot;)
+
+choice = input(&quot;Enter your choice (1-4): &quot;)
+
+if choice == &quot;1&quot;:
+    num1 = float(input(&quot;Enter first number: &quot;))
+    num2 = float(input(&quot;Enter second number: &quot;))
+    result = num1 + num2
+    print(f&quot;{num1} + {num2} = {result}&quot;)
+elif choice == &quot;2&quot;:
+    num1 = float(input(&quot;Enter first number: &quot;))
+    num2 = float(input(&quot;Enter second number: &quot;))
+    result = num1 - num2
+    print(f&quot;{num1} - {num2} = {result}&quot;)
+elif choice == &quot;3&quot;:
+    num1 = float(input(&quot;Enter first number: &quot;))
+    num2 = float(input(&quot;Enter second number: &quot;))
+    result = num1 * num2
+    print(f&quot;{num1} * {num2} = {result}&quot;)
+elif choice == &quot;4&quot;:
+    num1 = float(input(&quot;Enter first number: &quot;))
+    num2 = float(input(&quot;Enter second number: &quot;))
+    if num2 != 0:
+        result = num1 / num2
+        print(f&quot;{num1} / {num2} = {result}&quot;)
+    else:
+        print(&quot;Error: Cannot divide by zero!&quot;)
+else:
+    print(&quot;Invalid choice. Please run the program again.&quot;)
+</code></pre><p>Notice how we nested another <code>if</code> statement inside the division case to check for division by zero—this shows how conditional statements can be combined to handle complex logic.</p>
+<hr />
+<h2><strong>Comparison &amp; Logical Operators: Building Smart Conditions</strong></h2>
+<p>To make good decisions, your programs need to compare values and combine multiple conditions. Python provides powerful operators for these tasks.</p>
+<h3><strong>Comparison Operators</strong></h3>
+<p>These operators compare two values and return either <code>True</code> or <code>False</code>:</p>
+<table>
+<thead>
+<tr>
+  <th>Operator</th>
+  <th>Meaning</th>
+  <th>Example</th>
+  <th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>==</code></td>
+  <td>Equal to</td>
+  <td><code>5 == 5</code></td>
+  <td><code>True</code></td>
+</tr>
+<tr>
+  <td><code>!=</code></td>
+  <td>Not equal to</td>
+  <td><code>5 != 3</code></td>
+  <td><code>True</code></td>
+</tr>
+<tr>
+  <td><code>&lt;</code></td>
+  <td>Less than</td>
+  <td><code>3 &lt; 5</code></td>
+  <td><code>True</code></td>
+</tr>
+<tr>
+  <td><code>&gt;</code></td>
+  <td>Greater than</td>
+  <td><code>5 &gt; 3</code></td>
+  <td><code>True</code></td>
+</tr>
+<tr>
+  <td><code>&lt;=</code></td>
+  <td>Less than or equal</td>
+  <td><code>3 &lt;= 3</code></td>
+  <td><code>True</code></td>
+</tr>
+<tr>
+  <td><code>&gt;=</code></td>
+  <td>Greater than or equal</td>
+  <td><code>5 &gt;= 3</code></td>
+  <td><code>True</code></td>
+</tr>
+</tbody>
+</table>
+<pre style="white-space: pre-wrap;"><code># Comparing numbers
+temperature = 72
+print(temperature &gt; 70)  # True
+print(temperature == 72)  # True
+
+# Comparing strings
+name = &quot;Alice&quot;
+print(name == &quot;alice&quot;)  # False (case-sensitive!)
+print(name.lower() == &quot;alice&quot;)  # True
+
+# Comparing with user input
+user_age = int(input(&quot;Enter your age: &quot;))
+if user_age &gt;= 21:
+    print(&quot;You can legally drink alcohol in the US.&quot;)
+</code></pre><h3><strong>Logical Operators: Combining Conditions</strong></h3>
+<p>Sometimes you need to check multiple conditions at once. Logical operators let you combine conditions:</p>
+<ul>
+<li><code>and</code>: Both conditions must be <code>True</code></li>
+<li><code>or</code>: At least one condition must be <code>True</code></li>
+<li><code>not</code>: Flips <code>True</code> to <code>False</code> and vice versa</li>
+</ul>
+<pre style="white-space: pre-wrap;"><code># Using 'and' - both conditions must be true
+age = 25
+has_license = True
+
+if age &gt;= 18 and has_license:
+    print(&quot;You can rent a car!&quot;)
+else:
+    print(&quot;Sorry, you cannot rent a car.&quot;)
+
+# Using 'or' - at least one condition must be true
+day = &quot;Saturday&quot;
+is_holiday = False
+
+if day == &quot;Saturday&quot; or day == &quot;Sunday&quot; or is_holiday:
+    print(&quot;No work today!&quot;)
+else:
+    print(&quot;It's a workday.&quot;)
+
+# Using 'not' - reverses the boolean value
+is_raining = False
+
+if not is_raining:
+    print(&quot;Great weather for a walk!&quot;)
+else:
+    print(&quot;Better stay inside.&quot;)
+</code></pre><h3><strong>Complex Logical Expressions</strong></h3>
+<p>You can combine multiple operators, but use parentheses to make your logic clear:</p>
+<pre style="white-space: pre-wrap;"><code># A more complex example: movie theater admission
+age = 16
+has_parent = True
+movie_rating = &quot;R&quot;
+
+if (age &gt;= 17) or (age &gt;= 13 and has_parent and movie_rating != &quot;NC-17&quot;):
+    print(&quot;You can watch this movie!&quot;)
+else:
+    print(&quot;Sorry, you cannot watch this movie.&quot;)
+</code></pre><hr />
+<h2><strong>for Loops: Repeating Actions with Collections</strong></h2>
+<p>Imagine you need to print numbers 1 through 10, or process every item in a shopping list. Writing individual lines for each item would be tedious and impractical. Loops solve this by letting you repeat code automatically.</p>
+<h3><strong>Basic for Loop Structure</strong></h3>
+<p>The <code>for</code> loop iterates over a sequence (like a list, string, or range):</p>
+<pre style="white-space: pre-wrap;"><code>fruits = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;, &quot;date&quot;]
+
+for fruit in fruits:
+    print(f&quot;I like {fruit}s!&quot;)
+</code></pre><p>Output:</p>
+<pre style="white-space: pre-wrap;"><code>I like apples!
+I like bananas!
+I like cherrys!
+I like dates!
+</code></pre><h3><strong>Using range() for Number Sequences</strong></h3>
+<p>The <code>range()</code> function generates sequences of numbers, perfect for counting loops:</p>
+<pre style="white-space: pre-wrap;"><code># Print numbers 0 through 4
+for i in range(5):
+    print(f&quot;Count: {i}&quot;)
+
+# Print numbers 1 through 5
+for i in range(1, 6):
+    print(f&quot;Count: {i}&quot;)
+
+# Print even numbers from 2 to 10
+for i in range(2, 11, 2):
+    print(f&quot;Even number: {i}&quot;)
+</code></pre><p>The <code>range()</code> function takes up to three parameters:</p>
+<ul>
+<li><code>range(stop)</code>: Numbers from 0 to stop-1</li>
+<li><code>range(start, stop)</code>: Numbers from start to stop-1</li>
+<li><code>range(start, stop, step)</code>: Numbers from start to stop-1, incrementing by step</li>
+</ul>
+<h3><strong>Looping Through Strings</strong></h3>
+<p>Strings are sequences too, so you can loop through each character:</p>
+<pre style="white-space: pre-wrap;"><code>word = &quot;Python&quot;
+
+for letter in word:
+    print(f&quot;Letter: {letter}&quot;)
+</code></pre><h3><strong>Practical Example: Grade Calculator</strong></h3>
+<p>Let's build a program that calculates the average grade from a list of test scores:</p>
+<pre style="white-space: pre-wrap;"><code># List of test scores
+scores = [85, 92, 78, 96, 88]
+total = 0
+
+print(&quot;Individual scores:&quot;)
+for score in scores:
+    print(f&quot;Score: {score}&quot;)
+    total += score  # Add each score to the total
+
+average = total / len(scores)
+print(f&quot;\nTotal points: {total}&quot;)
+print(f&quot;Number of tests: {len(scores)}&quot;)
+print(f&quot;Average grade: {average:.1f}&quot;)
+
+# Determine letter grade
+if average &gt;= 90:
+    letter_grade = &quot;A&quot;
+elif average &gt;= 80:
+    letter_grade = &quot;B&quot;
+elif average &gt;= 70:
+    letter_grade = &quot;C&quot;
+elif average &gt;= 60:
+    letter_grade = &quot;D&quot;
+else:
+    letter_grade = &quot;F&quot;
+
+print(f&quot;Letter grade: {letter_grade}&quot;)
+</code></pre><h3><strong>Nested Loops</strong></h3>
+<p>You can put loops inside other loops to handle more complex data structures:</p>
+<pre style="white-space: pre-wrap;"><code># Multiplication table
+print(&quot;Multiplication Table (1-5):&quot;)
+print(&quot;   &quot;, end=&quot;&quot;)
+for i in range(1, 6):
+    print(f&quot;{i:4}&quot;, end=&quot;&quot;)
+print()  # New line
+
+for i in range(1, 6):
+    print(f&quot;{i}: &quot;, end=&quot;&quot;)
+    for j in range(1, 6):
+        result = i * j
+        print(f&quot;{result:4}&quot;, end=&quot;&quot;)
+    print()  # New line after each row
+</code></pre><hr />
+<h2><strong>while Loops: Repeating Until a Condition Changes</strong></h2>
+<p>While <code>for</code> loops are great when you know how many times to repeat something, <code>while</code> loops are perfect when you need to keep going until some condition changes. They're especially useful for user input validation, game loops, and processing data of unknown size.</p>
+<h3><strong>Basic while Loop Structure</strong></h3>
+<p>A <code>while</code> loop continues executing as long as its condition remains <code>True</code>:</p>
+<pre style="white-space: pre-wrap;"><code>count = 1
+
+while count &lt;= 5:
+    print(f&quot;Count is: {count}&quot;)
+    count += 1  # Important: change the condition variable!
+
+print(&quot;Loop finished!&quot;)
+</code></pre><p><strong>Critical Warning:</strong> Always make sure your <code>while</code> loop condition will eventually become <code>False</code>, or you'll create an infinite loop that runs forever!</p>
+<h3><strong>User Input Validation</strong></h3>
+<p>One of the most practical uses for <code>while</code> loops is ensuring users provide valid input:</p>
+<pre style="white-space: pre-wrap;"><code># Keep asking until we get a valid age
+while True:
+    try:
+        age = int(input(&quot;Please enter your age: &quot;))
+        if age &lt; 0:
+            print(&quot;Age cannot be negative. Please try again.&quot;)
+        elif age &gt; 150:
+            print(&quot;That seems unrealistic. Please try again.&quot;)
+        else:
+            break  # Exit the loop - we got valid input!
+    except ValueError:
+        print(&quot;Please enter a valid number.&quot;)
+
+print(f&quot;Thank you! Your age is {age}.&quot;)
+</code></pre><h3><strong>Practical Example: Number Guessing Game</strong></h3>
+<p>Let's create an interactive guessing game that demonstrates <code>while</code> loops in action:</p>
+<pre style="white-space: pre-wrap;"><code>import random
+
+# Generate a random number between 1 and 100
+secret_number = random.randint(1, 100)
+guesses = 0
+max_guesses = 7
+
+print(&quot;Welcome to the Number Guessing Game!&quot;)
+print(&quot;I'm thinking of a number between 1 and 100.&quot;)
+print(f&quot;You have {max_guesses} guesses to find it!&quot;)
+
+while guesses &lt; max_guesses:
+    try:
+        guess = int(input(f&quot;\nGuess #{guesses + 1}: Enter your guess: &quot;))
+        guesses += 1
+
+        if guess == secret_number:
+            print(f&quot;🎉 Congratulations! You found it in {guesses} guesses!&quot;)
+            break
+        elif guess &lt; secret_number:
+            print(&quot;Too low! Try a higher number.&quot;)
+        else:
+            print(&quot;Too high! Try a lower number.&quot;)
+
+        remaining = max_guesses - guesses
+        if remaining &gt; 0:
+            print(f&quot;You have {remaining} guesses left.&quot;)
+
+    except ValueError:
+        print(&quot;Please enter a valid number!&quot;)
+        guesses -= 1  # Don't count invalid input as a guess
+
+if guesses &gt;= max_guesses and guess != secret_number:
+    print(f&quot;\n😞 Sorry! You've used all your guesses. The number was {secret_number}.&quot;)
+</code></pre><hr />
+<h2><strong>Loop Control: break &amp; continue</strong></h2>
+<p>Sometimes you need fine-grained control over your loops. Python provides <code>break</code> and <code>continue</code> statements to modify loop behavior.</p>
+<h3><strong>break: Exiting Loops Early</strong></h3>
+<p>The <code>break</code> statement immediately exits the current loop:</p>
+<pre style="white-space: pre-wrap;"><code># Find the first number divisible by 7
+numbers = [12, 15, 21, 28, 33, 42]
+
+for num in numbers:
+    if num % 7 == 0:
+        print(f&quot;Found first number divisible by 7: {num}&quot;)
+        break
+    print(f&quot;{num} is not divisible by 7&quot;)
+</code></pre><h3><strong>continue: Skipping to the Next Iteration</strong></h3>
+<p>The <code>continue</code> statement skips the rest of the current iteration and jumps to the next one:</p>
+<pre style="white-space: pre-wrap;"><code># Print only positive numbers
+numbers = [1, -2, 3, -4, 5, -6, 7]
+
+print(&quot;Positive numbers only:&quot;)
+for num in numbers:
+    if num &lt; 0:
+        continue  # Skip negative numbers
+    print(num)
+</code></pre><h3><strong>Practical Example: Menu System</strong></h3>
+<p>Here's a complete example that combines everything we've learned—a restaurant ordering system:</p>
+<pre style="white-space: pre-wrap;"><code>def display_menu():
+    print(&quot;\n🍽️  RESTAURANT MENU&quot;)
+    print(&quot;1. Pizza - $12.99&quot;)
+    print(&quot;2. Burger - $8.99&quot;)
+    print(&quot;3. Salad - $6.99&quot;)
+    print(&quot;4. Drink - $2.99&quot;)
+    print(&quot;5. View Order&quot;)
+    print(&quot;6. Checkout&quot;)
+    print(&quot;0. Exit&quot;)
+
+order = []
+total_cost = 0.0
+menu_prices = {
+    &quot;1&quot;: (&quot;Pizza&quot;, 12.99),
+    &quot;2&quot;: (&quot;Burger&quot;, 8.99),
+    &quot;3&quot;: (&quot;Salad&quot;, 6.99),
+    &quot;4&quot;: (&quot;Drink&quot;, 2.99)
+}
+
+print(&quot;Welcome to Python Restaurant! 🐍&quot;)
+
+while True:
+    display_menu()
+    choice = input(&quot;\nEnter your choice: &quot;).strip()
+
+    if choice == &quot;0&quot;:
+        print(&quot;Thank you for visiting Python Restaurant!&quot;)
+        break
+
+    elif choice in menu_prices:
+        item_name, item_price = menu_prices[choice]
+        order.append((item_name, item_price))
+        total_cost += item_price
+        print(f&quot;Added {item_name} to your order!&quot;)
+
+    elif choice == &quot;5&quot;:
+        if not order:
+            print(&quot;Your order is empty.&quot;)
+            continue
+
+        print(&quot;\n📝 YOUR ORDER:&quot;)
+        for i, (item, price) in enumerate(order, 1):
+            print(f&quot;{i}. {item} - ${price:.2f}&quot;)
+        print(f&quot;Total: ${total_cost:.2f}&quot;)
+
+    elif choice == &quot;6&quot;:
+        if not order:
+            print(&quot;Your order is empty. Add some items first!&quot;)
+            continue
+
+        print(&quot;\n🧾 FINAL ORDER:&quot;)
+        for item, price in order:
+            print(f&quot;{item} - ${price:.2f}&quot;)
+
+        tax = total_cost * 0.08
+        final_total = total_cost + tax
+
+        print(f&quot;\nSubtotal: ${total_cost:.2f}&quot;)
+        print(f&quot;Tax (8%): ${tax:.2f}&quot;)
+        print(f&quot;Total: ${final_total:.2f}&quot;)
+
+        payment = input(&quot;\nConfirm payment? (y/n): &quot;).lower()
+        if payment == &quot;y&quot;:
+            print(&quot;Payment processed! Enjoy your meal! 🎉&quot;)
+            break
+        else:
+            print(&quot;Payment cancelled. You can modify your order.&quot;)
+
+    else:
+        print(&quot;Invalid choice. Please try again.&quot;)
+</code></pre><hr />
+<h2><strong>Putting It All Together: Best Practices</strong></h2>
+<p>As you build more complex programs with control flow, keep these principles in mind:</p>
+<h3><strong>1. Keep Conditions Simple and Readable</strong></h3>
+<pre style="white-space: pre-wrap;"><code># Good: Clear and readable
+if age &gt;= 18 and has_valid_id:
+    allow_entry = True
+
+# Avoid: Complex nested conditions
+if not (age &lt; 18 or not has_valid_id or (is_banned and not is_vip)):
+    allow_entry = True
+</code></pre><h3><strong>2. Use Meaningful Variable Names</strong></h3>
+<pre style="white-space: pre-wrap;"><code># Good: Descriptive names
+for customer in customer_list:
+    if customer.is_premium_member:
+        apply_discount(customer)
+
+# Avoid: Cryptic names
+for c in cl:
+    if c.ipm:
+        ad(c)
+</code></pre><h3><strong>3. Avoid Deep Nesting</strong></h3>
+<pre style="white-space: pre-wrap;"><code># Good: Early returns/continues to reduce nesting
+for user in users:
+    if not user.is_active:
+        continue
+    if not user.has_permission:
+        continue
+    process_user(user)
+
+# Avoid: Deep nesting
+for user in users:
+    if user.is_active:
+        if user.has_permission:
+            process_user(user)
+</code></pre><h3><strong>4. Handle Edge Cases</strong></h3>
+<p>Always think about what could go wrong:</p>
+<ul>
+<li>What if a list is empty?</li>
+<li>What if user input is invalid?</li>
+<li>What if a calculation results in division by zero?</li>
+</ul>
+<hr />
+<h2><strong>Practice Exercises</strong></h2>
+<p>Try these exercises to reinforce your understanding:</p>
+<ol>
+<li><p><strong>Temperature Converter</strong>: Write a program that converts temperatures between Celsius and Fahrenheit. Use <code>if</code> statements to handle user choice and input validation.</p>
+</li>
+<li><p><strong>Password Strength Checker</strong>: Create a program that evaluates password strength based on length, special characters, numbers, and mixed case.</p>
+</li>
+<li><p><strong>Times Table Generator</strong>: Use nested loops to create a customizable multiplication table.</p>
+</li>
+<li><p><strong>Rock, Paper, Scissors</strong>: Build the classic game with user input, computer AI, and score tracking using while loops.</p>
+</li>
+<li><p><strong>Prime Number Finder</strong>: Write a program that finds all prime numbers up to a given number using loops and conditional logic.</p>
+</li>
+</ol>
+<p>Control flow is the foundation of all programming logic. Master these concepts, and you'll be able to build programs that can think, decide, and adapt—the hallmarks of intelligent software. In the next section, we'll learn how to organize this logic into reusable functions and modules.</p>
+
+    </article>
+</main>
+
+
+<footer class="bg-background border-t border-primary mt-10 py-6" id="footer">
+    <div class="container max-w-screen-xl m-auto px-4 text-center">
+        <p>Get <a href="https://stattic.site/" target="_blank" class="text-links font-bold" aria-label="Stattic - opens in a new tab">Stattic</a>. Built by <a href="https://robertdevore.com/" target="_blank" class="text-links font-bold" aria-label="Robert DeVore's personal website - opens in a new tab">Robert DeVore</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
