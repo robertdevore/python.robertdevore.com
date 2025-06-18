@@ -3,22 +3,22 @@
 This site contains structured content formatted for LLM-friendly consumption.
 
 ## Posts
-- [2.4. Exceptions & Robust Error Handling](https://python.robertdevore.com/blog/2-4-exceptions-and-robust-error-handling/): ID 4648761327
-- [2.1. Object-Oriented Programming (OOP)](https://python.robertdevore.com/blog/2-1-object-oriented-programming-oop/): ID 7784108223
-- [1.2. Syntax & Data Types](https://python.robertdevore.com/blog/1-2-syntax-and-data-types/): ID 8695366323
-- [1.5. Basic Error Handling](https://python.robertdevore.com/blog/1-5-basic-error-handling/): ID 8280310268
-- [1.4. Functions & Modules](https://python.robertdevore.com/blog/1-4-functions-and-modules/): ID 9637099564
-- [Chapter 2: Intermediate Python](https://python.robertdevore.com/blog/2-0-chapter-2-intermediate-python/): ID 4552910344
-- [2.5. Introduction to Testing](https://python.robertdevore.com/blog/2-5-introduction-to-testing/): ID 2469290119
-- [Chapter 1: Beginner Python](https://python.robertdevore.com/blog/1-0-chapter-1-beginner-python/): ID 2645247380
-- [1.3. Control Flow (If, For, While)](https://python.robertdevore.com/blog/1-3-control-flow-if-for-while/): ID 9120602136
-- [2.2. File I/O & Data Persistence](https://python.robertdevore.com/blog/2-2-file-io-and-data-persistence/): ID 4365087642
-- [1.1. Python Setup & IDEs](https://python.robertdevore.com/blog/1-1-python-setup-and-ides/): ID 8309779765
-- [2.3. Virtual Environments & Package Management](https://python.robertdevore.com/blog/2-3-virtual-environments-and-package-management/): ID 1328428445
-- [Welcome to the Complete Python Development Course](https://python.robertdevore.com/blog/welcome-to-the-python-course/): ID 5261795530
+- [2.4. Exceptions & Robust Error Handling](https://python.robertdevore.com/blog/2-4-exceptions-and-robust-error-handling/): ID 3576147662
+- [2.1. Object-Oriented Programming (OOP)](https://python.robertdevore.com/blog/2-1-object-oriented-programming-oop/): ID 2005191179
+- [1.2. Syntax & Data Types](https://python.robertdevore.com/blog/1-2-syntax-and-data-types/): ID 5976746987
+- [2.2. File I/O & Data Persistence](https://python.robertdevore.com/blog/2-2-file-io-and-data-persistence/): ID 661607136
+- [1.5. Basic Error Handling](https://python.robertdevore.com/blog/1-5-basic-error-handling/): ID 2534591189
+- [1.4. Functions & Modules](https://python.robertdevore.com/blog/1-4-functions-and-modules/): ID 2697770621
+- [2.5. Introduction to Testing](https://python.robertdevore.com/blog/2-5-introduction-to-testing/): ID 859270186
+- [Chapter 2: Intermediate Python](https://python.robertdevore.com/blog/2-0-chapter-2-intermediate-python/): ID 3391367953
+- [1.3. Control Flow (If, For, While)](https://python.robertdevore.com/blog/1-3-control-flow-if-for-while/): ID 9717496830
+- [Chapter 1: Beginner Python](https://python.robertdevore.com/blog/1-0-chapter-1-beginner-python/): ID 9076638026
+- [1.1. Python Setup & IDEs](https://python.robertdevore.com/blog/1-1-python-setup-and-ides/): ID 7329709254
+- [2.3. Virtual Environments & Package Management](https://python.robertdevore.com/blog/2-3-virtual-environments-and-package-management/): ID 7534273606
+- [Welcome to the Complete Python Development Course](https://python.robertdevore.com/blog/welcome-to-the-python-course/): ID 9513171680
 
 ## Pages
-- [About This Site](https://python.robertdevore.com/sample-page/): ID 4078429587
+- [About This Site](https://python.robertdevore.com/sample-page/): ID 8327897016
 
 ## Sitemap
 https://python.robertdevore.com/sitemap.xml
