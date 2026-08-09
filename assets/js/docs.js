@@ -197,6 +197,22 @@
 		});
 	};
 
+	var syntax = window.PythonCourseSyntax;
+	if (syntax) {
+		document.querySelectorAll('pre code').forEach(function(code) {
+			var languageClass = Array.prototype.find.call(code.classList, function(className) {
+				return className.indexOf('language-') === 0;
+			});
+			var language = syntax.normalizeLanguage(languageClass || 'text');
+			var pre = code.closest('pre');
+			code.innerHTML = syntax.highlight(code.textContent, language);
+			code.classList.add('is-syntax-highlighted');
+			if (pre && !pre.closest('.sk-code-block')) {
+				pre.setAttribute('data-code-language', language.toUpperCase());
+			}
+		});
+	}
+
 	var bindCopyButton = function(button, block) {
 		button.addEventListener('click', function() {
 			copyText(block.textContent).then(function() {
@@ -229,7 +245,7 @@
 		button.type = 'button';
 		button.className = 'copy-code-button';
 		button.textContent = 'Copy';
-		bindCopyButton(button, block);
+		bindCopyButton(button, block.querySelector('code') || block);
 		block.appendChild(button);
 	});
 
