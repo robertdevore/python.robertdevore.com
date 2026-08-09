@@ -43,11 +43,12 @@ SITE_URL=https://python.robertdevore.com bash scripts/build.sh
 assert_path output/index.html
 assert_path output/about/index.html
 assert_path output/sample-page/index.html
-assert_path output/blog/index.html
-assert_path output/blog/python-setup-and-ides/index.html
-assert_path output/blog/python-syntax-and-data-types/index.html
-assert_path output/blog/syntax-and-data-types/index.html
-assert_path output/blog/course-conclusion-from-python-novice-to-professional-developer/index.html
+assert_path output/course/index.html
+assert_path output/course/python-setup-and-ides/index.html
+assert_path output/course/python-syntax-and-data-types/index.html
+assert_path output/course/syntax-and-data-types/index.html
+assert_path output/course/course-conclusion-from-python-novice-to-professional-developer/index.html
+[[ ! -e output/blog ]] || fail "legacy /blog/ output should not be generated"
 assert_path output/feed/index.xml
 assert_path output/sitemap.xml
 assert_path output/robots.txt
@@ -60,16 +61,19 @@ assert_path output/assets/js/docs-search-index.json
 
 assert_contains output/index.html 'Learn Python. Build real things.'
 assert_contains output/index.html 'class="course-stats"'
-assert_contains output/blog/python-syntax-and-data-types/index.html '1.2. Syntax &amp; Data Types'
-assert_contains output/blog/syntax-and-data-types/index.html '1.3. Control Flow (If, For, While)'
-assert_contains output/blog/python-setup-and-ides/index.html 'class="docs-shell"'
-assert_contains output/blog/python-setup-and-ides/index.html 'href="#installing-python"'
-assert_contains output/blog/chapter-1-beginner-python/index.html 'class="language-java"'
-assert_contains output/blog/chapter-1-beginner-python/index.html 'class="language-python"'
-assert_not_contains output/blog/chapter-1-beginner-python/index.html '<p>public class Hello {</p>'
-assert_contains output/blog/virtual-environments-and-package-management/index.html 'class="language-text">README.md'
-assert_not_contains output/blog/virtual-environments-and-package-management/index.html 'class="language-text"><h2>Setup</h2>'
-assert_not_contains output/blog/virtual-environments-and-package-management/index.html '<h1>pip</h1>'
+assert_contains output/index.html 'href="/course/" class="text-primary hover:underline">Course</a>'
+assert_contains output/course/python-syntax-and-data-types/index.html '1.2. Syntax &amp; Data Types'
+assert_contains output/course/syntax-and-data-types/index.html '1.3. Control Flow (If, For, While)'
+assert_contains output/course/python-setup-and-ides/index.html 'class="docs-shell"'
+assert_contains output/course/python-setup-and-ides/index.html 'href="#installing-python"'
+assert_contains output/course/chapter-1-beginner-python/index.html 'class="language-java"'
+assert_contains output/course/chapter-1-beginner-python/index.html 'class="language-python"'
+assert_contains output/course/chapter-1-beginner-python/index.html '"@type":"Article"'
+assert_not_contains output/course/chapter-1-beginner-python/index.html '"@type":"BlogPosting"'
+assert_not_contains output/course/chapter-1-beginner-python/index.html '<p>public class Hello {</p>'
+assert_contains output/course/virtual-environments-and-package-management/index.html 'class="language-text">README.md'
+assert_not_contains output/course/virtual-environments-and-package-management/index.html 'class="language-text"><h2>Setup</h2>'
+assert_not_contains output/course/virtual-environments-and-package-management/index.html '<h1>pip</h1>'
 assert_contains output/about/index.html 'Kujo SSG and SiteKit'
 assert_contains output/assets/css/style.css 'Departure Mono'
 assert_contains output/assets/css/style.css 'font-family: "Inter";'
@@ -81,15 +85,23 @@ assert_contains output/assets/css/style.css '.docs-home-terminal { margin: 0; ov
 assert_contains output/assets/css/style.css 'border-inline-start: .35rem solid var(--python-yellow); box-shadow: none;'
 assert_not_contains output/assets/css/style.css 'box-shadow: .75rem .75rem 0 var(--python-yellow)'
 assert_contains output/robots.txt 'Allow: /'
-assert_contains output/sitemap.xml 'https://python.robertdevore.com/blog/course-conclusion-from-python-novice-to-professional-developer/'
+assert_contains output/sitemap.xml 'https://python.robertdevore.com/course/course-conclusion-from-python-novice-to-professional-developer/'
+assert_contains output/feed/index.xml 'Latest lessons from Python Course'
+assert_contains output/llms.txt '## Lessons'
 assert_contains output/CNAME 'python.robertdevore.com'
+assert_contains output/assets/js/docs-search-index.json '"route": "course/welcome-to-the-complete-python-development-course/"'
+assert_not_contains output/assets/js/docs-search-index.json '"route": "posts/'
 
 home_listing_count="$(grep -o '<li class="listing-card"' output/index.html | wc -l | tr -d ' ')"
-blog_listing_count="$(grep -o '<li class="listing-card"' output/blog/index.html | wc -l | tr -d ' ')"
+course_listing_count="$(grep -o '<li class="listing-card"' output/course/index.html | wc -l | tr -d ' ')"
 [[ "$home_listing_count" == "6" ]] || fail "expected 6 homepage lesson cards, found $home_listing_count"
-[[ "$blog_listing_count" == "6" ]] || fail "expected 6 blog lesson cards, found $blog_listing_count"
+[[ "$course_listing_count" == "6" ]] || fail "expected 6 course lesson cards, found $course_listing_count"
 
-rendered_code_blocks="$(find output/blog -name 'index.html' -type f -exec grep -o '<pre><code' {} + | wc -l | tr -d ' ')"
+if rg -n '/blog/|>Blog<' output --glob '*.html' --glob '*.xml' --glob '*.txt' --glob '*.json'; then
+	fail "generated output still contains legacy blog URLs or labels"
+fi
+
+rendered_code_blocks="$(find output/course -name 'index.html' -type f -exec grep -o '<pre><code' {} + | wc -l | tr -d ' ')"
 [[ "$rendered_code_blocks" -ge 300 ]] || fail "expected at least 300 rendered lesson code blocks, found $rendered_code_blocks"
 
 printf 'Python Course site contract passed (%s lessons, %s words, %s code blocks)\n' "$post_count" "$course_word_count" "$rendered_code_blocks"

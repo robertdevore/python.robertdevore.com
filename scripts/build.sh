@@ -10,6 +10,7 @@ cd "$REPO_ROOT"
 search_args=(
 	--content content
 	--output assets/js/docs-search-index.json
+	--base-route course
 )
 build_args=("$@")
 

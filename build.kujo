@@ -933,7 +933,7 @@ func build_navigation(pages_data, custom_collections, current_route, blog_slug) 
 	clean_blog_slug := clean_slug(trim(to_string(blog_slug)))
 	if len(clean_blog_slug) > 0 && clean_blog_slug != "untitled" {
 		blog_path := "/" + clean_blog_slug + "/"
-		html = html + navigation_item(blog_path, "Blog", starts_with(current_path, blog_path))
+		html = html + navigation_item(blog_path, "Course", starts_with(current_path, blog_path))
 	}
 
 	page_idx := 0
@@ -1774,7 +1774,10 @@ func featured_image_html_tag(featured_image_url, title) {
 func render_layout(layout_template, settings, route, page_title, meta_description, navigation, content, page_meta) {
 	# Delegates to the native renderer (compiled once, byte-identical to the
 	# previous interpreted body, which is preserved as render_layout_interpreted).
-	return render_layout_native(layout_template, settings, route, page_title, meta_description, navigation, content, page_meta)
+	# Course lessons are articles rather than blog posts, so normalize the
+	# native renderer's legacy structured-data type for this course site.
+	html := render_layout_native(layout_template, settings, route, page_title, meta_description, navigation, content, page_meta)
+	return replace(html, "\"@type\":\"BlogPosting\"", "\"@type\":\"Article\"")
 }
 
 func render_layout_interpreted(layout_template, settings, route, page_title, meta_description, navigation, content, page_meta) {
@@ -1869,7 +1872,7 @@ func render_layout_interpreted(layout_template, settings, route, page_title, met
 	# JSON-LD structured data.
 	schema_type := "WebSite"
 	if og_type == "article" {
-		schema_type = "BlogPosting"
+		schema_type = "Article"
 	}
 	json_ld_parts := [
 		"\"@context\":\"https://schema.org\"",
@@ -4149,10 +4152,10 @@ func build_site(settings) {
 
 				blog_posts_html := "<ul class=\"card-grid\">" + cards + "</ul>"
 				blog_pagination := build_pagination_links(page_num, total_pages, settings["blog_slug"] + "/")
-				blog_content := "<main class=\"container max-w-2xl m-auto py-10 px-4\" id=\"main-content\"><h1 class=\"text-6xl font-bold mb-8 pb-8 text-links font-heading-bold border-b border-primary page-title\">Blog</h1>" + blog_posts_html + blog_pagination + "</main>"
+				blog_content := "<main class=\"container max-w-2xl m-auto py-10 px-4\" id=\"main-content\"><h1 class=\"text-6xl font-bold mb-8 pb-8 text-links font-heading-bold border-b border-primary page-title\">Course</h1>" + blog_posts_html + blog_pagination + "</main>"
 				if len(blog_listing_template) > 0 {
 					blog_content = apply_template(blog_listing_template, {
-						"title": "Blog",
+						"title": "Course",
 						"description": settings["site_tagline"],
 						"cards": cards,
 						"items": cards,
@@ -4170,12 +4173,12 @@ func build_site(settings) {
 					layout_template,
 					settings,
 					blog_route,
-					"Blog - " + settings["site_title"],
+					"Course - " + settings["site_title"],
 					settings["site_tagline"],
 					blog_navigation,
 					blog_content,
 					{
-						"seo_title": "Blog",
+						"seo_title": "Course",
 						"seo_description": settings["site_tagline"],
 						"lang": "en"
 					}
@@ -4218,7 +4221,7 @@ func build_site(settings) {
 			if len(newest_rfc822) > 0 {
 				last_build_tag = "<lastBuildDate>" + newest_rfc822 + "</lastBuildDate>"
 			}
-			rss_xml := "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\"><channel><title>" + xml_escape(settings["site_title"]) + "</title><link>" + xml_escape(site_url) + "</link><description>Latest posts from " + xml_escape(settings["site_title"]) + "</description>" + last_build_tag + rss_items + "</channel></rss>\n"
+			rss_xml := "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\"><channel><title>" + xml_escape(settings["site_title"]) + "</title><link>" + xml_escape(site_url) + "</link><description>Latest lessons from " + xml_escape(settings["site_title"]) + "</description>" + last_build_tag + rss_items + "</channel></rss>\n"
 			ensure_dir(path_join(output_dir, "feed"))
 			write_file(path_join(output_dir, "feed/index.xml"), rss_xml)
 
@@ -4260,7 +4263,7 @@ func build_site(settings) {
 			# Streamed to the output file directly (O(1) appends) since string
 			# concatenation of a large body is O(n^2) in Kujo.
 			llms_path := path_join(output_dir, "llms.txt")
-			write_file(llms_path, "# " + settings["site_title"] + "\n\nThis site contains structured content formatted for LLM-friendly consumption.\n\n## Posts\n")
+			write_file(llms_path, "# " + settings["site_title"] + "\n\nThis site contains structured content formatted for LLM-friendly consumption.\n\n## Lessons\n")
 			llms_post_idx := 0
 			loop {
 				if llms_post_idx >= len(posts_sorted) {
