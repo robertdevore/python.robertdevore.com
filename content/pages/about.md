@@ -69,7 +69,7 @@ The course doesn't just teach you to code—it teaches you to think like a devel
 
 ## Get Started
 
-Ready to begin your Python journey? Start with the [Welcome to the Complete Python Development Course](</blog/welcome-to-the-complete-python-development-course/>) introduction, then move on to [Chapter 1: Beginner Python](</blog/chapter-1-beginner-python/>) to begin building your foundation.
+Ready to begin your Python journey? Start with the [Welcome to the Complete Python Development Course](</course/welcome-to-the-complete-python-development-course/>) introduction, then move on to [Chapter 1: Beginner Python](</course/chapter-1-beginner-python/>) to begin building your foundation.
 
 Each lesson is designed to be completed at your own pace, with practical exercises and real-world examples to reinforce your learning.
 
@@ -97,4 +97,4 @@ The generated site has no database and no required client-side framework. Course
 
 * * *
 
-**Ready to start your Python journey?** [Begin with the course introduction](</blog/welcome-to-the-complete-python-development-course/>) and take your first step toward becoming a professional Python developer!
+**Ready to start your Python journey?** [Begin with the course introduction](</course/welcome-to-the-complete-python-development-course/>) and take your first step toward becoming a professional Python developer!

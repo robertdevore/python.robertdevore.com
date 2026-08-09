@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/chapter-3-advanced-python/
-next: /blog/generators-decorators-and-context-managers/
+previous: /course/chapter-3-advanced-python/
+next: /course/generators-decorators-and-context-managers/
 tags: [python, course]
 ---
 ## Overview
@@ -641,4 +641,4 @@ print(f"Recent activity: {shortener.get_recent_activity()}")
 
 By mastering these advanced data structures and understanding their performance characteristics, you'll be able to write Python code that scales efficiently and handles real-world data processing tasks with confidence.
 
-Next, let's dive into [generators, decorators and context managers](<https://python.robertdevore.com/blog/generators-decorators-and-context-managers>).
+Next, let's dive into [generators, decorators and context managers](<https://python.robertdevore.com/course/generators-decorators-and-context-managers>).

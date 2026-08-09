@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/python-syntax-and-data-types/
-next: /blog/functions-and-modules/
+previous: /course/python-syntax-and-data-types/
+next: /course/functions-and-modules/
 tags: [python, course]
 ---
 ## Overview
@@ -611,4 +611,4 @@ Try these exercises to reinforce your understanding:
 
   5. **Prime Number Finder** : Write a program that finds all prime numbers up to a given number using loops and conditional logic.
 
-Control flow is the foundation of all programming logic. Master these concepts, and you'll be able to build programs that can think, decide, and adapt—the hallmarks of intelligent software. In [the next section](<https://python.robertdevore.com/blog/functions-and-modules>), we'll learn how to organize this logic into reusable functions and modules.
+Control flow is the foundation of all programming logic. Master these concepts, and you'll be able to build programs that can think, decide, and adapt—the hallmarks of intelligent software. In [the next section](<https://python.robertdevore.com/course/functions-and-modules>), we'll learn how to organize this logic into reusable functions and modules.

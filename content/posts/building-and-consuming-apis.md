@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/concurrency-and-parallelism/
-next: /blog/packaging-distribution-and-best-practices/
+previous: /course/concurrency-and-parallelism/
+next: /course/packaging-distribution-and-best-practices/
 tags: [python, course]
 ---
 ## Overview
@@ -741,4 +741,4 @@ def check_api_version():
 
 This comprehensive guide covers both building and consuming APIs with Python, providing you with the knowledge to create robust, scalable web services and integrate with external APIs effectively. Remember to always validate input data, handle errors gracefully, and document your APIs thoroughly for better developer experience.
 
-Now, let's review [packaging distribution and best practices](<https://python.robertdevore.com/blog/packaging-distribution-and-best-practices>).
+Now, let's review [packaging distribution and best practices](<https://python.robertdevore.com/course/packaging-distribution-and-best-practices>).

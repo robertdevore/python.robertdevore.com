@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/generators-decorators-and-context-managers/
-next: /blog/building-and-consuming-apis/
+previous: /course/generators-decorators-and-context-managers/
+next: /course/building-and-consuming-apis/
 tags: [python, course]
 ---
 ## Overview
@@ -803,4 +803,4 @@ Mastering concurrency and parallelism is essential for building modern, efficien
 
 The techniques you've learned here form the foundation for building scalable, responsive applications that can handle real-world performance demands. Practice with different scenarios, measure performance improvements, and always profile your code to ensure your concurrency choices are actually improving performance rather than adding unnecessary complexity.
 
-Now, let's dive into [building and consuming API's](<https://python.robertdevore.com/blog/building-and-consuming-apis>)!
+Now, let's dive into [building and consuming API's](<https://python.robertdevore.com/course/building-and-consuming-apis>)!

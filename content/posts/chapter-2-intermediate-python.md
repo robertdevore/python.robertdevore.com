@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/basic-error-handling/
-next: /blog/object-oriented-programming/
+previous: /course/basic-error-handling/
+next: /course/object-oriented-programming/
 tags: [python, course]
 ---
 ## Welcome to Real-World Python Development
@@ -159,6 +159,6 @@ But more than that, these skills open doors. With solid intermediate Python skil
 
 The path from here leads to frameworks like Django and Flask for web development, libraries like pandas and scikit-learn for data science, tools like Docker and Kubernetes for deployment, and eventually to advanced topics like distributed systems, machine learning, and software architecture.
 
-But that's getting ahead of ourselves. Right now, your goal is to master these five fundamental skills that form the backbone of professional Python development. Let's start with the most transformative concept of all: [Object-Oriented Programming](<https://python.robertdevore.com/blog/object-oriented-programming>).
+But that's getting ahead of ourselves. Right now, your goal is to master these five fundamental skills that form the backbone of professional Python development. Let's start with the most transformative concept of all: [Object-Oriented Programming](<https://python.robertdevore.com/course/object-oriented-programming>).
 
 Ready to level up? Let's build something great.

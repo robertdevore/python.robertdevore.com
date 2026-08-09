@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/introduction-to-testing/
-next: /blog/advanced-data-structures-and-algorithms/
+previous: /course/introduction-to-testing/
+next: /course/advanced-data-structures-and-algorithms/
 tags: [python, course]
 ---
 _For serious developers and those building production-grade applications. Focus: efficiency, scalability, and best practices._
@@ -139,4 +139,4 @@ The advanced section represents a significant step in your Python development jo
 
 These aren't just technical skills; they're problem-solving tools that will serve you throughout your career, regardless of which specific frameworks or libraries become popular. The ability to think algorithmically, design elegant abstractions, handle concurrency correctly, and build maintainable systems transcends any particular technology stack.
 
-Ready to take your Python skills to the next level? Let's begin with [advanced data structures and algorithms](<https://python.robertdevore.com/blog/advanced-data-structures-and-algorithms>) \- the foundation upon which all efficient Python code is built.
+Ready to take your Python skills to the next level? Let's begin with [advanced data structures and algorithms](<https://python.robertdevore.com/course/advanced-data-structures-and-algorithms>) \- the foundation upon which all efficient Python code is built.

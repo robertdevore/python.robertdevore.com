@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/syntax-and-data-types/
-next: /blog/basic-error-handling/
+previous: /course/syntax-and-data-types/
+next: /course/basic-error-handling/
 tags: [python, course]
 ---
 ## Overview
@@ -612,6 +612,6 @@ Functions and modules are fundamental building blocks of Python programming. The
   * Leverage Python's extensive standard library
   * Create your own libraries of useful code
 
-Practice creating functions for common tasks in your programs, explore Python's standard library modules, and start organizing your code into modules as your projects grow. In [the next section](<https://python.robertdevore.com/blog/basic-error-handling>), we'll learn about error handling, which will help you make your functions and modules more robust and user-friendly.
+Practice creating functions for common tasks in your programs, explore Python's standard library modules, and start organizing your code into modules as your projects grow. In [the next section](<https://python.robertdevore.com/course/basic-error-handling>), we'll learn about error handling, which will help you make your functions and modules more robust and user-friendly.
 
 The key to mastering functions and modules is practice. Start small, experiment with different approaches, and gradually build more complex functionality as you become comfortable with these concepts.

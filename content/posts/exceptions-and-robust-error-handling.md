@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/virtual-environments-and-package-management/
-next: /blog/introduction-to-testing/
+previous: /course/virtual-environments-and-package-management/
+next: /course/introduction-to-testing/
 tags: [python, course]
 ---
 ## Overview
@@ -704,4 +704,4 @@ Remember these key principles:
 
 With these tools and techniques, your Python applications will handle the inevitable problems of the real world with grace and professionalism.
 
-Next, let's jump into an [introduction to testing](<https://python.robertdevore.com/blog/introduction-to-testing/>)!
+Next, let's jump into an [introduction to testing](<https://python.robertdevore.com/course/introduction-to-testing/>)!

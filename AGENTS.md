@@ -13,7 +13,7 @@ This repository is the source for `python.robertdevore.com`. It is built with Ku
 
 ## Rules
 
-- Preserve the existing public lesson URLs under `/blog/`.
+- Preserve the existing public lesson URLs under `/course/`.
 - Keep the curriculum order, previous/next links, and course navigation synchronized.
 - Keep SiteKit's `fonts/` directory beside `sitekit.css`; Departure Mono is served locally.
 - Use semantic HTML, visible focus, accessible controls, and reduced-motion-safe behavior.

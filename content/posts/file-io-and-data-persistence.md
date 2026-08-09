@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/object-oriented-programming/
-next: /blog/virtual-environments-and-package-management/
+previous: /course/object-oriented-programming/
+next: /course/virtual-environments-and-package-management/
 tags: [python, course]
 ---
 ## Overview
@@ -730,4 +730,4 @@ def export_data(data, filename, format='json'):
 
 By mastering these file I/O concepts, you'll be able to build applications that persist data reliably, handle various file formats, and gracefully recover from file-related errors. This foundation is essential for any serious Python development work.
 
-Next, let's cover [virtual environments and package management](<https://python.robertdevore.com/blog/virtual-environments-and-package-management>)!
+Next, let's cover [virtual environments and package management](<https://python.robertdevore.com/course/virtual-environments-and-package-management>)!

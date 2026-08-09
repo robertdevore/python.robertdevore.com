@@ -14,7 +14,7 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/packaging-distribution-and-best-practices/
+previous: /course/packaging-distribution-and-best-practices/
 tags: [python, course]
 ---
 Congratulations! You've just completed a comprehensive journey through Python development that has taken you from writing your first "Hello, World!" script to building production-ready applications, APIs, and distributable packages. This isn't just the end of a course—it's the beginning of your journey as a confident Python developer ready to tackle real-world challenges.

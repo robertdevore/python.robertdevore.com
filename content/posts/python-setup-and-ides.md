@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/chapter-1-beginner-python/
-next: /blog/python-syntax-and-data-types/
+previous: /course/chapter-1-beginner-python/
+next: /course/python-syntax-and-data-types/
 tags: [python, course]
 ---
 ## Overview
@@ -500,7 +500,7 @@ Congratulations! You now have a fully functional Python development environment.
   * ✅ Learned essential command line skills
   * ✅ Troubleshooted common setup issues
 
-In the next section ([1.2 Syntax & Data Types](<https://python.robertdevore.com/blog/syntax-and-data-types>)), you'll start learning Python's core language features. You'll discover how to work with different types of data, create variables, and write more complex programs.
+In the next section ([1.2 Syntax & Data Types](<https://python.robertdevore.com/course/syntax-and-data-types>)), you'll start learning Python's core language features. You'll discover how to work with different types of data, create variables, and write more complex programs.
 
 **Recommended Practice:**
 

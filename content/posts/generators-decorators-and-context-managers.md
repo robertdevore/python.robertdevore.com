@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/advanced-data-structures-and-algorithms/
-next: /blog/concurrency-and-parallelism/
+previous: /course/advanced-data-structures-and-algorithms/
+next: /course/concurrency-and-parallelism/
 tags: [python, course]
 ---
 ## Overview
@@ -532,4 +532,4 @@ def main():
 
 These advanced Python features will help you write more professional, efficient, and maintainable code. They're the hallmarks of experienced Python developers and are essential for building robust applications.
 
-Now, you're ready to learn about [concurrency and parallelism](<https://python.robertdevore.com/blog/concurrency-and-parallelism>)!
+Now, you're ready to learn about [concurrency and parallelism](<https://python.robertdevore.com/course/concurrency-and-parallelism>)!

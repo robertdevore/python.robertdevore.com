@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Read the course introduction"
-previous: /blog/welcome-to-the-complete-python-development-course/
-next: /blog/python-setup-and-ides/
+previous: /course/welcome-to-the-complete-python-development-course/
+next: /course/python-setup-and-ides/
 tags: [python, course]
 ---
 ## Welcome to Your Python Journey
@@ -217,4 +217,4 @@ Welcome to Python. Welcome to programming. Let's build something amazing togethe
 
 * * *
 
-_Ready to get started? Let's move on to[**1.1 Python Setup & IDEs**](<https://python.robertdevore.com/blog/python-setup-and-ides>) and get your development environment ready for action!_
+_Ready to get started? Let's move on to[**1.1 Python Setup & IDEs**](<https://python.robertdevore.com/course/python-setup-and-ides>) and get your development environment ready for action!_

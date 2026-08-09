@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/building-and-consuming-apis/
-next: /blog/course-conclusion-from-python-novice-to-professional-developer/
+previous: /course/building-and-consuming-apis/
+next: /course/course-conclusion-from-python-novice-to-professional-developer/
 tags: [python, course]
 ---
 ## Overview:
@@ -604,4 +604,4 @@ Maintain a `CHANGELOG.md` following [Keep a Changelog](<https://keepachangelog.c
 
 By following these practices, your Python packages will be professional, maintainable, and ready for production use. Remember that great software is not just about functionality—it's about creating a positive experience for developers who use and contribute to your code.
 
-YOU DID IT! Now let's go over the [course conclusion](<https://python.robertdevore.com/blog/course-conclusion-from-python-novice-to-professional-developer>) to see what's next!
+YOU DID IT! Now let's go over the [course conclusion](<https://python.robertdevore.com/course/course-conclusion-from-python-novice-to-professional-developer>) to see what's next!

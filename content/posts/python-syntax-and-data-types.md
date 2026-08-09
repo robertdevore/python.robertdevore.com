@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete 1.1. Python Setup & IDEs"
-previous: /blog/python-setup-and-ides/
-next: /blog/syntax-and-data-types/
+previous: /course/python-setup-and-ides/
+next: /course/syntax-and-data-types/
 tags: [python, course, syntax, data-types]
 ---
 ## Overview

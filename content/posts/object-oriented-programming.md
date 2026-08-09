@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/chapter-2-intermediate-python/
-next: /blog/file-io-and-data-persistence/
+previous: /course/chapter-2-intermediate-python/
+next: /course/file-io-and-data-persistence/
 tags: [python, course]
 ---
 ## What is Object-Oriented Programming?
@@ -648,4 +648,4 @@ This comprehensive example demonstrates:
 
 Object-Oriented Programming is a powerful paradigm that becomes more valuable as your programs grow in complexity. Practice these concepts with small projects, and gradually work up to larger applications where OOP's organizational benefits really shine.
 
-Next, let's review [file I/O and data persistence](<https://python.robertdevore.com/blog/file-io-and-data-persistence>)!
+Next, let's review [file I/O and data persistence](<https://python.robertdevore.com/course/file-io-and-data-persistence>)!

@@ -14,7 +14,7 @@ status: stable
 version: complete course
 prerequisites:
   - "No prior programming experience required"
-next: /blog/chapter-1-beginner-python/
+next: /course/chapter-1-beginner-python/
 tags: [python, course]
 ---
 ## Transform From Beginner to Professional Python Developer
@@ -158,4 +158,4 @@ The Python community is known for being welcoming and supportive. As you progres
 
 Whether your goal is to automate tasks at your current job, change careers into software development, build your own applications, or simply satisfy your curiosity about programming, this course will provide the structured, comprehensive education you need to succeed.
 
-Let's begin this exciting journey together. Your first step is just ahead: [setting up Python and writing your very first program](<https://python.robertdevore.com/blog/chapter-1-beginner-python>)!
+Let's begin this exciting journey together. Your first step is just ahead: [setting up Python and writing your very first program](<https://python.robertdevore.com/course/chapter-1-beginner-python>)!

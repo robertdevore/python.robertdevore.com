@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/exceptions-and-robust-error-handling/
-next: /blog/chapter-3-advanced-python/
+previous: /course/exceptions-and-robust-error-handling/
+next: /course/chapter-3-advanced-python/
 tags: [python, course]
 ---
 ## Overview
@@ -652,4 +652,4 @@ Remember: **good tests are like good documentation** —they explain how your co
 
 With these fundamentals, you're ready to write reliable, maintainable Python code that you and others can trust.
 
-Next up - [Chapter 3: Advanced Python](<https://python.robertdevore.com/blog/chapter-3-advanced-python>).
+Next up - [Chapter 3: Advanced Python](<https://python.robertdevore.com/course/chapter-3-advanced-python>).

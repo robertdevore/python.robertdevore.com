@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/functions-and-modules/
-next: /blog/chapter-2-intermediate-python/
+previous: /course/functions-and-modules/
+next: /course/chapter-2-intermediate-python/
 tags: [python, course]
 ---
 ## Overview
@@ -637,4 +637,4 @@ Remember, good error handling isn't just about preventing crashes—it's about c
 
 As you continue your Python journey, you'll encounter more complex error scenarios, but the fundamentals you've learned here will serve you well. Every professional Python developer relies on these same concepts to build reliable, user-friendly applications.
 
-In [Chapter 2](<https://python.robertdevore.com/blog/chapter-2-intermediate-python>), we'll move on to Intermediate Python concepts, where you'll learn about Object-Oriented Programming and start building more sophisticated programs that benefit greatly from the solid error handling foundation you've just built.
+In [Chapter 2](<https://python.robertdevore.com/course/chapter-2-intermediate-python>), we'll move on to Intermediate Python concepts, where you'll learn about Object-Oriented Programming and start building more sophisticated programs that benefit greatly from the solid error handling foundation you've just built.

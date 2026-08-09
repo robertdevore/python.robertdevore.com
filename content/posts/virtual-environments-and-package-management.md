@@ -14,8 +14,8 @@ status: stable
 version: complete course
 prerequisites:
   - "Complete the previous lesson in the course path"
-previous: /blog/file-io-and-data-persistence/
-next: /blog/exceptions-and-robust-error-handling/
+previous: /course/file-io-and-data-persistence/
+next: /course/exceptions-and-robust-error-handling/
 tags: [python, course]
 ---
 ## Overview
@@ -668,4 +668,4 @@ Key takeaways:
 
 Master these concepts, and you'll avoid countless hours of dependency-related headaches. Your future self (and your teammates) will thank you for maintaining clean, reproducible Python environments.
 
-In [the next section](<https://python.robertdevore.com/blog/exceptions-and-robust-error-handling>), we'll dive deeper into exception handling, building on the foundation of isolated environments to create robust, error-resistant applications.
+In [the next section](<https://python.robertdevore.com/course/exceptions-and-robust-error-handling>), we'll dive deeper into exception handling, building on the foundation of isolated environments to create robust, error-resistant applications.
