@@ -528,7 +528,67 @@ func fenced_code_block_html(language, code_lines) {
 	if len(language_slug) > 0 && language_slug != "untitled" {
 		class_attr = " class=\"language-" + html_escape(language_slug) + "\""
 	}
-	return "<pre><code" + class_attr + ">" + join(code_lines, "\n") + "</code></pre>"
+	return "<pre><code" + class_attr + ">" + html_escape(join(code_lines, "\n")) + "</code></pre>"
+}
+
+func render_markdown_with_fenced_code(markdown) {
+	if index_of(markdown, "```") < 0 {
+		return render_markdown(markdown)
+	}
+
+	lines := split(markdown, "\n")
+	out := []
+	prose_lines := []
+	code_lines := []
+	in_code := false
+	code_language := ""
+	i := 0
+	loop {
+		if i >= len(lines) {
+			break
+		}
+
+		line := lines[i]
+		i := i + 1
+		clean := trim(line)
+		if starts_with(clean, "```") {
+			if in_code {
+				out = push(out, fenced_code_block_html(code_language, code_lines))
+				code_lines = []
+				code_language = ""
+				in_code = false
+			} else {
+				if len(prose_lines) > 0 {
+					prose_html := trim(render_markdown(join(prose_lines, "\n")))
+					if len(prose_html) > 0 {
+						out = push(out, prose_html)
+					}
+				}
+				prose_lines = []
+				code_language = trim(substring(clean, 3, len(clean)))
+				code_lines = []
+				in_code = true
+			}
+			continue
+		}
+
+		if in_code {
+			code_lines = push(code_lines, line)
+		} else {
+			prose_lines = push(prose_lines, line)
+		}
+	}
+
+	if in_code {
+		out = push(out, fenced_code_block_html(code_language, code_lines))
+	} else if len(prose_lines) > 0 {
+		prose_html := trim(render_markdown(join(prose_lines, "\n")))
+		if len(prose_html) > 0 {
+			out = push(out, prose_html)
+		}
+	}
+
+	return join(out, "\n")
 }
 
 func normalize_fenced_code_html(html) {
@@ -578,12 +638,10 @@ func normalize_fenced_code_html(html) {
 	return join(out, "\n")
 }
 
-# Delegates to the native markdown renderer (compiled once, byte-identical to
-# the previous interpreted implementation). Fenced code blocks are normalized
-# afterward because the native renderer intentionally preserves the legacy
-# paragraph behavior for triple-backtick lines.
+# Render prose with the native Markdown renderer while keeping fenced code
+# isolated from Markdown transformations and safely escaped.
 func markdown_to_html(markdown) {
-	return normalize_fenced_code_html(render_markdown(markdown))
+	return render_markdown_with_fenced_code(markdown)
 }
 
 func excerpt_from_markdown(markdown) {
