@@ -34,13 +34,13 @@ Every program needs to make decisions. Should we display a welcome message or an
 
 The simplest form of decision-making is the `if` statement. It evaluates a condition and only executes the code inside if that condition is `True`.
 
+```python
+age = 18
 
-    age = 18
-
-    if age >= 18:
-        print("You are eligible to vote!")
-        print("Welcome to the voting system.")
-
+if age >= 18:
+    print("You are eligible to vote!")
+    print("Welcome to the voting system.")
+```
 
 The basic structure is:
 
@@ -54,15 +54,15 @@ The basic structure is:
 
 What if you want to do something different when the condition is `False`? That's where `else` comes in:
 
+```python
+age = 16
 
-    age = 16
-
-    if age >= 18:
-        print("You are eligible to vote!")
-    else:
-        print("You are not old enough to vote yet.")
-        print(f"You can vote in {18 - age} years.")
-
+if age >= 18:
+    print("You are eligible to vote!")
+else:
+    print("You are not old enough to vote yet.")
+    print(f"You can vote in {18 - age} years.")
+```
 
 This creates a clear fork in your program's logic—one path for when the condition is true, another for when it's false.
 
@@ -70,27 +70,27 @@ This creates a clear fork in your program's logic—one path for when the condit
 
 Real life rarely involves just two choices. The `elif` (else if) statement lets you check multiple conditions in sequence:
 
+```python
+score = 85
 
-    score = 85
+if score >= 90:
+    grade = "A"
+    print("Excellent work!")
+elif score >= 80:
+    grade = "B"
+    print("Good job!")
+elif score >= 70:
+    grade = "C"
+    print("Satisfactory.")
+elif score >= 60:
+    grade = "D"
+    print("You passed, but consider studying more.")
+else:
+    grade = "F"
+    print("Unfortunately, you failed. Don't give up!")
 
-    if score >= 90:
-        grade = "A"
-        print("Excellent work!")
-    elif score >= 80:
-        grade = "B"
-        print("Good job!")
-    elif score >= 70:
-        grade = "C"
-        print("Satisfactory.")
-    elif score >= 60:
-        grade = "D"
-        print("You passed, but consider studying more.")
-    else:
-        grade = "F"
-        print("Unfortunately, you failed. Don't give up!")
-
-    print(f"Your grade is: {grade}")
-
+print(f"Your grade is: {grade}")
+```
 
 Python evaluates these conditions from top to bottom and stops at the first `True` condition. This means order matters! If you put the `score >= 60` condition first, a score of 85 would trigger that condition instead of the more specific `score >= 80`.
 
@@ -98,42 +98,42 @@ Python evaluates these conditions from top to bottom and stops at the first `Tru
 
 Let's build something useful—a calculator that asks the user what operation they want to perform:
 
+```python
+print("Simple Calculator")
+print("Choose an operation:")
+print("1. Addition")
+print("2. Subtraction")
+print("3. Multiplication")
+print("4. Division")
 
-    print("Simple Calculator")
-    print("Choose an operation:")
-    print("1. Addition")
-    print("2. Subtraction")
-    print("3. Multiplication")
-    print("4. Division")
+choice = input("Enter your choice (1-4): ")
 
-    choice = input("Enter your choice (1-4): ")
-
-    if choice == "1":
-        num1 = float(input("Enter first number: "))
-        num2 = float(input("Enter second number: "))
-        result = num1 + num2
-        print(f"{num1} + {num2} = {result}")
-    elif choice == "2":
-        num1 = float(input("Enter first number: "))
-        num2 = float(input("Enter second number: "))
-        result = num1 - num2
-        print(f"{num1} - {num2} = {result}")
-    elif choice == "3":
-        num1 = float(input("Enter first number: "))
-        num2 = float(input("Enter second number: "))
-        result = num1 * num2
-        print(f"{num1} * {num2} = {result}")
-    elif choice == "4":
-        num1 = float(input("Enter first number: "))
-        num2 = float(input("Enter second number: "))
-        if num2 != 0:
-            result = num1 / num2
-            print(f"{num1} / {num2} = {result}")
-        else:
-            print("Error: Cannot divide by zero!")
+if choice == "1":
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+    result = num1 + num2
+    print(f"{num1} + {num2} = {result}")
+elif choice == "2":
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+    result = num1 - num2
+    print(f"{num1} - {num2} = {result}")
+elif choice == "3":
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+    result = num1 * num2
+    print(f"{num1} * {num2} = {result}")
+elif choice == "4":
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+    if num2 != 0:
+        result = num1 / num2
+        print(f"{num1} / {num2} = {result}")
     else:
-        print("Invalid choice. Please run the program again.")
-
+        print("Error: Cannot divide by zero!")
+else:
+    print("Invalid choice. Please run the program again.")
+```
 
 Notice how we nested another `if` statement inside the division case to check for division by zero—this shows how conditional statements can be combined to handle complex logic.
 
@@ -156,22 +156,22 @@ Operator | Meaning | Example | Result
 `<=` | Less than or equal | `3 <= 3` | `True`
 `>=` | Greater than or equal | `5 >= 3` | `True`
 
+```python
+# Comparing numbers
+temperature = 72
+print(temperature > 70)  # True
+print(temperature == 72)  # True
 
-    # Comparing numbers
-    temperature = 72
-    print(temperature > 70)  # True
-    print(temperature == 72)  # True
+# Comparing strings
+name = "Alice"
+print(name == "alice")  # False (case-sensitive!)
+print(name.lower() == "alice")  # True
 
-    # Comparing strings
-    name = "Alice"
-    print(name == "alice")  # False (case-sensitive!)
-    print(name.lower() == "alice")  # True
-
-    # Comparing with user input
-    user_age = int(input("Enter your age: "))
-    if user_age >= 21:
-        print("You can legally drink alcohol in the US.")
-
+# Comparing with user input
+user_age = int(input("Enter your age: "))
+if user_age >= 21:
+    print("You can legally drink alcohol in the US.")
+```
 
 ### **Logical Operators: Combining Conditions**
 
@@ -181,50 +181,49 @@ Sometimes you need to check multiple conditions at once. Logical operators let y
   * `or`: At least one condition must be `True`
   * `not`: Flips `True` to `False` and vice versa
 
+```python
+# Using 'and' - both conditions must be true
+age = 25
+has_license = True
 
+if age >= 18 and has_license:
+    print("You can rent a car!")
+else:
+    print("Sorry, you cannot rent a car.")
 
-    # Using 'and' - both conditions must be true
-    age = 25
-    has_license = True
+# Using 'or' - at least one condition must be true
+day = "Saturday"
+is_holiday = False
 
-    if age >= 18 and has_license:
-        print("You can rent a car!")
-    else:
-        print("Sorry, you cannot rent a car.")
+if day == "Saturday" or day == "Sunday" or is_holiday:
+    print("No work today!")
+else:
+    print("It's a workday.")
 
-    # Using 'or' - at least one condition must be true
-    day = "Saturday"
-    is_holiday = False
+# Using 'not' - reverses the boolean value
+is_raining = False
 
-    if day == "Saturday" or day == "Sunday" or is_holiday:
-        print("No work today!")
-    else:
-        print("It's a workday.")
-
-    # Using 'not' - reverses the boolean value
-    is_raining = False
-
-    if not is_raining:
-        print("Great weather for a walk!")
-    else:
-        print("Better stay inside.")
-
+if not is_raining:
+    print("Great weather for a walk!")
+else:
+    print("Better stay inside.")
+```
 
 ### **Complex Logical Expressions**
 
 You can combine multiple operators, but use parentheses to make your logic clear:
 
+```python
+# A more complex example: movie theater admission
+age = 16
+has_parent = True
+movie_rating = "R"
 
-    # A more complex example: movie theater admission
-    age = 16
-    has_parent = True
-    movie_rating = "R"
-
-    if (age >= 17) or (age >= 13 and has_parent and movie_rating != "NC-17"):
-        print("You can watch this movie!")
-    else:
-        print("Sorry, you cannot watch this movie.")
-
+if (age >= 17) or (age >= 13 and has_parent and movie_rating != "NC-17"):
+    print("You can watch this movie!")
+else:
+    print("Sorry, you cannot watch this movie.")
+```
 
 * * *
 
@@ -236,39 +235,39 @@ Imagine you need to print numbers 1 through 10, or process every item in a shopp
 
 The `for` loop iterates over a sequence (like a list, string, or range):
 
+```python
+fruits = ["apple", "banana", "cherry", "date"]
 
-    fruits = ["apple", "banana", "cherry", "date"]
-
-    for fruit in fruits:
-        print(f"I like {fruit}s!")
-
+for fruit in fruits:
+    print(f"I like {fruit}s!")
+```
 
 Output:
 
-
-    I like apples!
-    I like bananas!
-    I like cherrys!
-    I like dates!
-
+```text
+I like apples!
+I like bananas!
+I like cherrys!
+I like dates!
+```
 
 ### **Using range() for Number Sequences**
 
 The `range()` function generates sequences of numbers, perfect for counting loops:
 
+```python
+# Print numbers 0 through 4
+for i in range(5):
+    print(f"Count: {i}")
 
-    # Print numbers 0 through 4
-    for i in range(5):
-        print(f"Count: {i}")
+# Print numbers 1 through 5
+for i in range(1, 6):
+    print(f"Count: {i}")
 
-    # Print numbers 1 through 5
-    for i in range(1, 6):
-        print(f"Count: {i}")
-
-    # Print even numbers from 2 to 10
-    for i in range(2, 11, 2):
-        print(f"Even number: {i}")
-
+# Print even numbers from 2 to 10
+for i in range(2, 11, 2):
+    print(f"Even number: {i}")
+```
 
 The `range()` function takes up to three parameters:
 
@@ -280,66 +279,66 @@ The `range()` function takes up to three parameters:
 
 Strings are sequences too, so you can loop through each character:
 
+```python
+word = "Python"
 
-    word = "Python"
-
-    for letter in word:
-        print(f"Letter: {letter}")
-
+for letter in word:
+    print(f"Letter: {letter}")
+```
 
 ### **Practical Example: Grade Calculator**
 
 Let's build a program that calculates the average grade from a list of test scores:
 
+```python
+# List of test scores
+scores = [85, 92, 78, 96, 88]
+total = 0
 
-    # List of test scores
-    scores = [85, 92, 78, 96, 88]
-    total = 0
+print("Individual scores:")
+for score in scores:
+    print(f"Score: {score}")
+    total += score  # Add each score to the total
 
-    print("Individual scores:")
-    for score in scores:
-        print(f"Score: {score}")
-        total += score  # Add each score to the total
+average = total / len(scores)
+print(f"\nTotal points: {total}")
+print(f"Number of tests: {len(scores)}")
+print(f"Average grade: {average:.1f}")
 
-    average = total / len(scores)
-    print(f"\nTotal points: {total}")
-    print(f"Number of tests: {len(scores)}")
-    print(f"Average grade: {average:.1f}")
+# Determine letter grade
+if average >= 90:
+    letter_grade = "A"
+elif average >= 80:
+    letter_grade = "B"
+elif average >= 70:
+    letter_grade = "C"
+elif average >= 60:
+    letter_grade = "D"
+else:
+    letter_grade = "F"
 
-    # Determine letter grade
-    if average >= 90:
-        letter_grade = "A"
-    elif average >= 80:
-        letter_grade = "B"
-    elif average >= 70:
-        letter_grade = "C"
-    elif average >= 60:
-        letter_grade = "D"
-    else:
-        letter_grade = "F"
-
-    print(f"Letter grade: {letter_grade}")
-
+print(f"Letter grade: {letter_grade}")
+```
 
 ### **Nested Loops**
 
 You can put loops inside other loops to handle more complex data structures:
 
+```python
+# Multiplication table
+print("Multiplication Table (1-5):")
+print("   ", end="")
+for i in range(1, 6):
+    print(f"{i:4}", end="")
+print()  # New line
 
-    # Multiplication table
-    print("Multiplication Table (1-5):")
-    print("   ", end="")
-    for i in range(1, 6):
-        print(f"{i:4}", end="")
-    print()  # New line
-
-    for i in range(1, 6):
-        print(f"{i}: ", end="")
-        for j in range(1, 6):
-            result = i * j
-            print(f"{result:4}", end="")
-        print()  # New line after each row
-
+for i in range(1, 6):
+    print(f"{i}: ", end="")
+    for j in range(1, 6):
+        result = i * j
+        print(f"{result:4}", end="")
+    print()  # New line after each row
+```
 
 * * *
 
@@ -351,15 +350,15 @@ While `for` loops are great when you know how many times to repeat something, `w
 
 A `while` loop continues executing as long as its condition remains `True`:
 
+```python
+count = 1
 
-    count = 1
+while count <= 5:
+    print(f"Count is: {count}")
+    count += 1  # Important: change the condition variable!
 
-    while count <= 5:
-        print(f"Count is: {count}")
-        count += 1  # Important: change the condition variable!
-
-    print("Loop finished!")
-
+print("Loop finished!")
+```
 
 **Critical Warning:** Always make sure your `while` loop condition will eventually become `False`, or you'll create an infinite loop that runs forever!
 
@@ -367,63 +366,63 @@ A `while` loop continues executing as long as its condition remains `True`:
 
 One of the most practical uses for `while` loops is ensuring users provide valid input:
 
+```python
+# Keep asking until we get a valid age
+while True:
+    try:
+        age = int(input("Please enter your age: "))
+        if age < 0:
+            print("Age cannot be negative. Please try again.")
+        elif age > 150:
+            print("That seems unrealistic. Please try again.")
+        else:
+            break  # Exit the loop - we got valid input!
+    except ValueError:
+        print("Please enter a valid number.")
 
-    # Keep asking until we get a valid age
-    while True:
-        try:
-            age = int(input("Please enter your age: "))
-            if age < 0:
-                print("Age cannot be negative. Please try again.")
-            elif age > 150:
-                print("That seems unrealistic. Please try again.")
-            else:
-                break  # Exit the loop - we got valid input!
-        except ValueError:
-            print("Please enter a valid number.")
-
-    print(f"Thank you! Your age is {age}.")
-
+print(f"Thank you! Your age is {age}.")
+```
 
 ### **Practical Example: Number Guessing Game**
 
 Let's create an interactive guessing game that demonstrates `while` loops in action:
 
+```python
+import random
 
-    import random
+# Generate a random number between 1 and 100
+secret_number = random.randint(1, 100)
+guesses = 0
+max_guesses = 7
 
-    # Generate a random number between 1 and 100
-    secret_number = random.randint(1, 100)
-    guesses = 0
-    max_guesses = 7
+print("Welcome to the Number Guessing Game!")
+print("I'm thinking of a number between 1 and 100.")
+print(f"You have {max_guesses} guesses to find it!")
 
-    print("Welcome to the Number Guessing Game!")
-    print("I'm thinking of a number between 1 and 100.")
-    print(f"You have {max_guesses} guesses to find it!")
+while guesses < max_guesses:
+    try:
+        guess = int(input(f"\nGuess #{guesses + 1}: Enter your guess: "))
+        guesses += 1
 
-    while guesses < max_guesses:
-        try:
-            guess = int(input(f"\nGuess #{guesses + 1}: Enter your guess: "))
-            guesses += 1
+        if guess == secret_number:
+            print(f"🎉 Congratulations! You found it in {guesses} guesses!")
+            break
+        elif guess < secret_number:
+            print("Too low! Try a higher number.")
+        else:
+            print("Too high! Try a lower number.")
 
-            if guess == secret_number:
-                print(f"🎉 Congratulations! You found it in {guesses} guesses!")
-                break
-            elif guess < secret_number:
-                print("Too low! Try a higher number.")
-            else:
-                print("Too high! Try a lower number.")
+        remaining = max_guesses - guesses
+        if remaining > 0:
+            print(f"You have {remaining} guesses left.")
 
-            remaining = max_guesses - guesses
-            if remaining > 0:
-                print(f"You have {remaining} guesses left.")
+    except ValueError:
+        print("Please enter a valid number!")
+        guesses -= 1  # Don't count invalid input as a guess
 
-        except ValueError:
-            print("Please enter a valid number!")
-            guesses -= 1  # Don't count invalid input as a guess
-
-    if guesses >= max_guesses and guess != secret_number:
-        print(f"\n😞 Sorry! You've used all your guesses. The number was {secret_number}.")
-
+if guesses >= max_guesses and guess != secret_number:
+    print(f"\n😞 Sorry! You've used all your guesses. The number was {secret_number}.")
+```
 
 * * *
 
@@ -435,108 +434,108 @@ Sometimes you need fine-grained control over your loops. Python provides `break`
 
 The `break` statement immediately exits the current loop:
 
+```python
+# Find the first number divisible by 7
+numbers = [12, 15, 21, 28, 33, 42]
 
-    # Find the first number divisible by 7
-    numbers = [12, 15, 21, 28, 33, 42]
-
-    for num in numbers:
-        if num % 7 == 0:
-            print(f"Found first number divisible by 7: {num}")
-            break
-        print(f"{num} is not divisible by 7")
-
+for num in numbers:
+    if num % 7 == 0:
+        print(f"Found first number divisible by 7: {num}")
+        break
+    print(f"{num} is not divisible by 7")
+```
 
 ### **continue: Skipping to the Next Iteration**
 
 The `continue` statement skips the rest of the current iteration and jumps to the next one:
 
+```python
+# Print only positive numbers
+numbers = [1, -2, 3, -4, 5, -6, 7]
 
-    # Print only positive numbers
-    numbers = [1, -2, 3, -4, 5, -6, 7]
-
-    print("Positive numbers only:")
-    for num in numbers:
-        if num < 0:
-            continue  # Skip negative numbers
-        print(num)
-
+print("Positive numbers only:")
+for num in numbers:
+    if num < 0:
+        continue  # Skip negative numbers
+    print(num)
+```
 
 ### **Practical Example: Menu System**
 
 Here's a complete example that combines everything we've learned—a restaurant ordering system:
 
+```python
+def display_menu():
+    print("\n🍽️  RESTAURANT MENU")
+    print("1. Pizza - $12.99")
+    print("2. Burger - $8.99")
+    print("3. Salad - $6.99")
+    print("4. Drink - $2.99")
+    print("5. View Order")
+    print("6. Checkout")
+    print("0. Exit")
 
-    def display_menu():
-        print("\n🍽️  RESTAURANT MENU")
-        print("1. Pizza - $12.99")
-        print("2. Burger - $8.99")
-        print("3. Salad - $6.99")
-        print("4. Drink - $2.99")
-        print("5. View Order")
-        print("6. Checkout")
-        print("0. Exit")
+order = []
+total_cost = 0.0
+menu_prices = {
+    "1": ("Pizza", 12.99),
+    "2": ("Burger", 8.99),
+    "3": ("Salad", 6.99),
+    "4": ("Drink", 2.99)
+}
 
-    order = []
-    total_cost = 0.0
-    menu_prices = {
-        "1": ("Pizza", 12.99),
-        "2": ("Burger", 8.99),
-        "3": ("Salad", 6.99),
-        "4": ("Drink", 2.99)
-    }
+print("Welcome to Python Restaurant! 🐍")
 
-    print("Welcome to Python Restaurant! 🐍")
+while True:
+    display_menu()
+    choice = input("\nEnter your choice: ").strip()
 
-    while True:
-        display_menu()
-        choice = input("\nEnter your choice: ").strip()
+    if choice == "0":
+        print("Thank you for visiting Python Restaurant!")
+        break
 
-        if choice == "0":
-            print("Thank you for visiting Python Restaurant!")
+    elif choice in menu_prices:
+        item_name, item_price = menu_prices[choice]
+        order.append((item_name, item_price))
+        total_cost += item_price
+        print(f"Added {item_name} to your order!")
+
+    elif choice == "5":
+        if not order:
+            print("Your order is empty.")
+            continue
+
+        print("\n📝 YOUR ORDER:")
+        for i, (item, price) in enumerate(order, 1):
+            print(f"{i}. {item} - ${price:.2f}")
+        print(f"Total: ${total_cost:.2f}")
+
+    elif choice == "6":
+        if not order:
+            print("Your order is empty. Add some items first!")
+            continue
+
+        print("\n🧾 FINAL ORDER:")
+        for item, price in order:
+            print(f"{item} - ${price:.2f}")
+
+        tax = total_cost * 0.08
+        final_total = total_cost + tax
+
+        print(f"\nSubtotal: ${total_cost:.2f}")
+        print(f"Tax (8%): ${tax:.2f}")
+        print(f"Total: ${final_total:.2f}")
+
+        payment = input("\nConfirm payment? (y/n): ").lower()
+        if payment == "y":
+            print("Payment processed! Enjoy your meal! 🎉")
             break
-
-        elif choice in menu_prices:
-            item_name, item_price = menu_prices[choice]
-            order.append((item_name, item_price))
-            total_cost += item_price
-            print(f"Added {item_name} to your order!")
-
-        elif choice == "5":
-            if not order:
-                print("Your order is empty.")
-                continue
-
-            print("\n📝 YOUR ORDER:")
-            for i, (item, price) in enumerate(order, 1):
-                print(f"{i}. {item} - ${price:.2f}")
-            print(f"Total: ${total_cost:.2f}")
-
-        elif choice == "6":
-            if not order:
-                print("Your order is empty. Add some items first!")
-                continue
-
-            print("\n🧾 FINAL ORDER:")
-            for item, price in order:
-                print(f"{item} - ${price:.2f}")
-
-            tax = total_cost * 0.08
-            final_total = total_cost + tax
-
-            print(f"\nSubtotal: ${total_cost:.2f}")
-            print(f"Tax (8%): ${tax:.2f}")
-            print(f"Total: ${final_total:.2f}")
-
-            payment = input("\nConfirm payment? (y/n): ").lower()
-            if payment == "y":
-                print("Payment processed! Enjoy your meal! 🎉")
-                break
-            else:
-                print("Payment cancelled. You can modify your order.")
-
         else:
-            print("Invalid choice. Please try again.")
+            print("Payment cancelled. You can modify your order.")
 
+    else:
+        print("Invalid choice. Please try again.")
+```
 
 * * *
 
@@ -546,47 +545,47 @@ As you build more complex programs with control flow, keep these principles in m
 
 ### **1\. Keep Conditions Simple and Readable**
 
+```python
+# Good: Clear and readable
+if age >= 18 and has_valid_id:
+    allow_entry = True
 
-    # Good: Clear and readable
-    if age >= 18 and has_valid_id:
-        allow_entry = True
-
-    # Avoid: Complex nested conditions
-    if not (age < 18 or not has_valid_id or (is_banned and not is_vip)):
-        allow_entry = True
-
+# Avoid: Complex nested conditions
+if not (age < 18 or not has_valid_id or (is_banned and not is_vip)):
+    allow_entry = True
+```
 
 ### **2\. Use Meaningful Variable Names**
 
+```python
+# Good: Descriptive names
+for customer in customer_list:
+    if customer.is_premium_member:
+        apply_discount(customer)
 
-    # Good: Descriptive names
-    for customer in customer_list:
-        if customer.is_premium_member:
-            apply_discount(customer)
-
-    # Avoid: Cryptic names
-    for c in cl:
-        if c.ipm:
-            ad(c)
-
+# Avoid: Cryptic names
+for c in cl:
+    if c.ipm:
+        ad(c)
+```
 
 ### **3\. Avoid Deep Nesting**
 
+```python
+# Good: Early returns/continues to reduce nesting
+for user in users:
+    if not user.is_active:
+        continue
+    if not user.has_permission:
+        continue
+    process_user(user)
 
-    # Good: Early returns/continues to reduce nesting
-    for user in users:
-        if not user.is_active:
-            continue
-        if not user.has_permission:
-            continue
-        process_user(user)
-
-    # Avoid: Deep nesting
-    for user in users:
-        if user.is_active:
-            if user.has_permission:
-                process_user(user)
-
+# Avoid: Deep nesting
+for user in users:
+    if user.is_active:
+        if user.has_permission:
+            process_user(user)
+```
 
 ### **4\. Handle Edge Cases**
 

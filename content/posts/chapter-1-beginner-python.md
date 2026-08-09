@@ -34,19 +34,19 @@ Python was designed with one core philosophy: code should be readable and easy t
 
 **Java (a more verbose language):**
 
-
-    public class Hello {
-        public static void main(String[] args) {
-            System.out.println("Hello, World!");
-        }
+```java
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
     }
-
+}
+```
 
 **Python:**
 
-
-    print("Hello, World!")
-
+```python
+print("Hello, World!")
+```
 
 This simplicity isn't just for show—it means you'll spend less time fighting with syntax and more time solving actual problems. Python code often reads like plain English, making it easier to understand what a program does even months after you've written it.
 

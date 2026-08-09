@@ -69,9 +69,9 @@ Python is free and available for all major operating systems. Let's walk through
 
 **Method 2: Using Homebrew (For Advanced Users)** If you have Homebrew installed:
 
-
-    brew install python
-
+```bash
+brew install python
+```
 
 **Note** : macOS comes with Python 2.7 pre-installed, but you want Python 3.x for modern development. Always use `python3` command on macOS.
 
@@ -81,22 +81,22 @@ Most Linux distributions come with Python pre-installed, but it might be an olde
 
 **Ubuntu/Debian:**
 
-
-    sudo apt update
-    sudo apt install python3 python3-pip
-
+```bash
+sudo apt update
+sudo apt install python3 python3-pip
+```
 
 **CentOS/RHEL/Fedora:**
 
-
-    sudo dnf install python3 python3-pip
-
+```bash
+sudo dnf install python3 python3-pip
+```
 
 **Verify installation:**
 
-
-    python3 --version
-
+```python
+python3 --version
+```
 
 ### Python Version Considerations
 
@@ -189,9 +189,9 @@ Now let's write your first Python program! This is a tradition in programming—
 
 **Step 2: Write Your First Code** Type the following code exactly as shown:
 
-
-    print("Hello, World!")
-
+```python
+print("Hello, World!")
+```
 
 **Step 3: Run Your Program**
 
@@ -212,9 +212,9 @@ Now let's write your first Python program! This is a tradition in programming—
 
 **Expected Output:**
 
-
-    Hello, World!
-
+```text
+Hello, World!
+```
 
 Congratulations! You've just written and executed your first Python program!
 
@@ -231,18 +231,18 @@ Let's break down what happened:
 
 Try modifying your program:
 
-
-    print("Hello, World!")
-    print("Welcome to Python programming!")
-    print("My name is", "Python Student")
-
+```python
+print("Hello, World!")
+print("Welcome to Python programming!")
+print("My name is", "Python Student")
+```
 
 Or with variables:
 
-
-    name = "Python Student"
-    print("Hello, my name is", name)
-
+```python
+name = "Python Student"
+print("Hello, my name is", name)
+```
 
 ## Command Line Basics
 
@@ -271,65 +271,65 @@ Here are the most important commands you'll need:
 
 **Navigation:**
 
+```python
+# See your current location
+pwd                    # "print working directory"
 
-    # See your current location
-    pwd                    # "print working directory"
+# List files and folders
+ls                     # macOS/Linux
+dir                    # Windows
 
-    # List files and folders
-    ls                     # macOS/Linux
-    dir                    # Windows
-
-    # Change directory
-    cd Desktop            # Go to Desktop folder
-    cd ..                 # Go up one level
-    cd /                  # Go to root directory (macOS/Linux)
-    cd \                  # Go to root directory (Windows)
-
+# Change directory
+cd Desktop            # Go to Desktop folder
+cd ..                 # Go up one level
+cd /                  # Go to root directory (macOS/Linux)
+cd \                  # Go to root directory (Windows)
+```
 
 **File Operations:**
 
+```python
+# Create a new directory
+mkdir my_python_projects
 
-    # Create a new directory
-    mkdir my_python_projects
+# Create a new file (macOS/Linux)
+touch hello.py
 
-    # Create a new file (macOS/Linux)
-    touch hello.py
-
-    # Create a new file (Windows)
-    type nul > hello.py
-
+# Create a new file (Windows)
+type nul > hello.py
+```
 
 **Running Python:**
 
+```python
+# Run a Python file
+python hello.py        # Windows
+python3 hello.py       # macOS/Linux
 
-    # Run a Python file
-    python hello.py        # Windows
-    python3 hello.py       # macOS/Linux
+# Start interactive Python
+python                 # Windows
+python3                # macOS/Linux
 
-    # Start interactive Python
-    python                 # Windows
-    python3                # macOS/Linux
-
-    # Exit interactive Python
-    exit()
-
+# Exit interactive Python
+exit()
+```
 
 ### Interactive Python Shell
 
 The Python shell (REPL - Read-Eval-Print Loop) lets you type Python code and see results immediately:
 
-
-    $ python3
-    Python 3.11.5 (main, Aug 24 2023, 15:18:16)
-    >>> print("Hello from the shell!")
-    Hello from the shell!
-    >>> 2 + 3
-    5
-    >>> name = "Python"
-    >>> print(f"I'm learning {name}!")
-    I'm learning Python!
-    >>> exit()
-
+```bash
+$ python3
+Python 3.11.5 (main, Aug 24 2023, 15:18:16)
+>>> print("Hello from the shell!")
+Hello from the shell!
+>>> 2 + 3
+5
+>>> name = "Python"
+>>> print(f"I'm learning {name}!")
+I'm learning Python!
+>>> exit()
+```
 
 This is excellent for testing small pieces of code and learning Python interactively.
 
@@ -357,9 +357,9 @@ Even with careful installation, you might encounter some common issues. Here are
 
 **macOS/Linux:** Add this line to your `.bashrc` or `.zshrc` file:
 
-
-    export PATH="/usr/local/bin/python3:$PATH"
-
+```bash
+export PATH="/usr/local/bin/python3:$PATH"
+```
 
 ### Problem 2: Multiple Python Versions
 
@@ -370,10 +370,10 @@ Even with careful installation, you might encounter some common issues. Here are
 
 **Solution:** Use specific version commands:
 
-
-    python3 --version    # For Python 3
-    python2 --version    # For Python 2 (if installed)
-
+```python
+python3 --version    # For Python 3
+python2 --version    # For Python 2 (if installed)
+```
 
 Always use `python3` for your development work.
 
@@ -386,9 +386,9 @@ Always use `python3` for your development work.
 
 **Solution:** **Windows:** Run Command Prompt as Administrator** macOS/Linux:** Use `sudo` carefully:
 
-
-    sudo python3 -m pip install package_name
-
+```bash
+sudo python3 -m pip install package_name
+```
 
 Better solution: Use virtual environments (covered in later chapters).
 
@@ -442,44 +442,51 @@ Before moving on, let's make sure everything is working correctly:
 
   1. **Python Installation:**
 
-        python --version        # Should show Python 3.8+
-    python3 --version       # On macOS/Linux
-
+```python
+    python --version        # Should show Python 3.8+
+python3 --version       # On macOS/Linux
+```
 
   2. **Package Manager (pip):**
 
-        pip --version           # Should show pip version
-    pip3 --version          # On macOS/Linux
-
+```bash
+    pip --version           # Should show pip version
+pip3 --version          # On macOS/Linux
+```
 
   3. **Your Editor:**
 
-     * Can create and save `.py` files
-     * Syntax highlighting works
-     * Can run Python scripts
+```python
+ * Can create and save `.py` files
+ * Syntax highlighting works
+ * Can run Python scripts
+```
+
   4. **Command Line:**
 
-     * Can navigate directories
-     * Can run Python files
-     * Can access interactive Python shell
+```python
+ * Can navigate directories
+ * Can run Python files
+ * Can access interactive Python shell
+```
 
 ### Final Test Script
 
 Create a file called `test_setup.py` and add this code:
 
+```python
+import sys
+import os
 
-    import sys
-    import os
-
-    print("Python Setup Test")
-    print("=" * 20)
-    print(f"Python version: {sys.version}")
-    print(f"Python executable: {sys.executable}")
-    print(f"Current directory: {os.getcwd()}")
-    print(f"Platform: {sys.platform}")
-    print("=" * 20)
-    print("Setup test completed successfully!")
-
+print("Python Setup Test")
+print("=" * 20)
+print(f"Python version: {sys.version}")
+print(f"Python executable: {sys.executable}")
+print(f"Current directory: {os.getcwd()}")
+print(f"Platform: {sys.platform}")
+print("=" * 20)
+print("Setup test completed successfully!")
+```
 
 Run this script. If it executes without errors and shows your Python version information, your setup is complete!
 

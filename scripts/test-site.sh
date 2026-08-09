@@ -17,6 +17,11 @@ assert_contains() {
 	grep -Fq "$2" "$1" || fail "expected '$2' in $1"
 }
 
+assert_not_contains() {
+	grep -Fq "$2" "$1" && fail "did not expect '$2' in $1"
+	return 0
+}
+
 bash -n scripts/build.sh scripts/build-parallel.sh scripts/test-site.sh scripts/validate-generated-output.sh
 
 assert_path assets/sitekit/sitekit.css
@@ -54,12 +59,22 @@ assert_contains output/blog/python-syntax-and-data-types/index.html '1.2. Syntax
 assert_contains output/blog/syntax-and-data-types/index.html '1.3. Control Flow (If, For, While)'
 assert_contains output/blog/python-setup-and-ides/index.html 'class="docs-shell"'
 assert_contains output/blog/python-setup-and-ides/index.html 'href="#installing-python"'
+assert_contains output/blog/chapter-1-beginner-python/index.html 'class="language-java"'
+assert_contains output/blog/chapter-1-beginner-python/index.html 'class="language-python"'
+assert_not_contains output/blog/chapter-1-beginner-python/index.html '<p>public class Hello {</p>'
+assert_contains output/blog/virtual-environments-and-package-management/index.html 'class="language-text">README.md'
+assert_not_contains output/blog/virtual-environments-and-package-management/index.html 'class="language-text"><h2>Setup</h2>'
+assert_not_contains output/blog/virtual-environments-and-package-management/index.html '<h1>pip</h1>'
 assert_contains output/about/index.html 'Kujo SSG and SiteKit'
 assert_contains output/assets/css/style.css 'Departure Mono'
 assert_contains output/assets/css/style.css '#3776ab'
 assert_contains output/assets/css/style.css '#ffd343'
+assert_not_contains output/assets/css/style.css 'box-shadow: .75rem .75rem 0 var(--python-yellow)'
 assert_contains output/robots.txt 'Allow: /'
 assert_contains output/sitemap.xml 'https://python.robertdevore.com/blog/course-conclusion-from-python-novice-to-professional-developer/'
 assert_contains output/CNAME 'python.robertdevore.com'
 
-printf 'Python Course site contract passed (%s lessons, %s words)\n' "$post_count" "$course_word_count"
+rendered_code_blocks="$(find output/blog -name 'index.html' -type f -exec grep -o '<pre><code' {} + | wc -l | tr -d ' ')"
+[[ "$rendered_code_blocks" -ge 300 ]] || fail "expected at least 300 rendered lesson code blocks, found $rendered_code_blocks"
+
+printf 'Python Course site contract passed (%s lessons, %s words, %s code blocks)\n' "$post_count" "$course_word_count" "$rendered_code_blocks"

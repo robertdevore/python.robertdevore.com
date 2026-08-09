@@ -57,11 +57,11 @@ This means Project A can use Django 3.2 in its environment while Project B uses 
 
 Let's say you're a data scientist working on three projects:
 
-
-    ├── web-scraper/          # Needs requests, beautifulsoup4, pandas 1.3
-    ├── machine-learning/     # Needs scikit-learn, pandas 1.5, numpy 1.21
-    └── data-visualization/   # Needs matplotlib, seaborn, pandas 1.4
-
+```python
+├── web-scraper/          # Needs requests, beautifulsoup4, pandas 1.3
+├── machine-learning/     # Needs scikit-learn, pandas 1.5, numpy 1.21
+└── data-visualization/   # Needs matplotlib, seaborn, pandas 1.4
+```
 
 Without virtual environments, you'd be constantly juggling pandas versions. With virtual environments, each project lives in its own bubble with exactly the dependencies it needs.
 
@@ -75,58 +75,58 @@ Python 3.3+ includes `venv` as part of the standard library, making it the recom
 
 #### Creating a Virtual Environment
 
+```python
+# Create a virtual environment named 'myproject-env'
+python -m venv myproject-env
 
-    # Create a virtual environment named 'myproject-env'
-    python -m venv myproject-env
-
-    # On some systems, you might need to use python3
-    python3 -m venv myproject-env
-
+# On some systems, you might need to use python3
+python3 -m venv myproject-env
+```
 
 This creates a directory called `myproject-env` containing:
 
-
-    myproject-env/
-    ├── bin/          # Scripts (on Windows: Scripts/)
-    ├── include/      # C headers
-    ├── lib/          # Python packages
-    └── pyvenv.cfg    # Configuration file
-
+```python
+myproject-env/
+├── bin/          # Scripts (on Windows: Scripts/)
+├── include/      # C headers
+├── lib/          # Python packages
+└── pyvenv.cfg    # Configuration file
+```
 
 #### Activating the Environment
 
 **On Linux/macOS:**
 
-
-    source myproject-env/bin/activate
-
+```bash
+source myproject-env/bin/activate
+```
 
 **On Windows:**
 
-
-    myproject-env\Scripts\activate
-
+```python
+myproject-env\Scripts\activate
+```
 
 **On Windows (PowerShell):**
 
-
-    myproject-env\Scripts\Activate.ps1
-
+```python
+myproject-env\Scripts\Activate.ps1
+```
 
 When activated, your command prompt will show the environment name:
 
-
-    (myproject-env) $ python --version
-    Python 3.9.7
-
+```python
+(myproject-env) $ python --version
+Python 3.9.7
+```
 
 #### Deactivating the Environment
 
 Simply run:
 
-
-    deactivate
-
+```python
+deactivate
+```
 
 Your prompt returns to normal, and you're back to using the system Python.
 
@@ -134,36 +134,36 @@ Your prompt returns to normal, and you're back to using the system Python.
 
 While `venv` is built-in and sufficient for most use cases, `virtualenv` is a third-party tool that offers more features:
 
+```python
+# Install virtualenv
+pip install virtualenv
 
-    # Install virtualenv
-    pip install virtualenv
+# Create environment
+virtualenv myproject-env
 
-    # Create environment
-    virtualenv myproject-env
-
-    # Or specify Python version
-    virtualenv -p python3.9 myproject-env
-
+# Or specify Python version
+virtualenv -p python3.9 myproject-env
+```
 
 ### Project-Specific Environment Setup
 
 Here's a typical workflow for starting a new project:
 
+```python
+# Create project directory
+mkdir my-awesome-project
+cd my-awesome-project
 
-    # Create project directory
-    mkdir my-awesome-project
-    cd my-awesome-project
+# Create virtual environment
+python -m venv venv
 
-    # Create virtual environment
-    python -m venv venv
+# Activate it
+source venv/bin/activate  # Linux/macOS
+# or
+venv\Scripts\activate     # Windows
 
-    # Activate it
-    source venv/bin/activate  # Linux/macOS
-    # or
-    venv\Scripts\activate     # Windows
-
-    # Now you're ready to install packages!
-
+# Now you're ready to install packages!
+```
 
 **Pro Tip** : Many developers name their virtual environment `venv` or `.venv` (hidden directory) so it's consistent across projects.
 
@@ -177,94 +177,94 @@ Here's a typical workflow for starting a new project:
 
 #### Installing Packages
 
+```python
+# Install a single package
+pip install requests
 
-    # Install a single package
-    pip install requests
+# Install a specific version
+pip install django==4.1.0
 
-    # Install a specific version
-    pip install django==4.1.0
+# Install minimum version
+pip install pandas>=1.3.0
 
-    # Install minimum version
-    pip install pandas>=1.3.0
-
-    # Install with version range
-    pip install numpy>=1.20.0,<1.22.0
-
+# Install with version range
+pip install numpy>=1.20.0,<1.22.0
+```
 
 #### Viewing Installed Packages
 
+```python
+# List all installed packages
+pip list
 
-    # List all installed packages
-    pip list
+# Show detailed information about a package
+pip show requests
 
-    # Show detailed information about a package
-    pip show requests
-
-    # List outdated packages
-    pip list --outdated
-
+# List outdated packages
+pip list --outdated
+```
 
 #### Upgrading and Uninstalling
 
+```python
+# Upgrade a package
+pip install --upgrade requests
 
-    # Upgrade a package
-    pip install --upgrade requests
+# Uninstall a package
+pip uninstall requests
 
-    # Uninstall a package
-    pip uninstall requests
-
-    # Uninstall with confirmation
-    pip uninstall -y requests
-
+# Uninstall with confirmation
+pip uninstall -y requests
+```
 
 ### Installing from Different Sources
 
 #### From PyPI (Default)
 
-
-    pip install package-name
-
+```bash
+pip install package-name
+```
 
 #### From Git Repository
 
+```python
+# Install from GitHub
+pip install git+https://github.com/user/repo.git
 
-    # Install from GitHub
-    pip install git+https://github.com/user/repo.git
-
-    # Install specific branch or tag
-    pip install git+https://github.com/user/repo.git@v1.0.0
-
+# Install specific branch or tag
+pip install git+https://github.com/user/repo.git@v1.0.0
+```
 
 #### From Local Directory
 
+```python
+# Install in development mode (editable install)
+pip install -e /path/to/local/package
 
-    # Install in development mode (editable install)
-    pip install -e /path/to/local/package
-
-    # This creates a link instead of copying files
-    # Changes to source code are immediately available
-
+# This creates a link instead of copying files
+# Changes to source code are immediately available
+```
 
 #### From Requirements File
 
-
-    pip install -r requirements.txt
-
+```bash
+pip install -r requirements.txt
+```
 
 ### Understanding pip Cache
 
 pip caches downloaded packages to speed up future installations:
 
+```python
+# Show cache info
+pip cache info
 
-    # Show cache info
-    pip cache info
+# Clear all cache
+pip cache purge
 
-    # Clear all cache
-    pip cache purge
-
-    # Remove specific package from cache
-    pip cache remove requests
-
+# Remove specific package from cache
+pip cache remove requests
+```
 
 * * *
 
@@ -276,30 +276,30 @@ The `requirements.txt` file is the standard way to specify project dependencies 
 
 #### Generating requirements.txt
 
-
-    # Generate from current environment
-    pip freeze > requirements.txt
-
+```python
+# Generate from current environment
+pip freeze > requirements.txt
+```
 
 This creates a file like:
 
-
-    certifi==2022.9.24
-    charset-normalizer==2.1.1
-    idna==3.4
-    requests==2.28.1
-    urllib3==1.26.12
-
+```python
+certifi==2022.9.24
+charset-normalizer==2.1.1
+idna==3.4
+requests==2.28.1
+urllib3==1.26.12
+```
 
 #### Installing from requirements.txt
 
+```python
+# Install all dependencies
+pip install -r requirements.txt
 
-    # Install all dependencies
-    pip install -r requirements.txt
-
-    # Install with upgrade
-    pip install -r requirements.txt --upgrade
-
+# Install with upgrade
+pip install -r requirements.txt --upgrade
+```
 
 ### Better requirements.txt Management
 
@@ -307,96 +307,96 @@ This creates a file like:
 
 **requirements.txt** (production):
 
-
-    django==4.1.0
-    psycopg2-binary==2.9.3
-    gunicorn==20.1.0
-
+```python
+django==4.1.0
+psycopg2-binary==2.9.3
+gunicorn==20.1.0
+```
 
 **requirements-dev.txt** (development):
 
-
-    -r requirements.txt
-    pytest==7.1.3
-    black==22.8.0
-    flake8==5.0.4
-
+```python
+-r requirements.txt
+pytest==7.1.3
+black==22.8.0
+flake8==5.0.4
+```
 
 Install with:
 
+```python
+# Production
+pip install -r requirements.txt
 
-    # Production
-    pip install -r requirements.txt
-
-    # Development
-    pip install -r requirements-dev.txt
-
+# Development
+pip install -r requirements-dev.txt
+```
 
 #### Using Comments and Constraints
 
+```python
+# Web framework
+django==4.1.0
 
-    # Web framework
-    django==4.1.0
+# Database
+psycopg2-binary==2.9.3  # PostgreSQL adapter
 
-    # Database
-    psycopg2-binary==2.9.3  # PostgreSQL adapter
+# Production server
+gunicorn==20.1.0
 
-    # Production server
-    gunicorn==20.1.0
-
-    # Development tools
-    pytest>=7.0.0,<8.0.0    # Testing framework
-    black~=22.8.0            # Code formatter
-
+# Development tools
+pytest>=7.0.0,<8.0.0    # Testing framework
+black~=22.8.0            # Code formatter
+```
 
 ### Advanced: pip-tools
 
 For more sophisticated dependency management, consider `pip-tools`:
 
-
-    pip install pip-tools
-
+```bash
+pip install pip-tools
+```
 
 Create `requirements.in`:
 
-
-    django
-    requests
-    pandas
-
+```python
+django
+requests
+pandas
+```
 
 Generate pinned `requirements.txt`:
 
-
-    pip-compile requirements.in
-
+```python
+pip-compile requirements.in
+```
 
 This creates a `requirements.txt` with all subdependencies pinned:
 
-
-    # This file is autogenerated by pip-compile with python 3.9
-    # To update, run:
-    #
-    #    pip-compile requirements.in
-    #
-    asgiref==3.5.2
-        # via django
-    certifi==2022.9.24
-        # via requests
-    charset-normalizer==2.1.1
-        # via requests
-    django==4.1.2
-        # via -r requirements.in
-    idna==3.4
-        # via requests
-    ...
-
+```python
+# This file is autogenerated by pip-compile with python 3.9
+# To update, run:
+#
+#    pip-compile requirements.in
+#
+asgiref==3.5.2
+    # via django
+certifi==2022.9.24
+    # via requests
+charset-normalizer==2.1.1
+    # via requests
+django==4.1.2
+    # via -r requirements.in
+idna==3.4
+    # via requests
+...
+```
 
 Update dependencies:
 
-
-    pip-compile --upgrade requirements.in
-
+```python
+pip-compile --upgrade requirements.in
+```
 
 * * *
 
@@ -406,59 +406,59 @@ Update dependencies:
 
 **Never install packages globally** unless they're tools you use across all projects (like `virtualenv` itself).
 
+```python
+# Good: Install in virtual environment
+source venv/bin/activate
+pip install django
 
-    # Good: Install in virtual environment
-    source venv/bin/activate
-    pip install django
-
-    # Bad: Install globally
-    pip install django  # Don't do this!
-
+# Bad: Install globally
+pip install django  # Don't do this!
+```
 
 ### 2\. Pin Your Dependencies
 
 **For applications** , pin exact versions in production:
 
-
-    # Good for applications
-    django==4.1.2
-    requests==2.28.1
-
+```python
+# Good for applications
+django==4.1.2
+requests==2.28.1
+```
 
 **For libraries** , use flexible version specifiers:
 
-
-    # Good for libraries
-    django>=4.0,<5.0
-    requests>=2.25.0
-
+```python
+# Good for libraries
+django>=4.0,<5.0
+requests>=2.25.0
+```
 
 ### 3\. Keep requirements.txt Updated
 
 Regularly update your requirements file:
 
+```python
+# After installing new packages
+pip freeze > requirements.txt
 
-    # After installing new packages
-    pip freeze > requirements.txt
-
-    # Or better: review and update manually
-    pip list --outdated
-
+# Or better: review and update manually
+pip list --outdated
+```
 
 ### 4\. Use Meaningful Environment Names
 
+```python
+# Good: Descriptive names
+python -m venv blog-project-env
+python -m venv data-analysis-env
 
-    # Good: Descriptive names
-    python -m venv blog-project-env
-    python -m venv data-analysis-env
+# Okay: Generic but consistent
+python -m venv venv
 
-    # Okay: Generic but consistent
-    python -m venv venv
-
-    # Bad: Confusing names
-    python -m venv env1
-    python -m venv temp
-
+# Bad: Confusing names
+python -m venv env1
+python -m venv temp
+```
 
 ### 5\. Add Virtual Environments to .gitignore
 
@@ -466,68 +466,61 @@ Never commit virtual environments to version control:
 
 **.gitignore:**
 
+```python
+# Virtual environments
+venv/
+env/
+.venv/
+*-env/
 
-    # Virtual environments
-    venv/
-    env/
-    .venv/
-    *-env/
-
-    # pip
-    pip-log.txt
-    pip-delete-this-directory.txt
-
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+```
 
 ### 6\. Document Your Setup Process
 
 Create a `README.md` with setup instructions:
 
+```text
+README.md
+Setup
 
-    ## Setup
+1. Create virtual environment:
+   python -m venv venv
 
-    1. Create virtual environment:
-       ```bash
-       python -m venv venv
+2. Activate it:
+   source venv/bin/activate  # Linux/macOS
+   venv\Scripts\activate     # Windows
 
+3. Install dependencies:
+   pip install -r requirements.txt
 
-  2. Activate it:
+4. Run the application:
+   python manage.py runserver
+```
 
-        source venv/bin/activate  # Linux/macOS
-    venv\Scripts\activate     # Windows
+### 7\. Use Scripts for Common Tasks
 
+Create shell scripts or use tools like `make`:
 
-  3. Install dependencies:
+**Makefile:**
 
-        pip install -r requirements.txt
+```makefile
+setup:
+    python -m venv venv
+    source venv/bin/activate && pip install -r requirements.txt
 
+clean:
+    rm -rf venv/
+    rm -rf __pycache__/
+    find . -name "*.pyc" -delete
 
-  4. Run the application:
+test:
+    source venv/bin/activate && python -m pytest
 
-        python manage.py runserver
-
-
-
-
-    ### 7. Use Scripts for Common Tasks
-
-    Create shell scripts or use tools like `make`:
-
-    **Makefile:**
-    ```makefile
-    setup:
-        python -m venv venv
-        source venv/bin/activate && pip install -r requirements.txt
-
-    clean:
-        rm -rf venv/
-        rm -rf __pycache__/
-        find . -name "*.pyc" -delete
-
-    test:
-        source venv/bin/activate && python -m pytest
-
-    .PHONY: setup clean test
-
+.PHONY: setup clean test
+```
 
 ### 8\. Consider Using Environment Management Tools
 
@@ -545,46 +538,54 @@ Use tools like `python-dotenv` for environment-specific configuration:
 **Install:**
 
 
-    pip install python-dotenv
+```bash
 
+pip install python-dotenv
 
+```
 **Create .env file:**
 
 
-    DEBUG=True
-    DATABASE_URL=sqlite:///db.sqlite3
-    SECRET_KEY=your-secret-key-here
+```python
 
+DEBUG=True
+DATABASE_URL=sqlite:///db.sqlite3
+SECRET_KEY=your-secret-key-here
 
+```
 **Use in code:**
 
 
-    import os
-    from dotenv import load_dotenv
+```python
 
-    load_dotenv()
+import os
+from dotenv import load_dotenv
 
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
-    DATABASE_URL = os.getenv('DATABASE_URL')
-    SECRET_KEY = os.getenv('SECRET_KEY')
+load_dotenv()
 
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+DATABASE_URL = os.getenv('DATABASE_URL')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
+```
 ### 10\. Regular Maintenance
 
 Schedule regular dependency updates:
 
 
-    # Check for outdated packages
-    pip list --outdated
+```python
 
-    # Update packages (carefully!)
-    pip install --upgrade package-name
+# Check for outdated packages
+pip list --outdated
 
-    # Or use pip-review for interactive updates
-    pip install pip-review
-    pip-review --local --interactive
+# Update packages (carefully!)
+pip install --upgrade package-name
 
+# Or use pip-review for interactive updates
+pip install pip-review
+pip-review --local --interactive
 
+```
 * * *
 
 ## Common Issues and Troubleshooting
@@ -594,53 +595,63 @@ Schedule regular dependency updates:
 **Solution:** Make sure your virtual environment is activated and pip is installed:
 
 
-    # Check if pip is available
-    python -m pip --version
+```python
 
-    # If not, install pip
-    python -m ensurepip --upgrade
+# Check if pip is available
+python -m pip --version
 
+# If not, install pip
+python -m ensurepip --upgrade
 
+```
 ### Problem: Permission Errors on Windows
 
 **Solution:** Run command prompt as administrator or use:
 
 
-    python -m venv venv --system-site-packages
+```bash
 
+python -m venv venv --system-site-packages
 
+```
 ### Problem: Virtual Environment Not Activating
 
 **Solution:** Check your shell and use the correct activation script:
 
 
-    # Bash/Zsh
-    source venv/bin/activate
+```python
 
-    # Fish shell
-    source venv/bin/activate.fish
+# Bash/Zsh
+source venv/bin/activate
 
-    # Windows Command Prompt
-    venv\Scripts\activate.bat
+# Fish shell
+source venv/bin/activate.fish
 
-    # Windows PowerShell
-    venv\Scripts\Activate.ps1
+# Windows Command Prompt
+venv\Scripts\activate.bat
 
+# Windows PowerShell
+venv\Scripts\Activate.ps1
 
+```
 ### Problem: Package Installation Fails
 
 **Solution:** Try upgrading pip first:
 
 
-    pip install --upgrade pip
+```bash
 
+pip install --upgrade pip
 
+```
 Or install with no cache:
 
 
-    pip install --no-cache-dir package-name
+```bash
 
+pip install --no-cache-dir package-name
 
+```
 * * *
 
 ## Conclusion
