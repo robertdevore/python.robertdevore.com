@@ -70,11 +70,12 @@ a:hover { color: var(--docs-accent); }
 .sk-button, .docs-pagination-link { display: inline-flex; align-items: center; justify-content: center; min-block-size: var(--sk-size-control-md); padding-inline: var(--sk-space-4); border: var(--sk-border-1) solid var(--docs-strong-line); border-radius: var(--sk-radius-1); background: var(--docs-ink); color: var(--docs-panel); text-decoration: none; font-family: var(--sk-font-mono); font-size: var(--sk-type-size-sm); }
 .sk-button:hover, .docs-pagination-link:hover { background: var(--docs-accent); color: var(--docs-panel); }
 .sk-button--secondary, .docs-pagination-prev { background: var(--docs-panel); color: var(--docs-ink); }
-.docs-home-terminal { margin: 0; overflow: hidden; background: var(--docs-code); color: var(--docs-code-ink); border: var(--sk-border-1) solid var(--docs-strong-line); }
-.docs-home-terminal figcaption { background: var(--docs-code); color: var(--docs-code-ink); border-block-end-color: var(--sk-color-gray-700); }
+.docs-home-terminal { margin: 0; overflow: hidden; background: var(--docs-panel); color: var(--docs-ink); border: var(--sk-border-1) solid var(--docs-line); border-block-start: var(--sk-border-heavy) solid var(--python-blue); box-shadow: 0 .75rem 2rem rgb(55 118 171 / 10%); }
+.docs-home-terminal figcaption { background: var(--python-soft); color: var(--python-blue); border-block-end-color: var(--python-line); }
 .docs-home-terminal pre { min-block-size: 12rem; background: var(--docs-code); color: var(--docs-code-ink); }
-.docs-home-terminal button { background: var(--sk-color-gray-900); color: var(--docs-code-ink); border-color: var(--sk-color-gray-500); }
-.docs-home-terminal button:hover { background: var(--sk-color-gray-700); color: var(--docs-code-ink); }
+.docs-home-terminal button { background: var(--python-blue); color: #fff; border-color: var(--python-blue); }
+.docs-home-terminal button:hover { background: var(--python-blue-hover); color: #fff; border-color: var(--python-blue-hover); }
+.docs-home-terminal button:focus-visible { outline: 3px solid var(--python-yellow); outline-offset: 3px; }
 .docs-home-paths { padding-block-start: var(--sk-space-16); }
 .docs-section-heading { max-inline-size: 48rem; margin-block-end: var(--sk-space-6); }
 .docs-section-heading h2 { margin-block: 0 var(--sk-space-3); font-size: clamp(2rem, 4vw, 3rem); }
@@ -119,7 +120,9 @@ a:hover { color: var(--docs-accent); }
 .docs-body code { padding: .1em .3em; background: var(--docs-accent-soft); color: var(--docs-ink); font-size: .9em; }
 .docs-body pre { position: relative; overflow: auto; margin-block: var(--sk-space-5); padding: var(--sk-space-4); background: var(--docs-code); color: var(--docs-code-ink); border-radius: var(--sk-radius-1); }
 .docs-body pre code { padding: 0; background: transparent; color: inherit; }
-.copy-code-button { position: absolute; inset-block-start: var(--sk-space-2); inset-inline-end: var(--sk-space-2); min-block-size: var(--sk-size-control-sm); padding-inline: var(--sk-space-2); background: var(--docs-panel); color: var(--docs-ink); border: var(--sk-border-1) solid var(--docs-strong-line); border-radius: var(--sk-radius-1); font-family: var(--sk-font-mono); font-size: var(--sk-type-size-xs); }
+.copy-code-button { position: absolute; inset-block-start: var(--sk-space-2); inset-inline-end: var(--sk-space-2); min-block-size: var(--sk-size-control-sm); padding-inline: var(--sk-space-2); background: var(--python-blue); color: #fff; border: var(--sk-border-1) solid var(--python-blue); border-radius: var(--sk-radius-1); font-family: var(--sk-font-mono); font-size: var(--sk-type-size-xs); }
+.copy-code-button:hover { background: var(--python-blue-hover); border-color: var(--python-blue-hover); color: #fff; }
+.copy-code-button:focus-visible { outline: 3px solid var(--python-yellow); outline-offset: 3px; }
 .docs-listing-header { margin-block-end: var(--sk-space-6); padding: clamp(1.5rem, 5vw, 4rem); }
 .docs-listing-header h1 { max-inline-size: none; }
 .docs-listing-note { color: var(--docs-muted); font-family: var(--sk-font-mono); font-size: var(--sk-type-size-sm); }
@@ -184,9 +187,7 @@ a:hover { color: var(--python-blue-hover); }
 .sk-button:hover, .docs-pagination-link:hover { background: var(--python-blue-hover); border-color: var(--python-blue-hover); color: #fff; }
 .sk-button--secondary, .docs-pagination-prev { background: #fff; color: var(--python-blue); }
 .sk-button:focus-visible, .docs-pagination-link:focus-visible, .docs-primary-nav a:focus-visible, .docs-brand:focus-visible { outline: 3px solid var(--python-yellow); outline-offset: 3px; }
-.docs-home-terminal { border-color: var(--python-blue); box-shadow: .75rem .75rem 0 var(--python-yellow); }
-.docs-home-terminal figcaption { color: var(--python-yellow); }
-.docs-home-terminal button { border-color: var(--python-yellow); color: var(--python-yellow); }
+.docs-home-terminal { border-color: var(--python-line); border-block-start-color: var(--python-blue); }
 .course-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-block-start: var(--sk-space-5); background: var(--python-blue); color: #fff; border: var(--sk-border-1) solid var(--python-blue); }
 .course-stats div { display: grid; gap: var(--sk-space-1); padding: var(--sk-space-5); border-inline-end: var(--sk-border-1) solid rgb(255 255 255 / 25%); }
 .course-stats div:last-child { border-inline-end: 0; }
