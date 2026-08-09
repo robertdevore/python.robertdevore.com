@@ -23,6 +23,9 @@ assert_not_contains() {
 }
 
 bash -n scripts/build.sh scripts/build-parallel.sh scripts/test-site.sh scripts/validate-generated-output.sh
+node --check assets/js/syntax-highlight.js
+node --check assets/js/docs.js
+node scripts/test-syntax-highlight.js
 
 assert_path assets/sitekit/sitekit.css
 assert_path assets/sitekit/sitekit.js
@@ -31,6 +34,7 @@ assert_path assets/sitekit/fonts/DepartureMono-LICENSE.txt
 assert_path assets/fonts/inter-latin-400.woff2
 assert_path assets/fonts/inter-latin-700.woff2
 assert_path assets/fonts/Inter-LICENSE.txt
+assert_path assets/js/syntax-highlight.js
 
 post_count="$(find content/posts -maxdepth 1 -name '*.md' -type f | wc -l | tr -d ' ')"
 [[ "$post_count" == "20" ]] || fail "expected 20 course lessons, found $post_count"
@@ -58,9 +62,12 @@ assert_path output/assets/sitekit/fonts/DepartureMono-Regular.woff2
 assert_path output/assets/fonts/inter-latin-400.woff2
 assert_path output/assets/fonts/inter-latin-700.woff2
 assert_path output/assets/js/docs-search-index.json
+assert_path output/assets/js/syntax-highlight.js
 
 assert_contains output/index.html 'Learn Python. Build real things.'
 assert_contains output/index.html 'class="course-stats"'
+assert_contains output/index.html '<code class="language-python">def start_journey(name):'
+assert_contains output/index.html 'assets/js/syntax-highlight.js'
 assert_contains output/index.html 'href="/course/" class="text-primary hover:underline">Course</a>'
 assert_contains output/course/python-syntax-and-data-types/index.html '1.2. Syntax &amp; Data Types'
 assert_contains output/course/syntax-and-data-types/index.html '1.3. Control Flow (If, For, While)'
@@ -83,6 +90,10 @@ assert_contains output/assets/css/style.css '#3776ab'
 assert_contains output/assets/css/style.css '#ffd343'
 assert_contains output/assets/css/style.css '.docs-home-terminal { margin: 0; overflow: hidden; background: var(--docs-code); color: var(--docs-code-ink);'
 assert_contains output/assets/css/style.css 'border-inline-start: .35rem solid var(--python-yellow); box-shadow: none;'
+assert_contains output/assets/css/style.css '.syntax-keyword, .syntax-atrule { color: #7dd3fc; }'
+assert_contains output/assets/css/style.css '.syntax-string, .syntax-code, .syntax-inserted { color: #86efac; }'
+assert_contains output/assets/js/docs.js "pre.setAttribute('data-code-language', language.toUpperCase())"
+assert_contains output/assets/js/docs.js "bindCopyButton(button, block.querySelector('code') || block)"
 assert_not_contains output/assets/css/style.css 'box-shadow: .75rem .75rem 0 var(--python-yellow)'
 assert_contains output/robots.txt 'Allow: /'
 assert_contains output/sitemap.xml 'https://python.robertdevore.com/course/course-conclusion-from-python-novice-to-professional-developer/'
