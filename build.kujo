@@ -1771,13 +1771,163 @@ func featured_image_html_tag(featured_image_url, title) {
 	return "<img src=\"" + safe_url + "\" alt=\"Featured image for " + safe_title + "\" class=\"featured-image\" loading=\"lazy\" decoding=\"async\">"
 }
 
+func course_site_root(settings) {
+	site_root := trim(to_string(settings["site_url"]))
+	if ends_with(site_root, "/") {
+		site_root = substring(site_root, 0, len(site_root) - 1)
+	}
+	return site_root
+}
+
+func course_canonical_url(settings, route, page_meta) {
+	site_root := course_site_root(settings)
+	canonical_url := meta_string(page_meta, "canonical", "")
+	if len(canonical_url) == 0 {
+		return route_absolute_url(site_root, route)
+	}
+	if starts_with(canonical_url, "http://") || starts_with(canonical_url, "https://") || starts_with(canonical_url, "//") {
+		return canonical_url
+	}
+	if starts_with(canonical_url, "/") {
+		return site_root + canonical_url
+	}
+	return site_root + "/" + canonical_url
+}
+
+func course_schema_json(settings, route, seo_title, seo_description, page_meta, canonical_url, social_image) {
+	site_root := course_site_root(settings)
+	site_home := site_root + "/"
+	course_url := site_root + "/course/"
+	lang := to_lower(meta_string(page_meta, "lang", "en"))
+	if len(lang) == 0 {
+		lang = "en"
+	}
+	author_name := meta_string(page_meta, "author", "Robert DeVore")
+	author_url := "https://robertdevore.com/"
+	organization_id := site_home + "#organization"
+	website_id := site_home + "#website"
+	course_id := course_url + "#course"
+	safe_title := json_escape(seo_title)
+	safe_description := json_escape(seo_description)
+	safe_canonical := json_escape(canonical_url)
+	safe_image := json_escape(social_image)
+	safe_lang := json_escape(lang)
+	safe_author := json_escape(author_name)
+	author_json := "{\"@type\":\"Person\",\"@id\":\"" + author_url + "#person\",\"name\":\"" + safe_author + "\",\"url\":\"" + author_url + "\"}"
+	organization_json := "{\"@type\":\"Organization\",\"@id\":\"" + organization_id + "\",\"name\":\"Python Course\",\"url\":\"" + site_home + "\"}"
+	image_json := "{\"@type\":\"ImageObject\",\"url\":\"" + safe_image + "\",\"width\":1200,\"height\":630}"
+	course_json := "{\"@type\":\"Course\",\"@id\":\"" + course_id + "\",\"name\":\"Complete Python Development Course\",\"description\":\"Learn Python from beginner foundations to professional skills.\",\"url\":\"" + course_url + "\",\"provider\":" + organization_json + ",\"inLanguage\":\"" + safe_lang + "\",\"isAccessibleForFree\":true,\"educationalLevel\":[\"Beginner\",\"Intermediate\",\"Advanced\"]}"
+
+	schema_override := meta_string(page_meta, "schema_type", "")
+	og_type := to_lower(meta_string(page_meta, "og_type", "website"))
+	if og_type == "article" {
+		published_iso := meta_string(page_meta, "published_iso", "")
+		modified_iso := meta_string(page_meta, "modified_iso", published_iso)
+		educational_level := meta_string(page_meta, "difficulty", "")
+		article := "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"" + safe_title + "\",\"name\":\"" + safe_title + "\",\"description\":\"" + safe_description + "\",\"url\":\"" + safe_canonical + "\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"" + safe_canonical + "\"},\"image\":" + image_json + ",\"author\":" + author_json + ",\"publisher\":" + organization_json + ",\"inLanguage\":\"" + safe_lang + "\",\"isAccessibleForFree\":true,\"learningResourceType\":\"Lesson\",\"isPartOf\":{\"@id\":\"" + course_id + "\"},\"about\":{\"@type\":\"Thing\",\"name\":\"Python programming language\"}"
+		if len(published_iso) > 0 {
+			article = article + ",\"datePublished\":\"" + json_escape(published_iso) + "\""
+		}
+		if len(modified_iso) > 0 {
+			article = article + ",\"dateModified\":\"" + json_escape(modified_iso) + "\""
+		}
+		if len(educational_level) > 0 {
+			article = article + ",\"educationalLevel\":\"" + json_escape(educational_level) + "\""
+		}
+		return article + "}"
+	}
+
+	if len(schema_override) == 0 && len(route) == 0 {
+		website_json := "{\"@type\":\"WebSite\",\"@id\":\"" + website_id + "\",\"url\":\"" + site_home + "\",\"name\":\"" + safe_title + "\",\"description\":\"" + safe_description + "\",\"inLanguage\":\"" + safe_lang + "\",\"publisher\":{\"@id\":\"" + organization_id + "\"}}"
+		return "{\"@context\":\"https://schema.org\",\"@graph\":[" + website_json + "," + organization_json + "," + author_json + "," + course_json + "]}"
+	}
+
+	page_type := "WebPage"
+	if route == "about/" {
+		page_type = "AboutPage"
+	} else if route == "course/" || starts_with(route, "course/page/") {
+		page_type = "CollectionPage"
+	}
+	if len(schema_override) > 0 {
+		page_type = schema_override
+	}
+	page_json := "{\"@context\":\"https://schema.org\",\"@type\":\"" + json_escape(page_type) + "\",\"name\":\"" + safe_title + "\",\"description\":\"" + safe_description + "\",\"url\":\"" + safe_canonical + "\",\"image\":" + image_json + ",\"isPartOf\":{\"@id\":\"" + website_id + "\"},\"inLanguage\":\"" + safe_lang + "\""
+	if page_type == "CollectionPage" {
+		page_json = page_json + ",\"mainEntity\":" + course_json
+	}
+	return page_json + "}"
+}
+
 func render_layout(layout_template, settings, route, page_title, meta_description, navigation, content, page_meta) {
 	# Delegates to the native renderer (compiled once, byte-identical to the
-	# previous interpreted body, which is preserved as render_layout_interpreted).
-	# Course lessons are articles rather than blog posts, so normalize the
-	# native renderer's legacy structured-data type for this course site.
+	# previous interpreted body, which is preserved as render_layout_interpreted),
+	# then applies the Python Course's richer discovery and sharing contract.
 	html := render_layout_native(layout_template, settings, route, page_title, meta_description, navigation, content, page_meta)
-	return replace(html, "\"@type\":\"BlogPosting\"", "\"@type\":\"Article\"")
+	# All enrichment is head-only. Splitting before the replacements avoids
+	# repeatedly scanning long lesson bodies containing hundreds of code lines.
+	html_tail := ""
+	head_end := index_of(html, "</head>")
+	if head_end > 0 {
+		html_tail = substring(html, head_end, len(html))
+		html = substring(html, 0, head_end)
+	}
+	seo_title := meta_string(page_meta, "seo_title", page_title)
+	seo_description := meta_string(page_meta, "seo_description", meta_description)
+	if len(seo_description) == 0 {
+		seo_description = trim(to_string(settings["site_tagline"]))
+	}
+	seo_keywords := meta_string(page_meta, "seo_keywords", "")
+	if len(seo_keywords) == 0 {
+		seo_keywords = "Python, Python course, learn Python, Python programming, " + seo_title
+	}
+	author_name := meta_string(page_meta, "author", "Robert DeVore")
+	robots_policy := meta_string(page_meta, "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1")
+	canonical_url := course_canonical_url(settings, route, page_meta)
+	site_root := course_site_root(settings)
+	raw_featured := meta_string(page_meta, "featured_image", "")
+	if len(raw_featured) == 0 {
+		raw_featured = "assets/images/python-course-social.png"
+	}
+	social_image := absolute_media_url(raw_featured, site_root)
+	social_alt := seo_title + " — Python Course"
+	if seo_title == settings["site_title"] {
+		social_alt = "Python Course — Learn Python. Build real things."
+	}
+
+	keywords_tag := "<meta name=\"keywords\" content=\"" + xml_escape(seo_keywords) + "\">"
+	html = regex_replace(html, "<meta name=\"keywords\" content=\"[^\"]*\">", keywords_tag)
+	discovery_meta := "\n\t<meta name=\"author\" content=\"" + xml_escape(author_name) + "\">\n\t<meta name=\"robots\" content=\"" + xml_escape(robots_policy) + "\">"
+	html = replace(html, keywords_tag, keywords_tag + discovery_meta)
+
+	# Rebuild social-image markup so every route has a complete, absolute card.
+	html = regex_replace(html, "[ \\t]*<meta property=\"og:image\"[^>]*>\\n?", "")
+	html = regex_replace(html, "[ \\t]*<meta name=\"twitter:image\"[^>]*>\\n?", "")
+	social_meta := "\t<meta property=\"og:image\" content=\"" + xml_escape(social_image) + "\">\n\t<meta property=\"og:image:secure_url\" content=\"" + xml_escape(social_image) + "\">\n\t<meta property=\"og:image:type\" content=\"image/png\">\n\t<meta property=\"og:image:width\" content=\"1200\">\n\t<meta property=\"og:image:height\" content=\"630\">\n\t<meta property=\"og:image:alt\" content=\"" + xml_escape(social_alt) + "\">\n\t<meta name=\"twitter:image\" content=\"" + xml_escape(social_image) + "\">\n\t<meta name=\"twitter:image:alt\" content=\"" + xml_escape(social_alt) + "\">\n"
+	html = replace(html, "\t<meta name=\"twitter:card\"", social_meta + "\t<meta name=\"twitter:card\"")
+	if to_lower(meta_string(page_meta, "og_type", "website")) == "article" {
+		html = regex_replace(html, "<meta property=\"article:author\" content=\"[^\"]*\">", "<meta property=\"article:author\" content=\"https://robertdevore.com/\">")
+		article_extra := ""
+		modified_iso := meta_string(page_meta, "modified_iso", "")
+		if len(modified_iso) > 0 {
+			article_extra = article_extra + "<meta property=\"article:modified_time\" content=\"" + xml_escape(modified_iso) + "\">"
+		}
+		section := meta_string(page_meta, "section", "")
+		if len(section) > 0 {
+			article_extra = article_extra + "<meta property=\"article:section\" content=\"" + xml_escape(section) + "\">"
+		}
+		if len(article_extra) > 0 {
+			html = replace(html, "<meta property=\"article:author\" content=\"https://robertdevore.com/\">", "<meta property=\"article:author\" content=\"https://robertdevore.com/\">" + article_extra)
+		}
+	}
+
+	if len(site_root) > 0 {
+		rss_tag := "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"" + xml_escape(settings["site_title"]) + "\" href=\"" + site_root + "/feed/index.xml\">"
+		html = regex_replace(html, "<link rel=\"alternate\" type=\"application/rss\\+xml\"[^>]*>", rss_tag)
+	}
+
+	json_ld := "<script type=\"application/ld+json\">" + course_schema_json(settings, route, seo_title, seo_description, page_meta, canonical_url, social_image) + "</script>"
+	html = regex_replace(html, "<script type=\"application/ld\\+json\">[\\s\\S]*?</script>", json_ld)
+	return html + html_tail
 }
 
 func render_layout_interpreted(layout_template, settings, route, page_title, meta_description, navigation, content, page_meta) {
@@ -2736,6 +2886,17 @@ func parse_post_record(line) {
 	return record
 }
 
+func html_entities_to_text(value) {
+	text := to_string(value)
+	text = replace(text, "&amp;", "&")
+	text = replace(text, "&quot;", "\"")
+	text = replace(text, "&#39;", "'")
+	text = replace(text, "&apos;", "'")
+	text = replace(text, "&lt;", "<")
+	text = replace(text, "&gt;", ">")
+	return text
+}
+
 func create_sample_config(format_name) {
 	fmt := to_lower(trim(format_name))
 	if fmt != "yaml" && fmt != "json" && fmt != "yml" {
@@ -3603,8 +3764,12 @@ func build_site(settings) {
 			excerpt := trim(regex_replace(regex_replace(markdown_to_html(excerpt), "<[^>]+>", " "), "\\s+", " "))
 		}
 
-		post_date_raw := trim(to_string(meta["date"]))
-		post_date := parse_post_date(post_date_raw)
+			post_date_raw := trim(to_string(meta["date"]))
+			post_date := parse_post_date(post_date_raw)
+			modified_iso := trim(to_string(meta["last_updated"]))
+			if len(modified_iso) == 0 {
+				modified_iso = post_date["iso"]
+			}
 		post_date_display := post_date_raw
 		if post_date["valid"] {
 			post_date_display = post_date["display"]
@@ -3689,7 +3854,10 @@ func build_site(settings) {
 				"featured_image": featured_image,
 				"author": author_name,
 				"og_type": "article",
-				"published_iso": post_date["iso"]
+				"published_iso": post_date["iso"],
+				"modified_iso": modified_iso,
+				"section": trim(to_string(meta["section"])),
+				"difficulty": trim(to_string(meta["difficulty"]))
 			}
 		)
 		write_route_page(output_dir, route, post_html)
@@ -4092,56 +4260,56 @@ func build_site(settings) {
 				i := i + 1
 			}
 
-			index_posts_html := "<ul class=\"card-grid\">" + cards + "</ul>"
-			index_pagination := build_pagination_links(page_num, total_pages, "")
-			index_content := "<main class=\"container max-w-2xl m-auto py-10 px-4\" id=\"main-content\"><h1 class=\"text-6xl font-bold mb-8 pb-8 text-links font-heading-bold border-b border-primary page-title\">" + html_escape(settings["site_title"]) + "</h1>" + index_posts_html + index_pagination + "</main>"
-			if len(home_listing_template) > 0 {
-				storefront_preview := storefront_preview_cards
-				location_preview := location_preview_cards
-				if len(location_preview) == 0 {
-					location_preview = storefront_preview
+			# The homepage is a curated six-lesson entry point, not a second copy
+			# of every paginated course listing.
+			if page_num == 1 {
+				index_posts_html := "<ul class=\"card-grid\">" + cards + "</ul>"
+				index_pagination := ""
+				index_content := "<main class=\"container max-w-2xl m-auto py-10 px-4\" id=\"main-content\"><h1 class=\"text-6xl font-bold mb-8 pb-8 text-links font-heading-bold border-b border-primary page-title\">" + html_escape(settings["site_title"]) + "</h1>" + index_posts_html + "</main>"
+				if len(home_listing_template) > 0 {
+					storefront_preview := storefront_preview_cards
+					location_preview := location_preview_cards
+					if len(location_preview) == 0 {
+						location_preview = storefront_preview
+					}
+					index_content = apply_template(home_listing_template, {
+						"title": settings["site_title"],
+						"description": settings["site_tagline"],
+						"cards": cards,
+						"items": cards,
+						"posts": cards,
+						"featured_posts_html": featured_posts_cards,
+						"featured_storefronts_html": storefront_preview,
+						"featured_locations_html": location_preview,
+						"posts_html": index_posts_html,
+						"pagination": index_pagination,
+						"page_number": page_num,
+						"total_pages": total_pages,
+						"blog_slug": settings["blog_slug"]
+					})
 				}
-				index_content = apply_template(home_listing_template, {
-					"title": settings["site_title"],
-					"description": settings["site_tagline"],
-					"cards": cards,
-					"items": cards,
-					"posts": cards,
-					"featured_posts_html": featured_posts_cards,
-					"featured_storefronts_html": storefront_preview,
-					"featured_locations_html": location_preview,
-					"posts_html": index_posts_html,
-					"pagination": index_pagination,
-					"page_number": page_num,
-					"total_pages": total_pages,
-					"blog_slug": settings["blog_slug"]
-				})
-			}
 
-			index_route := ""
-			if page_num > 1 {
-				index_route := "page/" + to_string(page_num) + "/"
-			}
-
-			index_navigation := build_navigation(pages_data, custom_collections, index_route, settings["blog_slug"])
-			index_html := render_layout(
-				layout_template,
-				settings,
-				index_route,
-				settings["site_title"],
-				settings["site_tagline"],
-				index_navigation,
-				index_content,
-				{
-					"seo_title": settings["site_title"],
-					"seo_description": settings["site_tagline"],
-					"lang": "en"
+				index_navigation := build_navigation(pages_data, custom_collections, "", settings["blog_slug"])
+				index_html := render_layout(
+					layout_template,
+					settings,
+					"",
+					settings["site_title"],
+					settings["site_tagline"],
+					index_navigation,
+					index_content,
+					{
+						"seo_title": settings["site_title"],
+						"seo_description": settings["site_tagline"],
+						"seo_keywords": "Python course, learn Python, Python programming tutorial, beginner Python, advanced Python",
+						"lang": "en"
+					}
+				)
+				write_route_page(output_dir, "", index_html)
+				write_route_alias(output_dir, "", make_aliases)
+				if want_sitemap {
+					append_file(sitemap_tmp, sitemap_url_entry(site_url, "", "", blog_prefix))
 				}
-			)
-			write_route_page(output_dir, index_route, index_html)
-			write_route_alias(output_dir, index_route, make_aliases)
-			if want_sitemap {
-				append_file(sitemap_tmp, sitemap_url_entry(site_url, index_route, "", blog_prefix))
 			}
 
 			if len(settings["blog_slug"]) > 0 {
@@ -4168,18 +4336,25 @@ func build_site(settings) {
 					})
 				}
 
+				course_seo_title := "Python Course Curriculum"
+				course_seo_description := "Browse all Python lessons from beginner fundamentals through testing, APIs, concurrency, and professional package distribution."
+				if page_num > 1 {
+					course_seo_title = course_seo_title + " - Page " + to_string(page_num)
+					course_seo_description = "Continue the Python development curriculum on page " + to_string(page_num) + " of " + to_string(total_pages) + "."
+				}
 				blog_navigation := build_navigation(pages_data, custom_collections, blog_route, settings["blog_slug"])
 				blog_html := render_layout(
 					layout_template,
 					settings,
 					blog_route,
-					"Course - " + settings["site_title"],
-					settings["site_tagline"],
+					course_seo_title,
+					course_seo_description,
 					blog_navigation,
 					blog_content,
 					{
-						"seo_title": "Course",
-						"seo_description": settings["site_tagline"],
+						"seo_title": course_seo_title,
+						"seo_description": course_seo_description,
+						"seo_keywords": "Python course curriculum, Python lessons, learn Python, Python development",
 						"lang": "en"
 					}
 				)
@@ -4209,19 +4384,22 @@ func build_site(settings) {
 				rss_post_idx := rss_post_idx + 1
 				post_url := site_url + "/" + post["route"]
 				rss_description := trim(regex_replace(regex_replace(to_string(post["excerpt"]), "<[^>]+>", " "), "\\s+", " "))
+				rss_description = html_entities_to_text(rss_description)
 				pub_date_tag := ""
 				post_rfc822 := trim(to_string(post["date_rfc822"]))
 				if len(post_rfc822) > 0 {
 					pub_date_tag = "<pubDate>" + post_rfc822 + "</pubDate>"
 				}
-				rss_items := rss_items + "<item><title>" + xml_escape(post["title"]) + "</title><link>" + xml_escape(post_url) + "</link><guid isPermaLink=\"true\">" + xml_escape(post_url) + "</guid>" + pub_date_tag + "<description>" + xml_escape(rss_description) + "</description></item>"
+				rss_items := rss_items + "<item><title>" + xml_escape(post["title"]) + "</title><link>" + xml_escape(post_url) + "</link><guid isPermaLink=\"true\">" + xml_escape(post_url) + "</guid>" + pub_date_tag + "<category>Python</category><description>" + xml_escape(rss_description) + "</description></item>"
 				rss_count := rss_count + 1
 			}
 			last_build_tag := ""
 			if len(newest_rfc822) > 0 {
 				last_build_tag = "<lastBuildDate>" + newest_rfc822 + "</lastBuildDate>"
 			}
-			rss_xml := "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\"><channel><title>" + xml_escape(settings["site_title"]) + "</title><link>" + xml_escape(site_url) + "</link><description>Latest lessons from " + xml_escape(settings["site_title"]) + "</description>" + last_build_tag + rss_items + "</channel></rss>\n"
+			feed_url := site_url + "/feed/index.xml"
+			course_url := site_url + "/course/"
+			rss_xml := "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><channel><title>" + xml_escape(settings["site_title"]) + "</title><link>" + xml_escape(course_url) + "</link><atom:link href=\"" + xml_escape(feed_url) + "\" rel=\"self\" type=\"application/rss+xml\"/><description>" + xml_escape(settings["site_tagline"]) + "</description><language>en-us</language><generator>Kujo SSG</generator><category>Python</category>" + last_build_tag + rss_items + "</channel></rss>\n"
 			ensure_dir(path_join(output_dir, "feed"))
 			write_file(path_join(output_dir, "feed/index.xml"), rss_xml)
 
@@ -4263,7 +4441,7 @@ func build_site(settings) {
 			# Streamed to the output file directly (O(1) appends) since string
 			# concatenation of a large body is O(n^2) in Kujo.
 			llms_path := path_join(output_dir, "llms.txt")
-			write_file(llms_path, "# " + settings["site_title"] + "\n\nThis site contains structured content formatted for LLM-friendly consumption.\n\n## Lessons\n")
+			write_file(llms_path, "# " + settings["site_title"] + "\n\n> " + settings["site_tagline"] + "\n\nA free, sequential Python development course by Robert DeVore. Lessons progress from beginner fundamentals through professional APIs, concurrency, testing, packaging, and distribution.\n\n## Course\n- [Course curriculum](" + site_url + "/course/)\n- [Start the course](" + site_url + "/course/welcome-to-the-complete-python-development-course/)\n\n## Lessons\n")
 			llms_post_idx := 0
 			loop {
 				if llms_post_idx >= len(posts_sorted) {
@@ -4289,7 +4467,7 @@ func build_site(settings) {
 				append_file(llms_path, read_file(llms_collections_tmp))
 				delete_file(llms_collections_tmp)
 			}
-			append_file(llms_path, "\n## Sitemap\n" + site_url + "/sitemap.xml\n")
+			append_file(llms_path, "\n## Feeds and discovery\n- [RSS feed](" + site_url + "/feed/index.xml)\n- [XML sitemap](" + site_url + "/sitemap.xml)\n- [Robots policy](" + site_url + "/robots.txt)\n\n## Author\n- [Robert DeVore](https://robertdevore.com/)\n")
 		}
 	}
 
@@ -4305,6 +4483,10 @@ func build_site(settings) {
 		{
 			"seo_title": "Page Not Found",
 			"seo_description": "Page not found",
+			"seo_keywords": "",
+			"canonical": site_url + "/404.html",
+			"robots": "noindex, follow",
+			"schema_type": "WebPage",
 			"lang": "en"
 		}
 	)

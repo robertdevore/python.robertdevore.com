@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+	<title id="title">Python Course</title>
+	<desc id="description">Learn Python and build real things, from beginner fundamentals to professional development.</desc>
+	<defs>
+		<linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0" stop-color="#1e293b"/>
+			<stop offset="1" stop-color="#172033"/>
+		</linearGradient>
+		<pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+			<path d="M48 0H0V48" fill="none" stroke="#ffffff" stroke-opacity=".045"/>
+		</pattern>
+		<style>
+			@font-face { font-family: "Departure Mono"; src: url("../sitekit/fonts/DepartureMono-Regular.woff2") format("woff2"); }
+			.mono { font-family: "Departure Mono", "SFMono-Regular", Consolas, monospace; }
+			.sans { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+		</style>
+	</defs>
+	<rect width="1200" height="630" fill="url(#panel)"/>
+	<rect width="1200" height="630" fill="url(#grid)"/>
+	<rect width="18" height="630" fill="#ffd343"/>
+	<circle cx="1068" cy="118" r="228" fill="#3776ab" opacity=".24"/>
+	<circle cx="1110" cy="555" r="188" fill="#ffd343" opacity=".07"/>
+	<g transform="translate(82 76)">
+		<rect width="98" height="64" rx="4" fill="#ffd343"/>
+		<text x="49" y="44" text-anchor="middle" class="mono" font-size="30" fill="#1e293b">&gt;_</text>
+		<text x="122" y="43" class="mono" font-size="27" fill="#ffffff" letter-spacing="2">PYTHON COURSE</text>
+	</g>
+	<text x="82" y="275" class="mono" font-size="78" fill="#ffffff">Learn Python.</text>
+	<text x="82" y="372" class="mono" font-size="78" fill="#7dd3fc">Build real things.</text>
+	<text x="86" y="452" class="sans" font-size="28" fill="#cbd5e1">Beginner fundamentals → professional development</text>
+	<g transform="translate(82 520)">
+		<rect width="507" height="54" rx="4" fill="#3776ab"/>
+		<text x="24" y="36" class="mono" font-size="21" fill="#ffffff">python.robertdevore.com</text>
+	</g>
+	<g transform="translate(913 227)" class="mono" font-size="27">
+		<text x="0" y="0" fill="#f9a8d4">def</text>
+		<text x="64" y="0" fill="#fde68a">start</text>
+		<text x="157" y="0" fill="#ffffff">():</text>
+		<text x="28" y="54" fill="#7dd3fc">return</text>
+		<text x="151" y="54" fill="#86efac">"hello"</text>
+	</g>
+</svg>
