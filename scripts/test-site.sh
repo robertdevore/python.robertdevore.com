@@ -28,6 +28,9 @@ assert_path assets/sitekit/sitekit.css
 assert_path assets/sitekit/sitekit.js
 assert_path assets/sitekit/fonts/DepartureMono-Regular.woff2
 assert_path assets/sitekit/fonts/DepartureMono-LICENSE.txt
+assert_path assets/fonts/inter-latin-400.woff2
+assert_path assets/fonts/inter-latin-700.woff2
+assert_path assets/fonts/Inter-LICENSE.txt
 
 post_count="$(find content/posts -maxdepth 1 -name '*.md' -type f | wc -l | tr -d ' ')"
 [[ "$post_count" == "20" ]] || fail "expected 20 course lessons, found $post_count"
@@ -51,6 +54,8 @@ assert_path output/robots.txt
 assert_path output/llms.txt
 assert_path output/CNAME
 assert_path output/assets/sitekit/fonts/DepartureMono-Regular.woff2
+assert_path output/assets/fonts/inter-latin-400.woff2
+assert_path output/assets/fonts/inter-latin-700.woff2
 assert_path output/assets/js/docs-search-index.json
 
 assert_contains output/index.html 'Learn Python. Build real things.'
@@ -67,6 +72,9 @@ assert_not_contains output/blog/virtual-environments-and-package-management/inde
 assert_not_contains output/blog/virtual-environments-and-package-management/index.html '<h1>pip</h1>'
 assert_contains output/about/index.html 'Kujo SSG and SiteKit'
 assert_contains output/assets/css/style.css 'Departure Mono'
+assert_contains output/assets/css/style.css 'font-family: "Inter";'
+assert_contains output/assets/css/style.css 'scrollbar-color: var(--python-blue) var(--python-soft)'
+assert_contains output/assets/css/style.css '.card-grid .listing-card-title a, .card-grid .listing-card-title a:hover { text-decoration: none; }'
 assert_contains output/assets/css/style.css '#3776ab'
 assert_contains output/assets/css/style.css '#ffd343'
 assert_contains output/assets/css/style.css '.docs-home-terminal { margin: 0; overflow: hidden; background: var(--docs-code); color: var(--docs-code-ink);'
@@ -75,6 +83,11 @@ assert_not_contains output/assets/css/style.css 'box-shadow: .75rem .75rem 0 var
 assert_contains output/robots.txt 'Allow: /'
 assert_contains output/sitemap.xml 'https://python.robertdevore.com/blog/course-conclusion-from-python-novice-to-professional-developer/'
 assert_contains output/CNAME 'python.robertdevore.com'
+
+home_listing_count="$(grep -o '<li class="listing-card"' output/index.html | wc -l | tr -d ' ')"
+blog_listing_count="$(grep -o '<li class="listing-card"' output/blog/index.html | wc -l | tr -d ' ')"
+[[ "$home_listing_count" == "6" ]] || fail "expected 6 homepage lesson cards, found $home_listing_count"
+[[ "$blog_listing_count" == "6" ]] || fail "expected 6 blog lesson cards, found $blog_listing_count"
 
 rendered_code_blocks="$(find output/blog -name 'index.html' -type f -exec grep -o '<pre><code' {} + | wc -l | tr -d ' ')"
 [[ "$rendered_code_blocks" -ge 300 ]] || fail "expected at least 300 rendered lesson code blocks, found $rendered_code_blocks"

@@ -1,7 +1,22 @@
+@font-face {
+	font-family: "Inter";
+	src: url("../fonts/inter-latin-400.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Inter";
+	src: url("../fonts/inter-latin-700.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
 :root {
-	--docs-font: "Departure Mono", "SFMono-Regular", "Cascadia Code", "Roboto Mono", "Liberation Mono", Menlo, Consolas, monospace;
-	--sk-font-sans: var(--docs-font);
-	--sk-font-mono: var(--docs-font);
+	--docs-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--docs-mono: "Departure Mono", "SFMono-Regular", "Cascadia Code", "Roboto Mono", "Liberation Mono", Menlo, Consolas, monospace;
+	--sk-font-sans: var(--docs-sans);
+	--sk-font-mono: var(--docs-mono);
 	--python-blue: #3776ab;
 	--python-blue-hover: #3a7fb8;
 	--python-yellow: #ffd343;
@@ -27,13 +42,15 @@
 	--sk-focus-ring: var(--python-yellow);
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scrollbar-color: var(--docs-muted) var(--docs-accent-soft); scrollbar-width: thin; }
+html { scroll-behavior: smooth; scrollbar-color: var(--python-blue) var(--python-soft); scrollbar-width: thin; }
 body { margin: 0; background: var(--docs-page); color: var(--docs-ink); font-family: var(--sk-font-sans); line-height: var(--sk-type-line-loose); }
-* { scrollbar-color: var(--docs-muted) var(--docs-accent-soft); scrollbar-width: thin; }
-*::-webkit-scrollbar { inline-size: 10px; block-size: 10px; }
-*::-webkit-scrollbar-track { background: var(--docs-accent-soft); }
-*::-webkit-scrollbar-thumb { background: var(--docs-muted); border: 2px solid var(--docs-accent-soft); }
-*::-webkit-scrollbar-thumb:hover { background: var(--docs-ink); }
+* { scrollbar-color: var(--python-blue) var(--python-soft); scrollbar-width: thin; }
+*::-webkit-scrollbar { inline-size: 12px; block-size: 12px; }
+*::-webkit-scrollbar-track { background: var(--python-soft); box-shadow: inset 0 0 0 1px var(--python-line); }
+*::-webkit-scrollbar-thumb { min-block-size: 3rem; background: var(--python-blue); border: 3px solid var(--python-soft); border-radius: 999px; }
+*::-webkit-scrollbar-thumb:hover { background: var(--python-blue-hover); }
+*::-webkit-scrollbar-corner { background: var(--python-soft); }
+h1, h2, h3, h4, h5, h6, code, kbd, samp, pre, button, .docs-topbar, .docs-sidebar, .docs-toc, .course-stats, .course-path-grid, .pagination, .docs-footer nav, .docs-footer strong { font-family: var(--sk-font-mono); }
 a { color: var(--docs-ink); text-underline-offset: .2em; }
 a:hover { color: var(--docs-accent); }
 .skip-link, .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
@@ -208,6 +225,7 @@ a:hover { color: var(--python-blue-hover); }
 .card-grid .listing-card { display: flex; }
 .card-grid .listing-card-body { display: flex; flex: 1; flex-direction: column; }
 .card-grid .listing-card-title { margin-block: 0 var(--sk-space-3); color: var(--python-blue); font-size: var(--sk-type-size-xl); line-height: var(--sk-type-line-tight); }
+.card-grid .listing-card-title a, .card-grid .listing-card-title a:hover { text-decoration: none; }
 .card-grid p { color: var(--docs-body); }
 .card-grid .listing-card-button { align-self: flex-start; margin-block-start: auto; color: var(--python-blue); font-weight: var(--sk-type-weight-bold); }
 .card-grid .listing-card-tags, .card-grid .listing-card-image-link { display: none; }

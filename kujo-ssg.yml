@@ -8,7 +8,7 @@ templates: templates
 assets: assets
 
 blog_slug: blog
-posts_per_page: 5
+posts_per_page: 6
 sort_by: order
 
 fonts: []
