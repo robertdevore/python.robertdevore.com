@@ -241,12 +241,20 @@
 		if (block.closest('.sk-code-block') && block.closest('.sk-code-block').querySelector('[data-copy-code]')) {
 			return;
 		}
+		var shell = document.createElement('div');
+		shell.className = 'docs-code-shell';
+		if (block.hasAttribute('data-code-language')) {
+			shell.setAttribute('data-code-language', block.getAttribute('data-code-language'));
+			block.removeAttribute('data-code-language');
+		}
+		block.parentNode.insertBefore(shell, block);
+		shell.appendChild(block);
 		var button = document.createElement('button');
 		button.type = 'button';
 		button.className = 'copy-code-button';
 		button.textContent = 'Copy';
 		bindCopyButton(button, block.querySelector('code') || block);
-		block.appendChild(button);
+		shell.appendChild(button);
 	});
 
 	document.querySelectorAll('.docs-body h2, .docs-body h3').forEach(function(heading) {
