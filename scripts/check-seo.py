@@ -104,7 +104,10 @@ def main() -> None:
 	if not OUTPUT.is_dir():
 		fail(f"output directory does not exist: {OUTPUT}")
 
-	canonical_files = sorted(OUTPUT.glob("**/index.html"))
+	canonical_files = [
+		path for path in sorted(OUTPUT.glob("**/index.html"))
+		if not path.relative_to(OUTPUT).as_posix().startswith(("blog/", "page/"))
+	]
 	if len(canonical_files) != 26:
 		fail(f"expected 26 canonical HTML routes, found {len(canonical_files)}")
 
@@ -230,7 +233,21 @@ def main() -> None:
 	if "/blog/" in llms or "/sample-page/" in llms:
 		fail("llms.txt contains a legacy route")
 
-	print(f"SEO discovery contract passed ({len(canonical_files)} routes, {len(lesson_urls)} lessons, {len(items)} feed items)")
+	redirects = {"blog/index.html": f"{BASE_URL}/course/"}
+	for url in lesson_urls:
+		slug = url.rstrip("/").rsplit("/", 1)[-1]
+		redirects[f"blog/{slug}/index.html"] = url
+	for page_number in range(2, 5):
+		redirects[f"page/{page_number}/index.html"] = f"{BASE_URL}/course/page/{page_number}/"
+	for relative, target in redirects.items():
+		path = OUTPUT / relative
+		if not path.is_file():
+			fail(f"missing legacy redirect: {relative}")
+		text = path.read_text(encoding="utf-8")
+		if f'content="0; url={target}"' not in text or f'rel="canonical" href="{target}"' not in text:
+			fail(f"invalid legacy redirect: {relative}")
+
+	print(f"SEO discovery contract passed ({len(canonical_files)} canonical routes, {len(redirects)} legacy redirects, {len(lesson_urls)} lessons, {len(items)} feed items)")
 
 
 if __name__ == "__main__":

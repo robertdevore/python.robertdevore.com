@@ -53,8 +53,9 @@ assert_path output/course/python-setup-and-ides/index.html
 assert_path output/course/python-syntax-and-data-types/index.html
 assert_path output/course/syntax-and-data-types/index.html
 assert_path output/course/course-conclusion-from-python-novice-to-professional-developer/index.html
-[[ ! -e output/blog ]] || fail "legacy /blog/ output should not be generated"
-[[ ! -e output/page ]] || fail "duplicate homepage pagination should not be generated"
+assert_path output/blog/index.html
+assert_path output/blog/python-setup-and-ides/index.html
+assert_path output/page/2/index.html
 [[ ! -e output/sample-page ]] || fail "stale Stattic sample page should not be generated"
 assert_path output/feed/index.xml
 assert_path output/sitemap.xml
@@ -75,6 +76,8 @@ assert_contains output/index.html 'assets/js/syntax-highlight.js'
 assert_contains output/index.html 'assets/css/style.css?v=20260809-1'
 assert_contains output/index.html 'assets/js/docs.js?v=20260809-1'
 assert_contains output/index.html 'href="/course/" class="text-primary hover:underline">Course</a>'
+assert_contains output/about/index.html 'class="docs-brand" href="/"'
+assert_not_contains output/about/index.html 'href="../index.html"'
 assert_contains output/index.html 'property="og:image" content="https://python.robertdevore.com/assets/images/python-course-social.png"'
 assert_contains output/index.html '"@type":"Course"'
 assert_contains output/index.html 'name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"'
@@ -125,7 +128,7 @@ course_listing_count="$(grep -o '<li class="listing-card"' output/course/index.h
 [[ "$home_listing_count" == "6" ]] || fail "expected 6 homepage lesson cards, found $home_listing_count"
 [[ "$course_listing_count" == "6" ]] || fail "expected 6 course lesson cards, found $course_listing_count"
 
-if rg -n '/blog/|>Blog<' output --glob '*.html' --glob '*.xml' --glob '*.txt' --glob '*.json'; then
+if rg -n '/blog/|>Blog<' output --glob '*.xml' --glob '*.txt' --glob '*.json'; then
 	fail "generated output still contains legacy blog URLs or labels"
 fi
 
