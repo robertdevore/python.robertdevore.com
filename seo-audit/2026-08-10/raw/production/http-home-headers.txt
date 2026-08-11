@@ -1,0 +1,12 @@
+HTTP/1.1 301 Moved Permanently
+Date: Tue, 11 Aug 2026 01:48:55 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Location: https://python.robertdevore.com/
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=bMzmtPUCnCMl%2Bet8H7cUfVGkkuX2i3K%2FlXsuKPDDz8N7XoymNmr%2FENiy04rzvIcruUn9Xh9aEFZNLGyqNzCfl5%2B2sRcw0IrrpAChEpnJ34hX24dik8zyTdLtpl6WB02SPr%2FstMx%2FIJke%2Fw%3D%3D"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a29394afdb0eb213-EWR
+alt-svc: h3=":443"; ma=86400
+

@@ -1,0 +1,53 @@
+phase,url,schema_types,json_ld_blocks,valid_json,visible_match,rich_result_eligible,issues,recommended_action
+baseline,https://python.robertdevore.com/about/,AboutPage | ImageObject,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/advanced-data-structures-and-algorithms/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/basic-error-handling/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/building-and-consuming-apis/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/chapter-1-beginner-python/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/chapter-2-intermediate-python/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/chapter-3-advanced-python/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/concurrency-and-parallelism/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/course-conclusion-from-python-novice-to-professional-developer/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/exceptions-and-robust-error-handling/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/file-io-and-data-persistence/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/functions-and-modules/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/generators-decorators-and-context-managers/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/,CollectionPage | Course | ImageObject | Organization,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/introduction-to-testing/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/object-oriented-programming/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/packaging-distribution-and-best-practices/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/page/2/,CollectionPage | Course | ImageObject | Organization,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/page/3/,CollectionPage | Course | ImageObject | Organization,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/page/4/,CollectionPage | Course | ImageObject | Organization,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/python-setup-and-ides/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/python-syntax-and-data-types/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/syntax-and-data-types/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/virtual-environments-and-package-management/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/course/welcome-to-the-complete-python-development-course/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+baseline,https://python.robertdevore.com/,Course | Organization | Person | WebSite,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/about/,AboutPage | ImageObject,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/advanced-data-structures-and-algorithms/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/basic-error-handling/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/building-and-consuming-apis/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/chapter-1-beginner-python/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/chapter-2-intermediate-python/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/chapter-3-advanced-python/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/concurrency-and-parallelism/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/course-conclusion-from-python-novice-to-professional-developer/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/exceptions-and-robust-error-handling/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/file-io-and-data-persistence/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/functions-and-modules/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/generators-decorators-and-context-managers/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/,CollectionPage | Course | ImageObject | Organization,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/introduction-to-testing/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/object-oriented-programming/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/packaging-distribution-and-best-practices/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/page/2/,CollectionPage | Course | ImageObject | Organization,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/page/3/,CollectionPage | Course | ImageObject | Organization,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/page/4/,CollectionPage | Course | ImageObject | Organization,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/python-setup-and-ides/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/python-syntax-and-data-types/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/syntax-and-data-types/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/virtual-environments-and-package-management/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/course/welcome-to-the-complete-python-development-course/,Article | ImageObject | Organization | Person | Thing | WebPage,1,true,manual sample verified,not guaranteed; type-dependent,,none
+after,https://python.robertdevore.com/,Course | Organization | Person | WebSite,1,true,manual sample verified,not guaranteed; type-dependent,,none

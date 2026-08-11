@@ -1,0 +1,4 @@
+phase,source_url,destination_url,link_type,anchor_text,http_status,evidence,recommended_action
+baseline,https://python.robertdevore.com/about/,https://python.robertdevore.com/about/</course/welcome-to-the-complete-python-development-course/>/,internal,Welcome to the Complete Python Development Course,404,local generated artifact,repair
+baseline,https://python.robertdevore.com/about/,https://python.robertdevore.com/about/</course/chapter-1-beginner-python/>/,internal,Chapter 1: Beginner Python,404,local generated artifact,repair
+baseline,https://python.robertdevore.com/about/,https://python.robertdevore.com/about/</course/welcome-to-the-complete-python-development-course/>/,internal,Begin with the course introduction,404,local generated artifact,repair

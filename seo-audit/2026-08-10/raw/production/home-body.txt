@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="kujo-light">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#3776ab">
+	<meta name="color-scheme" content="light">
+	<title>Python Course</title>
+	<meta name="description" content="A complete path from Python beginner to professional developer.">
+	<meta name="keywords" content="Python course, learn Python, Python programming tutorial, beginner Python, advanced Python">
+	<meta name="author" content="Robert DeVore">
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+	<link rel="canonical" href="https://python.robertdevore.com/">
+	<link rel="icon" type="image/svg+xml" href="favicon.svg">
+	<link rel="alternate" type="application/rss+xml" title="Python Course" href="https://python.robertdevore.com/feed/index.xml">
+	<meta property="og:title" content="Python Course">
+	<meta property="og:description" content="A complete path from Python beginner to professional developer.">
+	<meta property="og:url" content="https://python.robertdevore.com/">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Python Course">
+	<meta property="og:locale" content="en_US">
+	
+	
+	<meta property="og:image" content="https://python.robertdevore.com/assets/images/python-course-social.png">
+	<meta property="og:image:secure_url" content="https://python.robertdevore.com/assets/images/python-course-social.png">
+	<meta property="og:image:type" content="image/png">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="Python Course — Learn Python. Build real things.">
+	<meta name="twitter:image" content="https://python.robertdevore.com/assets/images/python-course-social.png">
+	<meta name="twitter:image:alt" content="Python Course — Learn Python. Build real things.">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Python Course">
+	<meta name="twitter:description" content="A complete path from Python beginner to professional developer.">
+	
+	<link href="assets/sitekit/sitekit.css" rel="stylesheet">
+	<link href="assets/css/style.css?v=20260809-1" rel="stylesheet">
+	<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://python.robertdevore.com/#website","url":"https://python.robertdevore.com/","name":"Python Course","description":"A complete path from Python beginner to professional developer.","inLanguage":"en","publisher":{"@id":"https://python.robertdevore.com/#organization"}},{"@type":"Organization","@id":"https://python.robertdevore.com/#organization","name":"Python Course","url":"https://python.robertdevore.com/"},{"@type":"Person","@id":"https://robertdevore.com/#person","name":"Robert DeVore","url":"https://robertdevore.com/"},{"@type":"Course","@id":"https://python.robertdevore.com/course/#course","name":"Complete Python Development Course","description":"Learn Python from beginner foundations to professional skills.","url":"https://python.robertdevore.com/course/","provider":{"@type":"Organization","@id":"https://python.robertdevore.com/#organization","name":"Python Course","url":"https://python.robertdevore.com/"},"inLanguage":"en","isAccessibleForFree":true,"educationalLevel":["Beginner","Intermediate","Advanced"]}]}</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="docs-topbar python-topbar" id="navigation">
+	<div class="docs-topbar-row">
+		<a class="docs-brand" href="index.html"><span class="docs-brand-mark" aria-hidden="true">&gt;_</span><span>Python Course</span></a>
+		<button class="docs-menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu" data-docs-menu><span class="docs-menu-label">Menu</span><span class="docs-menu-close-icon" aria-hidden="true"></span></button>
+	</div>
+	<nav id="primary-navigation" class="docs-primary-nav" aria-label="Primary navigation"><ul><li><a href="/" class="text-primary hover:underline" aria-current="page">Home</a></li><li><a href="/course/" class="text-primary hover:underline">Course</a></li><li><a href="/about/" class="text-primary hover:underline">About</a></li></ul></nav>
+	<label class="docs-search-shell">
+		<span class="sr-only">Search the Python course</span>
+		<input id="docs-search" type="search" placeholder="Search the course" autocomplete="off">
+	</label>
+</header>
+<div id="docs-search-results" class="docs-search-results" aria-live="polite"></div>
+<main class="docs-home docs-home-page-1" id="main-content">
+	<section class="sk-hero docs-home-hero" aria-labelledby="home-title">
+		<div class="docs-home-hero-copy">
+			<p class="docs-eyebrow">Complete Python development course</p>
+			<h1 id="home-title">Learn Python. Build real things.</h1>
+			<p class="docs-lede">Go from your first line of Python to professional APIs, concurrency, testing, packaging, and distribution—one practical lesson at a time.</p>
+			<div class="docs-home-actions"><a class="sk-button" href="/course/welcome-to-the-complete-python-development-course/">Start the course</a><a class="sk-button sk-button--secondary" href="/course/">Browse every lesson</a></div>
+		</div>
+		<figure class="sk-code-block docs-home-terminal"><figcaption><span>your_first_step.py</span><button type="button" data-copy-code>Copy</button></figcaption><pre><code class="language-python">def start_journey(name):
+    return f"Welcome, {name}!"
+
+print(start_journey("developer"))</code></pre></figure>
+	</section>
+	<section class="course-stats" aria-label="Course at a glance">
+		<div><strong>20</strong><span>structured lessons</span></div>
+		<div><strong>3</strong><span>progressive chapters</span></div>
+		<div><strong>0→PRO</strong><span>one complete path</span></div>
+	</section>
+	<section class="docs-home-paths" aria-labelledby="paths-title">
+		<div class="docs-section-heading"><p class="docs-eyebrow">Your learning path</p><h2 id="paths-title">From fundamentals to professional practice.</h2><p>Build a strong foundation, solve real-world problems, then master the patterns behind production Python.</p></div>
+		<div class="docs-card-grid course-path-grid">
+			<a class="sk-card" href="/course/chapter-1-beginner-python/"><span class="docs-card-index">01 / BEGINNER</span><h3>Build the foundation</h3><p>Set up Python, learn syntax and control flow, organize functions, and handle errors.</p><span class="docs-card-link">Start Chapter 1 →</span></a>
+			<a class="sk-card" href="/course/chapter-2-intermediate-python/"><span class="docs-card-index">02 / INTERMEDIATE</span><h3>Solve real problems</h3><p>Use objects, files, environments, robust exceptions, and automated tests.</p><span class="docs-card-link">Start Chapter 2 →</span></a>
+			<a class="sk-card" href="/course/chapter-3-advanced-python/"><span class="docs-card-index">03 / ADVANCED</span><h3>Work like a professional</h3><p>Master algorithms, decorators, concurrency, APIs, packaging, and distribution.</p><span class="docs-card-link">Start Chapter 3 →</span></a>
+		</div>
+	</section>
+	<section class="home-lessons" aria-labelledby="lessons-title">
+		<div class="docs-section-heading"><p class="docs-eyebrow">Course curriculum</p><h2 id="lessons-title">Continue through the lessons.</h2><p>Every lesson includes a clear place in the path, searchable content, and previous/next navigation.</p></div>
+		<ul class="card-grid"><li class="listing-card"><a class="listing-card-image-link" href="/course/welcome-to-the-complete-python-development-course/"><span class="listing-card-image-placeholder" aria-hidden="true"></span></a><div class="listing-card-body"><div class="listing-card-tags"><span class="tag listing-tag">python</span><span class="tag listing-tag">course</span></div><h2 class="listing-card-title"><a href="/course/welcome-to-the-complete-python-development-course/" class="text-links">Welcome to the Complete Python Development Course</a></h2><p class="listing-card-excerpt">Welcome to your comprehensive journey into Python programming! Whether you&amp;apos;re taking your first steps into the world of coding or looking to elevate your existing Python skills to a…</p><a href="/course/welcome-to-the-complete-python-development-course/" class="listing-card-button">Read Article</a></div></li><li class="listing-card"><a class="listing-card-image-link" href="/course/chapter-1-beginner-python/"><span class="listing-card-image-placeholder" aria-hidden="true"></span></a><div class="listing-card-body"><div class="listing-card-tags"><span class="tag listing-tag">python</span><span class="tag listing-tag">course</span></div><h2 class="listing-card-title"><a href="/course/chapter-1-beginner-python/" class="text-links">Chapter 1: Beginner Python</a></h2><p class="listing-card-excerpt">Congratulations on taking the first step toward learning one of the world&amp;apos;s most popular and versatile programming languages! Whether you&amp;apos;re completely new to programming or coming from…</p><a href="/course/chapter-1-beginner-python/" class="listing-card-button">Read Article</a></div></li><li class="listing-card"><a class="listing-card-image-link" href="/course/python-setup-and-ides/"><span class="listing-card-image-placeholder" aria-hidden="true"></span></a><div class="listing-card-body"><div class="listing-card-tags"><span class="tag listing-tag">python</span><span class="tag listing-tag">course</span></div><h2 class="listing-card-title"><a href="/course/python-setup-and-ides/" class="text-links">1.1. Python Setup &amp; IDEs</a></h2><p class="listing-card-excerpt">Welcome to your Python journey! Before we dive into writing code, we need to set up your development environment properly. Think of this as preparing your workspace—just like a carpenter…</p><a href="/course/python-setup-and-ides/" class="listing-card-button">Read Article</a></div></li><li class="listing-card"><a class="listing-card-image-link" href="/course/python-syntax-and-data-types/"><span class="listing-card-image-placeholder" aria-hidden="true"></span></a><div class="listing-card-body"><div class="listing-card-tags"><span class="tag listing-tag">python</span><span class="tag listing-tag">course</span><span class="tag listing-tag">syntax</span></div><h2 class="listing-card-title"><a href="/course/python-syntax-and-data-types/" class="text-links">1.2. Syntax &amp; Data Types</a></h2><p class="listing-card-excerpt">Master Python&amp;apos;s basic building blocks—variables, data types, and simple operations—so you can start manipulating data with confidence.</p><a href="/course/python-syntax-and-data-types/" class="listing-card-button">Read Article</a></div></li><li class="listing-card"><a class="listing-card-image-link" href="/course/syntax-and-data-types/"><span class="listing-card-image-placeholder" aria-hidden="true"></span></a><div class="listing-card-body"><div class="listing-card-tags"><span class="tag listing-tag">python</span><span class="tag listing-tag">course</span></div><h2 class="listing-card-title"><a href="/course/syntax-and-data-types/" class="text-links">1.3. Control Flow (If, For, While)</a></h2><p class="listing-card-excerpt">Control flow is what makes your programs truly intelligent. Instead of just executing line by line from top to bottom, you&amp;apos;ll learn to make your code make decisions, repeat actions, and…</p><a href="/course/syntax-and-data-types/" class="listing-card-button">Read Article</a></div></li><li class="listing-card"><a class="listing-card-image-link" href="/course/functions-and-modules/"><span class="listing-card-image-placeholder" aria-hidden="true"></span></a><div class="listing-card-body"><div class="listing-card-tags"><span class="tag listing-tag">python</span><span class="tag listing-tag">course</span></div><h2 class="listing-card-title"><a href="/course/functions-and-modules/" class="text-links">1.4. Functions &amp; Modules</a></h2><p class="listing-card-excerpt">Organize your code into reusable chunks, make it more readable, and start building real programs by leveraging Python&amp;apos;s modular design.</p><a href="/course/functions-and-modules/" class="listing-card-button">Read Article</a></div></li></ul>
+		
+	</section>
+	<aside class="sk-alert docs-home-note" data-variant="neutral"><div><strong>Learn by doing</strong><p>Run the examples, change the values, break the code, and use each error as feedback. The fastest path through Python is consistent, curious practice.</p></div></aside>
+</main>
+
+<footer class="docs-footer" id="footer">
+	<div><strong>Python Course</strong><span>A complete path from Python beginner to professional developer.</span></div>
+	<nav aria-label="Footer navigation"><a href="course/welcome-to-the-complete-python-development-course/">Start learning</a><a href="about/">About</a><a href="feed/index.xml">RSS</a><a href="sitemap.xml">Sitemap</a><a href="llms.txt">llms.txt</a><a href="https://robertdevore.com/">Robert DeVore</a></nav>
+</footer>
+<script src="assets/sitekit/sitekit.js"></script>
+<script src="assets/js/syntax-highlight.js"></script>
+<script src="assets/js/docs.js?v=20260809-1"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a29394537c8a8574',t:'MTc4NjQxMjkyMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

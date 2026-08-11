@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="kujo-light">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#3776ab">
+	<meta name="color-scheme" content="light">
+	<title>Page Not Found | Python Course</title>
+	<meta name="description" content="Page not found">
+	<meta name="keywords" content="Python, Python course, learn Python, Python programming, Page Not Found">
+	<meta name="author" content="Robert DeVore">
+	<meta name="robots" content="noindex, follow">
+	<link rel="canonical" href="https://python.robertdevore.com/404.html">
+	<link rel="icon" type="image/svg+xml" href="favicon.svg">
+	<link rel="alternate" type="application/rss+xml" title="Python Course" href="https://python.robertdevore.com/feed/index.xml">
+	<meta property="og:title" content="Page Not Found">
+	<meta property="og:description" content="Page not found">
+	<meta property="og:url" content="https://python.robertdevore.com/404.html">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Python Course">
+	<meta property="og:locale" content="en_US">
+	
+	
+	<meta property="og:image" content="https://python.robertdevore.com/assets/images/python-course-social.png">
+	<meta property="og:image:secure_url" content="https://python.robertdevore.com/assets/images/python-course-social.png">
+	<meta property="og:image:type" content="image/png">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="Page Not Found — Python Course">
+	<meta name="twitter:image" content="https://python.robertdevore.com/assets/images/python-course-social.png">
+	<meta name="twitter:image:alt" content="Page Not Found — Python Course">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Page Not Found">
+	<meta name="twitter:description" content="Page not found">
+	
+	<link href="assets/sitekit/sitekit.css" rel="stylesheet">
+	<link href="assets/css/style.css?v=20260809-1" rel="stylesheet">
+	<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Page Not Found","description":"Page not found","url":"https://python.robertdevore.com/404.html","image":{"@type":"ImageObject","url":"https://python.robertdevore.com/assets/images/python-course-social.png","width":1200,"height":630},"isPartOf":{"@id":"https://python.robertdevore.com/#website"},"inLanguage":"en"}</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="docs-topbar python-topbar" id="navigation">
+	<div class="docs-topbar-row">
+		<a class="docs-brand" href="index.html"><span class="docs-brand-mark" aria-hidden="true">&gt;_</span><span>Python Course</span></a>
+		<button class="docs-menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu" data-docs-menu><span class="docs-menu-label">Menu</span><span class="docs-menu-close-icon" aria-hidden="true"></span></button>
+	</div>
+	<nav id="primary-navigation" class="docs-primary-nav" aria-label="Primary navigation"><ul><li><a href="/" class="text-primary hover:underline" aria-current="page">Home</a></li><li><a href="/course/" class="text-primary hover:underline">Course</a></li><li><a href="/about/" class="text-primary hover:underline">About</a></li></ul></nav>
+	<label class="docs-search-shell">
+		<span class="sr-only">Search the Python course</span>
+		<input id="docs-search" type="search" placeholder="Search the course" autocomplete="off">
+	</label>
+</header>
+<div id="docs-search-results" class="docs-search-results" aria-live="polite"></div>
+<main class="docs-listing" id="main-content">
+	<header class="docs-listing-header">
+		<p class="docs-eyebrow">404</p>
+		<h1>Page not found</h1>
+		<p>That path does not exist. Search the course or return to the curriculum.</p>
+		<div class="docs-home-actions"><a class="sk-button" href="/course/">Browse lessons</a><a class="sk-button sk-button--secondary" href="/">Course home</a></div>
+	</header>
+</main>
+
+<footer class="docs-footer" id="footer">
+	<div><strong>Python Course</strong><span>A complete path from Python beginner to professional developer.</span></div>
+	<nav aria-label="Footer navigation"><a href="course/welcome-to-the-complete-python-development-course/">Start learning</a><a href="about/">About</a><a href="feed/index.xml">RSS</a><a href="sitemap.xml">Sitemap</a><a href="llms.txt">llms.txt</a><a href="https://robertdevore.com/">Robert DeVore</a></nav>
+</footer>
+<script src="assets/sitekit/sitekit.js"></script>
+<script src="assets/js/syntax-highlight.js"></script>
+<script src="assets/js/docs.js?v=20260809-1"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a293b4f139bdd825',t:'MTc4NjQxNDI1Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

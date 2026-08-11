@@ -1,0 +1,27 @@
+HTTP/2 200 
+date: Tue, 11 Aug 2026 01:48:42 GMT
+content-type: application/xml
+server: cloudflare
+x-origin-cache: HIT
+last-modified: Sun, 09 Aug 2026 23:14:36 GMT
+access-control-allow-origin: *
+etag: W/"6a7909dc-145e"
+expires: Tue, 11 Aug 2026 01:58:42 GMT
+cache-control: max-age=600
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=B%2B2WFnccD5CCt8BfS4d0WJQMk06RE%2BYoUO8L8Q9eEIHipMJ7WlO21ohgPSFGUaXWCanHCB8AXzj%2FDdYdjI3FqaT6VZtJEcy4sB2Qcle%2BJbMvP94JgznRg5CbKblCb3i8H1BpEGc%2FRsKVYg%3D%3D"}]}
+x-proxy-cache: MISS
+x-github-request-id: 69D4:8C987:104292D:11756FB:6A7A7F7A
+x-github-edge-region: iad
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+age: 0
+via: 1.1 varnish
+x-served-by: cache-lga21960-LGA
+x-cache: MISS
+x-cache-hits: 0
+x-timer: S1786412923.617093,VS0,VE19
+vary: Accept-Encoding
+x-fastly-request-id: a2debb0f1a0e4a59ac8ca0debb8349f04df4267d
+cf-cache-status: DYNAMIC
+cf-ray: a293945e5a758a15-EWR
+alt-svc: h3=":443"; ma=86400
+

@@ -1,0 +1,28 @@
+HTTP/2 200 
+date: Tue, 11 Aug 2026 01:48:42 GMT
+content-type: text/plain; charset=utf-8
+content-length: 77
+server: cloudflare
+last-modified: Sun, 09 Aug 2026 23:14:36 GMT
+access-control-allow-origin: *
+etag: "6a7909dc-4d"
+expires: Tue, 11 Aug 2026 01:58:42 GMT
+cache-control: max-age=14400
+x-proxy-cache: MISS
+x-github-request-id: 3D60:CE034:1221F1C:1354891:6A7A7F79
+x-github-edge-region: iad
+accept-ranges: bytes
+age: 0
+via: 1.1 varnish
+x-served-by: cache-lga21965-LGA
+x-cache: MISS
+x-cache-hits: 0
+x-timer: S1786412922.383589,VS0,VE20
+vary: Accept-Encoding
+x-fastly-request-id: c10be8daf88cc2cfb0967ae0728bc4376cfb6737
+cf-cache-status: MISS
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=tQocAz2QP5XoA8wHMGLXu42qHDCFZIxYh%2Bi5YpG8Z4o22FVRbUHYmuNXeqfvR%2B5H4X35W1X5JWge4NhyDk3zF%2BWRufPCyj39OuKoDF%2FVZhyud8HRQ33s7hotLnZJ%2B7rSS14z42KocN8Idw%3D%3D"}]}
+cf-ray: a293945cca2e440c-EWR
+alt-svc: h3=":443"; ma=86400
+

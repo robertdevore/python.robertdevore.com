@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="kujo-light">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#3776ab">
+	<meta name="color-scheme" content="light">
+	<title>About This Site | Python Course</title>
+	<meta name="description" content="Learn about the complete Python development course and the Kujo SSG and SiteKit stack behind it.">
+	<meta name="keywords" content="Python, Python course, learn Python, Python programming, About This Site">
+	<meta name="author" content="Robert DeVore">
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+	<link rel="canonical" href="https://python.robertdevore.com/about/">
+	<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+	<link rel="alternate" type="application/rss+xml" title="Python Course" href="https://python.robertdevore.com/feed/index.xml">
+	<meta property="og:title" content="About This Site">
+	<meta property="og:description" content="Learn about the complete Python development course and the Kujo SSG and SiteKit stack behind it.">
+	<meta property="og:url" content="https://python.robertdevore.com/about/">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Python Course">
+	<meta property="og:locale" content="en_US">
+	
+	
+	<meta property="og:image" content="https://python.robertdevore.com/assets/images/python-course-social.png">
+	<meta property="og:image:secure_url" content="https://python.robertdevore.com/assets/images/python-course-social.png">
+	<meta property="og:image:type" content="image/png">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="About This Site — Python Course">
+	<meta name="twitter:image" content="https://python.robertdevore.com/assets/images/python-course-social.png">
+	<meta name="twitter:image:alt" content="About This Site — Python Course">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="About This Site">
+	<meta name="twitter:description" content="Learn about the complete Python development course and the Kujo SSG and SiteKit stack behind it.">
+	
+	<link href="../assets/sitekit/sitekit.css" rel="stylesheet">
+	<link href="../assets/css/style.css?v=20260809-1" rel="stylesheet">
+	<script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"About This Site","description":"Learn about the complete Python development course and the Kujo SSG and SiteKit stack behind it.","url":"https://python.robertdevore.com/about/","image":{"@type":"ImageObject","url":"https://python.robertdevore.com/assets/images/python-course-social.png","width":1200,"height":630},"isPartOf":{"@id":"https://python.robertdevore.com/#website"},"inLanguage":"en"}</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="docs-topbar python-topbar" id="navigation">
+	<div class="docs-topbar-row">
+		<a class="docs-brand" href="../index.html"><span class="docs-brand-mark" aria-hidden="true">&gt;_</span><span>Python Course</span></a>
+		<button class="docs-menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu" data-docs-menu><span class="docs-menu-label">Menu</span><span class="docs-menu-close-icon" aria-hidden="true"></span></button>
+	</div>
+	<nav id="primary-navigation" class="docs-primary-nav" aria-label="Primary navigation"><ul><li><a href="/" class="text-primary hover:underline">Home</a></li><li><a href="/course/" class="text-primary hover:underline">Course</a></li><li><a href="/about/" class="text-primary hover:underline" aria-current="page">About</a></li></ul></nav>
+	<label class="docs-search-shell">
+		<span class="sr-only">Search the Python course</span>
+		<input id="docs-search" type="search" placeholder="Search the course" autocomplete="off">
+	</label>
+</header>
+<div id="docs-search-results" class="docs-search-results" aria-live="polite"></div>
+<main class="docs-shell" id="main-content">
+	<aside class="docs-sidebar" aria-label="Site sections"><p class="docs-sidebar-label">Browse</p><ul><li><a href="/" class="text-primary hover:underline">Home</a></li><li><a href="/course/" class="text-primary hover:underline">Course</a></li><li><a href="/about/" class="text-primary hover:underline" aria-current="page">About</a></li></ul><a class="course-outline-home" href="/course/welcome-to-the-complete-python-development-course/">Start the course →</a></aside>
+	<article class="docs-article">
+		<h1>About This Site</h1>
+		<p class="docs-description">Learn about the complete Python development course and the Kujo SSG and SiteKit stack behind it.</p>
+		
+		<div class="docs-body"><p>Welcome to <strong>Python.RobertDeVore.com</strong> \- your comprehensive resource for mastering Python development from beginner to professional level!</p>
+<p>This site hosts a complete Python development course designed to take you on a structured journey through all aspects of Python programming. Whether you&apos;re writing your first line of code or looking to advance your existing Python skills, this course provides the progressive learning experience you need.</p>
+<h2>About the Course</h2>
+<p>This is a complete Python development course that covers:</p>
+<h3><strong>Chapter 1: Beginner Python</strong></h3>
+<ul>
+<li>Python setup and development environments</li>
+<li>Core syntax and fundamental data types</li>
+<li>Control flow structures (if/for/while loops)</li>
+<li>Functions, modules, and basic error handling</li>
+</ul>
+<h3><strong>Chapter 2: Intermediate Python</strong></h3>
+<ul>
+<li>Object-oriented programming principles</li>
+<li>File I/O and data persistence</li>
+<li>Virtual environments and package management</li>
+<li>Exception handling and testing fundamentals</li>
+</ul>
+<h3><strong>Chapter 3: Advanced Python</strong></h3>
+<ul>
+<li>Advanced data structures and algorithms</li>
+<li>Generators, decorators, and context managers</li>
+<li>Concurrency and parallelism</li>
+<li>API development and consumption</li>
+<li>Professional packaging and distribution</li>
+</ul>
+<p>The course is designed as a progressive learning experience that transforms complete beginners into confident Python developers ready to contribute to real-world projects.</p>
+<h2>About the Author</h2>
+<p>This course was created by <a href="#"><strong>Robert DeVore</strong></a>, an experienced developer passionate about making Python programming accessible to everyone. Robert brings years of practical development experience to create content that bridges the gap between academic concepts and real-world application.</p>
+<h2>Built with Kujo SSG and SiteKit</h2>
+<p>This site is built with <a href="#"><strong>Kujo SSG</strong></a> and <a href="#"><strong>SiteKit</strong></a>. Kujo turns the Markdown course source into a fast, deterministic static site, while SiteKit provides the accessible design-system foundation. The theme preserves the original Python blue and yellow palette and uses the locally hosted Departure Mono typeface.</p>
+<h2>Why This Approach Works</h2>
+<h3><strong>Structured Learning Path</strong></h3>
+<p>Unlike random tutorials scattered across the internet, this course follows a carefully designed curriculum that builds knowledge systematically. Each lesson builds upon previous concepts, ensuring you develop a solid foundation before moving to advanced topics.</p>
+<h3><strong>Real-World Focus</strong></h3>
+<p>Every concept is taught with practical applications in mind. You&apos;ll learn not just how Python works, but how to use it to solve actual problems you&apos;ll encounter in professional development.</p>
+<h3><strong>Beginner to Professional</strong></h3>
+<p>The course doesn&apos;t just teach you to code—it teaches you to think like a developer. By the end, you&apos;ll understand best practices, testing methodologies, and professional development workflows used in the industry.</p>
+<h2>Perfect For</h2>
+<ul>
+<li><strong>Complete beginners</strong> who have never programmed before</li>
+<li><strong>Developers from other languages</strong> looking to learn Python idioms and best practices</li>
+<li><strong>Self-taught Python users</strong> wanting to fill knowledge gaps and learn professional practices</li>
+<li><strong>Professional developers</strong> seeking to master advanced Python features and modern development practices</li>
+</ul>
+<h2>Get Started</h2>
+<p>Ready to begin your Python journey? Start with the <a href="&lt;/course/welcome-to-the-complete-python-development-course/&gt;">Welcome to the Complete Python Development Course</a> introduction, then move on to <a href="&lt;/course/chapter-1-beginner-python/&gt;">Chapter 1: Beginner Python</a> to begin building your foundation.</p>
+<p>Each lesson is designed to be completed at your own pace, with practical exercises and real-world examples to reinforce your learning.</p>
+<h2>Technology Behind This Site</h2>
+<p>This educational platform is built with a small, local-first static stack:</p>
+<ul>
+<li><strong>Kujo SSG</strong> : Deterministic static site generation</li>
+<li><strong>Markdown</strong> : Clean, readable content format</li>
+<li><strong>SiteKit</strong> : Accessible design tokens, components, and Departure Mono</li>
+<li><strong>Semantic templates</strong> : Responsive course, lesson, search, and navigation layouts</li>
+<li><strong>Optimized Performance</strong> : Fast loading times for better learning experience</li>
+</ul>
+<h2>About the Site Architecture</h2>
+<p>The current architecture keeps the course portable, reviewable, and easy to maintain:</p>
+<ul>
+<li>Markdown lessons with YAML front matter</li>
+<li>A complete, vendored SiteKit consumer distribution</li>
+<li>Locally hosted fonts, scripts, and search data</li>
+<li>Automatic sitemap, RSS, robots, SEO, and <code>llms.txt</code> output</li>
+<li>A validated build that can deploy to any static hosting platform</li>
+</ul>
+<p>The generated site has no database and no required client-side framework. Course pages remain fast, indexable, and readable even when JavaScript is unavailable.</p>
+<ul>
+<li><em> </em></li>
+</ul>
+<p><strong>Ready to start your Python journey?</strong> <a href="&lt;/course/welcome-to-the-complete-python-development-course/&gt;">Begin with the course introduction</a> and take your first step toward becoming a professional Python developer!</p></div>
+	</article>
+	<nav class="docs-toc" aria-label="On this page"><h2>On this page</h2><ol><li class="toc-level-2"><a href="#about-the-course">About the Course</a></li><li class="toc-level-2"><a href="#about-the-author">About the Author</a></li><li class="toc-level-2"><a href="#built-with-kujo-ssg-and-sitekit">Built with Kujo SSG and SiteKit</a></li><li class="toc-level-2"><a href="#why-this-approach-works">Why This Approach Works</a></li><li class="toc-level-2"><a href="#perfect-for">Perfect For</a></li><li class="toc-level-2"><a href="#get-started">Get Started</a></li><li class="toc-level-2"><a href="#technology-behind-this-site">Technology Behind This Site</a></li><li class="toc-level-2"><a href="#about-the-site-architecture">About the Site Architecture</a></li></ol></nav>
+</main>
+
+<footer class="docs-footer" id="footer">
+	<div><strong>Python Course</strong><span>A complete path from Python beginner to professional developer.</span></div>
+	<nav aria-label="Footer navigation"><a href="../course/welcome-to-the-complete-python-development-course/">Start learning</a><a href="../about/">About</a><a href="../feed/index.xml">RSS</a><a href="../sitemap.xml">Sitemap</a><a href="../llms.txt">llms.txt</a><a href="https://robertdevore.com/">Robert DeVore</a></nav>
+</footer>
+<script src="../assets/sitekit/sitekit.js"></script>
+<script src="../assets/js/syntax-highlight.js"></script>
+<script src="../assets/js/docs.js?v=20260809-1"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a29394563b4ea6af',t:'MTc4NjQxMjkyMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

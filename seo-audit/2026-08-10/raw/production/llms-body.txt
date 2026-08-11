@@ -1,0 +1,42 @@
+# Python Course
+
+> A complete path from Python beginner to professional developer.
+
+A free, sequential Python development course by Robert DeVore. Lessons progress from beginner fundamentals through professional APIs, concurrency, testing, packaging, and distribution.
+
+## Course
+- [Course curriculum](https://python.robertdevore.com/course/)
+- [Start the course](https://python.robertdevore.com/course/welcome-to-the-complete-python-development-course/)
+
+## Lessons
+- [Welcome to the Complete Python Development Course](https://python.robertdevore.com/course/welcome-to-the-complete-python-development-course/)
+- [Chapter 1: Beginner Python](https://python.robertdevore.com/course/chapter-1-beginner-python/)
+- [1.1. Python Setup & IDEs](https://python.robertdevore.com/course/python-setup-and-ides/)
+- [1.2. Syntax & Data Types](https://python.robertdevore.com/course/python-syntax-and-data-types/)
+- [1.3. Control Flow (If, For, While)](https://python.robertdevore.com/course/syntax-and-data-types/)
+- [1.4. Functions & Modules](https://python.robertdevore.com/course/functions-and-modules/)
+- [1.5. Basic Error Handling](https://python.robertdevore.com/course/basic-error-handling/)
+- [Chapter 2: Intermediate Python](https://python.robertdevore.com/course/chapter-2-intermediate-python/)
+- [2.1. Object-Oriented Programming (OOP)](https://python.robertdevore.com/course/object-oriented-programming/)
+- [2.2. File I/O & Data Persistence](https://python.robertdevore.com/course/file-io-and-data-persistence/)
+- [2.3. Virtual Environments & Package Management](https://python.robertdevore.com/course/virtual-environments-and-package-management/)
+- [2.4. Exceptions & Robust Error Handling](https://python.robertdevore.com/course/exceptions-and-robust-error-handling/)
+- [2.5. Introduction to Testing](https://python.robertdevore.com/course/introduction-to-testing/)
+- [Chapter 3. Advanced Python](https://python.robertdevore.com/course/chapter-3-advanced-python/)
+- [3.1. Advanced Data Structures & Algorithms](https://python.robertdevore.com/course/advanced-data-structures-and-algorithms/)
+- [3.2. Generators, Decorators and Context Managers](https://python.robertdevore.com/course/generators-decorators-and-context-managers/)
+- [3.3. Concurrency & Parallelism](https://python.robertdevore.com/course/concurrency-and-parallelism/)
+- [3.4. Building and Consuming APIs](https://python.robertdevore.com/course/building-and-consuming-apis/)
+- [3.5. Packaging, Distribution, and Best Practices](https://python.robertdevore.com/course/packaging-distribution-and-best-practices/)
+- [Course Conclusion: From Python Novice to Professional Developer](https://python.robertdevore.com/course/course-conclusion-from-python-novice-to-professional-developer/)
+
+## Pages
+- [About This Site](https://python.robertdevore.com/about/)
+
+## Feeds and discovery
+- [RSS feed](https://python.robertdevore.com/feed/index.xml)
+- [XML sitemap](https://python.robertdevore.com/sitemap.xml)
+- [Robots policy](https://python.robertdevore.com/robots.txt)
+
+## Author
+- [Robert DeVore](https://robertdevore.com/)
