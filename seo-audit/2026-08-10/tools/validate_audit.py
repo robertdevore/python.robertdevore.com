@@ -67,7 +67,11 @@ assert (AUDIT / "raw/baseline/commit.txt").read_text().strip() == "dcd0ed0fd949d
 
 production_summary = json.loads((AUDIT / "raw/production/after-summary.json").read_text())
 assert production_summary == {
-    "deployment_run": 31451814639,
+    "deployment_run": 31452140745,
+    "cloudflare_bulk_redirect_list_id": "4ecb2aecd75a48aeb27a4bd575b0198b",
+    "cloudflare_bulk_redirect_rule_id": "1a0ee52fa1654bd7ae652f5987e89cea",
+    "cloudflare_redirect_status": 301,
+    "cloudflare_query_preservation_verified": True,
     "canonical_urls_verified": 26,
     "canonical_failures": 0,
     "legacy_redirects_verified": 24,
@@ -77,5 +81,7 @@ assert production_summary == {
 }
 assert len(rows("raw/production/canonical-after.csv")) == 26
 assert len(rows("raw/production/legacy-redirects-after.csv")) == 24
+assert all(row["status"] == "301" and row["location"] == row["target"] and row["result"] == "pass"
+           for row in rows("raw/production/legacy-redirects-after.csv"))
 
 print("SEO audit bundle validation passed")

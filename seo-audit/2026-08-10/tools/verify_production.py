@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 import json
 import subprocess
+import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlparse
@@ -27,6 +28,25 @@ def fetch(url: str, user_agent: str = "SEO-Production-Verify/2026-08-10") -> tup
     body, trailer = result.stdout.rsplit("\n__AUDIT_STATUS__", 1)
     status_text, final_url = trailer.split("\n__AUDIT_URL__", 1)
     return int(status_text), final_url.strip(), body
+
+
+def fetch_redirect(url: str, expected_location: str) -> tuple[int, str]:
+    """Fetch an edge redirect without following it, allowing brief rule propagation."""
+    last_result = (0, "")
+    for attempt in range(4):
+        result = subprocess.run(
+            ["curl", "-4", "--http1.1", "-sS", "--max-time", "20", "--max-redirs", "0",
+             "-H", "Cache-Control: no-cache", "-o", "/dev/null", "-w", "%{http_code}\n%{redirect_url}", url],
+            capture_output=True, text=True, encoding="utf-8", errors="replace", check=False,
+        )
+        assert result.returncode == 0, f"curl failed for {url}: {result.stderr}"
+        status_text, location = result.stdout.split("\n", 1)
+        last_result = (int(status_text), location.strip())
+        if last_result == (301, expected_location):
+            return last_result
+        if attempt < 3:
+            time.sleep(1)
+    return last_result
 
 
 sitemap_status, _, sitemap_text = fetch(f"{BASE}/sitemap.xml")
@@ -60,16 +80,14 @@ assert len(redirect_map) == 24
 
 redirect_rows = []
 for source, target in redirect_map.items():
-    status, final_url, body = fetch(source)
-    soup = BeautifulSoup(body, "html.parser")
-    refresh = soup.find("meta", attrs={"http-equiv": "refresh"})
-    canonical = soup.find("link", attrs={"rel": "canonical"})
-    refresh_content = str(refresh.get("content", "")) if refresh else ""
-    canonical_href = str(canonical.get("href", "")) if canonical else ""
-    assert status == 200 and final_url == source
-    assert refresh_content == f"0; url={target}"
-    assert canonical_href == target
-    redirect_rows.append({"source": source, "status": status, "target": target, "refresh": refresh_content, "canonical": canonical_href, "result": "pass"})
+    status, location = fetch_redirect(source, target)
+    query_source = f"{source}?utm_source=seo-audit"
+    query_target = f"{target}?utm_source=seo-audit"
+    query_status, query_location = fetch_redirect(query_source, query_target)
+    assert status == query_status == 301
+    assert location == target and query_location == query_target
+    redirect_rows.append({"source": source, "status": status, "target": target, "location": location,
+                          "query_location": query_location, "result": "pass"})
 
 for path in ("robots.txt", "sitemap.xml", "feed/index.xml", "llms.txt", "assets/images/python-course-social.png"):
     status, _, _ = fetch(f"{BASE}/{path}")
@@ -86,12 +104,16 @@ with (AUDIT / "raw/production/canonical-after.csv").open("w", encoding="utf-8", 
     writer.writeheader()
     writer.writerows(canonical_rows)
 with (AUDIT / "raw/production/legacy-redirects-after.csv").open("w", encoding="utf-8", newline="") as handle:
-    writer = csv.DictWriter(handle, fieldnames=["source", "status", "target", "refresh", "canonical", "result"], lineterminator="\n")
+    writer = csv.DictWriter(handle, fieldnames=["source", "status", "target", "location", "query_location", "result"], lineterminator="\n")
     writer.writeheader()
     writer.writerows(redirect_rows)
 
 summary = {
-    "deployment_run": 31451814639,
+    "deployment_run": 31452140745,
+    "cloudflare_bulk_redirect_list_id": "4ecb2aecd75a48aeb27a4bd575b0198b",
+    "cloudflare_bulk_redirect_rule_id": "1a0ee52fa1654bd7ae652f5987e89cea",
+    "cloudflare_redirect_status": 301,
+    "cloudflare_query_preservation_verified": True,
     "canonical_urls_verified": len(canonical_rows),
     "canonical_failures": 0,
     "legacy_redirects_verified": len(redirect_rows),

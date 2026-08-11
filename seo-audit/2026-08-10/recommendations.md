@@ -3,7 +3,7 @@
 ## Immediate owner actions
 
 1. Submit `https://python.robertdevore.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools, then inspect representative `/course/` URLs and retired `/blog/` URLs.
-2. If Cloudflare configuration access becomes available, replace the static meta-refresh fallbacks with exact one-hop 301/308 edge redirects while preserving each destination mapping.
+2. Keep Cloudflare rule `1a0ee52fa1654bd7ae652f5987e89cea` enabled and retain all 24 exact mappings during the migration measurement window.
 3. Enable privacy-appropriate Cloudflare or origin request logs for complete 404/5xx and crawler observability.
 4. Preserve separate policy decisions for search crawlers, user-triggered fetchers, and training crawlers.
 

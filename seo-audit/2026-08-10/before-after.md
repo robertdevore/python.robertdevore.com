@@ -13,7 +13,7 @@
 | Invalid or missing JSON-LD pages | 0 | 0 |
 | Missing image alt / dimensions | 0 / 0 | 0 / 0 |
 | Noncanonical brand links to `/index.html` | 26 | 0 |
-| Complete legacy migration fallbacks | 0 | 24 |
+| Complete legacy edge redirects | 0 | 24 exact 301 mappings |
 | Truncated lesson descriptions remediated | 0 | 12 |
 | P0 / P1 root causes | 0 / 2 | 0 / 0 locally and in verified production behavior |
 
