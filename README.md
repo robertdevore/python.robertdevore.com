@@ -30,7 +30,7 @@ Generated files go under `output/`; do not edit them by hand.
 
 ## Social images
 
-Every public route has a page-specific 1200×630 social card in `assets/images/social/`. The card source of truth is `howl.json`; SVGs are rendered by [Howl](https://github.com/kujolang/howl), then converted to PNG for Open Graph and Twitter metadata.
+Every public route has a page-specific 1200×630 social card in `assets/images/social/`. The card source of truth is `howl.json`; SVGs are rendered by [Howl](https://github.com/kujolang/howl), then converted to PNG for Open Graph and Twitter metadata. The background uses the unmodified official Python logo device from the [Python Software Foundation logo resources](https://www.python.org/community/logos/).
 
 ```bash
 HOWL_BIN=/path/to/howl/bin/howl ./scripts/render-social-images.sh

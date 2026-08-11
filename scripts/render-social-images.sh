@@ -17,6 +17,11 @@ fi
 "$HOWL_BIN" validate --manifest "$REPO_ROOT/howl.json"
 "$HOWL_BIN" render --manifest "$REPO_ROOT/howl.json" --out "$OUT_DIR" --format svg
 
+# Howl's social layout currently carries Kujolang.ai chrome. Apply the Python
+# Course brand and remove overlays that obscure this site's background art.
+while IFS= read -r svg; do
+	perl -0pi -e 's~<rect width="1200" height="630" fill="url\(#wash\)"/>\n~~g; s~<rect width="1200" height="630" filter="url\(#grain\)" opacity="\.7"/>\n~~g; s~KUJOLANG\.AI  //  PYTHON COURSE~PYTHON COURSE~g; s~<rect x="78" y="570" width="84" height="4" fill="#111"/>\n~~g' "$svg"
+done < <(find "$OUT_DIR" -maxdepth 1 -type f -name '*.svg' -print | sort)
 
 if command -v rsvg-convert >/dev/null 2>&1; then
 	while IFS= read -r svg; do

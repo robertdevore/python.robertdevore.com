@@ -41,8 +41,11 @@ assert_path assets/fonts/Inter-LICENSE.txt
 assert_path assets/js/syntax-highlight.js
 assert_path howl.json
 assert_path assets/images/howl-python-background.svg
+assert_path assets/images/python-logo-only.svg
+assert_path assets/images/python-logo-only.png
 assert_path assets/images/social/home.svg
 assert_path assets/images/social/home.png
+assert_contains assets/images/howl-python-background.svg 'Official Python logo device from https://www.python.org/community/logos/'
 
 social_svg_count="$(find assets/images/social -maxdepth 1 -name '*.svg' -type f | wc -l | tr -d ' ')"
 social_png_count="$(find assets/images/social -maxdepth 1 -name '*.png' -type f | wc -l | tr -d ' ')"
@@ -51,6 +54,11 @@ social_png_count="$(find assets/images/social -maxdepth 1 -name '*.png' -type f 
 if rg -n 'python\.robertdevore\.com' assets/images/social --glob '*.svg'; then
 	fail "social cards must leave the lower-left URL overlay area empty"
 fi
+if rg -n 'KUJOLANG\.AI|fill="url\(#wash\)"|filter="url\(#grain\)"|<rect x="78" y="570"' assets/images/social --glob '*.svg'; then
+	fail "social cards contain Howl chrome that should be removed by the site finishing pass"
+fi
+social_brand_count="$(rg -l '>PYTHON COURSE</text>' assets/images/social --glob '*.svg' | wc -l | tr -d ' ')"
+[[ "$social_brand_count" == "27" ]] || fail "expected Python Course branding on 27 social cards, found $social_brand_count"
 
 post_count="$(find content/posts -maxdepth 1 -name '*.md' -type f | wc -l | tr -d ' ')"
 [[ "$post_count" == "20" ]] || fail "expected 20 course lessons, found $post_count"
