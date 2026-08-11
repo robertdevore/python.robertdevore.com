@@ -34,7 +34,7 @@ AUDIT_COLUMNS = [
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, object]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -77,7 +77,8 @@ def local_path_for_url(url: str, output: Path) -> Path:
 
 def curl_status(url: str, user_agent: str = "SEO-Audit/2026-08-10") -> tuple[int, str, int]:
     command = [
-        "curl", "-4", "--http1.1", "-sS", "--max-time", "20", "--max-redirs", "10",
+        "curl", "-4", "--http1.1", "--retry", "3", "--retry-all-errors", "--retry-delay", "1",
+        "-sS", "--max-time", "20", "--max-redirs", "10",
         "-A", user_agent, "-o", "/dev/null", "-w", "%{http_code}\t%{url_effective}\t%{num_redirects}", url,
     ]
     result = subprocess.run(command, capture_output=True, text=True, check=False)

@@ -15,7 +15,7 @@
 | Noncanonical brand links to `/index.html` | 26 | 0 |
 | Complete legacy migration fallbacks | 0 | 24 |
 | Truncated lesson descriptions remediated | 0 | 12 |
-| P0 / P1 root causes | 0 / 2 | 0 / 0 locally; production redirect verification pending deployment |
+| P0 / P1 root causes | 0 / 2 | 0 / 0 locally and in verified production behavior |
 
 ## Internal heuristic scores
 

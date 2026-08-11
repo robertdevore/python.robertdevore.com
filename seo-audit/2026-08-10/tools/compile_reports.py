@@ -21,7 +21,7 @@ def read_csv(name: str) -> list[dict[str, str]]:
 
 def write_csv(name: str, fields: list[str], rows: list[dict[str, object]]) -> None:
     with (AUDIT / name).open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
+        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -178,7 +178,7 @@ for slug in ["python-setup-and-ides", "generators-decorators-and-context-manager
          "query_preserved": "not applicable", "verification": "production receipt", "issues": "Indexed legacy URL returned 404"},
         {"phase": "after", "source_url": f"{BASE}/blog/{slug}/", "source_variant": "generated legacy lesson", "http_status": 200,
          "target_url": f"{BASE}/course/{slug}/", "chain_length": 1, "final_status": 200, "canonical_target": f"{BASE}/course/{slug}/",
-         "query_preserved": "no", "verification": "local instant meta refresh; production deployment pending report finalization", "issues": "Prefer edge 301/308 when Cloudflare access is available"},
+         "query_preserved": "no", "verification": "production 200 instant meta refresh and canonical target verified after deployment", "issues": "Prefer edge 301/308 when Cloudflare access is available"},
     ]
 redirect_rows += [
     {"phase": "baseline", "source_url": f"{BASE}/page/4/", "source_variant": "HTTPS legacy pagination", "http_status": 404,
@@ -186,7 +186,7 @@ redirect_rows += [
      "query_preserved": "not applicable", "verification": "production receipt", "issues": "Indexed legacy URL returned 404"},
     {"phase": "after", "source_url": f"{BASE}/page/4/", "source_variant": "generated legacy pagination", "http_status": 200,
      "target_url": f"{BASE}/course/page/4/", "chain_length": 1, "final_status": 200, "canonical_target": f"{BASE}/course/page/4/",
-     "query_preserved": "no", "verification": "local instant meta refresh; production deployment pending report finalization", "issues": "Prefer edge 301/308 when Cloudflare access is available"},
+     "query_preserved": "no", "verification": "production 200 instant meta refresh and canonical target verified after deployment", "issues": "Prefer edge 301/308 when Cloudflare access is available"},
     {"phase": "baseline", "source_url": "http://python.robertdevore.com/", "source_variant": "HTTP canonical host", "http_status": 301,
      "target_url": f"{BASE}/", "chain_length": 1, "final_status": 200, "canonical_target": f"{BASE}/", "query_preserved": "not tested",
      "verification": "production header receipt", "issues": "none"},
@@ -197,7 +197,7 @@ write_csv("redirects.csv", redirect_fields, redirect_rows)
 issues = [
     {"id": "SEO-001", "phase": "baseline", "category": "migration", "severity": "P1", "affected_urls": "/blog/* and /page/2-4/", "affected_count": 24,
      "evidence": "Search observations returned retired URLs; three representative production probes returned 404", "expected_benefit": "Recover users and consolidate legacy URL signals", "confidence": "high", "difficulty": "medium",
-     "recommended_action": "Serve permanent redirects to exact /course/ equivalents", "owner": "repository/edge owner", "status": "repository fixed with instant meta refresh; edge 301/308 recommended"},
+     "recommended_action": "Serve permanent redirects to exact /course/ equivalents", "owner": "repository/edge owner", "status": "fixed and production verified with instant meta refresh; edge 301/308 recommended"},
     {"id": "SEO-002", "phase": "baseline", "category": "internal links", "severity": "P1", "affected_urls": "/about/", "affected_count": 3,
      "evidence": "baseline broken-links.csv contained malformed href values beginning </course/", "expected_benefit": "Restore crawlable reader paths", "confidence": "high", "difficulty": "low",
      "recommended_action": "Correct Markdown destinations", "owner": "repository", "status": "fixed"},
@@ -250,7 +250,7 @@ methodology = """# Methodology
 
 Audit date: 2026-08-10 (America/Detroit). Production receipts may show 2026-08-11 UTC.
 
-The audit mapped `Markdown and templates → Kujo SSG build → generated output → GitHub Pages origin → Cloudflare edge → crawler/browser`. The untouched `dcd0ed0` baseline was built with the repository's Kujo 1.0.0 runtime, copied to `raw/baseline/output/`, hashed, and crawled before source remediation. The same 26 sitemap canonical URLs were crawled after remediation.
+The audit mapped `Markdown and templates → Kujo SSG build → generated output → GitHub Pages origin → Cloudflare edge → crawler/browser`. The untouched `dcd0ed0` baseline was built with the repository's Kujo 1.0.0 runtime, copied to `raw/baseline/output/`, hashed, and crawled before source remediation. The same 26 sitemap canonical URLs were crawled after remediation. GitHub Pages deployment run `31451814639` succeeded, after which all 26 canonical URLs and 24 legacy mappings were verified independently in production.
 
 The crawl combined sitemap and HTML discovery, parsed metadata, headings, canonical tags, robots directives, JSON-LD, links, content text, and media, then probed production independently over IPv4. Third-party 401/403/405/429/transport failures would be classified as blocked or indeterminate rather than broken. No such destination remained in the normalized crawl.
 
@@ -296,6 +296,7 @@ changes = """# Changes
 - Replaced deprecated naive UTC examples with timezone-aware `datetime.now(UTC)` examples.
 - Added truthful `last_updated: 2026-08-10` metadata only to the two materially refreshed lessons.
 - Preserved the public crawler-training policy; no DNS, WAF, analytics, or search-platform settings were changed.
+- Deployed through GitHub Pages run `31451814639` and verified 26 canonical routes, 24 legacy mappings, and five discovery assets in production.
 """
 (AUDIT / "changes.md").write_text(changes, encoding="utf-8")
 
@@ -316,7 +317,7 @@ before_after = f"""# Before and after
 | Noncanonical brand links to `/index.html` | 26 | 0 |
 | Complete legacy migration fallbacks | 0 | 24 |
 | Truncated lesson descriptions remediated | 0 | 12 |
-| P0 / P1 root causes | 0 / 2 | 0 / 0 locally; production redirect verification pending deployment |
+| P0 / P1 root causes | 0 / 2 | 0 / 0 locally and in verified production behavior |
 
 ## Internal heuristic scores
 
@@ -329,7 +330,7 @@ Measured AI visibility correctly receives zero because controlled platform data 
 
 unresolved = f"""# Unresolved
 
-1. Edge-level 301/308 redirects are preferred to the implemented instant meta-refresh fallback. Cloudflare configuration access was not available: {UNAVAILABLE}
+1. All 24 instant meta-refresh fallbacks are deployed and verified, but edge-level 301/308 redirects remain preferred. Cloudflare configuration access was not available: {UNAVAILABLE}
 2. Search Console, Bing Webmaster Tools, analytics, request logs, field CWV, backlink, ranking, and controlled AI-citation data remain: {UNAVAILABLE}
 3. Search observations still exposed retired `/blog/` and `/page/4/` URLs on 2026-08-10. Recrawl and canonical consolidation require elapsed time after deployment.
 4. Local Lighthouse mobile LCP remained 2.87–3.77 seconds. Production compression/cache behavior and field evidence are required before a CSS-delivery change is justified.
@@ -364,13 +365,13 @@ executive = f"""# Executive summary
 
 The untouched site had 26 healthy, indexable canonical pages with unique metadata, valid JSON-LD, complete sitemap/feed/robots discovery, strong internal reachability, and successful live access for major search and AI crawler user agents. Two P1 root causes remained: three malformed `/about/` links and a migration gap where search observations still surfaced retired `/blog/` and `/page/4/` URLs that production returned as 404.
 
-The remediation corrected all three broken links, aligned 26 brand links with the root canonical, added 24 exact legacy-route fallbacks, refreshed two stale technical lessons, and replaced 12 truncated descriptions. The rebuilt canonical crawl now reports 26/26 production-reachable canonicals, zero broken internal links, zero metadata duplicates, zero canonical/H1/schema/sitemap/orphan defects, and unchanged content inventory. The full repository release contract passes for 26 canonical routes, 24 legacy redirects, 20 lessons, 20 feed items, 41,821 source words, and 342 code blocks.
+The remediation corrected all three broken links, aligned 26 brand links with the root canonical, added 24 exact legacy-route fallbacks, refreshed two stale technical lessons, and replaced 12 truncated descriptions. The rebuilt canonical crawl now reports 26/26 production-reachable canonicals, zero broken internal links, zero metadata duplicates, zero canonical/H1/schema/sitemap/orphan defects, and unchanged content inventory. The full repository release contract passes for 26 canonical routes, 24 legacy redirects, 20 lessons, 20 feed items, 41,821 source words, and 342 code blocks. GitHub Pages run `31451814639` succeeded; the independent production verifier then passed all 26 canonical URLs, all 24 legacy mappings, and five discovery assets.
 
 Internal heuristic scores moved from **79 to 91 SEO health** and **83 to 85 AI Search Readiness**. These are audit trend heuristics, not platform scores. The AI score remains capped because measured AI visibility received 0/10: controlled AI citation data was {UNAVAILABLE.lower()}.
 
 The real search baseline is limited but material: dated web observations exposed retired URLs rather than the current `/course/` equivalents. Rankings, clicks, impressions, index coverage, conversions, field Core Web Vitals, backlinks, complete request errors, and AI citations were {UNAVAILABLE.lower()}. Local Lighthouse mobile LCP ranged 2.87–3.77 seconds and warrants production/field measurement before CSS delivery is changed.
 
-Next: deploy, verify all canonical and legacy routes in production, submit the sitemap, and compare the same platform exports and AI questions at 7, 28, 60, and 90 days. Prefer exact Cloudflare 301/308 redirects over meta refresh when edge access is available.
+Next: submit the sitemap in search consoles and compare the same platform exports and AI questions at 7, 28, 60, and 90 days. Prefer exact Cloudflare 301/308 redirects over meta refresh when edge access is available.
 """
 (AUDIT / "executive-summary.md").write_text(executive, encoding="utf-8")
 

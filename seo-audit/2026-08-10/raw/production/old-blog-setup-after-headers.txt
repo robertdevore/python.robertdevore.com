@@ -1,0 +1,26 @@
+HTTP/2 200 
+date: Tue, 11 Aug 2026 02:18:30 GMT
+content-type: text/html; charset=utf-8
+server: cloudflare
+x-origin-cache: HIT
+last-modified: Tue, 11 Aug 2026 02:16:41 GMT
+access-control-allow-origin: *
+expires: Tue, 11 Aug 2026 02:27:46 GMT
+cache-control: max-age=600
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2FJEeoQEVDLultsJSFtvOdiqSQcYY73ZovRWlvGrfCEUqb9YF0oDzIsZQpot4JOOxgU%2BdmcEPYcRFAXTAEY%2FMwzB09F8drgjrLqh4FeH3c41E8ciRshj7WPzeWf6I1y%2BLexF%2BDl1i1%2BIv7w%3D%3D"}]}
+x-proxy-cache: MISS
+x-github-request-id: 80E4:1B4AF6:D2116C:F1B273:6A7A8649
+x-github-edge-region: iad
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+via: 1.1 varnish
+age: 12
+x-served-by: cache-chi-klot8100170-CHI
+x-cache: HIT
+x-cache-hits: 1
+x-timer: S1786414710.036718,VS0,VE10
+vary: Accept-Encoding
+x-fastly-request-id: c74700c607602f80b4ae3acc34ddfd4a09c5ce1d
+cf-cache-status: DYNAMIC
+cf-ray: a293c0018b298598-ORD
+alt-svc: h3=":443"; ma=86400
+

@@ -9,3 +9,4 @@
 - Replaced deprecated naive UTC examples with timezone-aware `datetime.now(UTC)` examples.
 - Added truthful `last_updated: 2026-08-10` metadata only to the two materially refreshed lessons.
 - Preserved the public crawler-training policy; no DNS, WAF, analytics, or search-platform settings were changed.
+- Deployed through GitHub Pages run `31451814639` and verified 26 canonical routes, 24 legacy mappings, and five discovery assets in production.

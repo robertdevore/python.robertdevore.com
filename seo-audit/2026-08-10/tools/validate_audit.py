@@ -65,4 +65,17 @@ assert len(list(baseline_output.glob("**/index.html"))) == 26
 assert (baseline_output / "sitemap.xml").is_file()
 assert (AUDIT / "raw/baseline/commit.txt").read_text().strip() == "dcd0ed0fd949dad071e773d9ef2f2703311319cf"
 
+production_summary = json.loads((AUDIT / "raw/production/after-summary.json").read_text())
+assert production_summary == {
+    "deployment_run": 31451814639,
+    "canonical_urls_verified": 26,
+    "canonical_failures": 0,
+    "legacy_redirects_verified": 24,
+    "legacy_redirect_failures": 0,
+    "discovery_assets_verified": 5,
+    "status": "pass",
+}
+assert len(rows("raw/production/canonical-after.csv")) == 26
+assert len(rows("raw/production/legacy-redirects-after.csv")) == 24
+
 print("SEO audit bundle validation passed")

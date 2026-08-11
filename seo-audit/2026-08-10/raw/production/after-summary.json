@@ -1,0 +1,9 @@
+{
+  "deployment_run": 31451814639,
+  "canonical_urls_verified": 26,
+  "canonical_failures": 0,
+  "legacy_redirects_verified": 24,
+  "legacy_redirect_failures": 0,
+  "discovery_assets_verified": 5,
+  "status": "pass"
+}
