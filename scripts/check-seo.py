@@ -14,7 +14,6 @@ from urllib.parse import urlparse
 
 BASE_URL = "https://python.robertdevore.com"
 OUTPUT = Path(sys.argv[1] if len(sys.argv) > 1 else "output")
-SOCIAL_IMAGE = f"{BASE_URL}/assets/images/python-course-social.png"
 
 
 class HeadParser(HTMLParser):
@@ -85,6 +84,17 @@ def canonical_url(path: Path) -> str:
 	return f"{BASE_URL}/{relative.removesuffix('index.html')}"
 
 
+def social_image_url(path: Path) -> str:
+	relative = path.relative_to(OUTPUT).as_posix()
+	if relative == "index.html":
+		card_id = "home"
+	elif relative == "404.html":
+		card_id = "404"
+	else:
+		card_id = relative.removesuffix("/index.html").replace("/", "-")
+	return f"{BASE_URL}/assets/images/social/{card_id}.png"
+
+
 def parse_html(path: Path) -> HeadParser:
 	parser = HeadParser()
 	parser.feed(path.read_text(encoding="utf-8"))
@@ -138,13 +148,18 @@ def main() -> None:
 				fail(f"missing {prop} in {path}")
 		if page.meta_property["og:url"] != expected_canonical:
 			fail(f"Open Graph URL mismatch in {path}")
-		if page.meta_property["og:image"] != SOCIAL_IMAGE:
+		expected_social_image = social_image_url(path)
+		if page.meta_property["og:image"] != expected_social_image:
 			fail(f"social image mismatch in {path}")
 		for name in ("twitter:card", "twitter:title", "twitter:description", "twitter:image", "twitter:image:alt"):
 			if not page.meta_name.get(name):
 				fail(f"missing {name} in {path}")
 		if page.meta_name["twitter:card"] != "summary_large_image":
 			fail(f"unexpected Twitter card type in {path}")
+		if page.meta_name["twitter:image"] != expected_social_image:
+			fail(f"Twitter social image mismatch in {path}")
+		card_path = OUTPUT / urlparse(expected_social_image).path.lstrip("/")
+		assert_png_dimensions(card_path, (1200, 630))
 
 		feed = page.link("alternate", "application/rss+xml")
 		if not feed or feed.get("href") != f"{BASE_URL}/feed/index.xml":
@@ -185,8 +200,13 @@ def main() -> None:
 		fail("404 page must be noindex")
 	if page_404.link("canonical", None).get("href") != f"{BASE_URL}/404.html":
 		fail("404 canonical is incorrect")
+	if page_404.meta_property.get("og:image") != social_image_url(OUTPUT / "404.html"):
+		fail("404 social image is incorrect")
+	assert_png_dimensions(OUTPUT / "assets/images/social/404.png", (1200, 630))
 
-	assert_png_dimensions(OUTPUT / "assets/images/python-course-social.png", (1200, 630))
+	social_pngs = sorted((OUTPUT / "assets/images/social").glob("*.png"))
+	if len(social_pngs) != 27:
+		fail(f"expected 27 page-specific social images, found {len(social_pngs)}")
 
 	sitemap_root = ET.parse(OUTPUT / "sitemap.xml").getroot()
 	namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}

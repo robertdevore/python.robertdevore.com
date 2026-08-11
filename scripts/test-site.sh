@@ -26,7 +26,7 @@ assert_not_contains() {
 	return 0
 }
 
-bash -n scripts/build.sh scripts/build-parallel.sh scripts/test-site.sh scripts/validate-generated-output.sh
+bash -n scripts/build.sh scripts/build-parallel.sh scripts/render-social-images.sh scripts/test-site.sh scripts/validate-generated-output.sh
 node --check assets/js/syntax-highlight.js
 node --check assets/js/docs.js
 node scripts/test-syntax-highlight.js
@@ -39,8 +39,18 @@ assert_path assets/fonts/inter-latin-400.woff2
 assert_path assets/fonts/inter-latin-700.woff2
 assert_path assets/fonts/Inter-LICENSE.txt
 assert_path assets/js/syntax-highlight.js
-assert_path assets/images/python-course-social.svg
-assert_path assets/images/python-course-social.png
+assert_path howl.json
+assert_path assets/images/howl-python-background.svg
+assert_path assets/images/social/home.svg
+assert_path assets/images/social/home.png
+
+social_svg_count="$(find assets/images/social -maxdepth 1 -name '*.svg' -type f | wc -l | tr -d ' ')"
+social_png_count="$(find assets/images/social -maxdepth 1 -name '*.png' -type f | wc -l | tr -d ' ')"
+[[ "$social_svg_count" == "27" ]] || fail "expected 27 Howl SVG cards, found $social_svg_count"
+[[ "$social_png_count" == "27" ]] || fail "expected 27 social PNG cards, found $social_png_count"
+if rg -n 'python\.robertdevore\.com' assets/images/social --glob '*.svg'; then
+	fail "social cards must leave the lower-left URL overlay area empty"
+fi
 
 post_count="$(find content/posts -maxdepth 1 -name '*.md' -type f | wc -l | tr -d ' ')"
 [[ "$post_count" == "20" ]] || fail "expected 20 course lessons, found $post_count"
@@ -71,7 +81,9 @@ assert_path output/assets/fonts/inter-latin-400.woff2
 assert_path output/assets/fonts/inter-latin-700.woff2
 assert_path output/assets/js/docs-search-index.json
 assert_path output/assets/js/syntax-highlight.js
-assert_path output/assets/images/python-course-social.png
+assert_path output/assets/images/social/home.png
+assert_path output/assets/images/social/course-python-setup-and-ides.png
+assert_path output/assets/images/social/404.png
 
 assert_contains output/index.html 'Learn Python. Build real things.'
 assert_contains output/index.html 'class="course-stats"'
@@ -82,7 +94,9 @@ assert_contains output/index.html 'assets/js/docs.js?v=20260809-1'
 assert_contains output/index.html 'href="/course/" class="text-primary hover:underline">Course</a>'
 assert_contains output/about/index.html 'class="docs-brand" href="/"'
 assert_not_contains output/about/index.html 'href="../index.html"'
-assert_contains output/index.html 'property="og:image" content="https://python.robertdevore.com/assets/images/python-course-social.png"'
+assert_contains output/index.html 'property="og:image" content="https://python.robertdevore.com/assets/images/social/home.png"'
+assert_contains output/about/index.html 'property="og:image" content="https://python.robertdevore.com/assets/images/social/about.png"'
+assert_contains output/course/python-setup-and-ides/index.html 'property="og:image" content="https://python.robertdevore.com/assets/images/social/course-python-setup-and-ides.png"'
 assert_contains output/index.html '"@type":"Course"'
 assert_contains output/index.html 'name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"'
 assert_contains output/course/python-syntax-and-data-types/index.html '1.2. Syntax &amp; Data Types'

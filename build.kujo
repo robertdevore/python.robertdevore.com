@@ -1779,6 +1779,15 @@ func course_site_root(settings) {
 	return site_root
 }
 
+func course_social_image_path(route) {
+	clean_route := normalize_route(route)
+	if len(clean_route) == 0 {
+		return "assets/images/social/home.png"
+	}
+	clean_route = substring(clean_route, 0, len(clean_route) - 1)
+	return "assets/images/social/" + replace(clean_route, "/", "-") + ".png"
+}
+
 func course_canonical_url(settings, route, page_meta) {
 	site_root := course_site_root(settings)
 	canonical_url := meta_string(page_meta, "canonical", "")
@@ -1886,9 +1895,12 @@ func render_layout(layout_template, settings, route, page_title, meta_descriptio
 	robots_policy := meta_string(page_meta, "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1")
 	canonical_url := course_canonical_url(settings, route, page_meta)
 	site_root := course_site_root(settings)
-	raw_featured := meta_string(page_meta, "featured_image", "")
+	raw_featured := meta_string(page_meta, "social_image", "")
 	if len(raw_featured) == 0 {
-		raw_featured = "assets/images/python-course-social.png"
+		raw_featured = meta_string(page_meta, "featured_image", "")
+	}
+	if len(raw_featured) == 0 {
+		raw_featured = course_social_image_path(route)
 	}
 	social_image := absolute_media_url(raw_featured, site_root)
 	social_alt := seo_title + " — Python Course"
@@ -4488,6 +4500,7 @@ func build_site(settings) {
 			"seo_description": "Page not found",
 			"seo_keywords": "",
 			"canonical": site_url + "/404.html",
+			"social_image": "assets/images/social/404.png",
 			"robots": "noindex, follow",
 			"schema_type": "WebPage",
 			"lang": "en"
