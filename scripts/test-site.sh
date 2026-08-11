@@ -13,6 +13,10 @@ assert_path() {
 	[[ -e "$1" ]] || fail "missing path: $1"
 }
 
+assert_not_path() {
+	[[ ! -e "$1" ]] || fail "unexpected path: $1"
+}
+
 assert_contains() {
 	grep -Fq "$2" "$1" || fail "expected '$2' in $1"
 }
@@ -53,9 +57,9 @@ assert_path output/course/python-setup-and-ides/index.html
 assert_path output/course/python-syntax-and-data-types/index.html
 assert_path output/course/syntax-and-data-types/index.html
 assert_path output/course/course-conclusion-from-python-novice-to-professional-developer/index.html
-assert_path output/blog/index.html
-assert_path output/blog/python-setup-and-ides/index.html
-assert_path output/page/2/index.html
+assert_not_path output/blog/index.html
+assert_not_path output/blog/python-setup-and-ides/index.html
+assert_not_path output/page/2/index.html
 [[ ! -e output/sample-page ]] || fail "stale Stattic sample page should not be generated"
 assert_path output/feed/index.xml
 assert_path output/sitemap.xml

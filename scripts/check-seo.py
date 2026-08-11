@@ -233,21 +233,11 @@ def main() -> None:
 	if "/blog/" in llms or "/sample-page/" in llms:
 		fail("llms.txt contains a legacy route")
 
-	redirects = {"blog/index.html": f"{BASE_URL}/course/"}
-	for url in lesson_urls:
-		slug = url.rstrip("/").rsplit("/", 1)[-1]
-		redirects[f"blog/{slug}/index.html"] = url
-	for page_number in range(2, 5):
-		redirects[f"page/{page_number}/index.html"] = f"{BASE_URL}/course/page/{page_number}/"
-	for relative, target in redirects.items():
-		path = OUTPUT / relative
-		if not path.is_file():
-			fail(f"missing legacy redirect: {relative}")
-		text = path.read_text(encoding="utf-8")
-		if f'content="0; url={target}"' not in text or f'rel="canonical" href="{target}"' not in text:
-			fail(f"invalid legacy redirect: {relative}")
+	legacy_artifacts = list(OUTPUT.glob("blog/**/index.html")) + list(OUTPUT.glob("page/**/index.html"))
+	if legacy_artifacts:
+		fail("generated output contains legacy redirect artifacts managed at the Cloudflare edge")
 
-	print(f"SEO discovery contract passed ({len(canonical_files)} canonical routes, {len(redirects)} legacy redirects, {len(lesson_urls)} lessons, {len(items)} feed items)")
+	print(f"SEO discovery contract passed ({len(canonical_files)} canonical routes, {len(lesson_urls)} lessons, {len(items)} feed items)")
 
 
 if __name__ == "__main__":

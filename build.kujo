@@ -2101,10 +2101,6 @@ func write_route_page(output_dir, route, html) {
 	write_file(path_join(full_dir, "index.html"), html)
 }
 
-func legacy_redirect_html(target_url, site_title) {
-	return "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta http-equiv=\"refresh\" content=\"0; url=" + xml_escape(target_url) + "\"><link rel=\"canonical\" href=\"" + xml_escape(target_url) + "\"><title>Page moved | " + xml_escape(site_title) + "</title></head><body><main><h1>Page moved</h1><p>This page has moved to <a href=\"" + xml_escape(target_url) + "\">" + xml_escape(target_url) + "</a>.</p></main></body></html>\n"
-}
-
 func write_route_alias(output_dir, route, enabled) {
 	if !enabled {
 		return null
@@ -4476,29 +4472,6 @@ func build_site(settings) {
 			append_file(llms_path, "\n## Feeds and discovery\n- [RSS feed](" + site_url + "/feed/index.xml)\n- [XML sitemap](" + site_url + "/sitemap.xml)\n- [Robots policy](" + site_url + "/robots.txt)\n\n## Author\n- [Robert DeVore](https://robertdevore.com/)\n")
 		}
 
-		# GitHub Pages cannot emit server-side redirects. Preserve the retired
-		# Stattic routes with instant meta refreshes, which Google documents as a
-		# permanent redirect fallback when server redirects are unavailable.
-		write_route_page(output_dir, "blog/", legacy_redirect_html(site_url + "/course/", settings["site_title"]))
-		legacy_post_idx := 0
-		loop {
-			if legacy_post_idx >= len(posts_sorted) {
-				break
-			}
-			legacy_post := parse_post_record(posts_sorted[legacy_post_idx])
-			legacy_post_idx := legacy_post_idx + 1
-			legacy_route := "blog/" + substring(legacy_post["route"], len("course/"), len(legacy_post["route"]))
-			write_route_page(output_dir, legacy_route, legacy_redirect_html(site_url + "/" + legacy_post["route"], settings["site_title"]))
-		}
-		legacy_page := 2
-		loop {
-			if legacy_page > 4 {
-				break
-			}
-			page_text := to_string(legacy_page)
-			write_route_page(output_dir, "page/" + page_text + "/", legacy_redirect_html(site_url + "/course/page/" + page_text + "/", settings["site_title"]))
-			legacy_page := legacy_page + 1
-		}
 	}
 
 	not_found_navigation := build_navigation(pages_data, custom_collections, "", settings["blog_slug"])
