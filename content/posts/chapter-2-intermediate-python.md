@@ -1,7 +1,7 @@
 ---
 title: "Chapter 2: Intermediate Python"
-description: "Congratulations on completing the fundamentals! If you've made it through Chapter 1, you now have the basic tools to write Python scripts, manipulate data, control program flow, and…"
-excerpt: "Congratulations on completing the fundamentals! If you've made it through Chapter 1, you now have the basic tools to write Python scripts, manipulate data, control program flow, and…"
+description: "Move from Python fundamentals to object-oriented design, file persistence, package management, robust exceptions, and automated testing."
+excerpt: "Move from Python fundamentals to object-oriented design, file persistence, package management, robust exceptions, and automated testing."
 custom_url: chapter-2-intermediate-python
 template: docs
 section: "Chapter 2 · Intermediate Python"

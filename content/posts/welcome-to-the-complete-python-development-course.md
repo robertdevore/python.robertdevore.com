@@ -1,7 +1,7 @@
 ---
 title: "Welcome to the Complete Python Development Course"
-description: "Welcome to your comprehensive journey into Python programming! Whether you're taking your first steps into the world of coding or looking to elevate your existing Python skills to a…"
-excerpt: "Welcome to your comprehensive journey into Python programming! Whether you're taking your first steps into the world of coding or looking to elevate your existing Python skills to a…"
+description: "Follow a structured Python course from first setup through syntax, testing, APIs, concurrency, packaging, and professional development practices."
+excerpt: "Follow a structured Python course from first setup through syntax, testing, APIs, concurrency, packaging, and professional development practices."
 custom_url: welcome-to-the-complete-python-development-course
 template: docs
 section: "Course introduction"

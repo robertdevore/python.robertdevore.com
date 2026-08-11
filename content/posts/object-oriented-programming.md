@@ -1,7 +1,7 @@
 ---
 title: "2.1. Object-Oriented Programming (OOP)"
-description: "Object-Oriented Programming (OOP) is a programming paradigm that organizes code around objects rather than functions and logic. Think of it as a way to model real-world concepts in your…"
-excerpt: "Object-Oriented Programming (OOP) is a programming paradigm that organizes code around objects rather than functions and logic. Think of it as a way to model real-world concepts in your…"
+description: "Learn Python object-oriented programming through classes, encapsulation, inheritance, composition, polymorphism, and practical design patterns."
+excerpt: "Learn Python object-oriented programming through classes, encapsulation, inheritance, composition, polymorphism, and practical design patterns."
 custom_url: object-oriented-programming
 template: docs
 section: "Chapter 2 · Intermediate Python"

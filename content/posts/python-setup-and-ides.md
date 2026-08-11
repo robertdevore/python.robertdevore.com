@@ -1,12 +1,13 @@
 ---
 title: "1.1. Python Setup & IDEs"
-description: "Welcome to your Python journey! Before we dive into writing code, we need to set up your development environment properly. Think of this as preparing your workspace—just like a carpenter…"
-excerpt: "Welcome to your Python journey! Before we dive into writing code, we need to set up your development environment properly. Think of this as preparing your workspace—just like a carpenter…"
+description: "Install a supported Python release on Windows, macOS, or Linux, choose an editor, run your first script, and troubleshoot common setup issues."
+excerpt: "Install a supported Python release on Windows, macOS, or Linux, choose an editor, run your first script, and troubleshoot common setup issues."
 custom_url: python-setup-and-ides
 template: docs
 section: "Chapter 1 · Beginner Python"
 order: 30
 date: 2025-06-17
+last_updated: 2026-08-10
 author: Robert DeVore
 audience: Python learners
 difficulty: beginner
@@ -55,7 +56,7 @@ Python is free and available for all major operating systems. Let's walk through
 
   1. Open Command Prompt (press `Windows + R`, type `cmd`, press Enter)
   2. Type `python --version` and press Enter
-  3. You should see something like `Python 3.11.5` displayed
+  3. You should see a supported release such as `Python 3.14.6` displayed
 
 ### macOS Installation
 
@@ -73,7 +74,7 @@ Python is free and available for all major operating systems. Let's walk through
 brew install python
 ```
 
-**Note** : macOS comes with Python 2.7 pre-installed, but you want Python 3.x for modern development. Always use `python3` command on macOS.
+**Note** : Current macOS releases do not provide a user-facing Python installation for your projects. Install a supported Python 3 release, and use the `python3` command on macOS.
 
 ### Linux Installation
 
@@ -100,9 +101,9 @@ python3 --version
 
 ### Python Version Considerations
 
-  * **Use Python 3.8 or newer** : Python 2 is deprecated and no longer supported
-  * **Latest stable version** : Generally recommended unless you have specific compatibility requirements
-  * **Long-term support** : Python 3.8, 3.9, and 3.10 have extended support periods
+  * **Use a supported Python 3 release** : Python 2 and older Python 3 releases are no longer supported
+  * **For new learners** : Use the current stable release from python.org unless a project requires a specific version
+  * **Check support status** : Python release lifecycles change, so confirm the maintained versions in the official Python Developer's Guide
 
 ## Choosing an IDE or Editor
 
@@ -320,7 +321,7 @@ The Python shell (REPL - Read-Eval-Print Loop) lets you type Python code and see
 
 ```bash
 $ python3
-Python 3.11.5 (main, Aug 24 2023, 15:18:16)
+Python 3.14.6 (main, Jun 10 2026, 12:00:00)
 >>> print("Hello from the shell!")
 Hello from the shell!
 >>> 2 + 3
@@ -365,14 +366,14 @@ export PATH="/usr/local/bin/python3:$PATH"
 
 **Symptoms:**
 
-  * `python --version` shows Python 2.7
+  * `python --version` points to an older or different Python installation
   * Confusion about which Python is running
 
 **Solution:** Use specific version commands:
 
 ```python
-python3 --version    # For Python 3
-python2 --version    # For Python 2 (if installed)
+python3 --version    # Check the Python 3 installation
+python --version     # Check what the generic command resolves to
 ```
 
 Always use `python3` for your development work.
@@ -384,13 +385,7 @@ Always use `python3` for your development work.
   * "Permission denied" when installing packages
   * Cannot write to certain directories
 
-**Solution:** **Windows:** Run Command Prompt as Administrator** macOS/Linux:** Use `sudo` carefully:
-
-```bash
-sudo python3 -m pip install package_name
-```
-
-Better solution: Use virtual environments (covered in later chapters).
+**Solution:** Create and activate a virtual environment, then install packages inside it. Avoid installing project packages globally or with `sudo`. Virtual environments are covered in detail later in the course.
 
 ### Problem 4: IDE Not Recognizing Python
 
@@ -443,7 +438,7 @@ Before moving on, let's make sure everything is working correctly:
   1. **Python Installation:**
 
 ```python
-    python --version        # Should show Python 3.8+
+    python --version        # Should show a supported Python 3 release
 python3 --version       # On macOS/Linux
 ```
 

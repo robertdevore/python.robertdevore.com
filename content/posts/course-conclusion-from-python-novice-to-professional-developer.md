@@ -1,7 +1,7 @@
 ---
 title: "Course Conclusion: From Python Novice to Professional Developer"
-description: "Congratulations! You've just completed a comprehensive journey through Python development that has taken you from writing your first \"Hello, World!\" script to building production-ready…"
-excerpt: "Congratulations! You've just completed a comprehensive journey through Python development that has taken you from writing your first \"Hello, World!\" script to building production-ready…"
+description: "Review the skills covered across the course and plan practical next steps for building, testing, packaging, and sharing Python projects."
+excerpt: "Review the skills covered across the course and plan practical next steps for building, testing, packaging, and sharing Python projects."
 custom_url: course-conclusion-from-python-novice-to-professional-developer
 template: docs
 section: "Course conclusion"

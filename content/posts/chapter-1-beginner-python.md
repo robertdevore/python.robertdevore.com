@@ -1,7 +1,7 @@
 ---
 title: "Chapter 1: Beginner Python"
-description: "Congratulations on taking the first step toward learning one of the world's most popular and versatile programming languages! Whether you're completely new to programming or coming from…"
-excerpt: "Congratulations on taking the first step toward learning one of the world's most popular and versatile programming languages! Whether you're completely new to programming or coming from…"
+description: "Build a Python foundation through setup, syntax, data types, control flow, functions, modules, and practical error handling."
+excerpt: "Build a Python foundation through setup, syntax, data types, control flow, functions, modules, and practical error handling."
 custom_url: chapter-1-beginner-python
 template: docs
 section: "Chapter 1 · Beginner Python"

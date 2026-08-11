@@ -1,7 +1,7 @@
 ---
 title: "3.5. Packaging, Distribution, and Best Practices"
-description: "Transform your Python scripts into professional, reusable packages that others can install with pip . Learn industry-standard practices for code organization, documentation, testing, and…"
-excerpt: "Transform your Python scripts into professional, reusable packages that others can install with pip . Learn industry-standard practices for code organization, documentation, testing, and…"
+description: "Package, test, document, and publish reusable Python projects with pyproject.toml, build tools, PyPI, CI, linting, and type checks."
+excerpt: "Package, test, document, and publish reusable Python projects with pyproject.toml, build tools, PyPI, CI, linting, and type checks."
 custom_url: packaging-distribution-and-best-practices
 template: docs
 section: "Chapter 3 · Advanced Python"

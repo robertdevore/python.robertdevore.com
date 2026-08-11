@@ -1,7 +1,7 @@
 ---
 title: "3.2. Generators, Decorators and Context Managers"
-description: "These three features represent some of Python's most powerful and \"Pythonic\" constructs. They allow you to write cleaner, more efficient, and more maintainable code by managing state,…"
-excerpt: "These three features represent some of Python's most powerful and \"Pythonic\" constructs. They allow you to write cleaner, more efficient, and more maintainable code by managing state,…"
+description: "Learn how Python generators, decorators, and context managers support lazy data processing, reusable behavior, and reliable resource cleanup."
+excerpt: "Learn how Python generators, decorators, and context managers support lazy data processing, reusable behavior, and reliable resource cleanup."
 custom_url: generators-decorators-and-context-managers
 template: docs
 section: "Chapter 3 · Advanced Python"

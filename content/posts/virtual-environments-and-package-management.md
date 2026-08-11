@@ -1,7 +1,7 @@
 ---
 title: "2.3. Virtual Environments & Package Management"
-description: "One of the most crucial skills for any Python developer is managing dependencies and isolating project environments. Without proper package management, you'll quickly run into conflicts…"
-excerpt: "One of the most crucial skills for any Python developer is managing dependencies and isolating project environments. Without proper package management, you'll quickly run into conflicts…"
+description: "Create isolated Python environments, manage dependencies with pip, maintain requirements files, and troubleshoot package conflicts safely."
+excerpt: "Create isolated Python environments, manage dependencies with pip, maintain requirements files, and troubleshoot package conflicts safely."
 custom_url: virtual-environments-and-package-management
 template: docs
 section: "Chapter 2 · Intermediate Python"

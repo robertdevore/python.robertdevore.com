@@ -1,7 +1,7 @@
 ---
 title: "3.3. Concurrency & Parallelism"
-description: "Modern applications demand speed and responsiveness. Users expect web pages to load quickly, data processing to happen in real-time, and interfaces to remain interactive even during…"
-excerpt: "Modern applications demand speed and responsiveness. Users expect web pages to load quickly, data processing to happen in real-time, and interfaces to remain interactive even during…"
+description: "Learn when to use Python threading, multiprocessing, and asyncio, with practical patterns for I/O-bound and CPU-bound workloads."
+excerpt: "Learn when to use Python threading, multiprocessing, and asyncio, with practical patterns for I/O-bound and CPU-bound workloads."
 custom_url: concurrency-and-parallelism
 template: docs
 section: "Chapter 3 · Advanced Python"

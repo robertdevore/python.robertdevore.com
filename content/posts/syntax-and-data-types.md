@@ -1,7 +1,7 @@
 ---
 title: "1.3. Control Flow (If, For, While)"
-description: "Control flow is what makes your programs truly intelligent. Instead of just executing line by line from top to bottom, you'll learn to make your code make decisions, repeat actions, and…"
-excerpt: "Control flow is what makes your programs truly intelligent. Instead of just executing line by line from top to bottom, you'll learn to make your code make decisions, repeat actions, and…"
+description: "Use Python if, elif, and else statements plus for and while loops to make decisions, repeat work, validate input, and control program flow."
+excerpt: "Use Python if, elif, and else statements plus for and while loops to make decisions, repeat work, validate input, and control program flow."
 custom_url: syntax-and-data-types
 template: docs
 section: "Chapter 1 · Beginner Python"

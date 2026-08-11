@@ -1,12 +1,13 @@
 ---
 title: "3.4. Building and Consuming APIs"
-description: "APIs (Application Programming Interfaces) are the backbone of modern software development, enabling applications to communicate with each other over the internet. In this chapter, you'll…"
-excerpt: "APIs (Application Programming Interfaces) are the backbone of modern software development, enabling applications to communicate with each other over the internet. In this chapter, you'll…"
+description: "Build and consume Python APIs with Flask, FastAPI, validation, authentication, async clients, documentation, testing, and deployment patterns."
+excerpt: "Build and consume Python APIs with Flask, FastAPI, validation, authentication, async clients, documentation, testing, and deployment patterns."
 custom_url: building-and-consuming-apis
 template: docs
 section: "Chapter 3 · Advanced Python"
 order: 170
 date: 2025-06-17
+last_updated: 2026-08-10
 author: Robert DeVore
 audience: Python learners
 difficulty: advanced
@@ -81,7 +82,7 @@ pip install flask flask-cors
 # app.py
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from datetime import datetime
+from datetime import UTC, datetime
 import uuid
 
 app = Flask(__name__)
@@ -95,7 +96,7 @@ def health_check():
     """Simple health check endpoint"""
     return jsonify({
         'status': 'healthy',
-        'timestamp': datetime.utcnow().isoformat()
+        'timestamp': datetime.now(UTC).isoformat()
     })
 
 @app.route('/todos', methods=['GET'])
@@ -120,7 +121,7 @@ def create_todo():
         'title': data['title'],
         'description': data.get('description', ''),
         'completed': False,
-        'created_at': datetime.utcnow().isoformat()
+        'created_at': datetime.now(UTC).isoformat()
     }
 
     todos.append(todo)
@@ -185,7 +186,7 @@ curl http://localhost:5000/todos
 
 ## Introduction to FastAPI
 
-FastAPI is a modern, high-performance web framework that automatically generates API documentation and provides excellent type safety. It's built on Python 3.6+ type hints.
+FastAPI is a modern, high-performance web framework that automatically generates API documentation and provides excellent type safety through Python type hints.
 
 ### Setting Up FastAPI
 
@@ -201,7 +202,7 @@ from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from typing import List, Optional
-from datetime import datetime
+from datetime import UTC, datetime
 import uuid
 
 app = FastAPI(
@@ -248,7 +249,7 @@ async def health_check():
     """Health check endpoint"""
     return {
         "status": "healthy",
-        "timestamp": datetime.utcnow()
+        "timestamp": datetime.now(UTC)
     }
 
 @app.get("/todos", response_model=TodoResponse)
@@ -264,7 +265,7 @@ async def create_todo(todo_data: TodoCreate):
         title=todo_data.title,
         description=todo_data.description or "",
         completed=False,
-        created_at=datetime.utcnow()
+        created_at=datetime.now(UTC)
     )
     todos_db.append(todo)
     return todo
