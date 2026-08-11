@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+	<defs>
+		<linearGradient id="python-blue" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0" stop-color="#3776ab"/>
+			<stop offset="1" stop-color="#1f4b73"/>
+		</linearGradient>
+		<pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+			<path d="M42 0H0V42" fill="none" stroke="#fff" stroke-opacity=".09"/>
+		</pattern>
+	</defs>
+	<rect width="1200" height="630" fill="#eef6fb"/>
+	<path d="M740 0h460v630H630c92-92 123-191 95-297C698 228 703 117 740 0Z" fill="url(#python-blue)"/>
+	<path d="M880 0h320v217c-81 35-151 32-209-8-59-40-96-110-111-209Z" fill="#ffd343"/>
+	<path d="M791 630c42-150 122-239 240-266 54-12 110-10 169 7v259Z" fill="#ffd343" opacity=".92"/>
+	<circle cx="1052" cy="167" r="18" fill="#1e293b"/>
+	<circle cx="1101" cy="492" r="18" fill="#1e293b"/>
+	<rect x="720" width="480" height="630" fill="url(#grid)"/>
+	<path d="M781 263h274c34 0 62 28 62 62s-28 62-62 62H824c-55 0-100-45-100-100 0-36 19-69 57-98Z" fill="#fff" opacity=".12"/>
+</svg>

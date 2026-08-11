@@ -28,6 +28,16 @@ Open <http://127.0.0.1:4178>.
 
 Generated files go under `output/`; do not edit them by hand.
 
+## Social images
+
+Every public route has a page-specific 1200×630 social card in `assets/images/social/`. The card source of truth is `howl.json`; SVGs are rendered by [Howl](https://github.com/kujolang/howl), then converted to PNG for Open Graph and Twitter metadata.
+
+```bash
+HOWL_BIN=/path/to/howl/bin/howl ./scripts/render-social-images.sh
+```
+
+Set `KUJO` as well when the Howl launcher cannot find the Kujo interpreter. Cards intentionally omit the lower-left URL so social platforms can use that overlay area.
+
 ## Verify
 
 ```bash
