@@ -51,13 +51,13 @@ social_svg_count="$(find assets/images/social -maxdepth 1 -name '*.svg' -type f 
 social_png_count="$(find assets/images/social -maxdepth 1 -name '*.png' -type f | wc -l | tr -d ' ')"
 [[ "$social_svg_count" == "27" ]] || fail "expected 27 Howl SVG cards, found $social_svg_count"
 [[ "$social_png_count" == "27" ]] || fail "expected 27 social PNG cards, found $social_png_count"
-if rg -n 'python\.robertdevore\.com' assets/images/social --glob '*.svg'; then
+if grep -RIn --include='*.svg' 'python\.robertdevore\.com' assets/images/social; then
 	fail "social cards must leave the lower-left URL overlay area empty"
 fi
-if rg -n 'KUJOLANG\.AI|fill="url\(#wash\)"|filter="url\(#grain\)"|<rect x="78" y="570"' assets/images/social --glob '*.svg'; then
+if grep -RInE --include='*.svg' 'KUJOLANG\.AI|fill="url\(#wash\)"|filter="url\(#grain\)"|<rect x="78" y="570"' assets/images/social; then
 	fail "social cards contain Howl chrome that should be removed by the site finishing pass"
 fi
-social_brand_count="$(rg -l '>PYTHON COURSE</text>' assets/images/social --glob '*.svg' | wc -l | tr -d ' ')"
+social_brand_count="$(grep -RIl --include='*.svg' '>PYTHON COURSE</text>' assets/images/social | wc -l | tr -d ' ')"
 [[ "$social_brand_count" == "27" ]] || fail "expected Python Course branding on 27 social cards, found $social_brand_count"
 
 post_count="$(find content/posts -maxdepth 1 -name '*.md' -type f | wc -l | tr -d ' ')"
