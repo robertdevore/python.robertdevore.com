@@ -23,3 +23,4 @@ fi
 bash scripts/build-parallel.sh auto auto "${build_args[@]}"
 cp CNAME output/CNAME
 bash scripts/validate-generated-output.sh output
+python3 scripts/security-checkpoint.py

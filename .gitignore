@@ -1,3 +1,4 @@
 output/
 assets/js/docs-search-index.json
 .DS_Store
+.security-checkpoint/
